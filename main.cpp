@@ -32,8 +32,8 @@ int main()
     unsigned int problemDefinitionMethod = 1;
 
     cout << "Thaks for using COPSolver :)))" << endl << endl;
-    cout << "COPSolver was (and is being) developed by Fraga, T.B. with purpose of solving many differente combinatorial optimizations problems." << endl;
-    cout << "This first version - V01_20230719 - only solve the Multi-product batch processing time maximization problem." << endl << endl;
+    cout << "COPSolver was (and is being) developed by Fraga, T.B. with purpose of solving many differente combinatorial optimizations problems." << endl << endl;
+    cout << "This first version, V01_20230719, only solves the Multi-product batch processing time maximization problem." << endl << endl;
     cout << "COPSolver is licenced by Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)" << endl << endl;
     cout << "Under this licence you can:" << endl << endl;
     cout << "1) Free dowload and/or use this solver;" << endl;
@@ -41,9 +41,10 @@ int main()
     cout << "3) Modify the solver for personal use, but not share modified version of solver." << endl << endl;
     cout << "You cannot use COPSolver or any modified version for comercial purpose." << endl;
     cout << "If you need or want to use COPSolver for any comercial purpose, please contact tatiana.balbi@ufpe.br." << endl << endl;
-    cout << "If you use this solver for work or science, please don't forget to correct cite it on presentations and the published material." << endl;
+    cout << "If you use this solver for work or science, please don't forget to correctly cite it on presentations and the published material." << endl << endl;
+    cout << "repository: github.com/tbfraga/COPSolver" << endl;
 
-    cout << endl << "Please, resize the window (if needed) and tecle enter." << endl;
+    cout << endl << "Please, resize the window (if needed) and press enter." << endl;
     getchar();
 
     do
@@ -55,7 +56,7 @@ int main()
         cout << "3 for generating a random problem; " << endl;
         cout << "0 if you want to stop the solver." << endl;
 
-        cout << endl << "digite option and then digite enter: ";
+        cout << endl << "digite option and then press enter: ";
         cin >> problemDefinitionMethod;
 
         if(problemDefinitionMethod > 3)
@@ -69,7 +70,7 @@ int main()
         cout << endl << "Thanks for using COPSolver !!!";
         cout << endl << "See you..." << endl;
 
-        cout << endl << "Tecle enter for closing this window." << endl;
+        cout << endl << "Press enter for closing this window." << endl;
         getchar();
         return 0;
     } else if(problemDefinitionMethod == 1)
@@ -111,7 +112,7 @@ int main()
             cout << endl << "Thanks for using COPSolver !!!";
             cout << endl << "See you..." << endl;
 
-            cout << endl << "Tecle enter for closing this window." << endl;
+            cout << endl << "Press enter for closing this window." << endl;
             getchar();
             return 0;
         }
@@ -122,11 +123,11 @@ int main()
         unsigned int NProducts = 10;
 
         cout << endl << "Please informe the source for random generation (interger value)." << endl;
-        cout << endl << "digite option and then tecle enter: ";
+        cout << endl << "digite option and then press enter: ";
         cin >> source;
 
         cout << endl << "Please informe number of products for random generation (interger value)." << endl;
-        cout << endl << "digite option and then tecle enter: ";
+        cout << endl << "digite option and then press enter: ";
         cin >> NProducts;
 
         srand((unsigned) source);
@@ -147,6 +148,11 @@ int main()
 
     mpbptmp_problem.clear();
     mpbptmp_solution.clear();
+
+    cout << endl << "Thanks for using COPSolver !!!";
+    cout << endl << "See you..." << endl;
+
+    cout << endl << "Press enter for closing this window." << endl;
 
     return 0;
 }

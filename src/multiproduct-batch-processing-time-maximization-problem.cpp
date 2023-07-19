@@ -389,7 +389,7 @@ namespace mpbptmp
         file << endl << "batch processing time: " << _problem._batchProcessingTime << endl;
 
         cout << endl << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
-        cout << endl << "batch processing time: " << _problem._batchProcessingTime << endl;
+        cout << endl << "batch processing time: " << _problem._batchProcessingTime << endl << endl;
 
         S.clear();
         file.close();
