@@ -1,0 +1,5 @@
+Analytical solution:
+
+T': 33	 T'': 68	 max batch processing time: 100
+
+batch processing time: 100
