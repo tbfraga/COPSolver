@@ -32,7 +32,7 @@ namespace mpbptmp
         cout << endl << "head: printing problem..." << endl;
         ofstream file;
 
-        file.open("problem.txt");
+        file.open("Documents/COPSolver/problem.txt");
 
         file << "Multi-product batch processing time maximization problem " << endl;
 
@@ -73,7 +73,7 @@ namespace mpbptmp
 
         file << endl << endl << "maximum batch processing time: " << _maxBatchProcessingTime << endl;
 
-        cout << endl << "info: problem is available on file problem.txt" << endl;
+        cout << endl << "info: problem is available on file Documents/COPSolver/problem.txt" << endl;
 
         file.close();
     };
@@ -83,7 +83,7 @@ namespace mpbptmp
         cout << endl << "head: generating LINGO data..." << endl;
         ofstream file;
 
-        file.open("LINGOSolver/MPBPTMP/data.ldt");
+        file.open("Documents/COPSolver/LINGOSolver/MPBPTMP/data.ldt");
 
         file << "! products;" << endl << endl;
 
@@ -182,7 +182,7 @@ namespace mpbptmp
 
         file << _maxBatchProcessingTime << " ~";
 
-        cout << endl << "info: data.ldt (input for LINGO application) is available on LINGOSolver/MPBPTMP/data.ldt" << endl;
+        cout << endl << "info: data.ldt (input for LINGO application) is available on Documents/COPSolver/LINGOSolver/MPBPTMP/data.ldt" << endl;
 
         file.close();
     };
@@ -193,7 +193,7 @@ namespace mpbptmp
 
         fstream file;
 
-        file.open("data.txt");
+        file.open("Documents/COPSolver/data.txt");
 
         file >> _NProducts;
 
@@ -335,7 +335,7 @@ namespace mpbptmp
     {
         ofstream file;
 
-        file.open("output.txt");
+        file.open("Documents/COPSolver/output.txt");
 
         cout << endl << "Analytical solution:" << endl;
         file << "Analytical solution:" << endl << endl;
@@ -393,6 +393,8 @@ namespace mpbptmp
 
         S.clear();
         file.close();
+
+        cout << endl << "info: output of analytical method is available on file Documents/COPSolver/output.txt" << endl;
 
         return _problem._batchProcessingTime;
     };

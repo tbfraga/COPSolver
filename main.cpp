@@ -18,6 +18,13 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 #include "lib/multiproduct-batch-processing-time-maximization-problem.h"
 using namespace mpbptmp;
 
+#include <unistd.h>
+#include <bits/stdc++.h>
+#include <iostream>
+#include <sys/stat.h>
+#include <sys/types.h>
+using namespace std;
+
 int main()
 {
     /**** Multiproduct batch processing time maximization problem ****/
@@ -43,6 +50,34 @@ int main()
     cout << "If you need or want to use COPSolver for any comercial purpose, please contact tatiana.balbi@ufpe.br." << endl << endl;
     cout << "If you use this solver for work or science, please don't forget to correctly cite it on presentations and the published material." << endl << endl;
     cout << "repository: github.com/tbfraga/COPSolver" << endl;
+
+    char cwd[PATH_MAX];
+    if (getcwd(cwd, sizeof(cwd)) != NULL) {
+       printf("\nCurrent working dir: %s\n", cwd);
+    } else {
+       perror("getcwd() error");
+       //return 1;
+    }
+
+    // Creating a directory
+    if (mkdir("Documents", 0777) == -1){}
+    else
+        cout << endl << "Documents directory created" << endl;
+
+    if (mkdir("Documents/COPSolver", 0777) == -1){}
+       // cerr << "Error :  " << strerror(errno) << endl;
+    else
+        cout << endl << "Documents/COPSolver directory created" << endl;
+
+    if (mkdir("Documents/COPSolver/LINGOSolver", 0777) == -1){}
+       // cerr << "Error :  " << strerror(errno) << endl;
+    else
+        cout << endl << "Documents/COPSolver/LINGOSolver directory created" << endl;
+
+    if (mkdir("Documents/COPSolver/LINGOSolver/MPBPTMP", 0777) == -1){}
+       // cerr << "Error :  " << strerror(errno) << endl;
+    else
+        cout << endl << "Documents/COPSolver/LINGOSolver/MPBPTMP directory created" << endl;
 
     cout << endl << "Please, resize the window (if needed) and press enter." << endl;
     getchar();
@@ -152,7 +187,7 @@ int main()
     cout << endl << "Thanks for using COPSolver !!!";
     cout << endl << "See you..." << endl;
 
-    cout << endl << "Press enter for closing this window." << endl;
+    cout << endl << "Press enter for closing this window." << endl << endl;
 
     return 0;
 }

@@ -1,0 +1,66 @@
+  LINGO/LNX64 20.0.8 (17 Oct 2022), LINDO API 14.0.5099.179
+
+  Licensee info: Eval Use Only
+  License expires: 24 DEC 2023
+
+  Global optimal solution found.
+  Objective value:                              55.00000
+  Objective bound:                              55.00000
+  Infeasibilities:                              0.000000
+  Extended solver steps:                               0
+  Total solver iterations:                             3
+  Elapsed runtime seconds:                          0.04
+
+  Model Class:                                      MILP
+
+  Total variables:                     10
+  Nonlinear variables:                  0
+  Integer variables:                    7
+
+  Total constraints:                   14
+  Nonlinear constraints:                0
+
+  Total nonzeros:                      24
+  Nonlinear nonzeros:                   0
+
+
+
+                                Variable           Value        Reduced Cost
+             TOTAL_FREE_OUTLET_INVENTORY        1000.000            0.000000
+            TOTAL_FREE_FACTORY_INVENTORY        3000.000            0.000000
+                   PROCESSING_TIME_LIMIT        100.0000            0.000000
+                   BATCH_PROCESSING_TIME        55.00000            0.000000
+                                       T        0.000000            0.000000
+                    PRODUCTION_RATE( P1)        60.00000            0.000000
+                    PRODUCTION_RATE( P2)        40.00000            0.000000
+                             DEMAND( P1)        1000.000            0.000000
+                             DEMAND( P2)        500.0000            0.000000
+              FREE_OUTLET_INVENTORY( P1)        600.0000            0.000000
+              FREE_OUTLET_INVENTORY( P2)        600.0000            0.000000
+             FREE_FACTORY_INVENTORY( P1)        3000.000            0.000000
+             FREE_FACTORY_INVENTORY( P2)        2000.000            0.000000
+                         PRODUCTION( P1)        3300.000            0.000000
+                         PRODUCTION( P2)        2200.000            0.000000
+                          DELIVERED( P1)        1000.000          -0.1666667E-01
+                          DELIVERED( P2)        500.0000            0.000000
+                    SEND_TO_FACTORY( P1)        1900.000          -0.1666667E-01
+                    SEND_TO_FACTORY( P2)        1100.000            0.000000
+                     SEND_TO_OUTLET( P1)        400.0000          -0.1666667E-01
+                     SEND_TO_OUTLET( P2)        600.0000            0.000000
+
+                                     Row    Slack or Surplus      Dual Price
+                                       1        55.00000            1.000000
+                        CALC_PROD_1( P1)        0.000000          -0.1666667E-01
+                        CALC_PROD_1( P2)        0.000000            0.000000
+                        CALC_PROD_2( P1)        0.000000           0.1666667E-01
+                        CALC_PROD_2( P2)        0.000000            0.000000
+                     REST_DELIVERED( P1)        0.000000            0.000000
+                     REST_DELIVERED( P2)        0.000000            0.000000
+                        REST_OUTLET( P1)        200.0000            0.000000
+                        REST_OUTLET( P2)        0.000000            0.000000
+                      REST_TOTAL_OUTLETS        0.000000            0.000000
+                       REST_FACTORY( P1)        1100.000            0.000000
+                       REST_FACTORY( P2)        900.0000            0.000000
+                      REST_TOTAL_FACTORY        0.000000            0.000000
+                    REST_PROCESSING_TIME        45.00000            0.000000
+
