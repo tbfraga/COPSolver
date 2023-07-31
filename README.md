@@ -16,4 +16,4 @@ The full license can be found in the LICENSE.md document available in this direc
 
 The license adopted may be modified if needed (but only by me).
 
-Please, if you use the information presented here for other publications or references, cite using Fraga, T. B. 2023. Software COPSOlver available at https://github.com/tbfraga/COPSolver, accessed on <today's date>.
+Please, if you use the information presented here for other publications or references, cite using Fraga, T. B. 2023. Software COPSOlver. Available at https://github.com/tbfraga/COPSolver, accessed on <today's date>.

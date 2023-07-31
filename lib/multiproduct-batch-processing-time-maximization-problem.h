@@ -10,14 +10,16 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version: V01_20230719
+// version: V01_20230731
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/07/19
+// last modification: 2023/07/31
 
 #ifndef MULTIPRODUCT_BATCH_PROCESSING_TIME_MAXIMIZATION_PROBLEM_H_INCLUDED
 #define MULTIPRODUCT_BATCH_PROCESSING_TIME_MAXIMIZATION_PROBLEM_H_INCLUDED
 
+#include <unistd.h>
+#include <bits/stdc++.h>
 #include<iostream>
 #include<fstream>
 #include<iomanip>
@@ -52,8 +54,8 @@ namespace mpbptmp
         public:
 
         void clear();
-        void print();
-        void generateLingoData();
+        bool print();
+        bool generateLingoData();
 
         bool get();
         void set(unsigned int NProducts, vector<float> productionRate, vector<unsigned int> demand, vector<unsigned int> maximumInventory, unsigned int totalMaximumInventory,

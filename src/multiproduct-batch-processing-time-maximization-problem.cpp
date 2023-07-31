@@ -10,10 +10,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version: V01_20230719
+// version: V01_20230731
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/07/19
+// last modification: 2023/07/31
 
 #include "../lib/multiproduct-batch-processing-time-maximization-problem.h"
 
@@ -27,12 +27,24 @@ namespace mpbptmp
         _maximumOutletInventory.clear();
     };
 
-    void multiproductBatchProcessingTimeMaximizationProblem::print()
+    bool multiproductBatchProcessingTimeMaximizationProblem::print()
     {
         cout << endl << "head: printing problem..." << endl;
+
+        char cwd[PATH_MAX];
+        if (getcwd(cwd, sizeof(cwd)) != NULL) {
+            // printf("\nCurrent working dir: %s\n", cwd);
+        } else {
+            perror("getcwd() error");
+            return 1;
+        }
+
+        string site = cwd;
+        site += "/Documents/COPSolver/problem.txt";
+
         ofstream file;
 
-        file.open("Documents/COPSolver/problem.txt");
+        file.open(site);
 
         file << "Multi-product batch processing time maximization problem " << endl;
 
@@ -73,17 +85,31 @@ namespace mpbptmp
 
         file << endl << endl << "maximum batch processing time: " << _maxBatchProcessingTime << endl;
 
-        cout << endl << "info: problem is available on file Documents/COPSolver/problem.txt" << endl;
+        cout << endl << "info: problem is available on file " << site << endl;
 
         file.close();
+
+        return 0;
     };
 
-    void multiproductBatchProcessingTimeMaximizationProblem::generateLingoData()
+    bool multiproductBatchProcessingTimeMaximizationProblem::generateLingoData()
     {
         cout << endl << "head: generating LINGO data..." << endl;
+
+        char cwd[PATH_MAX];
+        if (getcwd(cwd, sizeof(cwd)) != NULL) {
+            // printf("\nCurrent working dir: %s\n", cwd);
+        } else {
+            perror("getcwd() error");
+            return 1;
+        }
+
+        string site = cwd;
+        site += "/Documents/COPSolver/LINGOSolver/MPBPTMP/data.ldt";
+
         ofstream file;
 
-        file.open("Documents/COPSolver/LINGOSolver/MPBPTMP/data.ldt");
+        file.open(site);
 
         file << "! products;" << endl << endl;
 
@@ -182,18 +208,33 @@ namespace mpbptmp
 
         file << _maxBatchProcessingTime << " ~";
 
-        cout << endl << "info: data.ldt (input for LINGO application) is available on Documents/COPSolver/LINGOSolver/MPBPTMP/data.ldt" << endl;
+        cout << endl << "info: data.ldt (input for LINGO application) is available on " << site << endl;
 
         file.close();
+
+        return 0;
     };
 
     bool multiproductBatchProcessingTimeMaximizationProblem::get()
     {
         clear();
 
+        char cwd[PATH_MAX];
+        if (getcwd(cwd, sizeof(cwd)) != NULL) {
+            printf("\nCurrent working dir: %s\n", cwd);
+        } else {
+            perror("getcwd() error");
+            return 1;
+        }
+
+        string site = cwd;
+        site += "/Documents/COPSolver/data.txt";
+
+        cout << endl << "Data file dir: " << site << endl;
+
         fstream file;
 
-        file.open("Documents/COPSolver/data.txt");
+        file.open(site);
 
         file >> _NProducts;
 
@@ -333,11 +374,24 @@ namespace mpbptmp
 
     unsigned int solution::analyticalMethod()
     {
+        cout << endl << "head: applying Fraga's exact method for solving MPBPTMP..." << endl;
+
+        char cwd[PATH_MAX];
+        if (getcwd(cwd, sizeof(cwd)) != NULL) {
+            // printf("\nCurrent working dir: %s\n", cwd);
+        } else {
+            perror("getcwd() error");
+            return 1;
+        }
+
+        string site = cwd;
+        site += "/Documents/COPSolver/output.txt";
+
         ofstream file;
 
-        file.open("Documents/COPSolver/output.txt");
+        file.open(site);
 
-        cout << endl << "Analytical solution:" << endl;
+        cout << endl << endl << "Analytical solution:" << endl;
         file << "Analytical solution:" << endl << endl;
 
         unsigned int aux, sum, T1, T2;
@@ -394,7 +448,7 @@ namespace mpbptmp
         S.clear();
         file.close();
 
-        cout << endl << "info: output of analytical method is available on file Documents/COPSolver/output.txt" << endl;
+        cout << endl << "info: output of analytical method is available on file " << site << endl;
 
         return _problem._batchProcessingTime;
     };
