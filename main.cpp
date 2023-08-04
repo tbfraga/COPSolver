@@ -4,6 +4,8 @@ Important: Copies and distributions of this solver must comply with the Creative
 Under this license, it is allowed to download and share the code as long as they give credit to the original authors, and without being able to alter them in any way or use
 them for commercial purposes.
 
+Obs: You can alter this file only for personal purpose. You cannot distribute altered version.
+
 The full license can be found in the LICENSE.md document available in this directory, or through the website: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.
 
 This project with its files can be consulted at https://github.com/tbfraga/COPSolver.
@@ -13,7 +15,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: V01_20230731
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/07/31
+// last modification: 2023/08/04
 
 #include "lib/multiproduct-batch-processing-time-maximization-problem.h"
 using namespace mpbptmp;
@@ -34,7 +36,7 @@ int main()
     // problemDefinitionMethod = 2 - taking a predefined problem
     // problemDefinitionMethod = 3 - generating a random problem
 
-    MPBPTMP mpbptmp_problem;
+    problem mpbptmp_problem;
 
     unsigned int problemDefinitionMethod = 1;
 

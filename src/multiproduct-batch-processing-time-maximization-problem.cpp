@@ -4,6 +4,8 @@ Important: Copies and distributions of this file must comply with the Creative C
 Under this license, it is allowed to download and share the code as long as they give credit to the original authors, and without being able to alter them in any way or use
 them for commercial purposes.
 
+Obs: You can alter this file only for personal purpose. You cannot distribute altered version.
+
 The full license can be found in the LICENSE.md document available in this directory, or through the website: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.
 
 This project with its files can be consulted at https://github.com/tbfraga/COPSolver.
@@ -13,7 +15,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: V01_20230731
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/07/31
+// last modification: 2023/08/04
 
 #include "../lib/multiproduct-batch-processing-time-maximization-problem.h"
 
@@ -293,7 +295,7 @@ namespace mpbptmp
         _maxBatchProcessingTime = maxBatchProcessingTime;
     };
 
-    void MPBPTMP::MPBPTMP001()
+    void problem::MPBPTMP001()
     {
         /**************************************************************************************************************************
         Small problem developed to test the solver.
@@ -310,7 +312,7 @@ namespace mpbptmp
         _maxBatchProcessingTime = 100;
     };
 
-    void MPBPTMP::MPBPTMP002()
+    void problem::MPBPTMP002()
     {
         /**************************************************************************************************************************
         Small problem developed to test the solver.
@@ -327,7 +329,7 @@ namespace mpbptmp
         _maxBatchProcessingTime = 100;
     };
 
-    void MPBPTMP::MPBPTMP003()
+    void problem::MPBPTMP003()
     {
         /**************************************************************************************************************************
         Small problem developed to test the solver.
@@ -344,7 +346,7 @@ namespace mpbptmp
         _maxBatchProcessingTime = 100;
     };
 
-    void MPBPTMP::randomMPBPTMP(unsigned int problemSize)
+    void problem::randomMPBPTMP(unsigned int problemSize)
     {
         clear();
 
@@ -453,7 +455,7 @@ namespace mpbptmp
         return _problem._batchProcessingTime;
     };
 
-    void solution::start(MPBPTMP mpbptmp_problem)
+    void solution::start(problem mpbptmp_problem)
     {
         //clear();
 

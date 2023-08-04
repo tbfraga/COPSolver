@@ -4,6 +4,8 @@ Important: Copies and distributions of this file must comply with the Creative C
 Under this license, it is allowed to download and share the code as long as they give credit to the original authors, and without being able to alter them in any way or use
 them for commercial purposes.
 
+Obs: You can alter this file only for personal purpose. You cannot distribute altered version.
+
 The full license can be found in the LICENSE.md document available in this directory, or through the website: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.
 
 This project with its files can be consulted at https://github.com/tbfraga/COPSolver.
@@ -13,7 +15,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: V01_20230731
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/07/31
+// last modification: 2023/08/04
 
 #ifndef MULTIPRODUCT_BATCH_PROCESSING_TIME_MAXIMIZATION_PROBLEM_H_INCLUDED
 #define MULTIPRODUCT_BATCH_PROCESSING_TIME_MAXIMIZATION_PROBLEM_H_INCLUDED
@@ -64,7 +66,7 @@ namespace mpbptmp
 
     // class for creating instances of max multiproduct batch time problem
 
-    class MPBPTMP: public multiproductBatchProcessingTimeMaximizationProblem
+    class problem: public multiproductBatchProcessingTimeMaximizationProblem
     {
         public:
 
@@ -80,11 +82,11 @@ namespace mpbptmp
     {
         protected:
 
-        MPBPTMP _problem; // MPBPTMP linked to the solution
+        problem _problem; // MPBPTMP linked to the solution
 
         public:
 
-        void start(MPBPTMP mpbptmp_problem); // this function initializes solution variables
+        void start(problem mpbptmp_problem); // this function initializes solution variables
         unsigned int analyticalMethod(); // this function solves the reported problem through the analytical method proposed by T. B. Fraga (2023)
         void clear();
     };
