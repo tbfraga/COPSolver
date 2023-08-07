@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1691151833 source:/home/work/Documents/GitHub/COPSolver/main.cpp
+1691428382 source:/home/work/Documents/GitHub/COPSolver/main.cpp
 	"lib/multiproduct-batch-processing-time-maximization-problem.h"
 	<unistd.h>
 	<bits/stdc++.h>
@@ -7,7 +7,7 @@
 	<sys/stat.h>
 	<sys/types.h>
 
-1691151890 /home/work/Documents/GitHub/COPSolver/lib/multiproduct-batch-processing-time-maximization-problem.h
+1691425956 /home/work/Documents/GitHub/COPSolver/lib/multiproduct-batch-processing-time-maximization-problem.h
 	<unistd.h>
 	<bits/stdc++.h>
 	<iostream>
@@ -16,6 +16,6 @@
 	<vector>
 	<math.h>
 
-1691151806 source:/home/work/Documents/GitHub/COPSolver/src/multiproduct-batch-processing-time-maximization-problem.cpp
+1691429488 source:/home/work/Documents/GitHub/COPSolver/src/multiproduct-batch-processing-time-maximization-problem.cpp
 	"../lib/multiproduct-batch-processing-time-maximization-problem.h"
 

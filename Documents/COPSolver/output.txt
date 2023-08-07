@@ -1,5 +1,35 @@
 Analytical solution:
 
-T': 12	 T'': 43	 max batch processing time: 100
+T': 0	 T'': 55	 max batch processing time: 100
 
 batch processing time: 55
+
+Production:
+
+P0 = 3300
+P1 = 2200
+
+Delivered:
+
+D0 = 1000
+D1 = 500
+
+Delivered to outlets:
+
+O0 = 600
+O1 = 600
+
+Leftover inventory in outlets: -200
+
+Stocked at factory:
+
+I0 = 1700
+I1 = 1100
+
+Leftover inventory in factory: 200
+
+
+Adjusting production distribution:
+
+O0 = 400
+I0 = 1900

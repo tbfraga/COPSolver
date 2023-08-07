@@ -15,10 +15,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: V01_20230731
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/08/04
+// last modification: 2023/08/07
 
 #include "lib/multiproduct-batch-processing-time-maximization-problem.h"
-using namespace mpbptmp;
+using namespace mbptmp;
 
 #include <unistd.h>
 #include <bits/stdc++.h>
@@ -181,7 +181,7 @@ int main()
     solution mpbptmp_solution;
 
     mpbptmp_solution.start(mpbptmp_problem);
-    mpbptmp_solution.analyticalMethod();
+    mpbptmp_solution.analyticalMethod(0);
 
     mpbptmp_problem.clear();
     mpbptmp_solution.clear();

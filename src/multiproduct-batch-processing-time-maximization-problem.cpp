@@ -15,11 +15,11 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: V01_20230731
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/08/04
+// last modification: 2023/08/07
 
 #include "../lib/multiproduct-batch-processing-time-maximization-problem.h"
 
-namespace mpbptmp
+namespace mbptmp
 {
     void multiproductBatchProcessingTimeMaximizationProblem::clear()
     {
@@ -437,35 +437,269 @@ namespace mpbptmp
 
         if(aux < T2) T2 = aux;
 
-        _problem._batchProcessingTime = T1 + T2;
+        _batchProcessingTime = T1 + T2;
 
-        if(_problem._batchProcessingTime > _problem._maxBatchProcessingTime) _problem._batchProcessingTime = _problem._maxBatchProcessingTime;
+        if(_batchProcessingTime > _problem._maxBatchProcessingTime) _batchProcessingTime = _problem._maxBatchProcessingTime;
 
         file << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
-        file << endl << "batch processing time: " << _problem._batchProcessingTime << endl;
+        file << endl << "batch processing time: " << _batchProcessingTime << endl;
 
         cout << endl << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
-        cout << endl << "batch processing time: " << _problem._batchProcessingTime << endl << endl;
+        cout << endl << "batch processing time: " << _batchProcessingTime << endl << endl;
 
         S.clear();
         file.close();
 
         cout << endl << "info: output of analytical method is available on file " << site << endl;
 
-        return _problem._batchProcessingTime;
+        return _batchProcessingTime;
     };
 
-    void solution::start(problem mpbptmp_problem)
+    vector<unsigned int> solution::analyticalMethod(unsigned int T1)
+    {
+        cout << endl << "head: applying Fraga's exact method for solving MPBPTMP..." << endl;
+
+        char cwd[PATH_MAX];
+        if (getcwd(cwd, sizeof(cwd)) != NULL) {
+            // printf("\nCurrent working dir: %s\n", cwd);
+        } else {
+            perror("getcwd() error");
+            return {};
+        }
+
+        string site = cwd;
+        site += "/Documents/COPSolver/output.txt";
+
+        ofstream file;
+
+        file.open(site);
+
+        cout << endl << endl << "Analytical solution:" << endl;
+        file << "Analytical solution:" << endl << endl;
+
+        unsigned int aux, sum, T2;
+
+        if (T1 > floor(_problem._demand[0]/_problem._productionRate[0]))
+        {
+            T1 = floor(_problem._demand[0]/_problem._productionRate[0]);
+            cout << endl << "value of T1 will be adjusted to " << T1 << endl;
+
+            for(unsigned int p=1; p<_problem._NProducts; p++)
+            {
+                aux = floor(_problem._demand[p]/_problem._productionRate[p]);
+                if(aux < T1) T1 = aux;
+            }
+        }
+
+        vector<unsigned int> S;
+        S.resize(_problem._NProducts,0);
+
+        for(unsigned int p=0; p<_problem._NProducts; p++)
+        {
+            S[p] = _problem._demand[p] - T1*_problem._productionRate[p];
+        }
+
+        T2 = floor((_problem._maximumInventory[0] + _problem._maximumOutletInventory[0] + S[0])/_problem._productionRate[0]);
+
+        for(unsigned int p=1; p<_problem._NProducts; p++)
+        {
+            aux = floor((_problem._maximumInventory[p] + _problem._maximumOutletInventory[p] + S[p])/_problem._productionRate[p]);
+            if(aux < T2) T2 = aux;
+        }
+
+        aux = 0;
+        sum = 0;
+
+        for(unsigned int p=0; p<_problem._NProducts; p++)
+        {
+            aux += S[p];
+            sum += _problem._productionRate[p];
+        }
+
+        aux += _problem._totalMaximumInventory + _problem._totalMaximumOutletInventory;
+
+        aux = floor(aux/sum);
+
+        if(aux < T2) T2 = aux;
+
+        _batchProcessingTime = T1 + T2;
+
+        if(_batchProcessingTime > _problem._maxBatchProcessingTime) _batchProcessingTime = _problem._maxBatchProcessingTime;
+
+        file << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
+        file << endl << "batch processing time: " << _batchProcessingTime << endl;
+
+        cout << endl << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
+        cout << endl << "batch processing time: " << _batchProcessingTime << endl << endl;
+
+        file << endl << "Production:" << endl << endl;
+        cout << endl << "Production:" << endl << endl;
+
+        for(unsigned int p=0; p<_problem._NProducts; p++)
+        {
+            _production[p] = _problem._productionRate[p] * _batchProcessingTime;
+
+            file << "P" << p << " = " << _production[p] << endl;
+            cout << "P" << p << " = " << _production[p] << endl;
+        }
+
+        file << endl << "Delivered:" << endl << endl;
+        cout << endl << "Delivered:" << endl << endl;
+
+        for(unsigned int p=0; p<_problem._NProducts; p++)
+        {
+            if(_problem._demand[p] < _production[p])
+            {
+                _delivered[p] = _problem._demand[p];
+            } else
+            {
+                _delivered[p] = _production[p];
+            }
+
+            file << "D" << p << " = " << _delivered[p] << endl;
+            cout << "D" << p << " = " << _delivered[p] << endl;
+
+            _production[p] -= _delivered[p];
+        }
+
+        int SO = _problem._totalMaximumOutletInventory;
+
+        file << endl << "Delivered to outlets:" << endl << endl;
+        cout << endl << "Delivered to outlets:" << endl << endl;
+
+        for(unsigned int p=0; p<_problem._NProducts; p++)
+        {
+            if(_problem._maximumOutletInventory[p] < _production[p])
+            {
+                _deliveredToOutlets[p] = _problem._maximumOutletInventory[p];
+            } else
+            {
+                _deliveredToOutlets[p] = _production[p];
+            }
+
+            _problem._maximumOutletInventory[p] -=  _deliveredToOutlets[p];
+
+            SO -= _deliveredToOutlets[p];
+
+            file << "O" << p << " = " << _deliveredToOutlets[p] << endl;
+            cout << "O" << p << " = " << _deliveredToOutlets[p] << endl;
+
+            _production[p] -= _deliveredToOutlets[p];
+        }
+
+        file << endl << "Leftover inventory in outlets: " << SO << endl;
+        cout << endl << "Leftover inventory in outlets: " << SO << endl;
+
+        int SI = _problem._totalMaximumInventory;
+
+        file << endl << "Stocked at factory:" << endl << endl;
+        cout << endl << "Stocked at factory:" << endl << endl;
+
+        for(unsigned int p=0; p<_problem._NProducts; p++)
+        {
+            _stocked[p] = _production[p];
+
+            _problem._maximumInventory[p] -= _stocked[p];
+
+            SI -= _stocked[p];
+
+            file << "I" << p << " = " << _stocked[p] << endl;
+            cout << "I" << p << " = " << _stocked[p] << endl;
+        }
+
+        file << endl << "Leftover inventory in factory: " << SI << endl << endl;
+        cout << endl << "Leftover inventory in factory: " << SI << endl << endl;
+
+        file << endl << "Adjusting production distribution:" << endl << endl;
+        cout << endl << "Adjusting production distribution:" << endl << endl;
+
+        unsigned int minimum;
+
+        for(unsigned int p=0; p<_problem._NProducts; p++)
+        {
+            if(SO >= 0 and SI >= 0) break;
+
+            if(SO < 0)
+            {
+                if(_deliveredToOutlets[p] < _problem._maximumInventory[p])
+                {
+                    minimum = _deliveredToOutlets[p];
+                } else
+                {
+                    minimum = _problem._maximumInventory[p];
+                }
+
+                if(abs(SO) < minimum )
+                {
+                    minimum = abs(SO);
+                }
+
+                _deliveredToOutlets[p] -= minimum;
+                _stocked[p] += minimum;
+                SO += minimum;
+
+                file << "O" << p << " = " << _deliveredToOutlets[p] << endl;
+                cout << "O" << p << " = " << _deliveredToOutlets[p] << endl;
+
+                file << "I" << p << " = " << _stocked[p] << endl;
+                cout << "I" << p << " = " << _stocked[p] << endl;
+
+            } else if(SI < 0)
+            {
+                if(_stocked[p] < _problem._maximumOutletInventory[p])
+                {
+                    minimum = _stocked[p];
+                } else
+                {
+                    minimum = _problem._maximumOutletInventory[p];
+                }
+
+                if(abs(SI) < minimum )
+                {
+                    minimum = abs(SI);
+                }
+
+               _stocked[p] -= minimum;
+
+               file << "I" << p << " = " << _stocked[p] << endl;
+               cout << "I" << p << " = " << _stocked[p] << endl;
+            }
+        }
+
+        S.clear();
+        file.close();
+
+        cout << endl << "info: output of analytical method is available on file " << site << endl;
+
+        return _solution;
+    };
+
+    void solution::start(problem mbptmp_problem)
     {
         //clear();
 
         _problem.clear();
-        _problem = mpbptmp_problem; // linking solution to the problem
+        _problem = mbptmp_problem;
 
+        _production.clear();
+        _production.resize(_problem._NProducts,0);
+
+        _delivered.clear();
+        _delivered.resize(_problem._NProducts,0);
+
+        _deliveredToOutlets.clear();
+        _deliveredToOutlets.resize(_problem._NProducts,0);
+
+        _stocked.clear();
+        _stocked.resize(_problem._NProducts,0);
     };
 
     void solution::clear()
     {
         _problem.clear();
+        _production.clear();
+        _delivered.clear();
+        _deliveredToOutlets.clear();
+        _stocked.clear();
     };
 }
