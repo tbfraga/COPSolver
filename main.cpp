@@ -12,10 +12,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version: V01_20230731
+// version: V01_20230809
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/08/07
+// last modification: 2023/08/09
 
 #include "lib/multiproduct-batch-processing-time-maximization-problem.h"
 using namespace mbptmp;

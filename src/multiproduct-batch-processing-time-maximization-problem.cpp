@@ -455,7 +455,7 @@ namespace mbptmp
         return _batchProcessingTime;
     };
 
-    vector<unsigned int> solution::analyticalMethod(unsigned int T1)
+    vector<vector<unsigned int>> solution::analyticalMethod(unsigned int T1)
     {
         cout << endl << "head: applying Fraga's exact method for solving MPBPTMP..." << endl;
 
@@ -476,6 +476,8 @@ namespace mbptmp
 
         cout << endl << endl << "Analytical solution:" << endl;
         file << "Analytical solution:" << endl << endl;
+
+        // ***** calculating optimal batch processing time ***** //
 
         unsigned int aux, sum, T2;
 
@@ -532,6 +534,12 @@ namespace mbptmp
         cout << endl << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
         cout << endl << "batch processing time: " << _batchProcessingTime << endl << endl;
 
+        // ***** calculating and distributing production ***** //
+
+        _solution.reserve(5);
+
+        _solution.push_back({_batchProcessingTime});
+
         file << endl << "Production:" << endl << endl;
         cout << endl << "Production:" << endl << endl;
 
@@ -542,6 +550,8 @@ namespace mbptmp
             file << "P" << p << " = " << _production[p] << endl;
             cout << "P" << p << " = " << _production[p] << endl;
         }
+
+        _solution.push_back(_production);
 
         file << endl << "Delivered:" << endl << endl;
         cout << endl << "Delivered:" << endl << endl;
@@ -666,6 +676,10 @@ namespace mbptmp
             }
         }
 
+        _solution.push_back(_delivered);
+        _solution.push_back(_deliveredToOutlets);
+        _solution.push_back(_stocked);
+
         S.clear();
         file.close();
 
@@ -692,6 +706,12 @@ namespace mbptmp
 
         _stocked.clear();
         _stocked.resize(_problem._NProducts,0);
+
+        for(unsigned int s=0; s<_solution.size(); s++)
+        {
+            _solution[s].clear();
+        }
+        _solution.clear();
     };
 
     void solution::clear()
