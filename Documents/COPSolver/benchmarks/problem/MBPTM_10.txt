@@ -1,0 +1,25 @@
+Multi-product batch processing time maximization problem 
+
+products: 10
+
+production rate:
+
+ 60	  40	  50	  40	  30	  50	  60	  10	  20	  40	 
+
+demand:
+
+1000	  500	  800	  500	  400	  500	 2000	  300	  500	 1000	 
+
+total outlets maximum inventory: 3000
+
+outlets maximum inventory:
+
+ 600	  600	  600	 1500	  300	  200	  500	  800	    0	  200	 
+
+total fatctory maximum inventory: 5000
+
+fatctory maximum inventory:
+
+3000	 2000	 1000	  800	 3000	 1000	  400	  300	  200	    0	 
+
+maximum batch processing time: 100

@@ -12,10 +12,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version: V01_20230731
+// version: V01_20230814
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/08/07
+// last modification: 2023/08/14
 
 #include "../lib/multiproduct-batch-processing-time-maximization-problem.h"
 
@@ -107,7 +107,7 @@ namespace mbptmp
         }
 
         string site = cwd;
-        site += "/Documents/COPSolver/LINGOSolver/MPBPTMP/data.ldt";
+        site += "/Documents/COPSolver/LINGOSolver/MBPTM/data.ldt";
 
         ofstream file;
 
@@ -474,8 +474,16 @@ namespace mbptmp
 
         file.open(site);
 
-        cout << endl << endl << "Analytical solution:" << endl;
-        file << "Analytical solution:" << endl << endl;
+        file << "Analytical solution:" << endl;
+
+        struct timespec begin_time, finish_time, diff_time;
+        char buff[100];
+
+        timespec_get(&begin_time, TIME_UTC);
+        strftime(buff, sizeof buff, "%D %T", gmtime(&begin_time.tv_sec));
+
+        cout << endl << "starting time (s): " << buff << "." << begin_time.tv_nsec <<  " UTC" << endl;
+        file << endl << "starting time (s): " << buff << "." << begin_time.tv_nsec <<  " UTC" << endl;
 
         // ***** calculating optimal batch processing time ***** //
 
@@ -484,7 +492,6 @@ namespace mbptmp
         if (T1 > floor(_problem._demand[0]/_problem._productionRate[0]))
         {
             T1 = floor(_problem._demand[0]/_problem._productionRate[0]);
-            cout << endl << "value of T1 will be adjusted to " << T1 << endl;
 
             for(unsigned int p=1; p<_problem._NProducts; p++)
             {
@@ -528,11 +535,11 @@ namespace mbptmp
 
         if(_batchProcessingTime > _problem._maxBatchProcessingTime) _batchProcessingTime = _problem._maxBatchProcessingTime;
 
-        file << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
+        file << endl << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
         file << endl << "batch processing time: " << _batchProcessingTime << endl;
 
         cout << endl << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
-        cout << endl << "batch processing time: " << _batchProcessingTime << endl << endl;
+        cout << endl << "batch processing time: " << _batchProcessingTime << endl;
 
         // ***** calculating and distributing production ***** //
 
@@ -541,20 +548,17 @@ namespace mbptmp
         _solution.push_back({_batchProcessingTime});
 
         file << endl << "Production:" << endl << endl;
-        cout << endl << "Production:" << endl << endl;
 
         for(unsigned int p=0; p<_problem._NProducts; p++)
         {
             _production[p] = _problem._productionRate[p] * _batchProcessingTime;
 
             file << "P" << p << " = " << _production[p] << endl;
-            cout << "P" << p << " = " << _production[p] << endl;
         }
 
         _solution.push_back(_production);
 
         file << endl << "Delivered:" << endl << endl;
-        cout << endl << "Delivered:" << endl << endl;
 
         for(unsigned int p=0; p<_problem._NProducts; p++)
         {
@@ -567,7 +571,6 @@ namespace mbptmp
             }
 
             file << "D" << p << " = " << _delivered[p] << endl;
-            cout << "D" << p << " = " << _delivered[p] << endl;
 
             _production[p] -= _delivered[p];
         }
@@ -575,7 +578,6 @@ namespace mbptmp
         int SO = _problem._totalMaximumOutletInventory;
 
         file << endl << "Delivered to outlets:" << endl << endl;
-        cout << endl << "Delivered to outlets:" << endl << endl;
 
         for(unsigned int p=0; p<_problem._NProducts; p++)
         {
@@ -592,18 +594,15 @@ namespace mbptmp
             SO -= _deliveredToOutlets[p];
 
             file << "O" << p << " = " << _deliveredToOutlets[p] << endl;
-            cout << "O" << p << " = " << _deliveredToOutlets[p] << endl;
 
             _production[p] -= _deliveredToOutlets[p];
         }
 
         file << endl << "Leftover inventory in outlets: " << SO << endl;
-        cout << endl << "Leftover inventory in outlets: " << SO << endl;
 
         int SI = _problem._totalMaximumInventory;
 
         file << endl << "Stocked at factory:" << endl << endl;
-        cout << endl << "Stocked at factory:" << endl << endl;
 
         for(unsigned int p=0; p<_problem._NProducts; p++)
         {
@@ -614,14 +613,11 @@ namespace mbptmp
             SI -= _stocked[p];
 
             file << "I" << p << " = " << _stocked[p] << endl;
-            cout << "I" << p << " = " << _stocked[p] << endl;
         }
 
         file << endl << "Leftover inventory in factory: " << SI << endl << endl;
-        cout << endl << "Leftover inventory in factory: " << SI << endl << endl;
 
         file << endl << "Adjusting production distribution:" << endl << endl;
-        cout << endl << "Adjusting production distribution:" << endl << endl;
 
         unsigned int minimum;
 
@@ -646,13 +642,9 @@ namespace mbptmp
 
                 _deliveredToOutlets[p] -= minimum;
                 _stocked[p] += minimum;
-                SO += minimum;
 
                 file << "O" << p << " = " << _deliveredToOutlets[p] << endl;
-                cout << "O" << p << " = " << _deliveredToOutlets[p] << endl;
-
                 file << "I" << p << " = " << _stocked[p] << endl;
-                cout << "I" << p << " = " << _stocked[p] << endl;
 
             } else if(SI < 0)
             {
@@ -670,15 +662,28 @@ namespace mbptmp
                 }
 
                _stocked[p] -= minimum;
+               _deliveredToOutlets[p] += minimum;
 
+               file << "O" << p << " = " << _deliveredToOutlets[p] << endl;
                file << "I" << p << " = " << _stocked[p] << endl;
-               cout << "I" << p << " = " << _stocked[p] << endl;
             }
         }
 
         _solution.push_back(_delivered);
         _solution.push_back(_deliveredToOutlets);
         _solution.push_back(_stocked);
+
+        timespec_get(&finish_time, TIME_UTC);
+        strftime(buff, sizeof buff, "%D %T", gmtime(&finish_time.tv_sec));
+
+        cout << endl << "finishing time (s): " << buff << "." << finish_time.tv_nsec <<  " UTC" << endl;
+        file << endl << "finishing time (s): " << buff << "." << finish_time.tv_nsec <<  " UTC" << endl;
+
+        diff_time.tv_sec = finish_time.tv_sec - begin_time.tv_sec;
+        diff_time.tv_nsec = finish_time.tv_nsec - begin_time.tv_nsec;
+
+        cout << endl << "Analytical solution execution time (s): " << double(diff_time.tv_sec) + double(diff_time.tv_nsec)/1000000000 << endl;
+        file << endl << "execution time (s): " << double(diff_time.tv_sec) + double(diff_time.tv_nsec)/1000000000 << endl;
 
         S.clear();
         file.close();

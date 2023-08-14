@@ -1,0 +1,539 @@
+  LINGO/LNX64 20.0.8 (17 Oct 2022), LINDO API 14.0.5099.179
+
+  Licensee info: tatiana.balbi@ufpe.br
+  License expires: 25 DEC 2023
+
+  Global optimal solution found.
+  Objective value:                              100.0000
+  Objective bound:                              100.0000
+  Infeasibilities:                              0.000000
+  Extended solver steps:                               0
+  Total solver iterations:                             0
+  Elapsed runtime seconds:                          0.06
+
+  Model Class:                                     MINLP
+
+  Total variables:                    181
+  Nonlinear variables:                100
+  Integer variables:                   61
+
+  Total constraints:                  244
+  Nonlinear constraints:               40
+
+  Total nonzeros:                     542
+  Nonlinear nonzeros:                 100
+
+
+
+                                                    Variable           Value
+                                 TOTAL_FREE_OUTLET_INVENTORY        28830.00
+                                TOTAL_FREE_FACTORY_INVENTORY        18860.00
+                                       PROCESSING_TIME_LIMIT        100.0000
+                                       BATCH_PROCESSING_TIME        100.0000
+                                        PRODUCTION_RATE( P1)        37.00000
+                                        PRODUCTION_RATE( P2)        26.00000
+                                        PRODUCTION_RATE( P3)        12.00000
+                                        PRODUCTION_RATE( P4)        33.00000
+                                        PRODUCTION_RATE( P5)        32.00000
+                                        PRODUCTION_RATE( P6)        37.00000
+                                        PRODUCTION_RATE( P7)        12.00000
+                                        PRODUCTION_RATE( P8)        39.00000
+                                        PRODUCTION_RATE( P9)        39.00000
+                                       PRODUCTION_RATE( P10)        11.00000
+                                       PRODUCTION_RATE( P11)        31.00000
+                                       PRODUCTION_RATE( P12)        18.00000
+                                       PRODUCTION_RATE( P13)        33.00000
+                                       PRODUCTION_RATE( P14)        36.00000
+                                       PRODUCTION_RATE( P15)        26.00000
+                                       PRODUCTION_RATE( P16)        24.00000
+                                       PRODUCTION_RATE( P17)        26.00000
+                                       PRODUCTION_RATE( P18)        34.00000
+                                       PRODUCTION_RATE( P19)        24.00000
+                                       PRODUCTION_RATE( P20)        13.00000
+                                                 DEMAND( P1)        2715.000
+                                                 DEMAND( P2)        1292.000
+                                                 DEMAND( P3)        1827.000
+                                                 DEMAND( P4)        3726.000
+                                                 DEMAND( P5)        1536.000
+                                                 DEMAND( P6)        1229.000
+                                                 DEMAND( P7)        1923.000
+                                                 DEMAND( P8)        3602.000
+                                                 DEMAND( P9)        1967.000
+                                                DEMAND( P10)        1842.000
+                                                DEMAND( P11)        2719.000
+                                                DEMAND( P12)        3124.000
+                                                DEMAND( P13)        1326.000
+                                                DEMAND( P14)        1673.000
+                                                DEMAND( P15)        3081.000
+                                                DEMAND( P16)        1127.000
+                                                DEMAND( P17)        1529.000
+                                                DEMAND( P18)        3695.000
+                                                DEMAND( P19)        3167.000
+                                                DEMAND( P20)        3550.000
+                                  FREE_OUTLET_INVENTORY( P1)        1792.000
+                                  FREE_OUTLET_INVENTORY( P2)        2206.000
+                                  FREE_OUTLET_INVENTORY( P3)        834.0000
+                                  FREE_OUTLET_INVENTORY( P4)        851.0000
+                                  FREE_OUTLET_INVENTORY( P5)        1824.000
+                                  FREE_OUTLET_INVENTORY( P6)        980.0000
+                                  FREE_OUTLET_INVENTORY( P7)        2733.000
+                                  FREE_OUTLET_INVENTORY( P8)        1669.000
+                                  FREE_OUTLET_INVENTORY( P9)        1110.000
+                                 FREE_OUTLET_INVENTORY( P10)        2374.000
+                                 FREE_OUTLET_INVENTORY( P11)        1022.000
+                                 FREE_OUTLET_INVENTORY( P12)        1052.000
+                                 FREE_OUTLET_INVENTORY( P13)        2863.000
+                                 FREE_OUTLET_INVENTORY( P14)        855.0000
+                                 FREE_OUTLET_INVENTORY( P15)        1215.000
+                                 FREE_OUTLET_INVENTORY( P16)        2106.000
+                                 FREE_OUTLET_INVENTORY( P17)        1773.000
+                                 FREE_OUTLET_INVENTORY( P18)        627.0000
+                                 FREE_OUTLET_INVENTORY( P19)        866.0000
+                                 FREE_OUTLET_INVENTORY( P20)        2313.000
+                                 FREE_FACTORY_INVENTORY( P1)        1271.000
+                                 FREE_FACTORY_INVENTORY( P2)        1361.000
+                                 FREE_FACTORY_INVENTORY( P3)        1265.000
+                                 FREE_FACTORY_INVENTORY( P4)        1660.000
+                                 FREE_FACTORY_INVENTORY( P5)        1080.000
+                                 FREE_FACTORY_INVENTORY( P6)        1528.000
+                                 FREE_FACTORY_INVENTORY( P7)        1275.000
+                                 FREE_FACTORY_INVENTORY( P8)        1338.000
+                                 FREE_FACTORY_INVENTORY( P9)        1568.000
+                                FREE_FACTORY_INVENTORY( P10)        1369.000
+                                FREE_FACTORY_INVENTORY( P11)        1255.000
+                                FREE_FACTORY_INVENTORY( P12)        1520.000
+                                FREE_FACTORY_INVENTORY( P13)        1058.000
+                                FREE_FACTORY_INVENTORY( P14)        1704.000
+                                FREE_FACTORY_INVENTORY( P15)        1491.000
+                                FREE_FACTORY_INVENTORY( P16)        1171.000
+                                FREE_FACTORY_INVENTORY( P17)        1421.000
+                                FREE_FACTORY_INVENTORY( P18)        1437.000
+                                FREE_FACTORY_INVENTORY( P19)        1748.000
+                                FREE_FACTORY_INVENTORY( P20)        1526.000
+                                             PRODUCTION( P1)        3700.000
+                                             PRODUCTION( P2)        2600.000
+                                             PRODUCTION( P3)        1200.000
+                                             PRODUCTION( P4)        3300.000
+                                             PRODUCTION( P5)        3200.000
+                                             PRODUCTION( P6)        3700.000
+                                             PRODUCTION( P7)        1200.000
+                                             PRODUCTION( P8)        3900.000
+                                             PRODUCTION( P9)        3900.000
+                                            PRODUCTION( P10)        1100.000
+                                            PRODUCTION( P11)        3100.000
+                                            PRODUCTION( P12)        1800.000
+                                            PRODUCTION( P13)        3300.000
+                                            PRODUCTION( P14)        3600.000
+                                            PRODUCTION( P15)        2600.000
+                                            PRODUCTION( P16)        2400.000
+                                            PRODUCTION( P17)        2600.000
+                                            PRODUCTION( P18)        3400.000
+                                            PRODUCTION( P19)        2400.000
+                                            PRODUCTION( P20)        1300.000
+                                              DELIVERED( P1)        2715.000
+                                              DELIVERED( P2)        1292.000
+                                              DELIVERED( P3)        1200.000
+                                              DELIVERED( P4)        3300.000
+                                              DELIVERED( P5)        1536.000
+                                              DELIVERED( P6)        1229.000
+                                              DELIVERED( P7)        0.000000
+                                              DELIVERED( P8)        3602.000
+                                              DELIVERED( P9)        1967.000
+                                             DELIVERED( P10)        0.000000
+                                             DELIVERED( P11)        2719.000
+                                             DELIVERED( P12)        1800.000
+                                             DELIVERED( P13)        1326.000
+                                             DELIVERED( P14)        1673.000
+                                             DELIVERED( P15)        2600.000
+                                             DELIVERED( P16)        1127.000
+                                             DELIVERED( P17)        1529.000
+                                             DELIVERED( P18)        3400.000
+                                             DELIVERED( P19)        2400.000
+                                             DELIVERED( P20)        0.000000
+                                         SEND_TO_OUTLET( P1)        985.0000
+                                         SEND_TO_OUTLET( P2)        1308.000
+                                         SEND_TO_OUTLET( P3)        0.000000
+                                         SEND_TO_OUTLET( P4)        0.000000
+                                         SEND_TO_OUTLET( P5)        1664.000
+                                         SEND_TO_OUTLET( P6)        980.0000
+                                         SEND_TO_OUTLET( P7)        1200.000
+                                         SEND_TO_OUTLET( P8)        298.0000
+                                         SEND_TO_OUTLET( P9)        1110.000
+                                        SEND_TO_OUTLET( P10)        1100.000
+                                        SEND_TO_OUTLET( P11)        381.0000
+                                        SEND_TO_OUTLET( P12)        0.000000
+                                        SEND_TO_OUTLET( P13)        1974.000
+                                        SEND_TO_OUTLET( P14)        855.0000
+                                        SEND_TO_OUTLET( P15)        0.000000
+                                        SEND_TO_OUTLET( P16)        1273.000
+                                        SEND_TO_OUTLET( P17)        1071.000
+                                        SEND_TO_OUTLET( P18)        0.000000
+                                        SEND_TO_OUTLET( P19)        0.000000
+                                        SEND_TO_OUTLET( P20)        1300.000
+                                       STOCK_IN_FACTORY( P1)        0.000000
+                                       STOCK_IN_FACTORY( P2)        0.000000
+                                       STOCK_IN_FACTORY( P3)        0.000000
+                                       STOCK_IN_FACTORY( P4)        0.000000
+                                       STOCK_IN_FACTORY( P5)        0.000000
+                                       STOCK_IN_FACTORY( P6)        1491.000
+                                       STOCK_IN_FACTORY( P7)        0.000000
+                                       STOCK_IN_FACTORY( P8)        0.000000
+                                       STOCK_IN_FACTORY( P9)        823.0000
+                                      STOCK_IN_FACTORY( P10)        0.000000
+                                      STOCK_IN_FACTORY( P11)        0.000000
+                                      STOCK_IN_FACTORY( P12)        0.000000
+                                      STOCK_IN_FACTORY( P13)        0.000000
+                                      STOCK_IN_FACTORY( P14)        1072.000
+                                      STOCK_IN_FACTORY( P15)        0.000000
+                                      STOCK_IN_FACTORY( P16)        0.000000
+                                      STOCK_IN_FACTORY( P17)        0.000000
+                                      STOCK_IN_FACTORY( P18)        0.000000
+                                      STOCK_IN_FACTORY( P19)        0.000000
+                                      STOCK_IN_FACTORY( P20)        0.000000
+                                        PRIOR_DEMAND( P1, 1)        0.000000
+                                        PRIOR_DEMAND( P1, 2)        0.000000
+                                        PRIOR_DEMAND( P2, 1)        0.000000
+                                        PRIOR_DEMAND( P2, 2)        0.000000
+                                        PRIOR_DEMAND( P3, 1)        0.000000
+                                        PRIOR_DEMAND( P3, 2)        0.000000
+                                        PRIOR_DEMAND( P4, 1)        0.000000
+                                        PRIOR_DEMAND( P4, 2)        0.000000
+                                        PRIOR_DEMAND( P5, 1)        0.000000
+                                        PRIOR_DEMAND( P5, 2)        0.000000
+                                        PRIOR_DEMAND( P6, 1)        0.000000
+                                        PRIOR_DEMAND( P6, 2)        0.000000
+                                        PRIOR_DEMAND( P7, 1)        0.000000
+                                        PRIOR_DEMAND( P7, 2)        0.000000
+                                        PRIOR_DEMAND( P8, 1)        0.000000
+                                        PRIOR_DEMAND( P8, 2)        0.000000
+                                        PRIOR_DEMAND( P9, 1)        0.000000
+                                        PRIOR_DEMAND( P9, 2)        0.000000
+                                       PRIOR_DEMAND( P10, 1)        0.000000
+                                       PRIOR_DEMAND( P10, 2)        0.000000
+                                       PRIOR_DEMAND( P11, 1)        0.000000
+                                       PRIOR_DEMAND( P11, 2)        0.000000
+                                       PRIOR_DEMAND( P12, 1)        0.000000
+                                       PRIOR_DEMAND( P12, 2)        0.000000
+                                       PRIOR_DEMAND( P13, 1)        0.000000
+                                       PRIOR_DEMAND( P13, 2)        0.000000
+                                       PRIOR_DEMAND( P14, 1)        0.000000
+                                       PRIOR_DEMAND( P14, 2)        0.000000
+                                       PRIOR_DEMAND( P15, 1)        0.000000
+                                       PRIOR_DEMAND( P15, 2)        0.000000
+                                       PRIOR_DEMAND( P16, 1)        0.000000
+                                       PRIOR_DEMAND( P16, 2)        0.000000
+                                       PRIOR_DEMAND( P17, 1)        0.000000
+                                       PRIOR_DEMAND( P17, 2)        0.000000
+                                       PRIOR_DEMAND( P18, 1)        0.000000
+                                       PRIOR_DEMAND( P18, 2)        0.000000
+                                       PRIOR_DEMAND( P19, 1)        0.000000
+                                       PRIOR_DEMAND( P19, 2)        0.000000
+                                       PRIOR_DEMAND( P20, 1)        0.000000
+                                       PRIOR_DEMAND( P20, 2)        0.000000
+                                       PRIOR_OUTLETS( P1, 1)        0.000000
+                                       PRIOR_OUTLETS( P1, 2)        0.000000
+                                       PRIOR_OUTLETS( P1, 3)        0.000000
+                                       PRIOR_OUTLETS( P2, 1)        0.000000
+                                       PRIOR_OUTLETS( P2, 2)        0.000000
+                                       PRIOR_OUTLETS( P2, 3)        0.000000
+                                       PRIOR_OUTLETS( P3, 1)        0.000000
+                                       PRIOR_OUTLETS( P3, 2)        0.000000
+                                       PRIOR_OUTLETS( P3, 3)        0.000000
+                                       PRIOR_OUTLETS( P4, 1)        0.000000
+                                       PRIOR_OUTLETS( P4, 2)        0.000000
+                                       PRIOR_OUTLETS( P4, 3)        0.000000
+                                       PRIOR_OUTLETS( P5, 1)        0.000000
+                                       PRIOR_OUTLETS( P5, 2)        0.000000
+                                       PRIOR_OUTLETS( P5, 3)        0.000000
+                                       PRIOR_OUTLETS( P6, 1)        0.000000
+                                       PRIOR_OUTLETS( P6, 2)        0.000000
+                                       PRIOR_OUTLETS( P6, 3)        0.000000
+                                       PRIOR_OUTLETS( P7, 1)        0.000000
+                                       PRIOR_OUTLETS( P7, 2)        0.000000
+                                       PRIOR_OUTLETS( P7, 3)        0.000000
+                                       PRIOR_OUTLETS( P8, 1)        0.000000
+                                       PRIOR_OUTLETS( P8, 2)        0.000000
+                                       PRIOR_OUTLETS( P8, 3)        0.000000
+                                       PRIOR_OUTLETS( P9, 1)        0.000000
+                                       PRIOR_OUTLETS( P9, 2)        0.000000
+                                       PRIOR_OUTLETS( P9, 3)        0.000000
+                                      PRIOR_OUTLETS( P10, 1)        0.000000
+                                      PRIOR_OUTLETS( P10, 2)        0.000000
+                                      PRIOR_OUTLETS( P10, 3)        0.000000
+                                      PRIOR_OUTLETS( P11, 1)        0.000000
+                                      PRIOR_OUTLETS( P11, 2)        0.000000
+                                      PRIOR_OUTLETS( P11, 3)        0.000000
+                                      PRIOR_OUTLETS( P12, 1)        0.000000
+                                      PRIOR_OUTLETS( P12, 2)        0.000000
+                                      PRIOR_OUTLETS( P12, 3)        0.000000
+                                      PRIOR_OUTLETS( P13, 1)        0.000000
+                                      PRIOR_OUTLETS( P13, 2)        0.000000
+                                      PRIOR_OUTLETS( P13, 3)        0.000000
+                                      PRIOR_OUTLETS( P14, 1)        0.000000
+                                      PRIOR_OUTLETS( P14, 2)        0.000000
+                                      PRIOR_OUTLETS( P14, 3)        0.000000
+                                      PRIOR_OUTLETS( P15, 1)        0.000000
+                                      PRIOR_OUTLETS( P15, 2)        0.000000
+                                      PRIOR_OUTLETS( P15, 3)        0.000000
+                                      PRIOR_OUTLETS( P16, 1)        0.000000
+                                      PRIOR_OUTLETS( P16, 2)        0.000000
+                                      PRIOR_OUTLETS( P16, 3)        0.000000
+                                      PRIOR_OUTLETS( P17, 1)        0.000000
+                                      PRIOR_OUTLETS( P17, 2)        0.000000
+                                      PRIOR_OUTLETS( P17, 3)        0.000000
+                                      PRIOR_OUTLETS( P18, 1)        0.000000
+                                      PRIOR_OUTLETS( P18, 2)        0.000000
+                                      PRIOR_OUTLETS( P18, 3)        0.000000
+                                      PRIOR_OUTLETS( P19, 1)        0.000000
+                                      PRIOR_OUTLETS( P19, 2)        0.000000
+                                      PRIOR_OUTLETS( P19, 3)        0.000000
+                                      PRIOR_OUTLETS( P20, 1)        0.000000
+                                      PRIOR_OUTLETS( P20, 2)        0.000000
+                                      PRIOR_OUTLETS( P20, 3)        0.000000
+
+                                                         Row    Slack or Surplus
+                                                    OBJ_FUNC        100.0000
+                                            CALC_PROD_1( P1)        0.000000
+                                            CALC_PROD_1( P2)        0.000000
+                                            CALC_PROD_1( P3)        0.000000
+                                            CALC_PROD_1( P4)        0.000000
+                                            CALC_PROD_1( P5)        0.000000
+                                            CALC_PROD_1( P6)        0.000000
+                                            CALC_PROD_1( P7)        0.000000
+                                            CALC_PROD_1( P8)        0.000000
+                                            CALC_PROD_1( P9)        0.000000
+                                           CALC_PROD_1( P10)        0.000000
+                                           CALC_PROD_1( P11)        0.000000
+                                           CALC_PROD_1( P12)        0.000000
+                                           CALC_PROD_1( P13)        0.000000
+                                           CALC_PROD_1( P14)        0.000000
+                                           CALC_PROD_1( P15)        0.000000
+                                           CALC_PROD_1( P16)        0.000000
+                                           CALC_PROD_1( P17)        0.000000
+                                           CALC_PROD_1( P18)        0.000000
+                                           CALC_PROD_1( P19)        0.000000
+                                           CALC_PROD_1( P20)        0.000000
+                                            CALC_PROD_2( P1)        0.000000
+                                            CALC_PROD_2( P2)        0.000000
+                                            CALC_PROD_2( P3)        0.000000
+                                            CALC_PROD_2( P4)        0.000000
+                                            CALC_PROD_2( P5)        0.000000
+                                            CALC_PROD_2( P6)        0.000000
+                                            CALC_PROD_2( P7)        0.000000
+                                            CALC_PROD_2( P8)        0.000000
+                                            CALC_PROD_2( P9)        0.000000
+                                           CALC_PROD_2( P10)        0.000000
+                                           CALC_PROD_2( P11)        0.000000
+                                           CALC_PROD_2( P12)        0.000000
+                                           CALC_PROD_2( P13)        0.000000
+                                           CALC_PROD_2( P14)        0.000000
+                                           CALC_PROD_2( P15)        0.000000
+                                           CALC_PROD_2( P16)        0.000000
+                                           CALC_PROD_2( P17)        0.000000
+                                           CALC_PROD_2( P18)        0.000000
+                                           CALC_PROD_2( P19)        0.000000
+                                           CALC_PROD_2( P20)        0.000000
+                                         REST_DELIVERED( P1)        0.000000
+                                         REST_DELIVERED( P2)        0.000000
+                                         REST_DELIVERED( P3)        627.0000
+                                         REST_DELIVERED( P4)        426.0000
+                                         REST_DELIVERED( P5)        0.000000
+                                         REST_DELIVERED( P6)        0.000000
+                                         REST_DELIVERED( P7)        1923.000
+                                         REST_DELIVERED( P8)        0.000000
+                                         REST_DELIVERED( P9)        0.000000
+                                        REST_DELIVERED( P10)        1842.000
+                                        REST_DELIVERED( P11)        0.000000
+                                        REST_DELIVERED( P12)        1324.000
+                                        REST_DELIVERED( P13)        0.000000
+                                        REST_DELIVERED( P14)        0.000000
+                                        REST_DELIVERED( P15)        481.0000
+                                        REST_DELIVERED( P16)        0.000000
+                                        REST_DELIVERED( P17)        0.000000
+                                        REST_DELIVERED( P18)        295.0000
+                                        REST_DELIVERED( P19)        767.0000
+                                        REST_DELIVERED( P20)        3550.000
+                                            REST_OUTLET( P1)        807.0000
+                                            REST_OUTLET( P2)        898.0000
+                                            REST_OUTLET( P3)        834.0000
+                                            REST_OUTLET( P4)        851.0000
+                                            REST_OUTLET( P5)        160.0000
+                                            REST_OUTLET( P6)        0.000000
+                                            REST_OUTLET( P7)        1533.000
+                                            REST_OUTLET( P8)        1371.000
+                                            REST_OUTLET( P9)        0.000000
+                                           REST_OUTLET( P10)        1274.000
+                                           REST_OUTLET( P11)        641.0000
+                                           REST_OUTLET( P12)        1052.000
+                                           REST_OUTLET( P13)        889.0000
+                                           REST_OUTLET( P14)        0.000000
+                                           REST_OUTLET( P15)        1215.000
+                                           REST_OUTLET( P16)        833.0000
+                                           REST_OUTLET( P17)        702.0000
+                                           REST_OUTLET( P18)        627.0000
+                                           REST_OUTLET( P19)        866.0000
+                                           REST_OUTLET( P20)        1013.000
+                                          REST_TOTAL_OUTLETS        13331.00
+                                           REST_FACTORY( P1)        1271.000
+                                           REST_FACTORY( P2)        1361.000
+                                           REST_FACTORY( P3)        1265.000
+                                           REST_FACTORY( P4)        1660.000
+                                           REST_FACTORY( P5)        1080.000
+                                           REST_FACTORY( P6)        37.00000
+                                           REST_FACTORY( P7)        1275.000
+                                           REST_FACTORY( P8)        1338.000
+                                           REST_FACTORY( P9)        745.0000
+                                          REST_FACTORY( P10)        1369.000
+                                          REST_FACTORY( P11)        1255.000
+                                          REST_FACTORY( P12)        1520.000
+                                          REST_FACTORY( P13)        1058.000
+                                          REST_FACTORY( P14)        632.0000
+                                          REST_FACTORY( P15)        1491.000
+                                          REST_FACTORY( P16)        1171.000
+                                          REST_FACTORY( P17)        1421.000
+                                          REST_FACTORY( P18)        1437.000
+                                          REST_FACTORY( P19)        1748.000
+                                          REST_FACTORY( P20)        1526.000
+                                          REST_TOTAL_FACTORY        15474.00
+                                        REST_PROCESSING_TIME        0.000000
+                                               CALC_PD1( P1)       0.5000000
+                                               CALC_PD1( P2)       0.5000000
+                                               CALC_PD1( P3)        627.5000
+                                               CALC_PD1( P4)        426.5000
+                                               CALC_PD1( P5)       0.5000000
+                                               CALC_PD1( P6)       0.5000000
+                                               CALC_PD1( P7)        1923.500
+                                               CALC_PD1( P8)       0.5000000
+                                               CALC_PD1( P9)       0.5000000
+                                              CALC_PD1( P10)        1842.500
+                                              CALC_PD1( P11)       0.5000000
+                                              CALC_PD1( P12)        1324.500
+                                              CALC_PD1( P13)       0.5000000
+                                              CALC_PD1( P14)       0.5000000
+                                              CALC_PD1( P15)        481.5000
+                                              CALC_PD1( P16)       0.5000000
+                                              CALC_PD1( P17)       0.5000000
+                                              CALC_PD1( P18)        295.5000
+                                              CALC_PD1( P19)        767.5000
+                                              CALC_PD1( P20)        3550.500
+                                               CALC_PD2( P1)        985.5000
+                                               CALC_PD2( P2)        1308.500
+                                               CALC_PD2( P3)       0.5000000
+                                               CALC_PD2( P4)       0.5000000
+                                               CALC_PD2( P5)        1664.500
+                                               CALC_PD2( P6)        2471.500
+                                               CALC_PD2( P7)        1200.500
+                                               CALC_PD2( P8)        298.5000
+                                               CALC_PD2( P9)        1933.500
+                                              CALC_PD2( P10)        1100.500
+                                              CALC_PD2( P11)        381.5000
+                                              CALC_PD2( P12)       0.5000000
+                                              CALC_PD2( P13)        1974.500
+                                              CALC_PD2( P14)        1927.500
+                                              CALC_PD2( P15)       0.5000000
+                                              CALC_PD2( P16)        1273.500
+                                              CALC_PD2( P17)        1071.500
+                                              CALC_PD2( P18)       0.5000000
+                                              CALC_PD2( P19)       0.5000000
+                                              CALC_PD2( P20)        1300.500
+                                                CALC_PD( P1)        0.000000
+                                                CALC_PD( P2)        0.000000
+                                                CALC_PD( P3)        0.000000
+                                                CALC_PD( P4)        0.000000
+                                                CALC_PD( P5)        0.000000
+                                                CALC_PD( P6)        0.000000
+                                                CALC_PD( P7)        0.000000
+                                                CALC_PD( P8)        0.000000
+                                                CALC_PD( P9)        0.000000
+                                               CALC_PD( P10)        0.000000
+                                               CALC_PD( P11)        0.000000
+                                               CALC_PD( P12)        0.000000
+                                               CALC_PD( P13)        0.000000
+                                               CALC_PD( P14)        0.000000
+                                               CALC_PD( P15)        0.000000
+                                               CALC_PD( P16)        0.000000
+                                               CALC_PD( P17)        0.000000
+                                               CALC_PD( P18)        0.000000
+                                               CALC_PD( P19)        0.000000
+                                               CALC_PD( P20)        0.000000
+                                               CALC_PO1( P1)        27845.50
+                                               CALC_PO1( P2)        27522.50
+                                               CALC_PO1( P3)        28830.50
+                                               CALC_PO1( P4)        28830.50
+                                               CALC_PO1( P5)        27166.50
+                                               CALC_PO1( P6)        27850.50
+                                               CALC_PO1( P7)        27630.50
+                                               CALC_PO1( P8)        28532.50
+                                               CALC_PO1( P9)        27720.50
+                                              CALC_PO1( P10)        27730.50
+                                              CALC_PO1( P11)        28449.50
+                                              CALC_PO1( P12)        28830.50
+                                              CALC_PO1( P13)        26856.50
+                                              CALC_PO1( P14)        27975.50
+                                              CALC_PO1( P15)        28830.50
+                                              CALC_PO1( P16)        27557.50
+                                              CALC_PO1( P17)        27759.50
+                                              CALC_PO1( P18)        28830.50
+                                              CALC_PO1( P19)        28830.50
+                                              CALC_PO1( P20)        27530.50
+                                               CALC_PO2( P1)        807.5000
+                                               CALC_PO2( P2)        898.5000
+                                               CALC_PO2( P3)        834.5000
+                                               CALC_PO2( P4)        851.5000
+                                               CALC_PO2( P5)        160.5000
+                                               CALC_PO2( P6)       0.5000000
+                                               CALC_PO2( P7)        1533.500
+                                               CALC_PO2( P8)        1371.500
+                                               CALC_PO2( P9)       0.5000000
+                                              CALC_PO2( P10)        1274.500
+                                              CALC_PO2( P11)        641.5000
+                                              CALC_PO2( P12)        1052.500
+                                              CALC_PO2( P13)        889.5000
+                                              CALC_PO2( P14)       0.5000000
+                                              CALC_PO2( P15)        1215.500
+                                              CALC_PO2( P16)        833.5000
+                                              CALC_PO2( P17)        702.5000
+                                              CALC_PO2( P18)        627.5000
+                                              CALC_PO2( P19)        866.5000
+                                              CALC_PO2( P20)        1013.500
+                                               CALC_PO3( P1)       0.5000000
+                                               CALC_PO3( P2)       0.5000000
+                                               CALC_PO3( P3)       0.5000000
+                                               CALC_PO3( P4)       0.5000000
+                                               CALC_PO3( P5)       0.5000000
+                                               CALC_PO3( P6)        1491.500
+                                               CALC_PO3( P7)       0.5000000
+                                               CALC_PO3( P8)       0.5000000
+                                               CALC_PO3( P9)        823.5000
+                                              CALC_PO3( P10)       0.5000000
+                                              CALC_PO3( P11)       0.5000000
+                                              CALC_PO3( P12)       0.5000000
+                                              CALC_PO3( P13)       0.5000000
+                                              CALC_PO3( P14)        1072.500
+                                              CALC_PO3( P15)       0.5000000
+                                              CALC_PO3( P16)       0.5000000
+                                              CALC_PO3( P17)       0.5000000
+                                              CALC_PO3( P18)       0.5000000
+                                              CALC_PO3( P19)       0.5000000
+                                              CALC_PO3( P20)       0.5000000
+                                                CALC_PO( P1)        0.000000
+                                                CALC_PO( P2)        0.000000
+                                                CALC_PO( P3)        0.000000
+                                                CALC_PO( P4)        0.000000
+                                                CALC_PO( P5)        0.000000
+                                                CALC_PO( P6)        0.000000
+                                                CALC_PO( P7)        0.000000
+                                                CALC_PO( P8)        0.000000
+                                                CALC_PO( P9)        0.000000
+                                               CALC_PO( P10)        0.000000
+                                               CALC_PO( P11)        0.000000
+                                               CALC_PO( P12)        0.000000
+                                               CALC_PO( P13)        0.000000
+                                               CALC_PO( P14)        0.000000
+                                               CALC_PO( P15)        0.000000
+                                               CALC_PO( P16)        0.000000
+                                               CALC_PO( P17)        0.000000
+                                               CALC_PO( P18)        0.000000
+                                               CALC_PO( P19)        0.000000
+                                               CALC_PO( P20)        0.000000
+

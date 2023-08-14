@@ -12,10 +12,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version: V01_20230809
+// version: V01_20230814
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/08/09
+// last modification: 2023/08/14
 
 #include "lib/multiproduct-batch-processing-time-maximization-problem.h"
 using namespace mbptmp;
@@ -42,10 +42,10 @@ int main()
 
     cout << "Thaks for using COPSolver :)))" << endl << endl;
     cout << "COPSolver was (and is being) developed by Fraga, T.B. with purpose of solving many differente combinatorial optimizations problems." << endl << endl;
-    cout << "This first version, V01_20230719, only solves the Multi-product batch processing time maximization problem." << endl << endl;
+    cout << "This first version, V01_20230814, only solves the Multi-product batch processing time maximization problem." << endl << endl;
     cout << "COPSolver is licenced by Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)" << endl << endl;
     cout << "Under this licence you can:" << endl << endl;
-    cout << "1) Free dowload and/or use this solver;" << endl;
+    cout << "1) Free dowload and/or use this solver (except for comercial purpose);" << endl;
     cout << "2) Share this solver (if don't modified anyway) only if you inform a link for the original repository and for the license;" << endl;
     cout << "3) Modify the solver for personal use, but not share modified version of solver." << endl << endl;
     cout << "You cannot use COPSolver or any modified version for comercial purpose." << endl;
@@ -76,10 +76,10 @@ int main()
     else
         cout << endl << "Documents/COPSolver/LINGOSolver directory created" << endl;
 
-    if (mkdir("Documents/COPSolver/LINGOSolver/MPBPTMP", 0777) == -1){}
+    if (mkdir("Documents/COPSolver/LINGOSolver/MBPTMP", 0777) == -1){}
        // cerr << "Error :  " << strerror(errno) << endl;
     else
-        cout << endl << "Documents/COPSolver/LINGOSolver/MPBPTMP directory created" << endl;
+        cout << endl << "Documents/COPSolver/LINGOSolver/MBPTMP directory created" << endl;
 
     cout << endl << "Please, resize the window (if needed) and press enter." << endl;
     getchar();
@@ -157,7 +157,7 @@ int main()
     } else if(problemDefinitionMethod == 3)
     {
         time_t source = 0;
-        unsigned int NProducts = 10;
+        unsigned int NProducts;
 
         cout << endl << "Please informe the source for random generation (interger value)." << endl;
         cout << endl << "digite option and then press enter: ";
