@@ -15,10 +15,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: V01_20230814
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/08/14
+// last modification: 2023/08/23
 
 #include "lib/multiproduct-batch-processing-time-maximization-problem.h"
-using namespace mbptmp;
+using namespace mbptm;
 
 #include <unistd.h>
 #include <bits/stdc++.h>
@@ -36,7 +36,7 @@ int main()
     // problemDefinitionMethod = 2 - taking a predefined problem
     // problemDefinitionMethod = 3 - generating a random problem
 
-    problem mpbptmp_problem;
+    cop _problem;
 
     unsigned int problemDefinitionMethod = 1;
 
@@ -53,33 +53,21 @@ int main()
     cout << "If you use this solver for work or science, please don't forget to correctly cite it on presentations and the published material." << endl << endl;
     cout << "repository: github.com/tbfraga/COPSolver" << endl;
 
-    char cwd[PATH_MAX];
-    if (getcwd(cwd, sizeof(cwd)) != NULL) {
-       printf("\nCurrent working dir: %s\n", cwd);
-    } else {
-       perror("getcwd() error");
-       //return 1;
-    }
-
     // Creating a directory
-    if (mkdir("Documents", 0777) == -1){}
-    else
-        cout << endl << "Documents directory created" << endl;
-
-    if (mkdir("Documents/COPSolver", 0777) == -1){}
+    if (mkdir("COPSolver", 0777) == -1){}
        // cerr << "Error :  " << strerror(errno) << endl;
     else
-        cout << endl << "Documents/COPSolver directory created" << endl;
+        cout << endl << "COPSolver directory created" << endl;
 
-    if (mkdir("Documents/COPSolver/LINGOSolver", 0777) == -1){}
+    if (mkdir("COPSolver/LINGOSolver", 0777) == -1){}
        // cerr << "Error :  " << strerror(errno) << endl;
     else
-        cout << endl << "Documents/COPSolver/LINGOSolver directory created" << endl;
+        cout << endl << "COPSolver/LINGOSolver directory created" << endl;
 
-    if (mkdir("Documents/COPSolver/LINGOSolver/MBPTMP", 0777) == -1){}
+    if (mkdir("COPSolver/LINGOSolver/MBPTM", 0777) == -1){}
        // cerr << "Error :  " << strerror(errno) << endl;
     else
-        cout << endl << "Documents/COPSolver/LINGOSolver/MBPTMP directory created" << endl;
+        cout << endl << "COPSolver/LINGOSolver/MBPTM directory created" << endl;
 
     cout << endl << "Please, resize the window (if needed) and press enter." << endl;
     getchar();
@@ -112,7 +100,7 @@ int main()
         return 0;
     } else if(problemDefinitionMethod == 1)
     {
-        mpbptmp_problem.get();
+        _problem.get();
     } else if(problemDefinitionMethod == 2)
     {
         unsigned int preDefProblem = 1;
@@ -137,13 +125,13 @@ int main()
 
         if(preDefProblem == 1)
         {
-            mpbptmp_problem.MPBPTMP001();
+            _problem.MPBPTMP001();
         } else if(preDefProblem == 2)
         {
-            mpbptmp_problem.MPBPTMP002();
+            _problem.MPBPTMP002();
         } else if(preDefProblem == 3)
         {
-            mpbptmp_problem.MPBPTMP003();
+            _problem.MPBPTMP003();
         } else if(preDefProblem == 0)
         {
             cout << endl << "Thanks for using COPSolver !!!";
@@ -168,23 +156,19 @@ int main()
         cin >> NProducts;
 
         srand((unsigned) source);
-        mpbptmp_problem.randomMPBPTMP(NProducts);
+        _problem.randomMPBPTMP(NProducts);
     } else
     {
         cout << endl << "error: unknow problem definition method !" << endl;
         return 0;
     }
 
-    mpbptmp_problem.print();
-    mpbptmp_problem.generateLingoData();
+    _problem.print();
+    _problem.generateLingoData();
+    _problem.start();
+    _problem.analyticalMethod(0);
 
-    solution mpbptmp_solution;
-
-    mpbptmp_solution.start(mpbptmp_problem);
-    mpbptmp_solution.analyticalMethod(0);
-
-    mpbptmp_problem.clear();
-    mpbptmp_solution.clear();
+    _problem.clear();
 
     cout << endl << "Thanks for using COPSolver !!!";
     cout << endl << "See you..." << endl;

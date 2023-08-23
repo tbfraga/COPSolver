@@ -12,10 +12,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version: V01_20230809
+// version: V01_20230823
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/08/09
+// last modification: 2023/08/23
 
 #ifndef MULTIPRODUCT_BATCH_PROCESSING_TIME_MAXIMIZATION_PROBLEM_H_INCLUDED
 #define MULTIPRODUCT_BATCH_PROCESSING_TIME_MAXIMIZATION_PROBLEM_H_INCLUDED
@@ -30,14 +30,9 @@ using namespace std;
 
 #include<math.h>
 
-namespace mbptmp
+namespace mbptm
 {
-    class multiproductBatchProcessingTimeMaximizationProblem
-    {
-        friend class solution;
-
-        protected:
-
+    struct problem{
         unsigned int _NProducts = 0; // number of products
         vector<float> _productionRate = {0}; // product weight ratio (g/m^2)
 
@@ -50,6 +45,25 @@ namespace mbptmp
         unsigned int _totalMaximumOutletInventory = 0; // total maximum outlet inventory (g)
 
         unsigned int _maxBatchProcessingTime = 0; // maximum batch processing time (min)
+    };
+
+    struct solution{
+        unsigned int _processingTime = 0; // batch processing time (min)
+        vector<unsigned int> _production = {0}; // production for each product
+        vector<unsigned int> _deliver = {0}; // production delivered
+        vector<unsigned int> _deliverToOutlets = {0}; // production delivered to outlets
+        vector<unsigned int> _stock = {0}; // production stocked at the factory
+
+        int _totalFreeOutletsInventory = 0;
+        int _totalFreeFactoryInventory = 0;
+    };
+
+    class cop
+    {
+        protected:
+
+        problem _problem;
+        solution _solution;
 
         public:
 
@@ -60,43 +74,17 @@ namespace mbptmp
         bool get();
         void set(unsigned int NProducts, vector<float> productionRate, vector<unsigned int> demand, vector<unsigned int> maximumInventory, unsigned int totalMaximumInventory,
                  vector<unsigned int> maximumOutletInventory, unsigned int totalMaximumOutletInventory, unsigned int maxBatchProcessingTime);
-    };
-
-    // class for creating instances of max multiproduct batch time problem
-
-    class problem: public multiproductBatchProcessingTimeMaximizationProblem
-    {
-        public:
 
         void MPBPTMP001();
         void MPBPTMP002();
         void MPBPTMP003();
         void randomMPBPTMP(unsigned int problemSize);
-    };
 
-    // class for solving a max multiproduct batch time problem
+        // solving
 
-    class solution
-    {
-        protected:
-
-        problem _problem; // MPBPTMP linked to the solution
-
-        unsigned int _batchProcessingTime = 0; // batch processing time (min)
-        vector<unsigned int> _production = {0}; // production for each product
-        vector<unsigned int> _delivered = {0}; // production delivered
-        vector<unsigned int> _deliveredToOutlets = {0}; // production delivered to outlets
-        vector<unsigned int> _stocked = {0}; // production stocked at the factory
-
-        vector<vector<unsigned int>> _solution;
-
-        public:
-
-        void start(problem mpbptmp_problem); // this function initializes solution variables
+        void start(); // this function initializes solution variables
         unsigned int analyticalMethod(); // this function solves the reported problem through the analytical method proposed by T. B. Fraga (2023)
-        vector<vector<unsigned int>> analyticalMethod(unsigned int T1); // this function solves the reported problem through the analytical method proposed by T. B. Fraga (2023)
-
-        void clear();
+        solution analyticalMethod(unsigned int T1); // this function solves the reported problem through the analytical method proposed by T. B. Fraga (2023)
     };
 }
 

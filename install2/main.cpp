@@ -17,6 +17,12 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // start date: 2023/08/15
 // last modification: 2023/08/15
 
+//#include<tchar.h>
+//#include<urlmon.h>
+//#pragma comment (lib,"urlmon.lib")
+
+//#include <stdio.h>
+//#include <curl/curl.h>
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
@@ -24,13 +30,18 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 using namespace std;
 namespace fs = filesystem;
 
+
+
 int main()
 {
     // https://en.cppreference.com/w/cpp/filesystem/copy
     // https://en.cppreference.com/w/cpp/filesystem/copy_options
 
+    string home_dir = getenv("HOME");
+    home_dir += "/COPSolver";
+
     fs::create_directories("/opt/COPSolver");
-    fs::copy("COPSolver", "/opt/COPSolver/COPSolver"); // copy file
+    fs::copy(home_dir+"COPSolver", "/opt/COPSolver/COPSolver"); // copy file
 
     const auto copyOptions = fs::copy_options::overwrite_existing
                            | fs::copy_options::create_symlinks
@@ -38,7 +49,8 @@ int main()
 
     fs::copy("/opt/COPSolver/COPSolver", "/bin/COPSolver", copyOptions);
     fs::copy("/opt/COPSolver/COPSolver", "/usr/bin/COPSolver", copyOptions);
-    fs::copy("COPSolver.desktop", "/usr/share/applications/COPSolver.desktop"); // copy file
+
+    fs::copy("COPSolver.desktop", "/usr/share/applications/COPSolver.desktop"); // copy file*/
 
     cout << endl << "Thanks for installing COPSolver !!!";
     cout << endl << "See you..." << endl;

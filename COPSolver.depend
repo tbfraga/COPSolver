@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1692019635 source:/home/work/Documents/GitHub/COPSolver/main.cpp
+1692807681 source:/home/work/Documents/GitHub/COPSolver/main.cpp
 	"lib/multiproduct-batch-processing-time-maximization-problem.h"
 	<unistd.h>
 	<bits/stdc++.h>
@@ -7,7 +7,7 @@
 	<sys/stat.h>
 	<sys/types.h>
 
-1691598463 /home/work/Documents/GitHub/COPSolver/lib/multiproduct-batch-processing-time-maximization-problem.h
+1692807525 /home/work/Documents/GitHub/COPSolver/lib/multiproduct-batch-processing-time-maximization-problem.h
 	<unistd.h>
 	<bits/stdc++.h>
 	<iostream>
@@ -16,6 +16,46 @@
 	<vector>
 	<math.h>
 
-1692019535 source:/home/work/Documents/GitHub/COPSolver/src/multiproduct-batch-processing-time-maximization-problem.cpp
+1692807538 source:/home/work/Documents/GitHub/COPSolver/src/multiproduct-batch-processing-time-maximization-problem.cpp
+	"../lib/multiproduct-batch-processing-time-maximization-problem.h"
+
+1692807681 source:/home/work/Documents/GitHub/COPSolver (copy)/main.cpp
+	"lib/multiproduct-batch-processing-time-maximization-problem.h"
+	<unistd.h>
+	<bits/stdc++.h>
+	<iostream>
+	<sys/stat.h>
+	<sys/types.h>
+
+1692807525 /home/work/Documents/GitHub/COPSolver (copy)/lib/multiproduct-batch-processing-time-maximization-problem.h
+	<unistd.h>
+	<bits/stdc++.h>
+	<iostream>
+	<fstream>
+	<iomanip>
+	<vector>
+	<math.h>
+
+1692807538 source:/home/work/Documents/GitHub/COPSolver (copy)/src/multiproduct-batch-processing-time-maximization-problem.cpp
+	"../lib/multiproduct-batch-processing-time-maximization-problem.h"
+
+1692807681 source:/home/work/Documents/COPSolver/main.cpp
+	"lib/multiproduct-batch-processing-time-maximization-problem.h"
+	<unistd.h>
+	<bits/stdc++.h>
+	<iostream>
+	<sys/stat.h>
+	<sys/types.h>
+
+1692807525 /home/work/Documents/COPSolver/lib/multiproduct-batch-processing-time-maximization-problem.h
+	<unistd.h>
+	<bits/stdc++.h>
+	<iostream>
+	<fstream>
+	<iomanip>
+	<vector>
+	<math.h>
+
+1692807538 source:/home/work/Documents/COPSolver/src/multiproduct-batch-processing-time-maximization-problem.cpp
 	"../lib/multiproduct-batch-processing-time-maximization-problem.h"
 
