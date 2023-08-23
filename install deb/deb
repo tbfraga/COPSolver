@@ -1,0 +1,2 @@
+create a deb instalation file 
+dpkg-deb --build COPSolver_1.0-1
