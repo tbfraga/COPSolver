@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1692795233 source:/home/work/Documents/GitHub/COPSolver/install/main.cpp
-	<cstdlib>
-	<iostream>
-	<fstream>
-	<filesystem>
-
