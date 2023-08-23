@@ -1,0 +1,33 @@
+README
+
+  COPSolver is a software to solve combinatorial optmization problems 
+  and other management problems. COPSOlver V01_2023_08_23 only solves 
+  the multi-product batch processing time maximization problem. 
+  
+  Find out how to use COPSolver by reading the MANUAL document. 
+  Find out how to install COPSolver by reading the INSTALL document.
+
+  Study the LICENSE.md file for distribution terms.
+
+CONTACT
+
+  If you have problems, questions, ideas or suggestions, please contact us
+  by posting to tatiana.balbi@ufpe.br
+
+WEBSITE
+
+  Visit the COPSolver website for the latest news and downloads:
+
+        github.com/tbfraga/COPSolver
+
+GIT
+
+  To download the latest source code off the GIT server, do this:
+
+    git clone https://github.com/tbfraga/COPSolver.git
+
+  (you will get a directory named COPSolver created, filled with the source code)
+
+SECURITY PROBLEMS
+
+  Report suspected security problems by posting to tatiana.balbi@ufpe.br.
