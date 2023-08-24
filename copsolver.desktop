@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=copsolver
+GenericName=copsolver
+Comment=Combinatorial Optimization Problems Solver
+Exec=/bin/sh -c copsolver%F
+Icon=application-x-executable
+Terminal=false
+MimeType=application/x-sharedlib
+Categories=Application;ComputerScience;Math;Engineering;
+StartupNotify=true
