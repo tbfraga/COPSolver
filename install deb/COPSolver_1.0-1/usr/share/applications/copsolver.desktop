@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=COPSolver
-GenericName=COPSolver
+Name=copsolver
+GenericName=copsolver
 Comment=Combinatorial Optimization Problems Solver
-Exec=io.elementary.terminal -e COPSolver%F
+Exec=io.elementary.terminal -e copsolver%F
 Icon=utilities-terminal
 Terminal=false
 Categories=Application;ComputerScience;Math;Engineering;
