@@ -1,9 +1,0 @@
-Package: copolver
-Version: 1.0-1
-Section: base
-Priority: optional
-Architecture: all   
-Maintainer: tbfraga <tatiana.balbi@ufpe.br>
-Description: Combinatorial Optimization Solver
- When you need some sunshine, just run this
- small program!
