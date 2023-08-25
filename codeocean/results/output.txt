@@ -1,0 +1,64 @@
+Fraga's exact method for solving MBPTM problem...
+
+Analytical solution:
+
+starting time (s): 08/25/23 19:07:05.364104514 UTC
+
+batch processing time: 55
+
+Production:
+
+P0 = 3300
+P1 = 2200
+
+Delivered:
+
+D0 = 1000
+D1 = 500
+
+Delivered to outlets:
+
+O0 = 600
+O1 = 600
+
+Leftover inventory in outlets: -200
+
+Stocked at factory:
+
+I0 = 1700
+I1 = 1100
+
+Leftover inventory in factory: 200
+
+
+Adjusting production distribution:
+
+O0 = 400
+I0 = 1900
+
+Leftover inventory in outlets: 0
+
+Leftover inventory in factory: 200
+
+
+finishing time (s): 08/25/23 19:07:05.364170852 UTC
+
+execution time (s): 6.6338e-05
+Thaks for using COPSolver :)))
+
+COPSolver was (and is being) developed by Fraga, T.B. with purpose of solving many differente combinatorial optimizations problems.
+
+COPSolver is licenced by Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)
+
+Under this licence you can:
+
+1) Free dowload and/or use this solver (except for comercial purpose);
+2) Share this solver (if don't modified anyway) only if you inform a link for the original repository and for the license;
+3) Modify the solver for personal use, but not share modified version of solver.
+
+You cannot use COPSolver or any modified version for comercial purpose.
+If you need or want to use COPSolver for any comercial purpose, please contact tatiana.balbi@ufpe.br.
+
+If you use this solver for work or science, please don't forget to correctly cite it on presentations and the published material.
+
+repository: github.com/tbfraga/COPSolver
