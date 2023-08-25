@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     
 <!--====== Title ======-->
-<title>COPSolver manual</title> <h1><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" </a> </h1> 
-</a> COPSOlver and this manual is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</a>
+<title>COPSolver manual</title> 
+
+<h3><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" </a> COPSolver and this manual is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</a> </h3> 
 
 <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,8 +38,8 @@
 <h2> COPSolver manual </h2>
 <h4>Author: Tatiana Balbi Fraga</h4>
 <h4>e-mail: tatiana.balbi@ufpe.br</h4>
-<h4>version: v01_20230824<h4>
-<h4>last modification: 2023, July, 24.</h4>
+<h4>version: 1.0-1_20230825<h4>
+<h4>last modification: 2023, October, 25.</h4>
 
 
 <h3>instalation guide for elementary OS</h3>
@@ -63,7 +64,7 @@
 <p>(2) Type 1, 2 or 3 to choose the problem definition method (as explained bellow) and then press enter.</p>
 <p>Depending on the chosen method, COPSolver will work differently.</p>
 <p>If you type 1:</p>
-<p>COPSolver will come up with an optimal solution for the problem specified in the data.txt file.</p>
+<p>COPSolver will come up with an optimal solution for the problem specified in the COPSolver/data.txt file.</p>
 <p>If you type 2:</p>
 <p>(3) Type 1, 2 or 3 to select one of the solver's predefined problems.</p>
 <p>COPSolver will then come up with an optimal solution for the specified problem.</p>
@@ -73,28 +74,29 @@
 <p>COPSolver will then come up with an optimal solution for the specified problem.</p>
 
 <h3>using data.txt for defining a benchmark</h3>
-<p>If you use standart installation, data.txt will be located at /ħome/*user*/Documents/COPSolver/data.txt </p>
+<p>If you use standart installation, data.txt will be located at /ħome/*user*/COPSolver/data.txt </p>
+<p>where *user* is the user account.</p>
 <p>you can change data.txt file as specified below: </p>
 <p>first line: specify only one integer value for informing the number of products (N);</p>
 <p>second line: specify N integer values for informing the production rate of each product;</p>
 <p>third line: specify N integer values for informing the demand of each product;</p>
-<p>fourth line: specify only one integer value for informing the outlets total inventory available;</p>
-<p>fifth line: specify N integer values for informing the outlets inventory available for each product;</p>
-<p>sixth line: specify only one integer value for informing the factory total inventory available;</p>
-<p>seventh line: specify N integer values for informing the factory inventory available for each product;</p>
+<p>fourth line: specify only one integer value for informing the outlets total free inventory;</p>
+<p>fifth line: specify N integer values for informing the outlets free inventory for each product;</p>
+<p>sixth line: specify only one integer value for informing the factory total free inventory;</p>
+<p>seventh line: specify N integer values for informing the factory free inventory for each product;</p>
 <p>eighth line: specify only one integer value for informing the multi-product batch processing time limit.</p>
 
 <h3>outputs</h3>
 <p>COPSolver will generate the following outputs:</p>
 <p>output.txt: a file containing the last solver solution;</p>
 <p>problem.txt: a file containing the last problem definition;</p>
-<p>data.ldt: a LINGO data file with last problem definition for verifying the solution found by COPSolver;</p>
-<p>output.txt problem.txt files will be located at /home/work/Documents/COPSolver/;</p>
-<p>data.ldt file will be located at /home/work/Documents/COPSolver/LINGOSolver/MPBPTMP/.</p>
+<p>data.ldt: a LINGO data file with the last problem definition;</p>
+<p>output.txt problem.txt files will be located at /home/*user*/COPSolver;</p>
+<p>data.ldt file will be located at /home/*user*/COPSolver/LINGOSolver/MBPTM.</p>
 
 <h3>LINGO solver</h3>
 
-<p>Inside the /home/work/Documents/COPSolver/LINGOSolver/MPBPTMP/ folder there is a code in LINGO to solve the mathematical model developed for the 
+<p>Inside the /home/*user*/COPSolver/LINGOSolver/MBPTM folder there is a code in LINGO to solve the mathematical model developed for the 
 muti-product batch processing time maximization problem.</p>
 
 <h3>Thanks for using COPSolver :) </h3>

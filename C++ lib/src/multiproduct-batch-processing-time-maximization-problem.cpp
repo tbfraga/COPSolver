@@ -12,10 +12,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version: V01_20230823
+// version: 1.0-1_20230825
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/08/23
+// last modification: 2023/08/25
 
 #include "../lib/multiproduct-batch-processing-time-maximization-problem.h"
 
@@ -32,6 +32,10 @@ namespace mbptm
         _solution._deliver.clear();
         _solution._deliverToOutlets.clear();
         _solution._stock.clear();
+
+        _solution._unmetDemand.clear();
+        _solution._freeOutletsInventory.clear();
+        _solution._freeFactoryInventory.clear();
     };
 
     bool cop::print()
@@ -275,7 +279,7 @@ namespace mbptm
         _problem._maxBatchProcessingTime = maxBatchProcessingTime;
     };
 
-    void cop::MPBPTMP001()
+    void cop::MBPTM_02()
     {
         /**************************************************************************************************************************
         Small problem developed to test the solver.
@@ -292,7 +296,7 @@ namespace mbptm
         _problem._maxBatchProcessingTime = 100;
     };
 
-    void cop::MPBPTMP002()
+    void cop::MBPTM_03()
     {
         /**************************************************************************************************************************
         Small problem developed to test the solver.
@@ -309,7 +313,7 @@ namespace mbptm
         _problem._maxBatchProcessingTime = 100;
     };
 
-    void cop::MPBPTMP003()
+    void cop::MBPTM_10()
     {
         /**************************************************************************************************************************
         Small problem developed to test the solver.
@@ -326,7 +330,7 @@ namespace mbptm
         _problem._maxBatchProcessingTime = 100;
     };
 
-    void cop::randomMPBPTMP(unsigned int problemSize)
+    void cop::MBPTM_rand(unsigned int problemSize)
     {
         clear();
 
@@ -356,12 +360,14 @@ namespace mbptm
 
     void cop::start()
     {
-        //clear();
-
         _solution._production.resize(_problem._NProducts,0);
         _solution._deliver.resize(_problem._NProducts,0);
         _solution._deliverToOutlets.resize(_problem._NProducts,0);
         _solution._stock.resize(_problem._NProducts,0);
+
+        _solution._unmetDemand.resize(_problem._NProducts,0);
+        _solution._freeOutletsInventory.resize(_problem._NProducts,0);
+        _solution._freeFactoryInventory.resize(_problem._NProducts,0);
 
         _solution._totalFreeOutletsInventory = _problem._totalMaximumOutletInventory;
         _solution._totalFreeFactoryInventory = _problem._totalMaximumInventory;
@@ -442,7 +448,7 @@ namespace mbptm
 
     solution cop::analyticalMethod(unsigned int T1)
     {
-        cout << endl << "head: applying Fraga's exact method for solving MBPTM problem..." << endl;
+        cout << endl << "info: applying Fraga's exact method for solving MBPTM problem..." << endl;
 
         string site = getenv("HOME");
         site += "/COPSolver/output.txt";
@@ -477,19 +483,16 @@ namespace mbptm
             }
         }
 
-        vector<unsigned int> S;
-        S.resize(_problem._NProducts,0);
-
         for(unsigned int p=0; p<_problem._NProducts; p++)
         {
-            S[p] = _problem._demand[p] - T1*_problem._productionRate[p];
+            _solution._unmetDemand[p] = _problem._demand[p] - T1*_problem._productionRate[p];
         }
 
-        T2 = floor((_problem._maximumInventory[0] + _problem._maximumOutletInventory[0] + S[0])/_problem._productionRate[0]);
+        T2 = floor((_problem._maximumInventory[0] + _problem._maximumOutletInventory[0] + _solution._unmetDemand[0])/_problem._productionRate[0]);
 
         for(unsigned int p=1; p<_problem._NProducts; p++)
         {
-            aux = floor((_problem._maximumInventory[p] + _problem._maximumOutletInventory[p] + S[p])/_problem._productionRate[p]);
+            aux = floor((_problem._maximumInventory[p] + _problem._maximumOutletInventory[p] + _solution._unmetDemand[p])/_problem._productionRate[p]);
             if(aux < T2) T2 = aux;
         }
 
@@ -498,7 +501,7 @@ namespace mbptm
 
         for(unsigned int p=0; p<_problem._NProducts; p++)
         {
-            aux += S[p];
+            aux += _solution._unmetDemand[p];
             sum += _problem._productionRate[p];
         }
 
@@ -629,7 +632,13 @@ namespace mbptm
 
             file << endl << "Leftover inventory in outlets: " << _solution._totalFreeOutletsInventory << endl;
             file << endl << "Leftover inventory in factory: " << _solution._totalFreeFactoryInventory << endl << endl;
+        }
 
+        for(unsigned int p=0; p<_problem._NProducts; p++)
+        {
+            _solution._unmetDemand[p] = _problem._demand[p] - _solution._deliver[p];
+            _solution._freeOutletsInventory[p] = _problem._maximumOutletInventory[p] - _solution._deliverToOutlets[p];
+            _solution._freeFactoryInventory[p] = _problem._maximumInventory[p] - _solution._stock[p];
         }
 
         timespec_get(&finish_time, TIME_UTC);
@@ -644,7 +653,6 @@ namespace mbptm
         cout << endl << "Analytical solution execution time (s): " << double(diff_time.tv_sec) + double(diff_time.tv_nsec)/1000000000 << endl;
         file << endl << "execution time (s): " << double(diff_time.tv_sec) + double(diff_time.tv_nsec)/1000000000 << endl;
 
-        S.clear();
         file.close();
 
         cout << endl << "info: output of analytical method is available on file " << site << endl;

@@ -12,10 +12,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version: V01_20230823
+// version: 1.0-1_20230825
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/08/23
+// last modification: 2023/08/25
 
 #ifndef MULTIPRODUCT_BATCH_PROCESSING_TIME_MAXIMIZATION_PROBLEM_H_INCLUDED
 #define MULTIPRODUCT_BATCH_PROCESSING_TIME_MAXIMIZATION_PROBLEM_H_INCLUDED
@@ -33,29 +33,32 @@ using namespace std;
 namespace mbptm
 {
     struct problem{
-        unsigned int _NProducts = 0; // number of products
-        vector<float> _productionRate = {0}; // product weight ratio (g/m^2)
+        unsigned int _NProducts; // number of products
+        vector<float> _productionRate = {}; // product weight ratio (g/m^2)
 
-        vector<unsigned int> _demand = {0}; // demand per product (g)
+        vector<unsigned int> _demand = {}; // demand per product (g)
 
-        vector<unsigned int> _maximumInventory = {0}; // maximum inventory at factory per product (g)
-        unsigned int _totalMaximumInventory = 0; // total maximum inventory at factory (g)
+        vector<unsigned int> _maximumInventory = {}; // maximum inventory at factory per product (g)
+        unsigned int _totalMaximumInventory; // total maximum inventory at factory (g)
 
-        vector<unsigned int> _maximumOutletInventory = {0}; // maximum outlet inventory per product (g)
-        unsigned int _totalMaximumOutletInventory = 0; // total maximum outlet inventory (g)
+        vector<unsigned int> _maximumOutletInventory = {}; // maximum outlet inventory per product (g)
+        unsigned int _totalMaximumOutletInventory; // total maximum outlet inventory (g)
 
-        unsigned int _maxBatchProcessingTime = 0; // maximum batch processing time (min)
+        unsigned int _maxBatchProcessingTime; // maximum batch processing time (min)
     };
 
     struct solution{
-        unsigned int _processingTime = 0; // batch processing time (min)
-        vector<unsigned int> _production = {0}; // production for each product
-        vector<unsigned int> _deliver = {0}; // production delivered
-        vector<unsigned int> _deliverToOutlets = {0}; // production delivered to outlets
-        vector<unsigned int> _stock = {0}; // production stocked at the factory
+        unsigned int _processingTime; // batch processing time (min)
+        vector<unsigned int> _production = {}; // production for each product
+        vector<unsigned int> _deliver = {}; // production delivered
+        vector<unsigned int> _deliverToOutlets = {}; // production delivered to outlets
+        vector<unsigned int> _stock = {}; // production stocked at the factory
 
-        int _totalFreeOutletsInventory = 0;
-        int _totalFreeFactoryInventory = 0;
+        vector<unsigned int> _unmetDemand = {};
+        vector<unsigned int> _freeOutletsInventory = {};
+        vector<unsigned int> _freeFactoryInventory = {};
+        int _totalFreeOutletsInventory;
+        int _totalFreeFactoryInventory;
     };
 
     class cop
@@ -75,10 +78,10 @@ namespace mbptm
         void set(unsigned int NProducts, vector<float> productionRate, vector<unsigned int> demand, vector<unsigned int> maximumInventory, unsigned int totalMaximumInventory,
                  vector<unsigned int> maximumOutletInventory, unsigned int totalMaximumOutletInventory, unsigned int maxBatchProcessingTime);
 
-        void MPBPTMP001();
-        void MPBPTMP002();
-        void MPBPTMP003();
-        void randomMPBPTMP(unsigned int problemSize);
+        void MBPTM_02();
+        void MBPTM_03();
+        void MBPTM_10();
+        void MBPTM_rand(unsigned int problemSize);
 
         // solving
 
