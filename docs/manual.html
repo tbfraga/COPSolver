@@ -39,7 +39,7 @@
 <h4>Author: Tatiana Balbi Fraga</h4>
 <h4>e-mail: tbfraga@proton.me</h4>
 <h4>version: 1.0-1<h4>
-<h4>last modification: 2023, October, 25.</h4>
+<h4>last modification: 2023, October, 28.</h4>
 
 
 <h3>instalation guide for elementary OS</h3>
@@ -48,55 +48,35 @@
 <p>go to download folder and unzip COPSolver_1.0-1.zip </p>
 <p>go to COPSolver_1.0-1 using terminal </p>
 <p>$ cd Downloads/COPSolver_1.0-1 </p>
-<p>configure system </p>
-<p>$ ./config </p>
-<p>install .deb file </p>
-<p>$ sudo dpkg -i  COPSolver_1.0-1.deb</p>
-<p>$ if you want you can now run COPSolver using terminal</p>
-<p>$ copsolver</p>
+<p>configure system, install .deb file and run copsolver</p>
+<p>$ ./run </p>
 
 <p>Ready !!! You can now access COPSolver from the elementary OS Applications menu :)</p>
+<p>If you want you can also run COPSolver using terminal</p>
+<p>$ copsolver</p>
 
 <h3>using COPSolver on elementary OS</h3>
-<p>Once the solver has been installed, just click on the Applications menu and then on the COPSolver icon.</p>
 
-<p>(1) Size the terminal window if you want and then press enter.</p>
-<p>(2) Type 1, 2 or 3 to choose the problem definition method (as explained bellow) and then press enter.</p>
-<p>Depending on the chosen method, COPSolver will work differently.</p>
-<p>If you type 1:</p>
-<p>COPSolver will come up with an optimal solution for the problem specified in the COPSolver/data.txt file.</p>
-<p>If you type 2:</p>
-<p>(3) Type 1, 2 or 3 to select one of the solver's predefined problems.</p>
-<p>COPSolver will then come up with an optimal solution for the specified problem.</p>
-<p>If you type 3:</p>
-<p>(3) Enter an interger source value to generate a random problem and press enter.</p>
-<p>(4) Enter an integer value to determine the number of products in the batch and press enter.</p>
-<p>COPSolver will then come up with an optimal solution for the specified problem.</p>
+<p>COPSolver has two configuration files that must be set for definig a benchmark: config.txt and data.txt.</p>
+<p>After adjusting these two files, you just need to run the solver.</p>
 
 <h3>using data.txt for defining a benchmark</h3>
-<p>If you use standart installation, data.txt will be located at /ħome/*user*/COPSolver/data.txt </p>
-<p>where *user* is the user account.</p>
-<p>you can change data.txt file as specified below: </p>
-<p>first line: specify only one integer value for informing the number of products (N);</p>
-<p>second line: specify N integer values for informing the production rate of each product;</p>
-<p>third line: specify N integer values for informing the demand of each product;</p>
-<p>fourth line: specify only one integer value for informing the outlets total free inventory;</p>
-<p>fifth line: specify N integer values for informing the outlets free inventory for each product;</p>
-<p>sixth line: specify only one integer value for informing the factory total free inventory;</p>
-<p>seventh line: specify N integer values for informing the factory free inventory for each product;</p>
-<p>eighth line: specify only one integer value for informing the multi-product batch processing time limit.</p>
+<p>If you use standart installation, data.txt will be located at /data/data.txt. </p>
+<p>You can change data.txt file as specified below: </p>
+<p>Each group of lines contains commented lines - with specifications about the input data (starting with "//") - followed by a data line - containing the input data.</p>
+<p>Note that the commented lines shows the type of data and the amount of data that must be informed in the data line.</p>
+<p>For example, UNSIGNED INT (N) means that a single positive integer value must be entered in the data line, while UNSIGNED INT (D_1,...,D_N) means that N positive integer values must be entered in the data line.</p>
 
 <h3>outputs</h3>
 <p>COPSolver will generate the following outputs:</p>
 <p>output.txt: a file containing the last solver solution;</p>
 <p>problem.txt: a file containing the last problem definition;</p>
 <p>data.ldt: a LINGO data file with the last problem definition;</p>
-<p>output.txt problem.txt files will be located at /home/*user*/COPSolver;</p>
-<p>data.ldt file will be located at /home/*user*/COPSolver/LINGOSolver/MBPTM.</p>
+<p>output.txt, problem.txt and data.ldt files will be located at /results folder.</p>
 
 <h3>LINGO solver</h3>
 
-<p>Inside the /home/*user*/COPSolver/LINGOSolver/MBPTM folder there is a code in LINGO to solve the mathematical model developed for the 
+<p>Inside the /LINGOSolver/MBPTM folder there is a code in LINGO to solve the mathematical model developed for the 
 muti-product batch processing time maximization problem.</p>
 
 <h3>Thanks for using COPSolver :) </h3>

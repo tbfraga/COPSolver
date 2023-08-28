@@ -1,5 +1,0 @@
-BUGS
-
-runtime:
-
-1) when choosing a preference, it is necessary to type exactly one of the informed options. Otherwise, the solver may go into an infinite loop. If that happens, press Ctrl + c and start again.
