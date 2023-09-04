@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+<!--====== Title ======-->
+<title>COPSolver manual</title> 
+
+<h3><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" </a> COPSolver and this manual is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</a> </h3> 
+
+<meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="images/pavicon.ico" type="image/ico">
+ 
+    <!--====== Slick CSS ======-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+ 
+    <!--====== Slick CSS ======-->
+    <link rel="stylesheet" href="assets/css/slick.css">
+ 
+    <!--====== LineIcons CSS ======-->
+    <link rel="stylesheet" href="assets/css/lineicons.css">
+ 
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+ 
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="assets/css/default.css">
+ 
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+<h2> COPSolver manual </h2>
+<h4>Author: Tatiana Balbi Fraga</h4>
+<h4>e-mail: tbfraga@proton.me</h4>
+<h4>version: 1.0-1<h4>
+<h4>last modification: 2023, October, 28.</h4>
+
+
+<h3>instalation guide for elementary OS</h3>
+<p>download COPSolver repository from https://github.com/tbfraga/COPSolver</p>
+<p>or clone COPSolver repo using cmd $ git clone https://github.com/tbfraga/COPSolver.git</p>
+<p>go to download folder and unzip COPSolver_1.0-1.zip </p>
+<p>go to COPSolver_1.0-1 using terminal </p>
+<p>$ cd Downloads/COPSolver_1.0-1 </p>
+<p>configure system, install .deb file and run copsolver</p>
+<p>$ ./run </p>
+
+<p>Ready !!! You can now access COPSolver from the elementary OS Applications menu :)</p>
+<p>If you want you can also run COPSolver using terminal</p>
+<p>$ copsolver</p>
+
+<h3>using COPSolver on elementary OS</h3>
+
+<p>COPSolver has two configuration files that must be set for definig a benchmark: config.txt and data.txt.</p>
+<p>After adjusting these two files, you just need to run the solver.</p>
+
+<h3>using data.txt for defining a benchmark</h3>
+<p>If you use standart installation, data.txt will be located at /data/data.txt. </p>
+<p>You can change data.txt file as specified below: </p>
+<p>Each group of lines contains commented lines - with specifications about the input data (starting with "//") - followed by a data line - containing the input data.</p>
+<p>Note that the commented lines shows the type of data and the amount of data that must be informed in the data line.</p>
+<p>For example, UNSIGNED INT (N) means that a single positive integer value must be entered in the data line, while UNSIGNED INT (D_1,...,D_N) means that N positive integer values must be entered in the data line.</p>
+
+<h3>outputs</h3>
+<p>COPSolver will generate the following outputs:</p>
+<p>output.txt: a file containing the last solver solution;</p>
+<p>problem.txt: a file containing the last problem definition;</p>
+<p>data.ldt: a LINGO data file with the last problem definition;</p>
+<p>output.txt, problem.txt and data.ldt files will be located at /results folder.</p>
+
+<h3>LINGO solver</h3>
+
+<p>Inside the /LINGOSolver/MBPTM folder there is a code in LINGO to solve the mathematical model developed for the 
+muti-product batch processing time maximization problem.</p>
+
+<h3>Thanks for using COPSolver :) </h3>
+
+<h3><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>. </h3>
+</body>
+</html>
