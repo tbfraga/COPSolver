@@ -1,6 +1,6 @@
 // number of products, UNSIGNED INT (N);
 2
-// production rate, UNSIGNED INT (R_1,...,R_N);
+// production rate, UNSIGNED REAL NUMBER (R_1,...,R_N);
 60 40
 // demand, UNSIGNED INT (D_1,...,D_N);
 1000 500
