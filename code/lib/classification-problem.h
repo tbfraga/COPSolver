@@ -41,11 +41,15 @@ namespace classp
         vector<vector<float>> _Data; // data for each criterion - vector[_NCriteria, _NData]
     };
 
+    struct solution{
+    };
+
     class clssp
     {
         protected:
 
         problem _problem;
+        solution _solution;
 
         public:
 
