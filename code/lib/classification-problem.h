@@ -32,55 +32,48 @@ using namespace std;
 
 namespace classp
 {
-    struct weight
-    {
-        double value;
-        string criterion;
-
-        friend ostream & operator << (ostream &out, const weight &w)
-        {
-            out << w.value;
-            out << "\t" << w.criterion << endl;
-            return out;
-        };
-
-        friend istream & operator >> (istream &in,  weight &w)
-        {
-            in >> w.value;
-            in >> w.criterion;
-            return in;
-        };
-    };
-
     struct level{
+
         double value;
 
-        level& operator++ ()  // postfix ++
+        level&  operator-- (int)  // postfix --
         {
-            if(value >= 1)
+
+            if(value <= 1/9)
+            {
+                cout << endl << "error: cannot reduce value <= 1/8 !" << endl;
+                //getchar();
+            }
+           if(value >= 3)
+            {
+                value -= 2;
+                cout << ">=3 -- new value: " << value << endl;
+                //getchar();
+            }else if(value <= 2)
+            {
+                value = 1/((1/value) + 2);
+                cout << "<=1 -- new value: " << value << endl;
+                //getchar();
+            }
+           return *this;
+        };
+
+        level  operator++ (int)  // postfix ++
+        {
+            if(value >= 9)
+            {
+                cout << endl << "error: cannot encrease value >= 8 !" << endl;
+                //getchar();
+            }else if(value >= 0.95)
             {
                 value += 2;
+                cout << ">=1 -- new value: " << value << endl;
             }else if(value < 1)
             {
                 value = 1/((1/value) - 2);
+                cout << "<1 -- new value: " << value << endl;
             }
-            return *this;
-        };
 
-        level& operator-- ()  // postfix --
-        {
-            if(value >= 3)
-            {
-                value -= 2;
-                cout << "new value: " << value;
-                getchar();
-            }else if(value <= 1)
-            {
-                value = 1/((1/value) + 2);
-
-                cout << "new value: " << value;
-                getchar();
-            }
             return *this;
         };
 
@@ -105,6 +98,26 @@ namespace classp
         friend istream & operator >> (istream &in,  level &w)
         {
             in >> w.value;
+            return in;
+        };
+    };
+
+    struct weight
+    {
+        double value;
+        string criterion;
+
+        friend ostream & operator << (ostream &out, const weight &w)
+        {
+            out << w.value;
+            out << "\t" << w.criterion << endl;
+            return out;
+        };
+
+        friend istream & operator >> (istream &in,  weight &w)
+        {
+            in >> w.value;
+            in >> w.criterion;
             return in;
         };
     };
@@ -260,32 +273,85 @@ namespace classp
 
         pairwiseMatrix& reduce(unsigned int n, unsigned int g, unsigned int s)
         {
+            cout << endl << "reducing..." << endl;
+            getchar();
             double auxCR;
 
-            while(matrix[n][g].value > matrix[n][s].value)
+            while(matrix[n][g].value*matrix[g][s].value > matrix[n][s].value)
             {
                 cout << "1: " << matrix[n][g].value << "  2: " << matrix[n][s].value << endl;
                 auxCR = CR;
+                cout << endl << "CR: " << CR << endl;
 
-                cout << matrix[n][g].value << endl;
+                cout << "before --" << matrix[n][g].value << endl;
 
-                matrix[n][g].value--;
-                matrix[g][n].value++;
+                matrix[n][g]--;
+                matrix[g][n]++;
 
-                cout << matrix[n][g].value << endl;
-
+                cout << "after --" << matrix[n][g].value << endl;
                 getchar();
+
+                //getchar();
 
                 eigen();
                 consistencyRate();
+                cout << endl << "CR: " << CR << endl;
 
                 if(CR > auxCR)
                 {
-                    matrix[n][g].value++;
-                    matrix[g][n].value--;
+                    cout << endl << "undoing" << endl;
+                    matrix[n][g]++;
+                    matrix[g][n]--;
 
                     eigen();
                     consistencyRate();
+                    break;
+                }else if(CR <= tol)
+                {
+                    break;
+                }
+            }
+
+            return *this;
+        };
+
+        pairwiseMatrix& encrease(unsigned int n, unsigned int g, unsigned int s)
+        {
+            cout << endl << "encreasing..." << endl;
+            getchar();
+            double auxCR;
+
+            while(matrix[n][g].value*matrix[g][s].value < matrix[n][s].value)
+            {
+                cout << "1: " << matrix[n][g].value << "  2: " << matrix[n][s].value << endl;
+                auxCR = CR;
+                cout << endl << "CR: " << CR << endl;
+
+                cout << "before ++" << matrix[n][s].value << endl;
+
+                matrix[n][s]++;
+                matrix[s][n]--;
+
+                cout << "after --" << matrix[n][s].value << endl;
+                getchar();
+
+                //getchar();
+
+                eigen();
+                consistencyRate();
+                cout << endl << "CR: " << CR << endl;
+
+                if(CR > auxCR)
+                {
+                    cout << endl << "undoing" << endl;
+                    matrix[n][s]--;
+                    matrix[s][n]++;
+
+                    eigen();
+                    consistencyRate();
+                    break;
+                }else if(CR <= tol)
+                {
                     break;
                 }
             }
@@ -299,6 +365,8 @@ namespace classp
 
             consistencyRate();
 
+            cout << endl << "CR: " << CR << endl;
+
             for(unsigned int sz=3; sz<matrix.size(); sz++)
             {
                 for(unsigned int j=0; j<matrix.size()-2; j++)
@@ -308,23 +376,43 @@ namespace classp
                         g = 0;
                         s = 0;
 
-                        if(matrix[sz][j].value > matrix[sz][k].value && matrix[j][k].value <= 1)
+                        cout << endl << "a_nj: " << matrix[sz][j].value << "  a_nk: " << matrix[sz][k].value << "  a_jk: " << matrix[j][k].value << endl;
+
+
+                        if(matrix[sz][j].value*matrix[j][k].value > matrix[sz][k].value)
                         {
                             g = j;
                             s = k;
-                        }else if(matrix[sz][j].value < matrix[sz][k].value && matrix[j][k].value >= 1)
+                        }else if(matrix[sz][j].value*matrix[j][k].value < matrix[sz][k].value)
                         {
                             g = k;
                             s = j;
                         }
 
-                        if(g > 0)
+                        cout << endl << "g: " << g << "   s: " << s << endl;
+
+                        if(g > 0 || s > 0)
                         {
                             reduce(sz,g,s);
-                            consistencyRate();
+
+                            if(CR <= tol)
+                            {
+                                break;
+                            }else if(matrix[sz][g].value > matrix[sz][s].value)
+                            {
+                                encrease(sz,g,s);
+
+                                if(CR <= tol)
+                                {
+                                    break;
+                                }
+                            }
                         }
                     }
+
+                    if(CR <= tol)break;
                 }
+                if(CR <= tol)break;
             }
 
             return *this;
