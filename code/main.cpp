@@ -82,8 +82,8 @@ int main()
         classp::clssp _problem;
 
         _problem.get();
-        _problem.print();
-        _problem.consistency();
+        //_problem.print();
+//        _problem.constructivelyForceConsistency(0.1);
         _problem.clear();
 
     } else

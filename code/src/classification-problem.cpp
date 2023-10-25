@@ -15,17 +15,17 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version:
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/10/18
+// last modification: 2023/10/25
 
 #include "../lib/classification-problem.h"
 
 namespace classp
 {
     void clssp::clear()
-    {
-        _problem._Criteria.clear();
+    {/*
+        _problem._criteria.clear();
 
-        _problem._Weight.clear();
+        _problem._weight.clear();
 
         for(unsigned int s; s<_problem._pairwiseWeight.size(); s++)
         {
@@ -34,12 +34,12 @@ namespace classp
 
         _problem._pairwiseWeight.clear();
 
-        for(unsigned int s; s<_problem._Data.size(); s++)
+        for(unsigned int s; s<_problem._data.size(); s++)
         {
-            _problem._Data[s].clear();
+            _problem._data[s].clear();
         }
 
-        _problem._Data.clear();
+        _problem._data.clear();*/
 
     };
 
@@ -59,62 +59,50 @@ namespace classp
 
         file.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
-        _problem._Criteria.resize(_problem._NCriteria);
+       _problem._weight.resize(_problem._NCriteria);
 
-        for(unsigned int s=0; s<_problem._Criteria.size(); s++)
+        for(unsigned int s=0; s<_problem._weight.size(); s++)
         {
-            file >> _problem._Criteria[s];
-        }
-
-        file.ignore(std::numeric_limits<std::streamsize>::max(),':');
-
-        _problem._Weight.resize(_problem._NCriteria);
-
-        for(unsigned int s=0; s<_problem._Weight.size(); s++)
-        {
-            file >> _problem._Weight[s];
-
-            if( isnan(_problem._Weight[s]))
-            {
-                _problem._Weight[s] = 0;
-                break;
-            }
+            file >> _problem._weight[s];
         }
 
         file.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
         _problem._pairwiseWeight.resize(_problem._NCriteria);
 
-        for(unsigned int s=0; s<_problem._pairwiseWeight.size(); s++)
-        {
-            _problem._pairwiseWeight[s].resize(_problem._NCriteria);
+        file >> _problem._pairwiseWeight;
 
-            for(unsigned int ss=0; ss<_problem._pairwiseWeight[s].size(); ss++)
-            {
-                file >> _problem._pairwiseWeight[s][ss];
-                cout << _problem._pairwiseWeight[s][ss] << "\t";
-            }
-        }
+        /*
 
         file.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
         file >> _problem._NData;
 
-        _problem._Data.resize(_problem._NCriteria);
+        _problem._data.resize(_problem._NCriteria);
 
         file.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
-        for(unsigned int s=0; s<_problem._Data.size(); s++)
+        for(unsigned int s=0; s<_problem._data.size(); s++)
         {
-            _problem._Data[s].resize(_problem._NData);
+            _problem._data[s].resize(_problem._NData);
 
-            for(unsigned int ss=0; ss<_problem._Data[s].size(); ss++)
+            for(unsigned int ss=0; ss<_problem._data[s].size(); ss++)
             {
-                file >> _problem._Data[s][ss];
+                file >> _problem._data[s][ss];
             }
-        }
+        }*/
 
         file.close();
+
+        _problem._pairwiseWeight.eigen();
+        _problem._pairwiseWeight.consistencyRate();
+
+        if(_problem._pairwiseWeight.CR > 0.1)
+        {
+            _problem._pairwiseWeight.forceConsistency();
+        }
+
+        print();
 
         return 0;
     };
@@ -123,20 +111,22 @@ namespace classp
     {
         cout << "number of criteria: " << _problem._NCriteria << endl << endl;
 
-        cout << "criteria: " << endl << endl;
-
-        for(unsigned int s=0; s<_problem._Criteria.size(); s++)
-        {
-            cout << _problem._Criteria[s] << "  ";
-        }
-
-        cout << endl << endl;
+        cout << _problem._pairwiseWeight << endl << endl;
 
         cout << "weight: " << endl << endl;
 
-        for(unsigned int s=0; s<_problem._Weight.size(); s++)
+        for(unsigned int s=0; s<_problem._weight.size(); s++)
         {
-            cout << _problem._Weight[s] << "\t";
+            cout << _problem._weight[s] << endl;
+        }
+
+        /*
+
+        cout << "weight: " << endl << endl;
+
+        for(unsigned int s=0; s<_problem._weight.size(); s++)
+        {
+            cout << _problem._weight[s] << "\t";
         }
 
         cout << endl << endl;
@@ -159,120 +149,25 @@ namespace classp
 
         cout << "data: " << endl << endl;
 
-        for(unsigned int s=0; s<_problem._Data.size(); s++)
+        for(unsigned int s=0; s<_problem._data.size(); s++)
         {
-            for(unsigned int ss=0; ss<_problem._Data[s].size(); ss++)
+            for(unsigned int ss=0; ss<_problem._data[s].size(); ss++)
             {
-                cout << _problem._Data[s][ss] << "\t";
+                cout << _problem._data[s][ss] << "\t";
             }
 
             cout << endl;
-        }
+        }*/
 
         cout << endl;
 
         return 0;
     };
 
-    bool clssp::consistency()
+    bool clssp::reduce(double tol, unsigned int n, unsigned int g, unsigned int s)
     {
-        // Calculates eigenvalue and eigenvector for the pairwise comparation matrix, normalizes the eigenvector, and checks if the matrix is consistent.
-
-        std::vector<double> v;
-
-        vector<double> RI{0, 0, 0.58, 0.9, 1.12, 1.24, 1.32, 1.41, 1.45, 1.49};
-
-        v.clear();
-        for(unsigned int s=0; s<_problem._pairwiseWeight.size(); s++)
-        {
-            v.insert(v.end(),_problem._pairwiseWeight[s].begin(),_problem._pairwiseWeight[s].end());
-        }
-
-        Eigen::MatrixXd m = Eigen::MatrixXd::Map(v.data(), _problem._NCriteria, _problem._NCriteria); // create matrix
-
-        Eigen::EigenSolver<Eigen::MatrixXd> X_eigen(m); // the instance X_eigen(m) includes the eigensystem
-
-        cout << "\nm:\n\n" << m << "\n\neigenvalues:\n\n" << X_eigen.eigenvalues() << endl;
-        cout << "\n\neigenvectors:\n\n" << X_eigen.eigenvectors() << endl;
-
-        /*cout << "eigenvalues:" << endl;
-        cout << X_eigen.eigenvalues()(0) << endl;
-        cout << "eigenvectors=" << endl;
-        cout << X_eigen.eigenvectors() << endl;*/
-
-        Eigen::VectorXd eigen_values = X_eigen.eigenvalues().real();
-
-        vector<double> values(eigen_values.size());
-        Eigen::Map<Eigen::MatrixXd>(values.data(), eigen_values.rows(), eigen_values.cols()) = eigen_values;
-
-        Eigen::MatrixXd eigen_vectors = X_eigen.eigenvectors().real();
-
-        vector<double> vectors(eigen_vectors.size());
-        Eigen::Map<Eigen::MatrixXd>(vectors.data(), eigen_vectors.rows(), eigen_vectors.cols()) = eigen_vectors;
-
-        /*cout << "\nAutovalores: \n\n";
-
-        for (const auto& x : values)
-        cout << x << ", ";
-        cout << "\n";
-
-        cout << "\nAutovetores: \n\n";
-
-        for (const auto& z : vectors)
-        cout << z << ", ";
-        cout << "\n";*/
-
-        double eigenvalue = values[0];
-
-        vector<double> eingenvector;
-        eingenvector.assign (vectors.begin(),vectors.begin()+_problem._NCriteria);
-
-
-        cout << "\nautovalor escolhido: " << eigenvalue << "\n";
-
-        cout << "\nautovetor escolhido: \n\n";
-
-        for (const auto& x : eingenvector)
-        cout << x << ", ";
-        cout << "\n";
-
-        double sum = 0;
-
-        for(unsigned int s=0; s<eingenvector.size(); s++)
-        {
-            sum += eingenvector[s];
-        }
-
-        cout << "\nsoma dos elementos do autovetor: " << sum << "\n";
-
-        for(unsigned int s=0; s<eingenvector.size(); s++)
-        {
-            eingenvector[s] = eingenvector[s]/sum;
-        }
-
-        cout << "\nautovetor normalizado: \n\n";
-
-        for (const auto& x : eingenvector)
-        cout << x << ", ";
-        cout << "\n";
-
-        double CI = (eigenvalue - _problem._NCriteria) / (_problem._NCriteria - 1);
-
-        cout << "\nCI: " << CI << "\n";
-        cout << "\nRI[" << _problem._NCriteria << "]: " << RI[_problem._NCriteria-1] << "\n";
-
-        double CR = CI / RI[_problem._NCriteria-1];
-
-        cout << "\nCR: " << CR << "\n";
-
-        if(CR <= 0.1)
-        {
-            cout << "\nCongratulations, your matrix of pairwise comparation is consistent !!! \n";
-        }else
-        {
-            cout << "\nSorry, your matrix of pairwise comparation is inconsistent !!! \n";
-        }
-
         return 0;
     };
+
+
 }
