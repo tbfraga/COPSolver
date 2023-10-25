@@ -72,9 +72,14 @@ namespace classp
             if(value >= 3)
             {
                 value -= 2;
+                cout << "new value: " << value;
+                getchar();
             }else if(value <= 1)
             {
                 value = 1/((1/value) + 2);
+
+                cout << "new value: " << value;
+                getchar();
             }
             return *this;
         };
@@ -109,6 +114,8 @@ namespace classp
         double mainEigenvalue;
         vector <double> mainEigenvector;
         double CR;
+
+        double tol = 0.1;
 
         pairwiseMatrix()
         {
@@ -198,7 +205,7 @@ namespace classp
             return in;
         };
 
-        pairwiseMatrix eigen()
+        pairwiseMatrix& eigen()
         {
             vector<double> v;
 
@@ -233,36 +240,97 @@ namespace classp
 
             values.clear();
             vectors.clear();
+
+            return *this;
         }
 
-        pairwiseMatrix consistencyRate()
+        pairwiseMatrix& consistencyRate()
         {
+            eigen();
+
             vector<double> RI{0, 0, 0.58, 0.9, 1.12, 1.24, 1.32, 1.41, 1.45, 1.49};
 
             double CI = (mainEigenvalue - matrix.size()) / (matrix.size() - 1);
             CR = CI / RI[matrix.size()-1];
+
+            RI.clear();
+
+            return *this;
         };
 
-        unsigned int g, s;
-
-        pairwiseMatrix forceConsistency()
+        pairwiseMatrix& reduce(unsigned int n, unsigned int g, unsigned int s)
         {
-              /*  for(unsigned int s=3; s<matrix.size(); s++)
-                {
-                    for(unsigned int j=0; j<matrix.size()-2; j++)
-                    {
-                        for(unsigned int k=j+1; k<matrix.size()-1; k++)
-                        {
-                            g = 0;
-                            s = 0;
+            double auxCR;
 
-                            if(matrix[s][j].value > matrix[s][k].value && matrix[j][k].value <= 1)
-                            {
-                            }
+            while(matrix[n][g].value > matrix[n][s].value)
+            {
+                cout << "1: " << matrix[n][g].value << "  2: " << matrix[n][s].value << endl;
+                auxCR = CR;
+
+                cout << matrix[n][g].value << endl;
+
+                matrix[n][g].value--;
+                matrix[g][n].value++;
+
+                cout << matrix[n][g].value << endl;
+
+                getchar();
+
+                eigen();
+                consistencyRate();
+
+                if(CR > auxCR)
+                {
+                    matrix[n][g].value++;
+                    matrix[g][n].value--;
+
+                    eigen();
+                    consistencyRate();
+                    break;
+                }
+            }
+
+            return *this;
+        };
+
+        pairwiseMatrix& forceConsistency()
+        {
+            unsigned int g, s;
+
+            consistencyRate();
+
+            for(unsigned int sz=3; sz<matrix.size(); sz++)
+            {
+                for(unsigned int j=0; j<matrix.size()-2; j++)
+                {
+                    for(unsigned int k=j+1; k<matrix.size()-1; k++)
+                    {
+                        g = 0;
+                        s = 0;
+
+                        if(matrix[sz][j].value > matrix[sz][k].value && matrix[j][k].value <= 1)
+                        {
+                            g = j;
+                            s = k;
+                        }else if(matrix[sz][j].value < matrix[sz][k].value && matrix[j][k].value >= 1)
+                        {
+                            g = k;
+                            s = j;
+                        }
+
+                        if(g > 0)
+                        {
+                            reduce(sz,g,s);
+                            consistencyRate();
                         }
                     }
-                }*/
+                }
+            }
+
+            return *this;
         };
+
+
 
         //Number& operator++ ();     // prefix ++: no parameter, returns a reference
         //Number  operator++ (int);  // postfix ++: dummy parameter, returns a value

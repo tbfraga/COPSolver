@@ -94,8 +94,11 @@ namespace classp
 
         file.close();
 
-        _problem._pairwiseWeight.eigen();
         _problem._pairwiseWeight.consistencyRate();
+
+        print();
+
+        cout << endl;
 
         if(_problem._pairwiseWeight.CR > 0.1)
         {
