@@ -15,7 +15,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version:
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/10/25
+// last modification: 2023/10/26
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -34,44 +34,37 @@ namespace classp
 {
     struct level{
 
+        vector<double> scale{0.111,0.143,0.200,0.333,1,3,5,7,9};
+
         double value;
+        unsigned int it;
 
-        level&  operator-- (int)  // postfix --
+        level  operator-- (int)  // postfix --
         {
+            if(it == 0)
+            {
+                cout << endl << "error: cannot reduce level 1/9 !" << endl;
+                getchar();
+            }
+            else
+            {
+                it--;
+                value = scale[it];
+            }
 
-            if(value <= 1/9)
-            {
-                cout << endl << "error: cannot reduce value <= 1/8 !" << endl;
-                //getchar();
-            }
-           if(value >= 3)
-            {
-                value -= 2;
-                cout << ">=3 -- new value: " << value << endl;
-                //getchar();
-            }else if(value <= 2)
-            {
-                value = 1/((1/value) + 2);
-                cout << "<=1 -- new value: " << value << endl;
-                //getchar();
-            }
            return *this;
         };
 
         level  operator++ (int)  // postfix ++
         {
-            if(value >= 9)
+            if(it == 8)
             {
-                cout << endl << "error: cannot encrease value >= 8 !" << endl;
-                //getchar();
-            }else if(value >= 0.95)
+                cout << endl << "error: cannot encrease value 9 !" << endl;
+                getchar();
+            }else
             {
-                value += 2;
-                cout << ">=1 -- new value: " << value << endl;
-            }else if(value < 1)
-            {
-                value = 1/((1/value) - 2);
-                cout << "<1 -- new value: " << value << endl;
+                it++;
+                value = scale[it];
             }
 
             return *this;
@@ -107,9 +100,15 @@ namespace classp
         double value;
         string criterion;
 
+        weight& operator=(double v)
+        {
+            value = v;
+            return *this;
+        };
+
         friend ostream & operator << (ostream &out, const weight &w)
         {
-            out << w.value;
+            out << setprecision(3) << setw(6) << w.value;
             out << "\t" << w.criterion << endl;
             return out;
         };
@@ -130,35 +129,33 @@ namespace classp
 
         double tol = 0.1;
 
-        pairwiseMatrix()
+        pairwiseMatrix& clear()
         {
-            mainEigenvalue = 0;
-            CR = 0;
-
-            mainEigenvector.clear();
-
             for(unsigned int s=0; s<matrix.size(); s++)
             {
                 matrix[s].clear();
             }
+
             matrix.clear();
+
+            mainEigenvalue = 0;
+            mainEigenvector.clear();
+            CR = 0;
+
+            return *this;
+        }
+
+        pairwiseMatrix()
+        {
+            clear();
         }
 
         ~pairwiseMatrix()
         {
-            mainEigenvalue = 0;
-            CR = 0;
-
-            mainEigenvector.clear();
-
-            for(unsigned int s=0; s<matrix.size(); s++)
-            {
-                matrix[s].clear();
-            }
-            matrix.clear();
+            clear();
         }
 
-        pairwiseMatrix resize(unsigned int s)
+        pairwiseMatrix& resize(unsigned int s)
         {
             matrix.clear();
             matrix.resize(s);
@@ -167,6 +164,8 @@ namespace classp
             {
                 matrix[i].resize(s);
             }
+
+            return *this;
         }
 
         friend ostream & operator << (ostream &out, const pairwiseMatrix &m)
@@ -178,6 +177,17 @@ namespace classp
                 for(unsigned int j=0; j<m.matrix[i].size(); j++)
                 {
                     cout << setprecision(3) << setw(5) << m.matrix[i][j] << "\t";
+                }
+                cout << endl;
+            }
+
+            cout << "\npairwise comparison matrix it: " << endl << endl;
+
+            for(unsigned int i=0; i<m.matrix.size(); i++)
+            {
+                for(unsigned int j=0; j<m.matrix[i].size(); j++)
+                {
+                    cout << setprecision(3) << setw(5) << m.matrix[i][j].it << "\t";
                 }
                 cout << endl;
             }
@@ -208,11 +218,23 @@ namespace classp
             for(unsigned int i=0; i<m.matrix.size(); i++)
             {
                 m.matrix[i][i].value = 1;
+                m.matrix[i][i].it = 4;
                 for(unsigned int j=i+1; j<m.matrix[i].size(); j++)
                 {
                     in >> m.matrix[i][j];
 
-                    m.matrix[j][i].value = 1/(m.matrix[i][j].value);
+                    for(unsigned int s=0; s<m.matrix[i][j].scale.size(); s++)
+                    {
+                        if(m.matrix[i][j].value >= m.matrix[i][j].scale[s] - 0.0005 && m.matrix[i][j].value <= m.matrix[i][j].scale[s] + 0.0005)
+                        {
+                            m.matrix[i][j].it = s;
+                            m.matrix[j][i].it = 8 - s;
+                            break;
+                        }
+                    }
+
+                    //m.matrix[i][j].value = m.matrix[i][j].scale[m.matrix[i][j].it];
+                    m.matrix[j][i].value = m.matrix[j][i].scale[m.matrix[j][i].it];
                 }
             }
             return in;
@@ -273,37 +295,22 @@ namespace classp
 
         pairwiseMatrix& reduce(unsigned int n, unsigned int g, unsigned int s)
         {
-            cout << endl << "reducing..." << endl;
-            getchar();
             double auxCR;
 
-            while(matrix[n][g].value*matrix[g][s].value > matrix[n][s].value)
+            while(matrix[n][g].value*matrix[g][s].value > matrix[n][s].value && matrix[n][g].it != 0)
             {
-                cout << "1: " << matrix[n][g].value << "  2: " << matrix[n][s].value << endl;
                 auxCR = CR;
-                cout << endl << "CR: " << CR << endl;
-
-                cout << "before --" << matrix[n][g].value << endl;
 
                 matrix[n][g]--;
                 matrix[g][n]++;
 
-                cout << "after --" << matrix[n][g].value << endl;
-                getchar();
-
-                //getchar();
-
-                eigen();
                 consistencyRate();
-                cout << endl << "CR: " << CR << endl;
 
                 if(CR > auxCR)
                 {
-                    cout << endl << "undoing" << endl;
                     matrix[n][g]++;
                     matrix[g][n]--;
 
-                    eigen();
                     consistencyRate();
                     break;
                 }else if(CR <= tol)
@@ -317,37 +324,22 @@ namespace classp
 
         pairwiseMatrix& encrease(unsigned int n, unsigned int g, unsigned int s)
         {
-            cout << endl << "encreasing..." << endl;
-            getchar();
             double auxCR;
 
-            while(matrix[n][g].value*matrix[g][s].value < matrix[n][s].value)
+            while(matrix[n][g].value*matrix[g][s].value < matrix[n][s].value && matrix[n][g].it != 8)
             {
-                cout << "1: " << matrix[n][g].value << "  2: " << matrix[n][s].value << endl;
                 auxCR = CR;
-                cout << endl << "CR: " << CR << endl;
-
-                cout << "before ++" << matrix[n][s].value << endl;
 
                 matrix[n][s]++;
                 matrix[s][n]--;
 
-                cout << "after --" << matrix[n][s].value << endl;
-                getchar();
-
-                //getchar();
-
-                eigen();
                 consistencyRate();
-                cout << endl << "CR: " << CR << endl;
 
                 if(CR > auxCR)
                 {
-                    cout << endl << "undoing" << endl;
                     matrix[n][s]--;
                     matrix[s][n]++;
 
-                    eigen();
                     consistencyRate();
                     break;
                 }else if(CR <= tol)
@@ -365,8 +357,7 @@ namespace classp
 
             consistencyRate();
 
-            cout << endl << "CR: " << CR << endl;
-
+            if(CR > tol){
             for(unsigned int sz=3; sz<matrix.size(); sz++)
             {
                 for(unsigned int j=0; j<matrix.size()-2; j++)
@@ -375,9 +366,6 @@ namespace classp
                     {
                         g = 0;
                         s = 0;
-
-                        cout << endl << "a_nj: " << matrix[sz][j].value << "  a_nk: " << matrix[sz][k].value << "  a_jk: " << matrix[j][k].value << endl;
-
 
                         if(matrix[sz][j].value*matrix[j][k].value > matrix[sz][k].value)
                         {
@@ -388,8 +376,6 @@ namespace classp
                             g = k;
                             s = j;
                         }
-
-                        cout << endl << "g: " << g << "   s: " << s << endl;
 
                         if(g > 0 || s > 0)
                         {
@@ -413,23 +399,82 @@ namespace classp
                     if(CR <= tol)break;
                 }
                 if(CR <= tol)break;
-            }
+            }}
 
             return *this;
         };
-
-
 
         //Number& operator++ ();     // prefix ++: no parameter, returns a reference
         //Number  operator++ (int);  // postfix ++: dummy parameter, returns a value
     };
 
     struct problem{
-        unsigned int _NCriteria; // number of criteria
-        vector<weight> _weight; // criteria weight vector
-        pairwiseMatrix _pairwiseWeight; // matrix of pairwise comparisons of the criteria
-        unsigned int _NData; // number of data per criterion
-        vector<vector<float>> _data; // data for each criterion - vector[_NCriteria, _NData]
+        unsigned int NCriteria; // number of criteria
+        vector<weight> weightVector; // criteria weight vector
+        pairwiseMatrix pairwiseWeight; // matrix of pairwise comparisons of the criteria
+        unsigned int NData; // number of data per criterion
+        vector<vector<float>> data; // data for each criterion - vector[_NCriteria, _NData]
+
+        problem& clear()
+        {
+            NCriteria = 0;
+            weightVector.clear();
+            pairwiseWeight.clear();
+            NData = 0;
+            for(unsigned int s=0; s<data.size(); s++)
+            {
+                data[s].clear();
+            }
+            data.clear();
+
+            return *this;
+        };
+
+        problem& get(string site)
+        {
+            fstream file;
+            file.open(site);
+
+            file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+            file >> NCriteria;
+
+            file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+            weightVector.resize(NCriteria);
+
+            for(unsigned int s=0; s<weightVector.size(); s++)
+            {
+                file >> weightVector[s];
+            }
+
+            file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+            pairwiseWeight.resize(NCriteria);
+
+            file >> pairwiseWeight;
+
+            file.close();
+
+            return *this;
+        };
+
+        problem& weightNormalize()
+        {
+            double sum = 0;
+
+            for(unsigned s=0; s<weightVector.size(); s++)
+            {
+                sum += weightVector[s].value;
+            }
+
+            for(unsigned s=0; s<weightVector.size(); s++)
+            {
+                weightVector[s].value = weightVector[s].value/sum;
+            }
+
+            return *this;
+        };
     };
 
     struct solution{
@@ -449,10 +494,6 @@ namespace classp
         bool get();
         bool print();
 
-        double consistencyRate();
-        bool constructivelyForceConsistency(double tol);
-        bool forceConsistency(double tol, unsigned int k);
-        bool reduce(double tol, unsigned int n, unsigned int g, unsigned int s);
         //bool (unsigned int i, unsigned int j);
 
         void ABC();
