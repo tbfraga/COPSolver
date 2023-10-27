@@ -15,7 +15,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version:
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/10/26
+// last modification: 2023/10/27
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -413,7 +413,7 @@ namespace classp
         vector<weight> weightVector; // criteria weight vector
         pairwiseMatrix pairwiseWeight; // matrix of pairwise comparisons of the criteria
         unsigned int NData; // number of data per criterion
-        vector<vector<float>> data; // data for each criterion - vector[_NCriteria, _NData]
+        vector<vector<double>> data; // data for each criterion - vector[_NCriteria, _NData]
 
         problem& clear()
         {
@@ -430,33 +430,62 @@ namespace classp
             return *this;
         };
 
-        problem& get(string site)
+        problem()
         {
-            fstream file;
-            file.open(site);
+            clear();
+        }
 
-            file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+        ~problem()
+        {
+            clear();
+        }
 
-            file >> NCriteria;
-
-            file.ignore(std::numeric_limits<std::streamsize>::max(),':');
-
-            weightVector.resize(NCriteria);
-
-            for(unsigned int s=0; s<weightVector.size(); s++)
+        friend istream & operator >> (istream &in,  problem &p)
+        {
+            if(&in == &cin)
             {
-                file >> weightVector[s];
+                cout << endl << "error: operator >> for struc problem is only defined for geting data from file !!!" << endl << endl;
+                p.clear();
+            }else
+            {
+                in.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+                in >> p.NCriteria;
+
+                in.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+                p.weightVector.resize(p.NCriteria);
+
+                for(unsigned int s=0; s<p.weightVector.size(); s++)
+                {
+                    in >> p.weightVector[s];
+                }
+
+                in.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+                p.pairwiseWeight.resize(p.NCriteria);
+
+                in >> p.pairwiseWeight;
+
+                in.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+                in >> p.NData;
+
+                in.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+                p.data.resize(p.NData);
+
+                for(unsigned int i=0; i<p.data.size(); i++)
+                {
+                    p.data[i].resize(p.NCriteria);
+                    for(unsigned int j=0; j<p.data[i].size(); j++)
+                    {
+                        in >> p.data[i][j];
+                    }
+                }
             }
 
-            file.ignore(std::numeric_limits<std::streamsize>::max(),':');
-
-            pairwiseWeight.resize(NCriteria);
-
-            file >> pairwiseWeight;
-
-            file.close();
-
-            return *this;
+            return in;
         };
 
         problem& weightNormalize()
@@ -478,7 +507,184 @@ namespace classp
     };
 
     struct solution{
-        double CR;
+
+        vector<vector<double>> perMatrix;
+        vector<vector<unsigned int>> ABCMatrix;
+        vector<double> weight;
+        vector<unsigned int> classification;
+
+        solution& clear()
+        {
+            for(unsigned int s=0; s<perMatrix.size(); s++)
+            {
+                perMatrix[s].clear();
+            }
+
+            perMatrix.clear();
+
+            for(unsigned int s=0; s<ABCMatrix.size(); s++)
+            {
+                ABCMatrix[s].clear();
+            }
+
+            ABCMatrix.clear();
+
+            weight.clear();
+            classification.clear();
+
+            return *this;
+        };
+
+        solution()
+        {
+            clear();
+        }
+
+        ~solution()
+        {
+            clear();
+        }
+
+        solution& resize(problem p)
+        {
+            perMatrix.resize(p.NData);
+
+            for(unsigned int i=0; i<perMatrix.size(); i++)
+            {
+                perMatrix[i].resize(p.NCriteria);
+            }
+
+            ABCMatrix.resize(p.NData);
+
+            for(unsigned int i=0; i<ABCMatrix.size(); i++)
+            {
+                ABCMatrix[i].resize(p.NCriteria);
+            }
+
+            weight.resize(p.NData);
+
+            return *this;
+        };
+
+        friend ostream & operator << (ostream &out, const solution &s)
+        {
+            cout << "--> Solution: " << endl << endl;
+
+            cout << "percentil data matrix: " << endl << endl;
+
+            for(unsigned int i=0; i<s.perMatrix.size(); i++)
+            {
+                for(unsigned int j=0; j<s.perMatrix[i].size(); j++)
+                {
+                    cout << setprecision(4) << setw(4) << s.perMatrix[i][j] << "\t";
+                }
+                cout << endl;
+            }
+
+            cout << endl << "ABC classification matrix: " << endl << endl;
+
+            for(unsigned int i=0; i<s.ABCMatrix.size(); i++)
+            {
+                for(unsigned int j=0; j<s.ABCMatrix[i].size(); j++)
+                {
+                    cout << setprecision(4) << setw(4) << s.ABCMatrix[i][j] << "\t";
+                }
+                cout << endl;
+            }
+
+            cout << endl << "weight: " << endl << endl;
+
+            for(unsigned int i=0; i<s.weight.size(); i++)
+            {
+                cout << setprecision(4) << setw(4) << s.weight[i] << "\t";
+            }
+            cout << endl;
+
+            return out;
+        };
+
+        solution& percentilMatrix(problem p)
+        {
+            double sum;
+
+            for(unsigned int c=0; c<perMatrix[0].size(); c++)
+            {
+                sum = 0;
+
+                for(unsigned int d=0; d<perMatrix.size(); d++)
+                {
+                    sum += p.data[d][c];
+                }
+
+                for(unsigned int d=0; d<perMatrix.size(); d++)
+                {
+                    if(sum == 0)
+                    {
+                        perMatrix[d][c] = 0;
+                    }else
+                    {
+                        perMatrix[d][c] = 100*(p.data[d][c]/sum);
+                    }
+                }
+            }
+
+            return *this;
+        };
+
+        solution& ABC(problem p)
+        {
+            unsigned int it, product;
+
+            resize(p);
+            percentilMatrix(p);
+
+            for(unsigned int c=0; c<ABCMatrix[0].size(); c++)
+            {
+                for(unsigned int d=0; d<ABCMatrix.size(); d++)
+                {
+                    it = d;
+
+                    for(unsigned int l=0; l<d; l++) // finding position
+                    {
+                        product = ABCMatrix[l][c];
+
+                        if(perMatrix[d][c] < perMatrix[product][c])
+                        {
+                            it = l;
+
+                            for(unsigned int p=d-1; p>l; p--) // relocation
+                            {
+                                ABCMatrix[p+1][c] = ABCMatrix[p][c];
+                            }
+
+                            ABCMatrix[l+1][c] = ABCMatrix[l][c];
+
+                            break;
+                        }
+                    }
+
+                    ABCMatrix[it][c] = d;
+                }
+            }
+
+            return *this;
+        };
+
+        solution& analyticHierarchyProcess(problem p)
+        {
+            ABC(p);
+
+            for(unsigned int i=0; i<perMatrix.size(); i++)
+            {
+                weight[i] = 0;
+                for(unsigned int j=0; j<perMatrix[i].size(); j++)
+                {
+                    weight[i] += perMatrix[i][j]*p.weightVector[j].value;
+                }
+            }
+
+            return *this;
+        };
     };
 
     class clssp
@@ -496,7 +702,8 @@ namespace classp
 
         //bool (unsigned int i, unsigned int j);
 
-        void ABC();
+        bool ABC();
+        bool analyticHierarchyProcess();
     };
 
 }

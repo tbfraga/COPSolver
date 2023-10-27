@@ -15,7 +15,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version:
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/10/26
+// last modification: 2023/10/27
 
 #include "../lib/classification-problem.h"
 
@@ -24,6 +24,7 @@ namespace classp
     void clssp::clear()
     {
         _problem.clear();
+        _solution.clear();
     };
 
     bool clssp::get()
@@ -33,7 +34,12 @@ namespace classp
         string site = getenv("HOME");
         site += "/COPSolver/data/data.txt";
 
-        _problem.get(site);
+        fstream file;
+        file.open(site);
+
+        file >> _problem;
+
+        file.close();
 
         _problem.pairwiseWeight.consistencyRate();
 
@@ -71,46 +77,42 @@ namespace classp
             cout << _problem.weightVector[s] << endl;
         }
 
-        /*
-
-        cout << "weight: " << endl << endl;
-
-        for(unsigned int s=0; s<_problem._weight.size(); s++)
-        {
-            cout << _problem._weight[s] << "\t";
-        }
-
-        cout << endl << endl;
-
-        cout << "pairwise comparison weight: " << endl << endl;
-
-        for(unsigned int s=0; s<_problem._pairwiseWeight.size(); s++)
-        {
-            for(unsigned int ss=0; ss<_problem._pairwiseWeight[s].size(); ss++)
-            {
-                cout << _problem._pairwiseWeight[s][ss] << "\t";
-            }
-
-            cout << endl;
-        }
-
         cout << endl;
 
-        cout << "number of data per criterion: " << _problem._NData << endl << endl;
+        cout << "number of data per criterion: " << _problem.NData << endl << endl;
 
         cout << "data: " << endl << endl;
 
-        for(unsigned int s=0; s<_problem._data.size(); s++)
+        for(unsigned int i=0; i<_problem.data.size(); i++)
         {
-            for(unsigned int ss=0; ss<_problem._data[s].size(); ss++)
+            for(unsigned int j=0; j<_problem.data[i].size(); j++)
             {
-                cout << _problem._data[s][ss] << "\t";
+                cout << setprecision(7) << setw(5) << _problem.data[i][j] << "\t";
             }
 
             cout << endl;
-        }*/
+        }
 
         cout << endl;
+
+        return 0;
+    }
+
+    bool clssp::ABC()
+    {
+        _solution.ABC(_problem);
+
+        cout << endl << "ABC classification: " << endl;
+        cout << endl << _solution << endl;
+
+        return 0;
+    };
+
+    bool clssp::analyticHierarchyProcess()
+    {
+        _solution.analyticHierarchyProcess(_problem);
+
+        cout << endl << _solution << endl;
 
         return 0;
     };
