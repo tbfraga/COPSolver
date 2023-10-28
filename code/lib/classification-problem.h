@@ -95,10 +95,41 @@ namespace classp
         };
     };
 
+    struct criteria
+    {
+        string criterion;
+        string object;
+        string operationA;
+        double valueA;
+        string operationB;
+        double valueB;
+        string operationC;
+        double valueC;
+
+        friend istream & operator >> (istream &in,  criteria &c)
+        {
+            in >> c.criterion;
+            in >> c.object;
+            in >> c.operationA;
+            in >> c.valueA;
+            in >> c.operationB;
+            in >> c.valueB;
+            in >> c.operationC;
+            in >> c.valueC;
+            return in;
+        };
+
+        friend ostream & operator << (ostream &out, const criteria &c)
+        {
+            out << c.criterion;
+            return out;
+        };
+    };
+
     struct weight
     {
         double value;
-        string criterion;
+        criteria criterion;
 
         weight& operator=(double v)
         {
@@ -510,6 +541,7 @@ namespace classp
 
         vector<vector<double>> perMatrix;
         vector<vector<unsigned int>> ABCMatrix;
+        vector<vector<double>> acmSumMatrix;
         vector<double> weight;
         vector<unsigned int> classification;
 

@@ -167,3 +167,6 @@ int main()
 
     return 0;
 }
+
+// Note: talvez o infinito não seja bem representado por um caminho continuo e fechado que circula em torno de si mesmo, como o número 8.
+// É possível que o infinito seja melhor representado pelo número 9. Ele termina em determinado ponto e depois recomeça em um outro ponto do espaço.
