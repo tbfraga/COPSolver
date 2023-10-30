@@ -36,7 +36,7 @@ repository: github.com/tbfraga/COPSolver
 // version: 1.0-1_20230829
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/08/18
+// last modification: 2023/10/30
 
 #include "lib/classification-problem.h"
 #include "lib/multiproduct-batch-processing-time-maximization-problem.h"
@@ -80,8 +80,6 @@ int main()
         }
 
         classp::clssp _problem;
-
-        _problem.get();
 
         _problem.analyticHierarchyProcess();
 
@@ -168,5 +166,5 @@ int main()
     return 0;
 }
 
-// Note: talvez o infinito não seja bem representado por um caminho continuo e fechado que circula em torno de si mesmo, como o número 8.
-// É possível que o infinito seja melhor representado pelo número 9. Ele termina em determinado ponto e depois recomeça em um outro ponto do espaço.
+// Note: talvez o infinito não seja bem representado por um caminho continuo e fechado que circula em torno de si mesmo, tal como o número 8.
+// É possível que o infinito seja melhor representado pelo número 9. Ele termina em determinado ponto e depois recomeça em algum outro ponto de sua trajetória.

@@ -15,7 +15,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version:
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/10/27
+// last modification: 2023/10/30
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -59,7 +59,7 @@ namespace classp
         {
             if(it == 8)
             {
-                cout << endl << "error: cannot encrease value 9 !" << endl;
+                cout << endl << "error: cannot encrease level 9 !" << endl;
                 getchar();
             }else
             {
@@ -79,6 +79,7 @@ namespace classp
         level& operator=(level v)
         {
             value = v.value;
+            it = v.it;
             return *this;
         };
 
@@ -97,31 +98,25 @@ namespace classp
 
     struct criteria
     {
-        string criterion;
-        string object;
-        string operationA;
+        string name;
+        string mode;
         double valueA;
-        string operationB;
         double valueB;
-        string operationC;
         double valueC;
 
         friend istream & operator >> (istream &in,  criteria &c)
         {
-            in >> c.criterion;
-            in >> c.object;
-            in >> c.operationA;
+            in >> c.name;
+            in >> c.mode;
             in >> c.valueA;
-            in >> c.operationB;
             in >> c.valueB;
-            in >> c.operationC;
             in >> c.valueC;
             return in;
         };
 
         friend ostream & operator << (ostream &out, const criteria &c)
         {
-            out << c.criterion;
+            out << c.name;
             return out;
         };
     };
@@ -152,7 +147,7 @@ namespace classp
         };
     };
 
-    struct pairwiseMatrix{
+    struct pairwiseMatrix{ // Saaty(1987)
         vector<vector<level>> matrix;
         double mainEigenvalue;
         vector <double> mainEigenvector;
@@ -188,7 +183,6 @@ namespace classp
 
         pairwiseMatrix& resize(unsigned int s)
         {
-            matrix.clear();
             matrix.resize(s);
 
             for(unsigned int i=0; i<matrix.size(); i++)
@@ -201,44 +195,45 @@ namespace classp
 
         friend ostream & operator << (ostream &out, const pairwiseMatrix &m)
         {
-            cout << "pairwise comparison matrix: " << endl << endl;
+            out << "pairwise comparison matrix: " << endl << endl;
 
             for(unsigned int i=0; i<m.matrix.size(); i++)
             {
                 for(unsigned int j=0; j<m.matrix[i].size(); j++)
                 {
-                    cout << setprecision(3) << setw(5) << m.matrix[i][j] << "\t";
+                    out << setprecision(3) << setw(5) << m.matrix[i][j] << "\t";
                 }
-                cout << endl;
+                out << endl;
             }
 
-            cout << "\npairwise comparison matrix it: " << endl << endl;
+            out << "\npairwise comparison matrix it: " << endl << endl;
 
             for(unsigned int i=0; i<m.matrix.size(); i++)
             {
                 for(unsigned int j=0; j<m.matrix[i].size(); j++)
                 {
-                    cout << setprecision(3) << setw(5) << m.matrix[i][j].it << "\t";
+                    out << setprecision(3) << setw(5) << m.matrix[i][j].it << "\t";
                 }
-                cout << endl;
+                out << endl;
             }
 
-            cout << endl << "main eigenvalue: " << m.mainEigenvalue << endl;
-            cout << endl << "main eigenvector: ";
+            out << endl << "main eigenvalue: " << m.mainEigenvalue << endl;
+
+            out << endl << "main eigenvector: ";
             for(unsigned int s=0; s<m.mainEigenvector.size(); s++)
             {
-                cout << setprecision(3) << m.mainEigenvector[s] << "\t";
+                out << setprecision(3) << m.mainEigenvector[s] << "\t";
             }
-            cout << endl;
+            out << endl;
 
-            cout << endl << "consistency rate: " << m.CR;
+            out << endl << "consistency rate: " << m.CR;
 
-            if(m.CR <= 0.1)
+            if(m.CR <= m.tol)
             {
-                cout << "\n\nCongratulations, your matrix of pairwise comparation is consistent !!! \n";
+                out << "\n\nCongratulations, your matrix of pairwise comparation is consistent !!! \n";
             }else
             {
-                cout << "\n\nSorry, your matrix of pairwise comparation is inconsistent !!! \n";
+                out << "\n\nSorry, your matrix of pairwise comparation is inconsistent !!! \n";
             }
 
             return out;
@@ -246,25 +241,50 @@ namespace classp
 
         friend istream & operator >> (istream &in,  pairwiseMatrix &m)
         {
+            const unsigned int scaleMaxIt = m.matrix[0][0].scale.size() - 1;
+
             for(unsigned int i=0; i<m.matrix.size(); i++)
             {
                 m.matrix[i][i].value = 1;
-                m.matrix[i][i].it = 4;
+                m.matrix[i][i].it = floor(scaleMaxIt/2);
+
                 for(unsigned int j=i+1; j<m.matrix[i].size(); j++)
                 {
                     in >> m.matrix[i][j];
 
                     for(unsigned int s=0; s<m.matrix[i][j].scale.size(); s++)
                     {
-                        if(m.matrix[i][j].value >= m.matrix[i][j].scale[s] - 0.0005 && m.matrix[i][j].value <= m.matrix[i][j].scale[s] + 0.0005)
+                        if (scaleMaxIt == 0)
+                        {
+                            m.matrix[i][j].it = 0;
+                            m.matrix[j][i].it = 0;
+                        } else if(m.matrix[i][j].value >= (m.matrix[i][j].scale[scaleMaxIt]))
+                        {
+                            m.matrix[i][j].it = scaleMaxIt;
+                        } else if(m.matrix[i][j].value <= m.matrix[i][j].scale[0])
+                        {
+                            m.matrix[i][j].it = 0;
+                        } else if(s > 0 && s < scaleMaxIt
+                            && m.matrix[i][j].value >= (m.matrix[i][j].scale[s] + m.matrix[i][j].scale[s-1])/2
+                            && m.matrix[i][j].value <= (m.matrix[i][j].scale[s] + m.matrix[i][j].scale[s+1])/2)
                         {
                             m.matrix[i][j].it = s;
-                            m.matrix[j][i].it = 8 - s;
+                            m.matrix[j][i].it = scaleMaxIt - s;
                             break;
+                        } else if(s == 0 && s < scaleMaxIt
+                            && m.matrix[i][j].value <= (m.matrix[i][j].scale[0] + m.matrix[i][j].scale[1])/2)
+                        {
+                            m.matrix[i][j].it = 0;
+                            m.matrix[j][i].it = scaleMaxIt;
+                        } else if(s > 0 && s == scaleMaxIt
+                            && m.matrix[i][j].value >= (m.matrix[i][j].scale[s] + m.matrix[i][j].scale[s-1])/2)
+                        {
+                            m.matrix[i][j].it = scaleMaxIt;
+                            m.matrix[j][i].it = 0;
                         }
                     }
 
-                    //m.matrix[i][j].value = m.matrix[i][j].scale[m.matrix[i][j].it];
+                    m.matrix[i][j].value = m.matrix[i][j].scale[m.matrix[i][j].it];
                     m.matrix[j][i].value = m.matrix[j][i].scale[m.matrix[j][i].it];
                 }
             }
@@ -310,7 +330,7 @@ namespace classp
             return *this;
         }
 
-        pairwiseMatrix& consistencyRate()
+        pairwiseMatrix& consistencyRate() // Saaty(1987)
         {
             eigen();
 
@@ -357,7 +377,7 @@ namespace classp
         {
             double auxCR;
 
-            while(matrix[n][g].value*matrix[g][s].value < matrix[n][s].value && matrix[n][g].it != 8)
+            while(matrix[n][g].value*matrix[g][s].value < matrix[n][s].value && matrix[n][g].it != (matrix[n][g].scale.size() - 1))
             {
                 auxCR = CR;
 
@@ -519,6 +539,40 @@ namespace classp
             return in;
         };
 
+        friend ostream & operator << (ostream &out, const problem &p)
+        {
+            out << "number of criteria: " << p.NCriteria << endl << endl;
+
+            out << p.pairwiseWeight << endl;
+
+            out << "weight: " << endl << endl;
+
+            for(unsigned int s=0; s<p.weightVector.size(); s++)
+            {
+                out << p.weightVector[s] << endl;
+            }
+
+            out << endl;
+
+            out << "number of data per criterion: " << p.NData << endl << endl;
+
+            out << "data: " << endl << endl;
+
+            for(unsigned int i=0; i<p.data.size(); i++)
+            {
+                for(unsigned int j=0; j<p.data[i].size(); j++)
+                {
+                    out << setprecision(7) << setw(5) << p.data[i][j] << "\t";
+                }
+
+                out << endl;
+            }
+
+            out << endl;
+
+            return out;
+        };
+
         problem& weightNormalize()
         {
             double sum = 0;
@@ -540,10 +594,11 @@ namespace classp
     struct solution{
 
         vector<vector<double>> perMatrix;
-        vector<vector<unsigned int>> ABCMatrix;
-        vector<vector<double>> acmSumMatrix;
+        vector<vector<unsigned int>> orderedMatrix;
+        vector<vector<char>> ABCMatrix;
         vector<double> weight;
-        vector<unsigned int> classification;
+        vector<unsigned int> classf;
+        vector<char> ABCClassf;
 
         solution& clear()
         {
@@ -554,6 +609,13 @@ namespace classp
 
             perMatrix.clear();
 
+            for(unsigned int s=0; s<orderedMatrix.size(); s++)
+            {
+               orderedMatrix[s].clear();
+            }
+
+            orderedMatrix.clear();
+
             for(unsigned int s=0; s<ABCMatrix.size(); s++)
             {
                 ABCMatrix[s].clear();
@@ -562,7 +624,8 @@ namespace classp
             ABCMatrix.clear();
 
             weight.clear();
-            classification.clear();
+            classf.clear();
+            ABCClassf.clear();
 
             return *this;
         };
@@ -586,6 +649,13 @@ namespace classp
                 perMatrix[i].resize(p.NCriteria);
             }
 
+            orderedMatrix.resize(p.NData);
+
+            for(unsigned int i=0; i<orderedMatrix.size(); i++)
+            {
+                orderedMatrix[i].resize(p.NCriteria);
+            }
+
             ABCMatrix.resize(p.NData);
 
             for(unsigned int i=0; i<ABCMatrix.size(); i++)
@@ -594,43 +664,72 @@ namespace classp
             }
 
             weight.resize(p.NData);
+            classf.resize(p.NData);
+            ABCClassf.resize(p.NData);
 
             return *this;
         };
 
         friend ostream & operator << (ostream &out, const solution &s)
         {
-            cout << "--> Solution: " << endl << endl;
+            out << "--> Solution: " << endl << endl;
 
-            cout << "percentil data matrix: " << endl << endl;
+            out << "percentil data matrix: " << endl << endl;
 
             for(unsigned int i=0; i<s.perMatrix.size(); i++)
             {
                 for(unsigned int j=0; j<s.perMatrix[i].size(); j++)
                 {
-                    cout << setprecision(4) << setw(4) << s.perMatrix[i][j] << "\t";
+                    out << setprecision(4) << setw(4) << s.perMatrix[i][j] << "\t";
                 }
-                cout << endl;
+                out << endl;
             }
 
-            cout << endl << "ABC classification matrix: " << endl << endl;
+            out << endl << "Ordered matrix: " << endl << endl;
+
+            for(unsigned int i=0; i<s.orderedMatrix.size(); i++)
+            {
+                for(unsigned int j=0; j<s.orderedMatrix[i].size(); j++)
+                {
+                    out << setprecision(4) << setw(4) << s.orderedMatrix[i][j] << "\t";
+                }
+                out << endl;
+            }
+
+            out << endl << "ABC matrix: " << endl << endl;
 
             for(unsigned int i=0; i<s.ABCMatrix.size(); i++)
             {
                 for(unsigned int j=0; j<s.ABCMatrix[i].size(); j++)
                 {
-                    cout << setprecision(4) << setw(4) << s.ABCMatrix[i][j] << "\t";
+                    out << setprecision(4) << setw(4) << s.ABCMatrix[i][j] << "\t";
                 }
-                cout << endl;
+                out << endl;
             }
 
-            cout << endl << "weight: " << endl << endl;
+            out << endl << "multicriteria weight: " << endl << endl;
 
             for(unsigned int i=0; i<s.weight.size(); i++)
             {
-                cout << setprecision(4) << setw(4) << s.weight[i] << "\t";
+                out << setprecision(4) << setw(4) << s.weight[i] << "\t";
             }
-            cout << endl;
+            out << endl;
+
+            out << endl << "multicriteria ordering: " << endl << endl;
+
+            for(unsigned int i=0; i<s.classf.size(); i++)
+            {
+                out << setprecision(4) << setw(4) << s.classf[i] << "\t";
+            }
+            out << endl;
+
+            out << endl << "ABC multicriteria classification: " << endl << endl;
+
+            for(unsigned int i=0; i<s.ABCClassf.size(); i++)
+            {
+                out << setprecision(4) << setw(4) << s.ABCClassf[i] << "\t";
+            }
+            out << endl;
 
             return out;
         };
@@ -666,36 +765,130 @@ namespace classp
         solution& ABC(problem p)
         {
             unsigned int it, product;
+            double sum;
 
             resize(p);
             percentilMatrix(p);
 
-            for(unsigned int c=0; c<ABCMatrix[0].size(); c++)
+            // ordering
+
+            for(unsigned int c=0; c<orderedMatrix[0].size(); c++) // criterion
             {
-                for(unsigned int d=0; d<ABCMatrix.size(); d++)
+                for(unsigned int d=0; d<orderedMatrix.size(); d++) // data
                 {
                     it = d;
 
                     for(unsigned int l=0; l<d; l++) // finding position
                     {
-                        product = ABCMatrix[l][c];
+                        product = orderedMatrix[l][c];
 
-                        if(perMatrix[d][c] < perMatrix[product][c])
+                        if(perMatrix[d][c] > perMatrix[product][c])
                         {
                             it = l;
 
-                            for(unsigned int p=d-1; p>l; p--) // relocation
+                            for(unsigned int i=d-1; i>l; i--) // relocation
                             {
-                                ABCMatrix[p+1][c] = ABCMatrix[p][c];
+                                orderedMatrix[i+1][c] = orderedMatrix[i][c];
                             }
 
-                            ABCMatrix[l+1][c] = ABCMatrix[l][c];
+                            orderedMatrix[l+1][c] = orderedMatrix[l][c];
 
                             break;
                         }
                     }
 
-                    ABCMatrix[it][c] = d;
+                    orderedMatrix[it][c] = d;
+                }
+            }
+
+            // ABC classification
+
+            for(unsigned int c=0; c<orderedMatrix[0].size(); c++) // criterion
+            {
+                sum = 0;
+
+                for(unsigned int d=0; d<orderedMatrix.size(); d++) // data
+                {
+                    product = orderedMatrix[d][c];
+
+                    if(p.weightVector[c].criterion.mode == "value")
+                    {
+                        if(p.data[product][c] == p.weightVector[c].criterion.valueA)
+                        {
+                            ABCMatrix[product][c] = 'A';
+                        } else if(p.data[product][c] == p.weightVector[c].criterion.valueB)
+                        {
+                            ABCMatrix[product][c] = 'B';
+                        } else if(p.data[product][c] == p.weightVector[c].criterion.valueC)
+                        {
+                            ABCMatrix[product][c] = 'C';
+                        }
+                    } else if(p.weightVector[c].criterion.mode == "acmSum")
+                    {
+                        sum += perMatrix[product][c];
+
+                        if(d == 0 && sum >= p.weightVector[c].criterion.valueA)
+                        {
+                            ABCMatrix[product][c] = 'A';
+                        } if(sum <= p.weightVector[c].criterion.valueA)
+                        {
+                            ABCMatrix[product][c] = 'A';
+                        } else if(sum <= p.weightVector[c].criterion.valueB)
+                        {
+                            ABCMatrix[product][c] = 'B';
+                        } else
+                        {
+                            ABCMatrix[product][c] = 'C';
+                        }
+                    }
+                }
+            }
+
+            return *this;
+        };
+
+        solution& classification()
+        {
+            unsigned int it;
+            double sum;
+
+            for(unsigned int s=0; s<weight.size(); s++) // data
+            {
+                it = s;
+
+                for(unsigned int l=0; l<s; l++) // finding position
+                {
+                    if(weight[classf[l]] < weight[s])
+                    {
+                        it = l;
+                        for(unsigned int p=s-1; p>l; p--) // relocation
+                        {
+                            classf[p+1] = classf[p];
+                        }
+
+                        classf[l+1] = classf[l];
+
+                        break;
+                    }
+                }
+
+                classf[it] = s;
+            }
+
+            sum = 0;
+            for(unsigned int s=0; s<classf.size(); s++)
+            {
+                sum += weight[classf[s]];
+
+                if(sum <= 80)
+                {
+                    ABCClassf[classf[s]] = 'A';
+                } else if(sum <= 95)
+                {
+                    ABCClassf[classf[s]] = 'B';
+                } else
+                {
+                    ABCClassf[classf[s]] = 'C';
                 }
             }
 
@@ -715,6 +908,8 @@ namespace classp
                 }
             }
 
+            classification();
+
             return *this;
         };
     };
@@ -731,8 +926,6 @@ namespace classp
         void clear();
         bool get();
         bool print();
-
-        //bool (unsigned int i, unsigned int j);
 
         bool ABC();
         bool analyticHierarchyProcess();

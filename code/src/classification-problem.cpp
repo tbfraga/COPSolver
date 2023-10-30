@@ -15,7 +15,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version:
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/10/27
+// last modification: 2023/10/30
 
 #include "../lib/classification-problem.h"
 
@@ -40,26 +40,6 @@ namespace classp
         file >> _problem;
 
         file.close();
-
-        _problem.pairwiseWeight.consistencyRate();
-
-        print();
-
-        cout << endl;
-
-        if(_problem.pairwiseWeight.CR > 0.1)
-        {
-            _problem.pairwiseWeight.forceConsistency();
-        }
-
-        for(unsigned int s=0; s<_problem.pairwiseWeight.mainEigenvector.size(); s++)
-        {
-            _problem.weightVector[s] = _problem.pairwiseWeight.mainEigenvector[s];
-        }
-
-        _problem.weightNormalize();
-
-        print();
 
         return 0;
     };
@@ -110,9 +90,49 @@ namespace classp
 
     bool clssp::analyticHierarchyProcess()
     {
+        get();
+
+        string site = getenv("HOME");
+        site += "/COPSolver/results/AHP_problem.txt";
+
+        fstream file;
+
+        file.open(site, ios::out);
+
+        file << "--> Data:\n\n";
+
+        _problem.pairwiseWeight.consistencyRate();
+
+        file << _problem;
+
+        if(_problem.pairwiseWeight.CR > 0.1)
+        {
+            _problem.pairwiseWeight.forceConsistency();
+        }
+
+        for(unsigned int s=0; s<_problem.pairwiseWeight.mainEigenvector.size(); s++)
+        {
+            _problem.weightVector[s] = _problem.pairwiseWeight.mainEigenvector[s];
+        }
+
+        _problem.weightNormalize();
+
+        file << endl << endl << "--> Adjusted data:\n\n";
+
+        file << _problem;
+
+        file.close();
+
         _solution.analyticHierarchyProcess(_problem);
 
-        cout << endl << _solution << endl;
+        site = getenv("HOME");
+        site += "/COPSolver/results/AHP_solution.txt";
+
+        file.open(site, ios::out);
+
+        file << _solution << endl;
+
+        file.close();
 
         return 0;
     };
