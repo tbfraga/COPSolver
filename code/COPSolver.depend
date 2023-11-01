@@ -36,3 +36,774 @@
 1693314314 source:/home/work/Documents/GitHub/project-combinatorial-optimization-problems/COPSolver_1.0-1/C++ lib/code/src/multiproduct-batch-processing-time-maximization-problem.cpp
 	"../lib/multiproduct-batch-processing-time-maximization-problem.h"
 
+1698850006 source:/home/work/Documents/GitHub/COPSolver/code/main.cpp
+	"lib/classification-problem.h"
+	"lib/multiproduct-batch-processing-time-maximization-problem.h"
+
+1693241751 /home/work/Documents/GitHub/COPSolver/code/lib/multiproduct-batch-processing-time-maximization-problem.h
+	<math.h>
+	<unistd.h>
+	<bits/stdc++.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<iostream>
+	<fstream>
+	<iomanip>
+	<vector>
+
+1693314314 source:/home/work/Documents/GitHub/COPSolver/code/src/multiproduct-batch-processing-time-maximization-problem.cpp
+	"../lib/multiproduct-batch-processing-time-maximization-problem.h"
+
+1698850020 source:/home/work/Documents/GitHub/COPSolver/code/src/classification-problem.cpp
+	"../lib/classification-problem.h"
+
+1698852015 /home/work/Documents/GitHub/COPSolver/code/lib/classification-problem.h
+	<vector>
+	<string>
+	<iterator>
+	<iostream>
+	<fstream>
+	<bits/stdc++.h>
+	"Eigen/Eigenvalues"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/Eigenvalues
+	"Core"
+	"src/Core/util/DisableStupidWarnings.h"
+	"Cholesky"
+	"Jacobi"
+	"Householder"
+	"LU"
+	"Geometry"
+	"src/misc/RealSvd2x2.h"
+	"src/Eigenvalues/Tridiagonalization.h"
+	"src/Eigenvalues/RealSchur.h"
+	"src/Eigenvalues/EigenSolver.h"
+	"src/Eigenvalues/SelfAdjointEigenSolver.h"
+	"src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h"
+	"src/Eigenvalues/HessenbergDecomposition.h"
+	"src/Eigenvalues/ComplexSchur.h"
+	"src/Eigenvalues/ComplexEigenSolver.h"
+	"src/Eigenvalues/RealQZ.h"
+	"src/Eigenvalues/GeneralizedEigenSolver.h"
+	"src/Eigenvalues/MatrixBaseEigenvalues.h"
+	"mkl_lapacke.h"
+	"src/misc/lapacke.h"
+	"src/Eigenvalues/RealSchur_LAPACKE.h"
+	"src/Eigenvalues/ComplexSchur_LAPACKE.h"
+	"src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h"
+	"src/Core/util/ReenableStupidWarnings.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/Core
+	"src/Core/util/DisableStupidWarnings.h"
+	<cuda_runtime.h>
+	<new>
+	"src/Core/util/Macros.h"
+	<complex>
+	"src/Core/util/MKL_support.h"
+	<malloc.h>
+	<immintrin.h>
+	<mmintrin.h>
+	<emmintrin.h>
+	<xmmintrin.h>
+	<pmmintrin.h>
+	<tmmintrin.h>
+	<smmintrin.h>
+	<nmmintrin.h>
+	<immintrin.h>
+	<altivec.h>
+	<altivec.h>
+	<arm_neon.h>
+	<vecintrin.h>
+	<vector_types.h>
+	<host_defines.h>
+	<cuda_fp16.h>
+	<omp.h>
+	<cerrno>
+	<cstddef>
+	<cstdlib>
+	<cmath>
+	<cassert>
+	<functional>
+	<iosfwd>
+	<cstring>
+	<string>
+	<limits>
+	<climits>
+	<algorithm>
+	<type_traits>
+	<iostream>
+	<intrin.h>
+	<SYCL/sycl.hpp>
+	"src/Core/util/Constants.h"
+	"src/Core/util/Meta.h"
+	"src/Core/util/ForwardDeclarations.h"
+	"src/Core/util/StaticAssert.h"
+	"src/Core/util/XprHelper.h"
+	"src/Core/util/Memory.h"
+	"src/Core/util/IntegralConstant.h"
+	"src/Core/util/SymbolicIndex.h"
+	"src/Core/NumTraits.h"
+	"src/Core/MathFunctions.h"
+	"src/Core/GenericPacketMath.h"
+	"src/Core/MathFunctionsImpl.h"
+	"src/Core/arch/Default/ConjHelper.h"
+	"src/Core/arch/SSE/PacketMath.h"
+	"src/Core/arch/AVX/PacketMath.h"
+	"src/Core/arch/AVX512/PacketMath.h"
+	"src/Core/arch/SSE/MathFunctions.h"
+	"src/Core/arch/AVX/MathFunctions.h"
+	"src/Core/arch/AVX512/MathFunctions.h"
+	"src/Core/arch/SSE/PacketMath.h"
+	"src/Core/arch/SSE/Complex.h"
+	"src/Core/arch/SSE/MathFunctions.h"
+	"src/Core/arch/AVX/PacketMath.h"
+	"src/Core/arch/AVX/MathFunctions.h"
+	"src/Core/arch/AVX/Complex.h"
+	"src/Core/arch/AVX/TypeCasting.h"
+	"src/Core/arch/SSE/PacketMath.h"
+	"src/Core/arch/SSE/MathFunctions.h"
+	"src/Core/arch/SSE/Complex.h"
+	"src/Core/arch/SSE/TypeCasting.h"
+	"src/Core/arch/AltiVec/PacketMath.h"
+	"src/Core/arch/AltiVec/MathFunctions.h"
+	"src/Core/arch/AltiVec/Complex.h"
+	"src/Core/arch/NEON/PacketMath.h"
+	"src/Core/arch/NEON/MathFunctions.h"
+	"src/Core/arch/NEON/Complex.h"
+	"src/Core/arch/ZVector/PacketMath.h"
+	"src/Core/arch/ZVector/MathFunctions.h"
+	"src/Core/arch/ZVector/Complex.h"
+	"src/Core/arch/CUDA/Half.h"
+	"src/Core/arch/CUDA/PacketMathHalf.h"
+	"src/Core/arch/CUDA/TypeCasting.h"
+	"src/Core/arch/CUDA/PacketMath.h"
+	"src/Core/arch/CUDA/MathFunctions.h"
+	"src/Core/arch/Default/Settings.h"
+	"src/Core/functors/TernaryFunctors.h"
+	"src/Core/functors/BinaryFunctors.h"
+	"src/Core/functors/UnaryFunctors.h"
+	"src/Core/functors/NullaryFunctors.h"
+	"src/Core/functors/StlFunctors.h"
+	"src/Core/functors/AssignmentFunctors.h"
+	"src/Core/arch/CUDA/Complex.h"
+	"src/Core/util/IndexedViewHelper.h"
+	"src/Core/ArithmeticSequence.h"
+	"src/Core/IO.h"
+	"src/Core/DenseCoeffsBase.h"
+	"src/Core/DenseBase.h"
+	"src/Core/MatrixBase.h"
+	"src/Core/EigenBase.h"
+	"src/Core/Product.h"
+	"src/Core/CoreEvaluators.h"
+	"src/Core/AssignEvaluator.h"
+	"src/Core/Assign.h"
+	"src/Core/ArrayBase.h"
+	"src/Core/util/BlasUtil.h"
+	"src/Core/DenseStorage.h"
+	"src/Core/NestByValue.h"
+	"src/Core/ReturnByValue.h"
+	"src/Core/NoAlias.h"
+	"src/Core/PlainObjectBase.h"
+	"src/Core/Matrix.h"
+	"src/Core/Array.h"
+	"src/Core/CwiseTernaryOp.h"
+	"src/Core/CwiseBinaryOp.h"
+	"src/Core/CwiseUnaryOp.h"
+	"src/Core/CwiseNullaryOp.h"
+	"src/Core/CwiseUnaryView.h"
+	"src/Core/SelfCwiseBinaryOp.h"
+	"src/Core/Dot.h"
+	"src/Core/StableNorm.h"
+	"src/Core/Stride.h"
+	"src/Core/MapBase.h"
+	"src/Core/Map.h"
+	"src/Core/Ref.h"
+	"src/Core/Block.h"
+	"src/Core/VectorBlock.h"
+	"src/Core/IndexedView.h"
+	"src/Core/Transpose.h"
+	"src/Core/DiagonalMatrix.h"
+	"src/Core/Diagonal.h"
+	"src/Core/DiagonalProduct.h"
+	"src/Core/Redux.h"
+	"src/Core/Visitor.h"
+	"src/Core/Fuzzy.h"
+	"src/Core/Swap.h"
+	"src/Core/CommaInitializer.h"
+	"src/Core/GeneralProduct.h"
+	"src/Core/Solve.h"
+	"src/Core/Inverse.h"
+	"src/Core/SolverBase.h"
+	"src/Core/PermutationMatrix.h"
+	"src/Core/Transpositions.h"
+	"src/Core/TriangularMatrix.h"
+	"src/Core/SelfAdjointView.h"
+	"src/Core/products/GeneralBlockPanelKernel.h"
+	"src/Core/products/Parallelizer.h"
+	"src/Core/ProductEvaluators.h"
+	"src/Core/products/GeneralMatrixVector.h"
+	"src/Core/products/GeneralMatrixMatrix.h"
+	"src/Core/SolveTriangular.h"
+	"src/Core/products/GeneralMatrixMatrixTriangular.h"
+	"src/Core/products/SelfadjointMatrixVector.h"
+	"src/Core/products/SelfadjointMatrixMatrix.h"
+	"src/Core/products/SelfadjointProduct.h"
+	"src/Core/products/SelfadjointRank2Update.h"
+	"src/Core/products/TriangularMatrixVector.h"
+	"src/Core/products/TriangularMatrixMatrix.h"
+	"src/Core/products/TriangularSolverMatrix.h"
+	"src/Core/products/TriangularSolverVector.h"
+	"src/Core/BandMatrix.h"
+	"src/Core/CoreIterators.h"
+	"src/Core/ConditionEstimator.h"
+	"src/Core/BooleanRedux.h"
+	"src/Core/Select.h"
+	"src/Core/VectorwiseOp.h"
+	"src/Core/Random.h"
+	"src/Core/Replicate.h"
+	"src/Core/Reverse.h"
+	"src/Core/ArrayWrapper.h"
+	"src/Core/products/GeneralMatrixMatrix_BLAS.h"
+	"src/Core/products/GeneralMatrixVector_BLAS.h"
+	"src/Core/products/GeneralMatrixMatrixTriangular_BLAS.h"
+	"src/Core/products/SelfadjointMatrixMatrix_BLAS.h"
+	"src/Core/products/SelfadjointMatrixVector_BLAS.h"
+	"src/Core/products/TriangularMatrixMatrix_BLAS.h"
+	"src/Core/products/TriangularMatrixVector_BLAS.h"
+	"src/Core/products/TriangularSolverMatrix_BLAS.h"
+	"src/Core/Assign_MKL.h"
+	"src/Core/GlobalFunctions.h"
+	"src/Core/util/ReenableStupidWarnings.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/DisableStupidWarnings.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/Macros.h
+	<cstdlib>
+	<iostream>
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/MKL_support.h
+	<mkl.h>
+	"../../misc/blas.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/misc/blas.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/Constants.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/Meta.h
+	<cfloat>
+	<math_constants.h>
+	<cstdint>
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/ForwardDeclarations.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/StaticAssert.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/XprHelper.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/Memory.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/IntegralConstant.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/SymbolicIndex.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/NumTraits.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/MathFunctions.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/GenericPacketMath.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/MathFunctionsImpl.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/Default/ConjHelper.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/SSE/PacketMath.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/AVX/PacketMath.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/AVX512/PacketMath.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/SSE/MathFunctions.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/AVX/MathFunctions.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/AVX512/MathFunctions.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/SSE/Complex.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/AVX/Complex.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/AVX/TypeCasting.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/SSE/TypeCasting.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/AltiVec/PacketMath.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/AltiVec/MathFunctions.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/AltiVec/Complex.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/NEON/PacketMath.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/NEON/MathFunctions.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/NEON/Complex.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/ZVector/PacketMath.h
+	<stdint.h>
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/ZVector/MathFunctions.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/ZVector/Complex.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/CUDA/Half.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/CUDA/PacketMathHalf.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/CUDA/TypeCasting.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/CUDA/PacketMath.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/CUDA/MathFunctions.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/Default/Settings.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/functors/TernaryFunctors.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/functors/BinaryFunctors.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/functors/UnaryFunctors.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/functors/NullaryFunctors.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/functors/StlFunctors.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/functors/AssignmentFunctors.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/arch/CUDA/Complex.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/IndexedViewHelper.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/ArithmeticSequence.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/IO.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/DenseCoeffsBase.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/DenseBase.h
+	"../plugins/CommonCwiseUnaryOps.h"
+	"../plugins/BlockMethods.h"
+	"../plugins/IndexedViewMethods.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/plugins/CommonCwiseUnaryOps.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/plugins/BlockMethods.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/plugins/IndexedViewMethods.h
+	"IndexedViewMethods.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/MatrixBase.h
+	"../plugins/CommonCwiseBinaryOps.h"
+	"../plugins/MatrixCwiseUnaryOps.h"
+	"../plugins/MatrixCwiseBinaryOps.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/plugins/CommonCwiseBinaryOps.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/plugins/MatrixCwiseUnaryOps.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/plugins/MatrixCwiseBinaryOps.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/EigenBase.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Product.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/CoreEvaluators.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/AssignEvaluator.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Assign.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/ArrayBase.h
+	"../plugins/MatrixCwiseUnaryOps.h"
+	"../plugins/ArrayCwiseUnaryOps.h"
+	"../plugins/CommonCwiseBinaryOps.h"
+	"../plugins/MatrixCwiseBinaryOps.h"
+	"../plugins/ArrayCwiseBinaryOps.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/plugins/ArrayCwiseUnaryOps.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/plugins/ArrayCwiseBinaryOps.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/BlasUtil.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/DenseStorage.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/NestByValue.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/ReturnByValue.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/NoAlias.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/PlainObjectBase.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Matrix.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Array.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/CwiseTernaryOp.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/CwiseBinaryOp.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/CwiseUnaryOp.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/CwiseNullaryOp.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/CwiseUnaryView.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/SelfCwiseBinaryOp.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Dot.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/StableNorm.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Stride.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/MapBase.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Map.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Ref.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Block.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/VectorBlock.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/IndexedView.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Transpose.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/DiagonalMatrix.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Diagonal.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/DiagonalProduct.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Redux.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Visitor.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Fuzzy.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Swap.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/CommaInitializer.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/GeneralProduct.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Solve.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Inverse.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/SolverBase.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/PermutationMatrix.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Transpositions.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/TriangularMatrix.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/SelfAdjointView.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/GeneralBlockPanelKernel.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/Parallelizer.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/ProductEvaluators.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/GeneralMatrixVector.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/GeneralMatrixMatrix.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/SolveTriangular.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/SelfadjointMatrixVector.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/SelfadjointMatrixMatrix.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/SelfadjointProduct.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/SelfadjointRank2Update.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/TriangularMatrixVector.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/TriangularMatrixMatrix.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/TriangularSolverMatrix.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/TriangularSolverVector.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/BandMatrix.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/CoreIterators.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/ConditionEstimator.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/BooleanRedux.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Select.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/VectorwiseOp.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Random.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Replicate.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Reverse.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/ArrayWrapper.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/GeneralMatrixMatrix_BLAS.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/GeneralMatrixVector_BLAS.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/GeneralMatrixMatrixTriangular_BLAS.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/SelfadjointMatrixMatrix_BLAS.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/SelfadjointMatrixVector_BLAS.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/TriangularMatrixMatrix_BLAS.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/TriangularMatrixVector_BLAS.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/products/TriangularSolverMatrix_BLAS.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/Assign_MKL.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/GlobalFunctions.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Core/util/ReenableStupidWarnings.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/Cholesky
+	"Core"
+	"Jacobi"
+	"src/Core/util/DisableStupidWarnings.h"
+	"src/Cholesky/LLT.h"
+	"src/Cholesky/LDLT.h"
+	"mkl_lapacke.h"
+	"src/misc/lapacke.h"
+	"src/Cholesky/LLT_LAPACKE.h"
+	"src/Core/util/ReenableStupidWarnings.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/Jacobi
+	"Core"
+	"src/Core/util/DisableStupidWarnings.h"
+	"src/Jacobi/Jacobi.h"
+	"src/Core/util/ReenableStupidWarnings.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Jacobi/Jacobi.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Cholesky/LLT.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Cholesky/LDLT.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/misc/lapacke.h
+	"lapacke_config.h"
+	<stdlib.h>
+	<complex.h>
+	<complex.h>
+	"lapacke_mangling.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/misc/lapacke_mangling.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Cholesky/LLT_LAPACKE.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/Householder
+	"Core"
+	"src/Core/util/DisableStupidWarnings.h"
+	"src/Householder/Householder.h"
+	"src/Householder/HouseholderSequence.h"
+	"src/Householder/BlockHouseholder.h"
+	"src/Core/util/ReenableStupidWarnings.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Householder/Householder.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Householder/HouseholderSequence.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Householder/BlockHouseholder.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/LU
+	"Core"
+	"src/Core/util/DisableStupidWarnings.h"
+	"src/misc/Kernel.h"
+	"src/misc/Image.h"
+	"src/LU/FullPivLU.h"
+	"src/LU/PartialPivLU.h"
+	"mkl_lapacke.h"
+	"src/misc/lapacke.h"
+	"src/LU/PartialPivLU_LAPACKE.h"
+	"src/LU/Determinant.h"
+	"src/LU/InverseImpl.h"
+	"src/LU/arch/Inverse_SSE.h"
+	"src/Core/util/ReenableStupidWarnings.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/misc/Kernel.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/misc/Image.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/LU/FullPivLU.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/LU/PartialPivLU.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/LU/PartialPivLU_LAPACKE.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/LU/Determinant.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/LU/InverseImpl.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/LU/arch/Inverse_SSE.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/Geometry
+	"Core"
+	"src/Core/util/DisableStupidWarnings.h"
+	"SVD"
+	"LU"
+	<limits>
+	"src/Geometry/OrthoMethods.h"
+	"src/Geometry/EulerAngles.h"
+	"src/Geometry/Homogeneous.h"
+	"src/Geometry/RotationBase.h"
+	"src/Geometry/Rotation2D.h"
+	"src/Geometry/Quaternion.h"
+	"src/Geometry/AngleAxis.h"
+	"src/Geometry/Transform.h"
+	"src/Geometry/Translation.h"
+	"src/Geometry/Scaling.h"
+	"src/Geometry/Hyperplane.h"
+	"src/Geometry/ParametrizedLine.h"
+	"src/Geometry/AlignedBox.h"
+	"src/Geometry/Umeyama.h"
+	"src/Geometry/arch/Geometry_SSE.h"
+	"src/Core/util/ReenableStupidWarnings.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/SVD
+	"QR"
+	"Householder"
+	"Jacobi"
+	"src/Core/util/DisableStupidWarnings.h"
+	"src/misc/RealSvd2x2.h"
+	"src/SVD/UpperBidiagonalization.h"
+	"src/SVD/SVDBase.h"
+	"src/SVD/JacobiSVD.h"
+	"src/SVD/BDCSVD.h"
+	"mkl_lapacke.h"
+	"src/misc/lapacke.h"
+	"src/SVD/JacobiSVD_LAPACKE.h"
+	"src/Core/util/ReenableStupidWarnings.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/QR
+	"Core"
+	"src/Core/util/DisableStupidWarnings.h"
+	"Cholesky"
+	"Jacobi"
+	"Householder"
+	"src/QR/HouseholderQR.h"
+	"src/QR/FullPivHouseholderQR.h"
+	"src/QR/ColPivHouseholderQR.h"
+	"src/QR/CompleteOrthogonalDecomposition.h"
+	"mkl_lapacke.h"
+	"src/misc/lapacke.h"
+	"src/QR/HouseholderQR_LAPACKE.h"
+	"src/QR/ColPivHouseholderQR_LAPACKE.h"
+	"src/Core/util/ReenableStupidWarnings.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/QR/HouseholderQR.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/QR/FullPivHouseholderQR.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/QR/ColPivHouseholderQR.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/QR/CompleteOrthogonalDecomposition.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/QR/HouseholderQR_LAPACKE.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/QR/ColPivHouseholderQR_LAPACKE.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/misc/RealSvd2x2.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/SVD/UpperBidiagonalization.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/SVD/SVDBase.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/SVD/JacobiSVD.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/SVD/BDCSVD.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/SVD/JacobiSVD_LAPACKE.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/OrthoMethods.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/EulerAngles.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/Homogeneous.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/RotationBase.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/Rotation2D.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/Quaternion.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/AngleAxis.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/Transform.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/Translation.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/Scaling.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/Hyperplane.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/ParametrizedLine.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/AlignedBox.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/Umeyama.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Geometry/arch/Geometry_SSE.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/Tridiagonalization.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/RealSchur.h
+	"./HessenbergDecomposition.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/HessenbergDecomposition.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/EigenSolver.h
+	"./RealSchur.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h
+	"./Tridiagonalization.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h
+	"./Tridiagonalization.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/ComplexSchur.h
+	"./HessenbergDecomposition.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/ComplexEigenSolver.h
+	"./ComplexSchur.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/RealQZ.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h
+	"./RealQZ.h"
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/RealSchur_LAPACKE.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/ComplexSchur_LAPACKE.h
+
+1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h
+
