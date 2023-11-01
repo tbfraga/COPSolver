@@ -9,6 +9,13 @@ Obs: You can alter this file only for personal purpose. You cannot distribute al
 The full license can be found in the LICENSE.md document available in this directory, or through the website: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.
 
 This project with its files can be consulted at https://github.com/tbfraga/COPSolver.
+
+'COPSolver: library for solving classification problems' uses Eigen library.
+For this reason, COPSolver repository contains a copy of the Eigen library.
+Eigen is Free Software. Starting from the 3.1.1 version, it is licensed under the MPL2, which is a simple weak copyleft license.
+Common questions about the MPL2 are answered in the official MPL2 FAQ.
+For more details see https://eigen.tuxfamily.org/
+
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
