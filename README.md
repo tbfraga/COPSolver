@@ -4,9 +4,10 @@ Combinatorial Optimization Problems Solver
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
 
-The COPSolver software was (and is being) developed with the purpose of solving various combinatorial optimization problems as efficiently as possible.
+The COPSolver software was (and is being) developed with the purpose of solving various combinatorial optimization and other decision problems as efficiently as possible.
 
-This first version applies Fraga's time partition method to solve the Multi-product Batch Processing Time Maximization Problem.
+COPSolver_1.0-1 applies Fraga's time partition method to solve the multi-product p-batch processing time maximization problem.
+COPSolver_2.0-1 also applies Saaty's Analytical Hierarch Process method for multicriteria ABC classification.
 
 Important: Copies and distributions of the files made available in this directory must comply with the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0).
 
