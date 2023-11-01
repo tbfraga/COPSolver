@@ -1,0 +1,1863 @@
+  LINGO/LNX64 19.0.40 (26 Apr 2021), LINDO API 13.0.4099.270
+
+  Licensee info: tatiana.balbi@ufpe.br
+  License expires: 22 MAR 2023
+
+  Global optimal solution found.
+  Objective value:                            54980.4285
+  Objective bound:                            54980.4285
+  Infeasibilities:                            0.00000000
+  Extended solver steps:                             167
+  Total solver iterations:                       2047134
+  Elapsed runtime seconds:                       1259.60
+
+  Model Class:                                     MINLP
+
+  Total variables:                    780
+  Nonlinear variables:                175
+  Integer variables:                  144
+
+  Total constraints:                  871
+  Nonlinear constraints:              162
+
+  Total nonzeros:                    2142
+  Nonlinear nonzeros:                 312
+
+
+
+                            Variable             Value          Reduced Cost
+                              N_DAYS        4.00000000            0.00000000
+                            N_SHIFTS        3.00000000            0.00000000
+                        N_RESERVOIRS        6.00000000            0.00000000
+                       HOUSING_COEFF        3.90000000            0.00000000
+                   DAILY_COMSUMPTION       0.200000000            0.00000000
+                      TIME_PER_SHIFT        8.00000000            0.00000000
+                                  C2        100000.000            0.00000000
+                  N_TOTAL_HOUSEHOLDS        9582.00000            0.00000000
+                        TOTAL_DEMAND        29895.8400            0.00000000
+                 MAX_INFLOW_RATE_INF        367.200000            0.00000000
+                                  C1        2.50000000            0.00000000
+                CAP_EXP_WEIGHTED_SUM        18975.7134            0.00000000
+                                  C4       0.526989409E-04        0.00000000
+                           FIRSTTERM        55046.7153            0.00000000
+                          SECONDTERM        0.00000000           0.288010044E-01
+                           THIRDTERM        66.0000000            1.00000000
+                          FOURTHTERM       0.286207948            0.00000000
+                  TOTAL_ZONE_OUTFLOW        22018.6861            0.00000000
+           IDLE_CAP_EXP_WEIGHTED_SUM        5431.00000            0.00000000
+             IDEAL_INFLOW_RATE( ETA)        311.142564            0.00000000
+              IDEAL_INFLOW_RATE( R1)        285.100897            0.00000000
+              IDEAL_INFLOW_RATE( R2)        73.5262601            0.00000000
+              IDEAL_INFLOW_RATE( R3)        16.8098550            0.00000000
+              IDEAL_INFLOW_RATE( R4)        54.7104163            0.00000000
+              IDEAL_INFLOW_RATE( R5)        11.6304778            0.00000000
+              IDEAL_INFLOW_RATE( Z1)        130.000000            0.00000000
+              IDEAL_INFLOW_RATE( Z2)        35.8305196            0.00000000
+              IDEAL_INFLOW_RATE( Z3)        33.5290738            0.00000000
+              IDEAL_INFLOW_RATE( Z4)        15.7681883            0.00000000
+              IDEAL_INFLOW_RATE( Z5)        52.8354163            0.00000000
+              IDEAL_INFLOW_RATE( Z6)        11.1304778            0.00000000
+               MAX_INFLOW_RATE( ETA)        367.200000            0.00000000
+                MAX_INFLOW_RATE( R1)        288.000000            0.00000000
+                MAX_INFLOW_RATE( R2)        367.200000            0.00000000
+                MAX_INFLOW_RATE( R3)        367.200000            0.00000000
+                MAX_INFLOW_RATE( R4)        367.200000            0.00000000
+                MAX_INFLOW_RATE( R5)        367.200000            0.00000000
+                MAX_INFLOW_RATE( Z1)        130.000000            0.00000000
+                MAX_INFLOW_RATE( Z2)        367.200000            0.00000000
+                MAX_INFLOW_RATE( Z3)        367.200000            0.00000000
+                MAX_INFLOW_RATE( Z4)        367.200000            0.00000000
+                MAX_INFLOW_RATE( Z5)        367.200000            0.00000000
+                MAX_INFLOW_RATE( Z6)        367.200000            0.00000000
+               MIN_INFLOW_RATE( ETA)        0.00000000            0.00000000
+                MIN_INFLOW_RATE( R1)        0.00000000            0.00000000
+                MIN_INFLOW_RATE( R2)        0.00000000            0.00000000
+                MIN_INFLOW_RATE( R3)        0.00000000            0.00000000
+                MIN_INFLOW_RATE( R4)        0.00000000            0.00000000
+                MIN_INFLOW_RATE( R5)        10.0000000            0.00000000
+                MIN_INFLOW_RATE( Z1)        0.00000000            0.00000000
+                MIN_INFLOW_RATE( Z2)        0.00000000            0.00000000
+                MIN_INFLOW_RATE( Z3)        0.00000000            0.00000000
+                MIN_INFLOW_RATE( Z4)        0.00000000            0.00000000
+                MIN_INFLOW_RATE( Z5)        0.00000000            0.00000000
+                MIN_INFLOW_RATE( Z6)        0.00000000            0.00000000
+                  IDEAL_INFLOW( ETA)        2489.14051            0.00000000
+                   IDEAL_INFLOW( R1)        2280.80718            0.00000000
+                   IDEAL_INFLOW( R2)        588.210081            0.00000000
+                   IDEAL_INFLOW( R3)        134.478840            0.00000000
+                   IDEAL_INFLOW( R4)        437.683330            0.00000000
+                   IDEAL_INFLOW( R5)        93.0438225            0.00000000
+                   IDEAL_INFLOW( Z1)        1040.00000            0.00000000
+                   IDEAL_INFLOW( Z2)        286.644157            0.00000000
+                   IDEAL_INFLOW( Z3)        268.232590            0.00000000
+                   IDEAL_INFLOW( Z4)        126.145507            0.00000000
+                   IDEAL_INFLOW( Z5)        422.683330            0.00000000
+                   IDEAL_INFLOW( Z6)        89.0438225            0.00000000
+                INITIAL_VOLUME( ETA)        0.00000000            0.00000000
+                 INITIAL_VOLUME( R1)        0.00000000            0.00000000
+                 INITIAL_VOLUME( R2)        0.00000000            0.00000000
+                 INITIAL_VOLUME( R3)        0.00000000            0.00000000
+                 INITIAL_VOLUME( R4)        0.00000000            0.00000000
+                 INITIAL_VOLUME( R5)        0.00000000            0.00000000
+                 INITIAL_VOLUME( Z1)        0.00000000            0.00000000
+                 INITIAL_VOLUME( Z2)        0.00000000            0.00000000
+                 INITIAL_VOLUME( Z3)        0.00000000            0.00000000
+                 INITIAL_VOLUME( Z4)        0.00000000            0.00000000
+                 INITIAL_VOLUME( Z5)        0.00000000            0.00000000
+                 INITIAL_VOLUME( Z6)        0.00000000            0.00000000
+                      CAPACITY( ETA)        2500.00000            0.00000000
+                       CAPACITY( R1)        500.000000            0.00000000
+                       CAPACITY( R2)        400.000000            0.00000000
+                       CAPACITY( R3)        100.000000            0.00000000
+                       CAPACITY( R4)        180.000000            0.00000000
+                       CAPACITY( R5)        20.0000000            0.00000000
+                       CAPACITY( Z1)        5431.00000            0.00000000
+                       CAPACITY( Z2)        1043.00000            0.00000000
+                       CAPACITY( Z3)        976.000000            0.00000000
+                       CAPACITY( Z4)        459.000000            0.00000000
+                       CAPACITY( Z5)        1538.00000            0.00000000
+                       CAPACITY( Z6)        135.000000            0.00000000
+              RELEVANCE_FACTOR( ETA)        1.13000000            0.00000000
+               RELEVANCE_FACTOR( R1)        1.13000000            0.00000000
+               RELEVANCE_FACTOR( R2)        1.12000000            0.00000000
+               RELEVANCE_FACTOR( R3)        1.12000000            0.00000000
+               RELEVANCE_FACTOR( R4)        1.12000000            0.00000000
+               RELEVANCE_FACTOR( R5)        1.12000000            0.00000000
+               RELEVANCE_FACTOR( Z1)        1.00000000            0.00000000
+               RELEVANCE_FACTOR( Z2)        1.00000000            0.00000000
+               RELEVANCE_FACTOR( Z3)        1.00000000            0.00000000
+               RELEVANCE_FACTOR( Z4)        1.00000000            0.00000000
+               RELEVANCE_FACTOR( Z5)        1.00000000            0.00000000
+               RELEVANCE_FACTOR( Z6)        1.00000000            0.00000000
+                         C3( D1, S1)        12.0000000            0.00000000
+                         C3( D1, S2)        8.00000000            0.00000000
+                         C3( D1, S3)        4.00000000            0.00000000
+                         C3( D2, S1)        11.0000000            0.00000000
+                         C3( D2, S2)        7.00000000            0.00000000
+                         C3( D2, S3)        3.00000000            0.00000000
+                         C3( D3, S1)        10.0000000            0.00000000
+                         C3( D3, S2)        6.00000000            0.00000000
+                         C3( D3, S3)        2.00000000            0.00000000
+                         C3( D4, S1)        9.00000000            0.00000000
+                         C3( D4, S2)        5.00000000            0.00000000
+                         C3( D4, S3)        1.00000000            0.00000000
+          VALVE_STATUS( D1, S1, ETA)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S1, R1)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S1, R2)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S1, R3)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S1, R4)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S1, R5)        0.00000000            0.00000000
+           VALVE_STATUS( D1, S1, Z1)        1.00000000           -4587.22628
+           VALVE_STATUS( D1, S1, Z2)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S1, Z3)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S1, Z4)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S1, Z5)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S1, Z6)        0.00000000            0.00000000
+          VALVE_STATUS( D1, S2, ETA)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S2, R1)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S2, R2)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S2, R3)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S2, R4)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S2, R5)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S2, Z1)        1.00000000           -4587.22628
+           VALVE_STATUS( D1, S2, Z2)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S2, Z3)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S2, Z4)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S2, Z5)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S2, Z6)        1.00000000            0.00000000
+          VALVE_STATUS( D1, S3, ETA)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S3, R1)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S3, R2)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S3, R3)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S3, R4)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S3, R5)        0.00000000            0.00000000
+           VALVE_STATUS( D1, S3, Z1)        1.00000000           -4587.22628
+           VALVE_STATUS( D1, S3, Z2)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S3, Z3)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S3, Z4)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S3, Z5)        1.00000000            0.00000000
+           VALVE_STATUS( D1, S3, Z6)        0.00000000            0.00000000
+          VALVE_STATUS( D2, S1, ETA)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S1, R1)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S1, R2)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S1, R3)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S1, R4)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S1, R5)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S1, Z1)        1.00000000           -4587.22628
+           VALVE_STATUS( D2, S1, Z2)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S1, Z3)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S1, Z4)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S1, Z5)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S1, Z6)        1.00000000            0.00000000
+          VALVE_STATUS( D2, S2, ETA)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S2, R1)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S2, R2)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S2, R3)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S2, R4)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S2, R5)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S2, Z1)        1.00000000           -4587.22628
+           VALVE_STATUS( D2, S2, Z2)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S2, Z3)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S2, Z4)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S2, Z5)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S2, Z6)        1.00000000            0.00000000
+          VALVE_STATUS( D2, S3, ETA)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S3, R1)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S3, R2)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S3, R3)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S3, R4)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S3, R5)        0.00000000            0.00000000
+           VALVE_STATUS( D2, S3, Z1)        1.00000000           -4587.22628
+           VALVE_STATUS( D2, S3, Z2)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S3, Z3)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S3, Z4)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S3, Z5)        1.00000000            0.00000000
+           VALVE_STATUS( D2, S3, Z6)        0.00000000            0.00000000
+          VALVE_STATUS( D3, S1, ETA)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S1, R1)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S1, R2)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S1, R3)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S1, R4)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S1, R5)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S1, Z1)        1.00000000           -4587.22628
+           VALVE_STATUS( D3, S1, Z2)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S1, Z3)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S1, Z4)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S1, Z5)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S1, Z6)        1.00000000            0.00000000
+          VALVE_STATUS( D3, S2, ETA)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S2, R1)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S2, R2)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S2, R3)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S2, R4)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S2, R5)        0.00000000            0.00000000
+           VALVE_STATUS( D3, S2, Z1)        1.00000000           -4587.22628
+           VALVE_STATUS( D3, S2, Z2)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S2, Z3)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S2, Z4)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S2, Z5)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S2, Z6)        0.00000000            0.00000000
+          VALVE_STATUS( D3, S3, ETA)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S3, R1)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S3, R2)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S3, R3)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S3, R4)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S3, R5)        0.00000000            0.00000000
+           VALVE_STATUS( D3, S3, Z1)        1.00000000           -4587.22628
+           VALVE_STATUS( D3, S3, Z2)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S3, Z3)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S3, Z4)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S3, Z5)        1.00000000            0.00000000
+           VALVE_STATUS( D3, S3, Z6)        0.00000000            0.00000000
+          VALVE_STATUS( D4, S1, ETA)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S1, R1)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S1, R2)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S1, R3)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S1, R4)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S1, R5)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S1, Z1)        1.00000000           -4587.22628
+           VALVE_STATUS( D4, S1, Z2)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S1, Z3)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S1, Z4)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S1, Z5)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S1, Z6)        1.00000000            0.00000000
+          VALVE_STATUS( D4, S2, ETA)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S2, R1)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S2, R2)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S2, R3)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S2, R4)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S2, R5)        0.00000000            0.00000000
+           VALVE_STATUS( D4, S2, Z1)        1.00000000           -4587.22628
+           VALVE_STATUS( D4, S2, Z2)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S2, Z3)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S2, Z4)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S2, Z5)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S2, Z6)        0.00000000            0.00000000
+          VALVE_STATUS( D4, S3, ETA)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S3, R1)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S3, R2)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S3, R3)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S3, R4)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S3, R5)        0.00000000            0.00000000
+           VALVE_STATUS( D4, S3, Z1)        1.00000000           -4587.22628
+           VALVE_STATUS( D4, S3, Z2)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S3, Z3)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S3, Z4)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S3, Z5)        1.00000000            0.00000000
+           VALVE_STATUS( D4, S3, Z6)        0.00000000            0.00000000
+                INFLOW( D1, S1, ETA)        2489.14051            0.00000000
+                 INFLOW( D1, S1, R1)        2280.80718            0.00000000
+                 INFLOW( D1, S1, R2)        588.210081            0.00000000
+                 INFLOW( D1, S1, R3)        134.478840            0.00000000
+                 INFLOW( D1, S1, R4)        437.683330            0.00000000
+                 INFLOW( D1, S1, R5)        0.00000000            0.00000000
+                 INFLOW( D1, S1, Z1)        1040.00000            0.00000000
+                 INFLOW( D1, S1, Z2)        286.644157            0.00000000
+                 INFLOW( D1, S1, Z3)        268.232590            0.00000000
+                 INFLOW( D1, S1, Z4)        126.145507            0.00000000
+                 INFLOW( D1, S1, Z5)        422.683330            0.00000000
+                 INFLOW( D1, S1, Z6)        0.00000000            0.00000000
+                INFLOW( D1, S2, ETA)        2489.14051            0.00000000
+                 INFLOW( D1, S2, R1)        2280.80718            0.00000000
+                 INFLOW( D1, S2, R2)        588.210081            0.00000000
+                 INFLOW( D1, S2, R3)        134.478840            0.00000000
+                 INFLOW( D1, S2, R4)        437.683330            0.00000000
+                 INFLOW( D1, S2, R5)        93.0438225            0.00000000
+                 INFLOW( D1, S2, Z1)        1040.00000            0.00000000
+                 INFLOW( D1, S2, Z2)        286.644157            0.00000000
+                 INFLOW( D1, S2, Z3)        268.232590            0.00000000
+                 INFLOW( D1, S2, Z4)        126.145507            0.00000000
+                 INFLOW( D1, S2, Z5)        422.683330            0.00000000
+                 INFLOW( D1, S2, Z6)        89.0438225            0.00000000
+                INFLOW( D1, S3, ETA)        2489.14051            0.00000000
+                 INFLOW( D1, S3, R1)        2280.80718            0.00000000
+                 INFLOW( D1, S3, R2)        588.210081            0.00000000
+                 INFLOW( D1, S3, R3)        134.478840            0.00000000
+                 INFLOW( D1, S3, R4)        437.683330            0.00000000
+                 INFLOW( D1, S3, R5)        0.00000000            0.00000000
+                 INFLOW( D1, S3, Z1)        1040.00000            0.00000000
+                 INFLOW( D1, S3, Z2)        286.644157            0.00000000
+                 INFLOW( D1, S3, Z3)        268.232590            0.00000000
+                 INFLOW( D1, S3, Z4)        126.145507            0.00000000
+                 INFLOW( D1, S3, Z5)        422.683330            0.00000000
+                 INFLOW( D1, S3, Z6)        0.00000000            0.00000000
+                INFLOW( D2, S1, ETA)        2489.14051            0.00000000
+                 INFLOW( D2, S1, R1)        2280.80718            0.00000000
+                 INFLOW( D2, S1, R2)        588.210081            0.00000000
+                 INFLOW( D2, S1, R3)        134.478840            0.00000000
+                 INFLOW( D2, S1, R4)        437.683330            0.00000000
+                 INFLOW( D2, S1, R5)        93.0438225            0.00000000
+                 INFLOW( D2, S1, Z1)        1040.00000            0.00000000
+                 INFLOW( D2, S1, Z2)        286.644157            0.00000000
+                 INFLOW( D2, S1, Z3)        268.232590            0.00000000
+                 INFLOW( D2, S1, Z4)        126.145507            0.00000000
+                 INFLOW( D2, S1, Z5)        422.683330            0.00000000
+                 INFLOW( D2, S1, Z6)        89.0438225            0.00000000
+                INFLOW( D2, S2, ETA)        2489.14051            0.00000000
+                 INFLOW( D2, S2, R1)        2280.80718            0.00000000
+                 INFLOW( D2, S2, R2)        588.210081            0.00000000
+                 INFLOW( D2, S2, R3)        134.478840            0.00000000
+                 INFLOW( D2, S2, R4)        437.683330            0.00000000
+                 INFLOW( D2, S2, R5)        93.0438225            0.00000000
+                 INFLOW( D2, S2, Z1)        1040.00000            0.00000000
+                 INFLOW( D2, S2, Z2)        286.644157            0.00000000
+                 INFLOW( D2, S2, Z3)        268.232590            0.00000000
+                 INFLOW( D2, S2, Z4)        126.145507            0.00000000
+                 INFLOW( D2, S2, Z5)        422.683330            0.00000000
+                 INFLOW( D2, S2, Z6)        89.0438225            0.00000000
+                INFLOW( D2, S3, ETA)        2489.14051            0.00000000
+                 INFLOW( D2, S3, R1)        2280.80718            0.00000000
+                 INFLOW( D2, S3, R2)        588.210081            0.00000000
+                 INFLOW( D2, S3, R3)        134.478840            0.00000000
+                 INFLOW( D2, S3, R4)        437.683330            0.00000000
+                 INFLOW( D2, S3, R5)        0.00000000            0.00000000
+                 INFLOW( D2, S3, Z1)        1040.00000            0.00000000
+                 INFLOW( D2, S3, Z2)        286.644157            0.00000000
+                 INFLOW( D2, S3, Z3)        268.232590            0.00000000
+                 INFLOW( D2, S3, Z4)        126.145507            0.00000000
+                 INFLOW( D2, S3, Z5)        422.683330            0.00000000
+                 INFLOW( D2, S3, Z6)        0.00000000            0.00000000
+                INFLOW( D3, S1, ETA)        2489.14051            0.00000000
+                 INFLOW( D3, S1, R1)        2280.80718            0.00000000
+                 INFLOW( D3, S1, R2)        588.210081            0.00000000
+                 INFLOW( D3, S1, R3)        134.478840            0.00000000
+                 INFLOW( D3, S1, R4)        437.683330            0.00000000
+                 INFLOW( D3, S1, R5)        93.0438225            0.00000000
+                 INFLOW( D3, S1, Z1)        1040.00000            0.00000000
+                 INFLOW( D3, S1, Z2)        286.644157            0.00000000
+                 INFLOW( D3, S1, Z3)        268.232590            0.00000000
+                 INFLOW( D3, S1, Z4)        126.145507            0.00000000
+                 INFLOW( D3, S1, Z5)        422.683330            0.00000000
+                 INFLOW( D3, S1, Z6)        89.0438225            0.00000000
+                INFLOW( D3, S2, ETA)        2489.14051            0.00000000
+                 INFLOW( D3, S2, R1)        2280.80718            0.00000000
+                 INFLOW( D3, S2, R2)        588.210081            0.00000000
+                 INFLOW( D3, S2, R3)        134.478840            0.00000000
+                 INFLOW( D3, S2, R4)        437.683330            0.00000000
+                 INFLOW( D3, S2, R5)        0.00000000            0.00000000
+                 INFLOW( D3, S2, Z1)        1040.00000            0.00000000
+                 INFLOW( D3, S2, Z2)        286.644157            0.00000000
+                 INFLOW( D3, S2, Z3)        268.232590            0.00000000
+                 INFLOW( D3, S2, Z4)        126.145507            0.00000000
+                 INFLOW( D3, S2, Z5)        422.683330            0.00000000
+                 INFLOW( D3, S2, Z6)        0.00000000            0.00000000
+                INFLOW( D3, S3, ETA)        2489.14051            0.00000000
+                 INFLOW( D3, S3, R1)        2280.80718            0.00000000
+                 INFLOW( D3, S3, R2)        588.210081            0.00000000
+                 INFLOW( D3, S3, R3)        134.478840            0.00000000
+                 INFLOW( D3, S3, R4)        437.683330            0.00000000
+                 INFLOW( D3, S3, R5)        0.00000000            0.00000000
+                 INFLOW( D3, S3, Z1)        1040.00000            0.00000000
+                 INFLOW( D3, S3, Z2)        286.644157            0.00000000
+                 INFLOW( D3, S3, Z3)        268.232590            0.00000000
+                 INFLOW( D3, S3, Z4)        126.145507            0.00000000
+                 INFLOW( D3, S3, Z5)        422.683330            0.00000000
+                 INFLOW( D3, S3, Z6)        0.00000000            0.00000000
+                INFLOW( D4, S1, ETA)        2489.14051            0.00000000
+                 INFLOW( D4, S1, R1)        2280.80718            0.00000000
+                 INFLOW( D4, S1, R2)        588.210081            0.00000000
+                 INFLOW( D4, S1, R3)        134.478840            0.00000000
+                 INFLOW( D4, S1, R4)        437.683330            0.00000000
+                 INFLOW( D4, S1, R5)        93.0438225            0.00000000
+                 INFLOW( D4, S1, Z1)        1040.00000            0.00000000
+                 INFLOW( D4, S1, Z2)        286.644157            0.00000000
+                 INFLOW( D4, S1, Z3)        268.232590            0.00000000
+                 INFLOW( D4, S1, Z4)        126.145507            0.00000000
+                 INFLOW( D4, S1, Z5)        422.683330            0.00000000
+                 INFLOW( D4, S1, Z6)        89.0438225            0.00000000
+                INFLOW( D4, S2, ETA)        2489.14051            0.00000000
+                 INFLOW( D4, S2, R1)        2280.80718            0.00000000
+                 INFLOW( D4, S2, R2)        588.210081            0.00000000
+                 INFLOW( D4, S2, R3)        134.478840            0.00000000
+                 INFLOW( D4, S2, R4)        437.683330            0.00000000
+                 INFLOW( D4, S2, R5)        0.00000000            0.00000000
+                 INFLOW( D4, S2, Z1)        1040.00000            0.00000000
+                 INFLOW( D4, S2, Z2)        286.644157            0.00000000
+                 INFLOW( D4, S2, Z3)        268.232590            0.00000000
+                 INFLOW( D4, S2, Z4)        126.145507            0.00000000
+                 INFLOW( D4, S2, Z5)        422.683330            0.00000000
+                 INFLOW( D4, S2, Z6)        0.00000000            0.00000000
+                INFLOW( D4, S3, ETA)        2489.14051            0.00000000
+                 INFLOW( D4, S3, R1)        2280.80718            0.00000000
+                 INFLOW( D4, S3, R2)        588.210081            0.00000000
+                 INFLOW( D4, S3, R3)        134.478840            0.00000000
+                 INFLOW( D4, S3, R4)        437.683330            0.00000000
+                 INFLOW( D4, S3, R5)        0.00000000            0.00000000
+                 INFLOW( D4, S3, Z1)        1040.00000            0.00000000
+                 INFLOW( D4, S3, Z2)        286.644157            0.00000000
+                 INFLOW( D4, S3, Z3)        268.232590            0.00000000
+                 INFLOW( D4, S3, Z4)        126.145507            0.00000000
+                 INFLOW( D4, S3, Z5)        422.683330            0.00000000
+                 INFLOW( D4, S3, Z6)        0.00000000            0.00000000
+               OUTFLOW( D1, S1, ETA)        2280.80718            0.00000000
+                OUTFLOW( D1, S1, R1)        2200.37225            0.00000000
+                OUTFLOW( D1, S1, R2)        554.876747            0.00000000
+                OUTFLOW( D1, S1, R3)        126.145507            0.00000000
+                OUTFLOW( D1, S1, R4)        422.683330            0.00000000
+                OUTFLOW( D1, S1, R5)        0.00000000            0.00000000
+                OUTFLOW( D1, S1, Z1)        1040.00000            0.00000000
+                OUTFLOW( D1, S1, Z2)        286.644157            0.00000000
+                OUTFLOW( D1, S1, Z3)        268.232590            0.00000000
+                OUTFLOW( D1, S1, Z4)        126.145507            0.00000000
+                OUTFLOW( D1, S1, Z5)        422.683330            0.00000000
+                OUTFLOW( D1, S1, Z6)        0.00000000            0.00000000
+               OUTFLOW( D1, S2, ETA)        2280.80718            0.00000000
+                OUTFLOW( D1, S2, R1)        2293.41607            0.00000000
+                OUTFLOW( D1, S2, R2)        554.876747            0.00000000
+                OUTFLOW( D1, S2, R3)        126.145507            0.00000000
+                OUTFLOW( D1, S2, R4)        422.683330            0.00000000
+                OUTFLOW( D1, S2, R5)        89.0438225            0.00000000
+                OUTFLOW( D1, S2, Z1)        1040.00000            0.00000000
+                OUTFLOW( D1, S2, Z2)        286.644157            0.00000000
+                OUTFLOW( D1, S2, Z3)        268.232590            0.00000000
+                OUTFLOW( D1, S2, Z4)        126.145507            0.00000000
+                OUTFLOW( D1, S2, Z5)        422.683330            0.00000000
+                OUTFLOW( D1, S2, Z6)        89.0438225            0.00000000
+               OUTFLOW( D1, S3, ETA)        2280.80718            0.00000000
+                OUTFLOW( D1, S3, R1)        2200.37225            0.00000000
+                OUTFLOW( D1, S3, R2)        554.876747            0.00000000
+                OUTFLOW( D1, S3, R3)        126.145507            0.00000000
+                OUTFLOW( D1, S3, R4)        422.683330            0.00000000
+                OUTFLOW( D1, S3, R5)        0.00000000            0.00000000
+                OUTFLOW( D1, S3, Z1)        1040.00000            0.00000000
+                OUTFLOW( D1, S3, Z2)        286.644157            0.00000000
+                OUTFLOW( D1, S3, Z3)        268.232590            0.00000000
+                OUTFLOW( D1, S3, Z4)        126.145507            0.00000000
+                OUTFLOW( D1, S3, Z5)        422.683330            0.00000000
+                OUTFLOW( D1, S3, Z6)        0.00000000            0.00000000
+               OUTFLOW( D2, S1, ETA)        2280.80718            0.00000000
+                OUTFLOW( D2, S1, R1)        2293.41607            0.00000000
+                OUTFLOW( D2, S1, R2)        554.876747            0.00000000
+                OUTFLOW( D2, S1, R3)        126.145507            0.00000000
+                OUTFLOW( D2, S1, R4)        422.683330            0.00000000
+                OUTFLOW( D2, S1, R5)        89.0438225            0.00000000
+                OUTFLOW( D2, S1, Z1)        1040.00000            0.00000000
+                OUTFLOW( D2, S1, Z2)        286.644157            0.00000000
+                OUTFLOW( D2, S1, Z3)        268.232590            0.00000000
+                OUTFLOW( D2, S1, Z4)        126.145507            0.00000000
+                OUTFLOW( D2, S1, Z5)        422.683330            0.00000000
+                OUTFLOW( D2, S1, Z6)        89.0438225            0.00000000
+               OUTFLOW( D2, S2, ETA)        2280.80718            0.00000000
+                OUTFLOW( D2, S2, R1)        2293.41607            0.00000000
+                OUTFLOW( D2, S2, R2)        554.876747            0.00000000
+                OUTFLOW( D2, S2, R3)        126.145507            0.00000000
+                OUTFLOW( D2, S2, R4)        422.683330            0.00000000
+                OUTFLOW( D2, S2, R5)        89.0438225            0.00000000
+                OUTFLOW( D2, S2, Z1)        1040.00000            0.00000000
+                OUTFLOW( D2, S2, Z2)        286.644157            0.00000000
+                OUTFLOW( D2, S2, Z3)        268.232590            0.00000000
+                OUTFLOW( D2, S2, Z4)        126.145507            0.00000000
+                OUTFLOW( D2, S2, Z5)        422.683330            0.00000000
+                OUTFLOW( D2, S2, Z6)        89.0438225            0.00000000
+               OUTFLOW( D2, S3, ETA)        2280.80718            0.00000000
+                OUTFLOW( D2, S3, R1)        2200.37225            0.00000000
+                OUTFLOW( D2, S3, R2)        554.876747            0.00000000
+                OUTFLOW( D2, S3, R3)        126.145507            0.00000000
+                OUTFLOW( D2, S3, R4)        422.683330            0.00000000
+                OUTFLOW( D2, S3, R5)        0.00000000            0.00000000
+                OUTFLOW( D2, S3, Z1)        1040.00000            0.00000000
+                OUTFLOW( D2, S3, Z2)        286.644157            0.00000000
+                OUTFLOW( D2, S3, Z3)        268.232590            0.00000000
+                OUTFLOW( D2, S3, Z4)        126.145507            0.00000000
+                OUTFLOW( D2, S3, Z5)        422.683330            0.00000000
+                OUTFLOW( D2, S3, Z6)        0.00000000            0.00000000
+               OUTFLOW( D3, S1, ETA)        2280.80718            0.00000000
+                OUTFLOW( D3, S1, R1)        2293.41607            0.00000000
+                OUTFLOW( D3, S1, R2)        554.876747            0.00000000
+                OUTFLOW( D3, S1, R3)        126.145507            0.00000000
+                OUTFLOW( D3, S1, R4)        422.683330            0.00000000
+                OUTFLOW( D3, S1, R5)        89.0438225            0.00000000
+                OUTFLOW( D3, S1, Z1)        1040.00000            0.00000000
+                OUTFLOW( D3, S1, Z2)        286.644157            0.00000000
+                OUTFLOW( D3, S1, Z3)        268.232590            0.00000000
+                OUTFLOW( D3, S1, Z4)        126.145507            0.00000000
+                OUTFLOW( D3, S1, Z5)        422.683330            0.00000000
+                OUTFLOW( D3, S1, Z6)        43.0876450            0.00000000
+               OUTFLOW( D3, S2, ETA)        2280.80718            0.00000000
+                OUTFLOW( D3, S2, R1)        2200.37225            0.00000000
+                OUTFLOW( D3, S2, R2)        554.876747            0.00000000
+                OUTFLOW( D3, S2, R3)        126.145507            0.00000000
+                OUTFLOW( D3, S2, R4)        422.683330            0.00000000
+                OUTFLOW( D3, S2, R5)        0.00000000            0.00000000
+                OUTFLOW( D3, S2, Z1)        1040.00000            0.00000000
+                OUTFLOW( D3, S2, Z2)        286.644157            0.00000000
+                OUTFLOW( D3, S2, Z3)        268.232590            0.00000000
+                OUTFLOW( D3, S2, Z4)        126.145507            0.00000000
+                OUTFLOW( D3, S2, Z5)        422.683330            0.00000000
+                OUTFLOW( D3, S2, Z6)        0.00000000            0.00000000
+               OUTFLOW( D3, S3, ETA)        2280.80718            0.00000000
+                OUTFLOW( D3, S3, R1)        2200.37225            0.00000000
+                OUTFLOW( D3, S3, R2)        554.876747            0.00000000
+                OUTFLOW( D3, S3, R3)        126.145507            0.00000000
+                OUTFLOW( D3, S3, R4)        422.683330            0.00000000
+                OUTFLOW( D3, S3, R5)        0.00000000            0.00000000
+                OUTFLOW( D3, S3, Z1)        1040.00000            0.00000000
+                OUTFLOW( D3, S3, Z2)        103.576628            0.00000000
+                OUTFLOW( D3, S3, Z3)        96.9303615            0.00000000
+                OUTFLOW( D3, S3, Z4)        45.5820264            0.00000000
+                OUTFLOW( D3, S3, Z5)        152.733321            0.00000000
+                OUTFLOW( D3, S3, Z6)        0.00000000            0.00000000
+               OUTFLOW( D4, S1, ETA)        2280.80718            0.00000000
+                OUTFLOW( D4, S1, R1)        2293.41607            0.00000000
+                OUTFLOW( D4, S1, R2)        554.876747            0.00000000
+                OUTFLOW( D4, S1, R3)        126.145507            0.00000000
+                OUTFLOW( D4, S1, R4)        422.683330            0.00000000
+                OUTFLOW( D4, S1, R5)        89.0438225            0.00000000
+                OUTFLOW( D4, S1, Z1)        1040.00000            0.00000000
+                OUTFLOW( D4, S1, Z2)        0.00000000            0.00000000
+                OUTFLOW( D4, S1, Z3)        0.00000000            0.00000000
+                OUTFLOW( D4, S1, Z4)        0.00000000            0.00000000
+                OUTFLOW( D4, S1, Z5)        0.00000000            0.00000000
+                OUTFLOW( D4, S1, Z6)        0.00000000            0.00000000
+               OUTFLOW( D4, S2, ETA)        2280.80718            0.00000000
+                OUTFLOW( D4, S2, R1)        2200.37225            0.00000000
+                OUTFLOW( D4, S2, R2)        554.876747            0.00000000
+                OUTFLOW( D4, S2, R3)        126.145507            0.00000000
+                OUTFLOW( D4, S2, R4)        422.683330            0.00000000
+                OUTFLOW( D4, S2, R5)        0.00000000            0.00000000
+                OUTFLOW( D4, S2, Z1)        0.00000000            0.00000000
+                OUTFLOW( D4, S2, Z2)        0.00000000            0.00000000
+                OUTFLOW( D4, S2, Z3)        0.00000000            0.00000000
+                OUTFLOW( D4, S2, Z4)        0.00000000            0.00000000
+                OUTFLOW( D4, S2, Z5)        0.00000000            0.00000000
+                OUTFLOW( D4, S2, Z6)        0.00000000            0.00000000
+               OUTFLOW( D4, S3, ETA)        2280.80718            0.00000000
+                OUTFLOW( D4, S3, R1)        2200.37225            0.00000000
+                OUTFLOW( D4, S3, R2)        554.876747            0.00000000
+                OUTFLOW( D4, S3, R3)        126.145507            0.00000000
+                OUTFLOW( D4, S3, R4)        422.683330            0.00000000
+                OUTFLOW( D4, S3, R5)        0.00000000            0.00000000
+                OUTFLOW( D4, S3, Z1)        2080.00000            0.00000000
+                OUTFLOW( D4, S3, Z2)        0.00000000            0.00000000
+                OUTFLOW( D4, S3, Z3)        0.00000000            0.00000000
+                OUTFLOW( D4, S3, Z4)        0.00000000            0.00000000
+                OUTFLOW( D4, S3, Z5)        0.00000000            0.00000000
+                OUTFLOW( D4, S3, Z6)        0.00000000            0.00000000
+            RES_VOLUME( D1, S1, ETA)        208.333333            0.00000000
+             RES_VOLUME( D1, S1, R1)        80.4349260            0.00000000
+             RES_VOLUME( D1, S1, R2)        33.3333333            0.00000000
+             RES_VOLUME( D1, S1, R3)        8.33333333            0.00000000
+             RES_VOLUME( D1, S1, R4)        15.0000000            0.00000000
+             RES_VOLUME( D1, S1, R5)        0.00000000            0.00000000
+             RES_VOLUME( D1, S1, Z1)        0.00000000            0.00000000
+             RES_VOLUME( D1, S1, Z2)        0.00000000            0.00000000
+             RES_VOLUME( D1, S1, Z3)        0.00000000            0.00000000
+             RES_VOLUME( D1, S1, Z4)        0.00000000            0.00000000
+             RES_VOLUME( D1, S1, Z5)        0.00000000            0.00000000
+             RES_VOLUME( D1, S1, Z6)        0.00000000            0.00000000
+            RES_VOLUME( D1, S2, ETA)        416.666667            0.00000000
+             RES_VOLUME( D1, S2, R1)        67.8260296            0.00000000
+             RES_VOLUME( D1, S2, R2)        66.6666667            0.00000000
+             RES_VOLUME( D1, S2, R3)        16.6666667            0.00000000
+             RES_VOLUME( D1, S2, R4)        30.0000000            0.00000000
+             RES_VOLUME( D1, S2, R5)        4.00000000            0.00000000
+             RES_VOLUME( D1, S2, Z1)        0.00000000            0.00000000
+             RES_VOLUME( D1, S2, Z2)        0.00000000            0.00000000
+             RES_VOLUME( D1, S2, Z3)        0.00000000            0.00000000
+             RES_VOLUME( D1, S2, Z4)        0.00000000            0.00000000
+             RES_VOLUME( D1, S2, Z5)        0.00000000            0.00000000
+             RES_VOLUME( D1, S2, Z6)        0.00000000            0.00000000
+            RES_VOLUME( D1, S3, ETA)        625.000000            0.00000000
+             RES_VOLUME( D1, S3, R1)        148.260956            0.00000000
+             RES_VOLUME( D1, S3, R2)        100.000000            0.00000000
+             RES_VOLUME( D1, S3, R3)        25.0000000            0.00000000
+             RES_VOLUME( D1, S3, R4)        45.0000000            0.00000000
+             RES_VOLUME( D1, S3, R5)        4.00000000            0.00000000
+             RES_VOLUME( D1, S3, Z1)        0.00000000            0.00000000
+             RES_VOLUME( D1, S3, Z2)        0.00000000            0.00000000
+             RES_VOLUME( D1, S3, Z3)        0.00000000            0.00000000
+             RES_VOLUME( D1, S3, Z4)        0.00000000            0.00000000
+             RES_VOLUME( D1, S3, Z5)        0.00000000            0.00000000
+             RES_VOLUME( D1, S3, Z6)        0.00000000            0.00000000
+            RES_VOLUME( D2, S1, ETA)        833.333333            0.00000000
+             RES_VOLUME( D2, S1, R1)        135.652059            0.00000000
+             RES_VOLUME( D2, S1, R2)        133.333333            0.00000000
+             RES_VOLUME( D2, S1, R3)        33.3333333            0.00000000
+             RES_VOLUME( D2, S1, R4)        60.0000000            0.00000000
+             RES_VOLUME( D2, S1, R5)        8.00000000            0.00000000
+             RES_VOLUME( D2, S1, Z1)        0.00000000            0.00000000
+             RES_VOLUME( D2, S1, Z2)        0.00000000            0.00000000
+             RES_VOLUME( D2, S1, Z3)        0.00000000            0.00000000
+             RES_VOLUME( D2, S1, Z4)        0.00000000            0.00000000
+             RES_VOLUME( D2, S1, Z5)        0.00000000            0.00000000
+             RES_VOLUME( D2, S1, Z6)        0.00000000            0.00000000
+            RES_VOLUME( D2, S2, ETA)        1041.66667            0.00000000
+             RES_VOLUME( D2, S2, R1)        123.043163            0.00000000
+             RES_VOLUME( D2, S2, R2)        166.666667            0.00000000
+             RES_VOLUME( D2, S2, R3)        41.6666667            0.00000000
+             RES_VOLUME( D2, S2, R4)        75.0000000            0.00000000
+             RES_VOLUME( D2, S2, R5)        12.0000000            0.00000000
+             RES_VOLUME( D2, S2, Z1)        0.00000000            0.00000000
+             RES_VOLUME( D2, S2, Z2)        0.00000000            0.00000000
+             RES_VOLUME( D2, S2, Z3)        0.00000000            0.00000000
+             RES_VOLUME( D2, S2, Z4)        0.00000000            0.00000000
+             RES_VOLUME( D2, S2, Z5)        0.00000000            0.00000000
+             RES_VOLUME( D2, S2, Z6)        0.00000000            0.00000000
+            RES_VOLUME( D2, S3, ETA)        1250.00000            0.00000000
+             RES_VOLUME( D2, S3, R1)        203.478089            0.00000000
+             RES_VOLUME( D2, S3, R2)        200.000000            0.00000000
+             RES_VOLUME( D2, S3, R3)        50.0000000            0.00000000
+             RES_VOLUME( D2, S3, R4)        90.0000000            0.00000000
+             RES_VOLUME( D2, S3, R5)        12.0000000            0.00000000
+             RES_VOLUME( D2, S3, Z1)        0.00000000            0.00000000
+             RES_VOLUME( D2, S3, Z2)        0.00000000            0.00000000
+             RES_VOLUME( D2, S3, Z3)        0.00000000            0.00000000
+             RES_VOLUME( D2, S3, Z4)        0.00000000            0.00000000
+             RES_VOLUME( D2, S3, Z5)        0.00000000            0.00000000
+             RES_VOLUME( D2, S3, Z6)        0.00000000            0.00000000
+            RES_VOLUME( D3, S1, ETA)        1458.33333            0.00000000
+             RES_VOLUME( D3, S1, R1)        190.869192            0.00000000
+             RES_VOLUME( D3, S1, R2)        233.333333            0.00000000
+             RES_VOLUME( D3, S1, R3)        58.3333333            0.00000000
+             RES_VOLUME( D3, S1, R4)        105.000000            0.00000000
+             RES_VOLUME( D3, S1, R5)        16.0000000            0.00000000
+             RES_VOLUME( D3, S1, Z1)        0.00000000            0.00000000
+             RES_VOLUME( D3, S1, Z2)        0.00000000            0.00000000
+             RES_VOLUME( D3, S1, Z3)        0.00000000            0.00000000
+             RES_VOLUME( D3, S1, Z4)        0.00000000            0.00000000
+             RES_VOLUME( D3, S1, Z5)        0.00000000            0.00000000
+             RES_VOLUME( D3, S1, Z6)        45.9561775            0.00000000
+            RES_VOLUME( D3, S2, ETA)        1666.66667            0.00000000
+             RES_VOLUME( D3, S2, R1)        271.304118            0.00000000
+             RES_VOLUME( D3, S2, R2)        266.666667            0.00000000
+             RES_VOLUME( D3, S2, R3)        66.6666667            0.00000000
+             RES_VOLUME( D3, S2, R4)        120.000000            0.00000000
+             RES_VOLUME( D3, S2, R5)        16.0000000            0.00000000
+             RES_VOLUME( D3, S2, Z1)        0.00000000            0.00000000
+             RES_VOLUME( D3, S2, Z2)        0.00000000            0.00000000
+             RES_VOLUME( D3, S2, Z3)        0.00000000            0.00000000
+             RES_VOLUME( D3, S2, Z4)        0.00000000            0.00000000
+             RES_VOLUME( D3, S2, Z5)        0.00000000            0.00000000
+             RES_VOLUME( D3, S2, Z6)        45.9561775            0.00000000
+            RES_VOLUME( D3, S3, ETA)        1875.00000            0.00000000
+             RES_VOLUME( D3, S3, R1)        351.739044            0.00000000
+             RES_VOLUME( D3, S3, R2)        300.000000            0.00000000
+             RES_VOLUME( D3, S3, R3)        75.0000000            0.00000000
+             RES_VOLUME( D3, S3, R4)        135.000000            0.00000000
+             RES_VOLUME( D3, S3, R5)        16.0000000            0.00000000
+             RES_VOLUME( D3, S3, Z1)        0.00000000            0.00000000
+             RES_VOLUME( D3, S3, Z2)        183.067529            0.00000000
+             RES_VOLUME( D3, S3, Z3)        171.302229            0.00000000
+             RES_VOLUME( D3, S3, Z4)        80.5634802            0.00000000
+             RES_VOLUME( D3, S3, Z5)        269.950009            0.00000000
+             RES_VOLUME( D3, S3, Z6)        45.9561775            0.00000000
+            RES_VOLUME( D4, S1, ETA)        2083.33333            0.00000000
+             RES_VOLUME( D4, S1, R1)        339.130148            0.00000000
+             RES_VOLUME( D4, S1, R2)        333.333333            0.00000000
+             RES_VOLUME( D4, S1, R3)        83.3333333            0.00000000
+             RES_VOLUME( D4, S1, R4)        150.000000            0.00000000
+             RES_VOLUME( D4, S1, R5)        20.0000000            0.00000000
+             RES_VOLUME( D4, S1, Z1)        0.00000000            0.00000000
+             RES_VOLUME( D4, S1, Z2)        469.711686            0.00000000
+             RES_VOLUME( D4, S1, Z3)        439.534819            0.00000000
+             RES_VOLUME( D4, S1, Z4)        206.708987            0.00000000
+             RES_VOLUME( D4, S1, Z5)        692.633339            0.00000000
+             RES_VOLUME( D4, S1, Z6)        135.000000            0.00000000
+            RES_VOLUME( D4, S2, ETA)        2291.66667            0.00000000
+             RES_VOLUME( D4, S2, R1)        419.565074            0.00000000
+             RES_VOLUME( D4, S2, R2)        366.666667            0.00000000
+             RES_VOLUME( D4, S2, R3)        91.6666667            0.00000000
+             RES_VOLUME( D4, S2, R4)        165.000000            0.00000000
+             RES_VOLUME( D4, S2, R5)        20.0000000            0.00000000
+             RES_VOLUME( D4, S2, Z1)        1040.00000            0.00000000
+             RES_VOLUME( D4, S2, Z2)        756.355843            0.00000000
+             RES_VOLUME( D4, S2, Z3)        707.767410            0.00000000
+             RES_VOLUME( D4, S2, Z4)        332.854493            0.00000000
+             RES_VOLUME( D4, S2, Z5)        1115.31667            0.00000000
+             RES_VOLUME( D4, S2, Z6)        135.000000            0.00000000
+            RES_VOLUME( D4, S3, ETA)        2500.00000            0.00000000
+             RES_VOLUME( D4, S3, R1)        500.000000            0.00000000
+             RES_VOLUME( D4, S3, R2)        400.000000            0.00000000
+             RES_VOLUME( D4, S3, R3)        100.000000            0.00000000
+             RES_VOLUME( D4, S3, R4)        180.000000            0.00000000
+             RES_VOLUME( D4, S3, R5)        20.0000000            0.00000000
+             RES_VOLUME( D4, S3, Z1)        0.00000000            0.00000000
+             RES_VOLUME( D4, S3, Z2)        1043.00000            0.00000000
+             RES_VOLUME( D4, S3, Z3)        976.000000            0.00000000
+             RES_VOLUME( D4, S3, Z4)        459.000000            0.00000000
+             RES_VOLUME( D4, S3, Z5)        1538.00000            0.00000000
+             RES_VOLUME( D4, S3, Z6)        135.000000            0.00000000
+         IDLE_CAPACITY( D1, S1, ETA)        2291.66667            0.00000000
+          IDLE_CAPACITY( D1, S1, R1)        419.565074            0.00000000
+          IDLE_CAPACITY( D1, S1, R2)        366.666667            0.00000000
+          IDLE_CAPACITY( D1, S1, R3)        91.6666667            0.00000000
+          IDLE_CAPACITY( D1, S1, R4)        165.000000            0.00000000
+          IDLE_CAPACITY( D1, S1, R5)        20.0000000            0.00000000
+          IDLE_CAPACITY( D1, S1, Z1)        5431.00000            0.00000000
+          IDLE_CAPACITY( D1, S1, Z2)        1043.00000            0.00000000
+          IDLE_CAPACITY( D1, S1, Z3)        976.000000            0.00000000
+          IDLE_CAPACITY( D1, S1, Z4)        459.000000            0.00000000
+          IDLE_CAPACITY( D1, S1, Z5)        1538.00000            0.00000000
+          IDLE_CAPACITY( D1, S1, Z6)        135.000000            0.00000000
+         IDLE_CAPACITY( D1, S2, ETA)        2083.33333            0.00000000
+          IDLE_CAPACITY( D1, S2, R1)        432.173970            0.00000000
+          IDLE_CAPACITY( D1, S2, R2)        333.333333            0.00000000
+          IDLE_CAPACITY( D1, S2, R3)        83.3333333            0.00000000
+          IDLE_CAPACITY( D1, S2, R4)        150.000000            0.00000000
+          IDLE_CAPACITY( D1, S2, R5)        16.0000000            0.00000000
+          IDLE_CAPACITY( D1, S2, Z1)        5431.00000            0.00000000
+          IDLE_CAPACITY( D1, S2, Z2)        1043.00000            0.00000000
+          IDLE_CAPACITY( D1, S2, Z3)        976.000000            0.00000000
+          IDLE_CAPACITY( D1, S2, Z4)        459.000000            0.00000000
+          IDLE_CAPACITY( D1, S2, Z5)        1538.00000            0.00000000
+          IDLE_CAPACITY( D1, S2, Z6)        135.000000            0.00000000
+         IDLE_CAPACITY( D1, S3, ETA)        1875.00000            0.00000000
+          IDLE_CAPACITY( D1, S3, R1)        351.739044            0.00000000
+          IDLE_CAPACITY( D1, S3, R2)        300.000000            0.00000000
+          IDLE_CAPACITY( D1, S3, R3)        75.0000000            0.00000000
+          IDLE_CAPACITY( D1, S3, R4)        135.000000            0.00000000
+          IDLE_CAPACITY( D1, S3, R5)        16.0000000            0.00000000
+          IDLE_CAPACITY( D1, S3, Z1)        5431.00000            0.00000000
+          IDLE_CAPACITY( D1, S3, Z2)        1043.00000            0.00000000
+          IDLE_CAPACITY( D1, S3, Z3)        976.000000            0.00000000
+          IDLE_CAPACITY( D1, S3, Z4)        459.000000            0.00000000
+          IDLE_CAPACITY( D1, S3, Z5)        1538.00000            0.00000000
+          IDLE_CAPACITY( D1, S3, Z6)        135.000000            0.00000000
+         IDLE_CAPACITY( D2, S1, ETA)        1666.66667            0.00000000
+          IDLE_CAPACITY( D2, S1, R1)        364.347941            0.00000000
+          IDLE_CAPACITY( D2, S1, R2)        266.666667            0.00000000
+          IDLE_CAPACITY( D2, S1, R3)        66.6666667            0.00000000
+          IDLE_CAPACITY( D2, S1, R4)        120.000000            0.00000000
+          IDLE_CAPACITY( D2, S1, R5)        12.0000000            0.00000000
+          IDLE_CAPACITY( D2, S1, Z1)        5431.00000            0.00000000
+          IDLE_CAPACITY( D2, S1, Z2)        1043.00000            0.00000000
+          IDLE_CAPACITY( D2, S1, Z3)        976.000000            0.00000000
+          IDLE_CAPACITY( D2, S1, Z4)        459.000000            0.00000000
+          IDLE_CAPACITY( D2, S1, Z5)        1538.00000            0.00000000
+          IDLE_CAPACITY( D2, S1, Z6)        135.000000            0.00000000
+         IDLE_CAPACITY( D2, S2, ETA)        1458.33333            0.00000000
+          IDLE_CAPACITY( D2, S2, R1)        376.956837            0.00000000
+          IDLE_CAPACITY( D2, S2, R2)        233.333333            0.00000000
+          IDLE_CAPACITY( D2, S2, R3)        58.3333333            0.00000000
+          IDLE_CAPACITY( D2, S2, R4)        105.000000            0.00000000
+          IDLE_CAPACITY( D2, S2, R5)        8.00000000            0.00000000
+          IDLE_CAPACITY( D2, S2, Z1)        5431.00000            0.00000000
+          IDLE_CAPACITY( D2, S2, Z2)        1043.00000            0.00000000
+          IDLE_CAPACITY( D2, S2, Z3)        976.000000            0.00000000
+          IDLE_CAPACITY( D2, S2, Z4)        459.000000            0.00000000
+          IDLE_CAPACITY( D2, S2, Z5)        1538.00000            0.00000000
+          IDLE_CAPACITY( D2, S2, Z6)        135.000000            0.00000000
+         IDLE_CAPACITY( D2, S3, ETA)        1250.00000            0.00000000
+          IDLE_CAPACITY( D2, S3, R1)        296.521911            0.00000000
+          IDLE_CAPACITY( D2, S3, R2)        200.000000            0.00000000
+          IDLE_CAPACITY( D2, S3, R3)        50.0000000            0.00000000
+          IDLE_CAPACITY( D2, S3, R4)        90.0000000            0.00000000
+          IDLE_CAPACITY( D2, S3, R5)        8.00000000            0.00000000
+          IDLE_CAPACITY( D2, S3, Z1)        5431.00000            0.00000000
+          IDLE_CAPACITY( D2, S3, Z2)        1043.00000            0.00000000
+          IDLE_CAPACITY( D2, S3, Z3)        976.000000            0.00000000
+          IDLE_CAPACITY( D2, S3, Z4)        459.000000            0.00000000
+          IDLE_CAPACITY( D2, S3, Z5)        1538.00000            0.00000000
+          IDLE_CAPACITY( D2, S3, Z6)        135.000000            0.00000000
+         IDLE_CAPACITY( D3, S1, ETA)        1041.66667            0.00000000
+          IDLE_CAPACITY( D3, S1, R1)        309.130808            0.00000000
+          IDLE_CAPACITY( D3, S1, R2)        166.666667            0.00000000
+          IDLE_CAPACITY( D3, S1, R3)        41.6666667            0.00000000
+          IDLE_CAPACITY( D3, S1, R4)        75.0000000            0.00000000
+          IDLE_CAPACITY( D3, S1, R5)        4.00000000            0.00000000
+          IDLE_CAPACITY( D3, S1, Z1)        5431.00000            0.00000000
+          IDLE_CAPACITY( D3, S1, Z2)        1043.00000            0.00000000
+          IDLE_CAPACITY( D3, S1, Z3)        976.000000            0.00000000
+          IDLE_CAPACITY( D3, S1, Z4)        459.000000            0.00000000
+          IDLE_CAPACITY( D3, S1, Z5)        1538.00000            0.00000000
+          IDLE_CAPACITY( D3, S1, Z6)        89.0438225            0.00000000
+         IDLE_CAPACITY( D3, S2, ETA)        833.333333            0.00000000
+          IDLE_CAPACITY( D3, S2, R1)        228.695882            0.00000000
+          IDLE_CAPACITY( D3, S2, R2)        133.333333            0.00000000
+          IDLE_CAPACITY( D3, S2, R3)        33.3333333            0.00000000
+          IDLE_CAPACITY( D3, S2, R4)        60.0000000            0.00000000
+          IDLE_CAPACITY( D3, S2, R5)        4.00000000            0.00000000
+          IDLE_CAPACITY( D3, S2, Z1)        5431.00000            0.00000000
+          IDLE_CAPACITY( D3, S2, Z2)        1043.00000            0.00000000
+          IDLE_CAPACITY( D3, S2, Z3)        976.000000            0.00000000
+          IDLE_CAPACITY( D3, S2, Z4)        459.000000            0.00000000
+          IDLE_CAPACITY( D3, S2, Z5)        1538.00000            0.00000000
+          IDLE_CAPACITY( D3, S2, Z6)        89.0438225            0.00000000
+         IDLE_CAPACITY( D3, S3, ETA)        625.000000            0.00000000
+          IDLE_CAPACITY( D3, S3, R1)        148.260956            0.00000000
+          IDLE_CAPACITY( D3, S3, R2)        100.000000            0.00000000
+          IDLE_CAPACITY( D3, S3, R3)        25.0000000            0.00000000
+          IDLE_CAPACITY( D3, S3, R4)        45.0000000            0.00000000
+          IDLE_CAPACITY( D3, S3, R5)        4.00000000            0.00000000
+          IDLE_CAPACITY( D3, S3, Z1)        5431.00000            0.00000000
+          IDLE_CAPACITY( D3, S3, Z2)        859.932471            0.00000000
+          IDLE_CAPACITY( D3, S3, Z3)        804.697771            0.00000000
+          IDLE_CAPACITY( D3, S3, Z4)        378.436520            0.00000000
+          IDLE_CAPACITY( D3, S3, Z5)        1268.04999            0.00000000
+          IDLE_CAPACITY( D3, S3, Z6)        89.0438225            0.00000000
+         IDLE_CAPACITY( D4, S1, ETA)        416.666667            0.00000000
+          IDLE_CAPACITY( D4, S1, R1)        160.869852            0.00000000
+          IDLE_CAPACITY( D4, S1, R2)        66.6666667            0.00000000
+          IDLE_CAPACITY( D4, S1, R3)        16.6666667            0.00000000
+          IDLE_CAPACITY( D4, S1, R4)        30.0000000            0.00000000
+          IDLE_CAPACITY( D4, S1, R5)        0.00000000            0.00000000
+          IDLE_CAPACITY( D4, S1, Z1)        5431.00000            0.00000000
+          IDLE_CAPACITY( D4, S1, Z2)        573.288314            0.00000000
+          IDLE_CAPACITY( D4, S1, Z3)        536.465181            0.00000000
+          IDLE_CAPACITY( D4, S1, Z4)        252.291013            0.00000000
+          IDLE_CAPACITY( D4, S1, Z5)        845.366661            0.00000000
+          IDLE_CAPACITY( D4, S1, Z6)        0.00000000            0.00000000
+         IDLE_CAPACITY( D4, S2, ETA)        208.333333            0.00000000
+          IDLE_CAPACITY( D4, S2, R1)        80.4349260            0.00000000
+          IDLE_CAPACITY( D4, S2, R2)        33.3333333            0.00000000
+          IDLE_CAPACITY( D4, S2, R3)        8.33333333            0.00000000
+          IDLE_CAPACITY( D4, S2, R4)        15.0000000            0.00000000
+          IDLE_CAPACITY( D4, S2, R5)        0.00000000            0.00000000
+          IDLE_CAPACITY( D4, S2, Z1)        4391.00000            0.00000000
+          IDLE_CAPACITY( D4, S2, Z2)        286.644157            0.00000000
+          IDLE_CAPACITY( D4, S2, Z3)        268.232590            0.00000000
+          IDLE_CAPACITY( D4, S2, Z4)        126.145507            0.00000000
+          IDLE_CAPACITY( D4, S2, Z5)        422.683330            0.00000000
+          IDLE_CAPACITY( D4, S2, Z6)        0.00000000            0.00000000
+         IDLE_CAPACITY( D4, S3, ETA)        0.00000000            0.00000000
+          IDLE_CAPACITY( D4, S3, R1)        0.00000000            0.00000000
+          IDLE_CAPACITY( D4, S3, R2)        0.00000000            0.00000000
+          IDLE_CAPACITY( D4, S3, R3)        0.00000000            0.00000000
+          IDLE_CAPACITY( D4, S3, R4)        0.00000000            0.00000000
+          IDLE_CAPACITY( D4, S3, R5)        0.00000000            0.00000000
+          IDLE_CAPACITY( D4, S3, Z1)        5431.00000            0.00000000
+          IDLE_CAPACITY( D4, S3, Z2)        0.00000000            0.00000000
+          IDLE_CAPACITY( D4, S3, Z3)        0.00000000            0.00000000
+          IDLE_CAPACITY( D4, S3, Z4)        0.00000000            0.00000000
+          IDLE_CAPACITY( D4, S3, Z5)        0.00000000            0.00000000
+          IDLE_CAPACITY( D4, S3, Z6)        0.00000000            0.00000000
+     IDLE_CAP_EXP_WEIG( D4, S3, ETA)        0.00000000            0.00000000
+      IDLE_CAP_EXP_WEIG( D4, S3, R1)        0.00000000            0.00000000
+      IDLE_CAP_EXP_WEIG( D4, S3, R2)        0.00000000            0.00000000
+      IDLE_CAP_EXP_WEIG( D4, S3, R3)        0.00000000            0.00000000
+      IDLE_CAP_EXP_WEIG( D4, S3, R4)        0.00000000            0.00000000
+      IDLE_CAP_EXP_WEIG( D4, S3, R5)        0.00000000            0.00000000
+      IDLE_CAP_EXP_WEIG( D4, S3, Z1)        5431.00000            0.00000000
+      IDLE_CAP_EXP_WEIG( D4, S3, Z2)        0.00000000            0.00000000
+      IDLE_CAP_EXP_WEIG( D4, S3, Z3)        0.00000000            0.00000000
+      IDLE_CAP_EXP_WEIG( D4, S3, Z4)        0.00000000            0.00000000
+      IDLE_CAP_EXP_WEIG( D4, S3, Z5)        0.00000000            0.00000000
+      IDLE_CAP_EXP_WEIG( D4, S3, Z6)        0.00000000            0.00000000
+                     HOUSEHOLDS( Z1)        5431.00000            0.00000000
+                     HOUSEHOLDS( Z2)        1043.00000            0.00000000
+                     HOUSEHOLDS( Z3)        976.000000            0.00000000
+                     HOUSEHOLDS( Z4)        459.000000            0.00000000
+                     HOUSEHOLDS( Z5)        1538.00000            0.00000000
+                     HOUSEHOLDS( Z6)        135.000000            0.00000000
+                         DEMAND( Z1)        16944.7200            0.00000000
+                         DEMAND( Z2)        3254.16000            0.00000000
+                         DEMAND( Z3)        3045.12000            0.00000000
+                         DEMAND( Z4)        1432.08000            0.00000000
+                         DEMAND( Z5)        4798.56000            0.00000000
+                         DEMAND( Z6)        421.200000            0.00000000
+          ZONE_AVERAGE_CAPACITY( Z1)        1.00000000            0.00000000
+          ZONE_AVERAGE_CAPACITY( Z2)        1.00000000            0.00000000
+          ZONE_AVERAGE_CAPACITY( Z3)        1.00000000            0.00000000
+          ZONE_AVERAGE_CAPACITY( Z4)        1.00000000            0.00000000
+          ZONE_AVERAGE_CAPACITY( Z5)        1.00000000            0.00000000
+          ZONE_AVERAGE_CAPACITY( Z6)        1.00000000            0.00000000
+                   ZONE_OUTFLOW( Z1)        12480.0000            0.00000000
+                   ZONE_OUTFLOW( Z2)        2396.72988            0.00000000
+                   ZONE_OUTFLOW( Z3)        2242.79108            0.00000000
+                   ZONE_OUTFLOW( Z4)        1054.74608            0.00000000
+                   ZONE_OUTFLOW( Z5)        3534.19996            0.00000000
+                   ZONE_OUTFLOW( Z6)        310.219113            0.00000000
+                           DIFF( Z1)        0.00000000            97119.8996
+                           DIFF( Z2)        0.00000000            194239.799
+                           DIFF( Z3)        0.00000000            0.00000000
+                           DIFF( Z4)        0.00000000            194239.799
+                           DIFF( Z5)        0.00000000            194239.799
+                           DIFF( Z6)        0.00000000            194239.799
+                     DEMAND_PER( Z1)       0.566791901            0.00000000
+                     DEMAND_PER( Z2)       0.108849927            0.00000000
+                     DEMAND_PER( Z3)       0.101857650            0.00000000
+                     DEMAND_PER( Z4)       0.479023168E-01        0.00000000
+                     DEMAND_PER( Z5)       0.160509288            0.00000000
+                     DEMAND_PER( Z6)       0.140889167E-01        0.00000000
+               ZONE_OUTFLOW_PER( Z1)       0.566791312            0.00000000
+               ZONE_OUTFLOW_PER( Z2)       0.108849814            0.00000000
+               ZONE_OUTFLOW_PER( Z3)       0.101858534            0.00000000
+               ZONE_OUTFLOW_PER( Z4)       0.479023168E-01        0.00000000
+               ZONE_OUTFLOW_PER( Z5)       0.160509121            0.00000000
+               ZONE_OUTFLOW_PER( Z6)       0.140889021E-01        0.00000000
+                      NET( ETA, ETA)        0.00000000            0.00000000
+                       NET( ETA, R1)        1.00000000            0.00000000
+                       NET( ETA, R2)        0.00000000            0.00000000
+                       NET( ETA, R3)        0.00000000            0.00000000
+                       NET( ETA, R4)        0.00000000            0.00000000
+                       NET( ETA, R5)        0.00000000            0.00000000
+                       NET( ETA, Z1)        0.00000000            0.00000000
+                       NET( ETA, Z2)        0.00000000            0.00000000
+                       NET( ETA, Z3)        0.00000000            0.00000000
+                       NET( ETA, Z4)        0.00000000            0.00000000
+                       NET( ETA, Z5)        0.00000000            0.00000000
+                       NET( ETA, Z6)        0.00000000            0.00000000
+                       NET( R1, ETA)        0.00000000            0.00000000
+                        NET( R1, R1)        0.00000000            0.00000000
+                        NET( R1, R2)        1.00000000            0.00000000
+                        NET( R1, R3)        1.00000000            0.00000000
+                        NET( R1, R4)        1.00000000            0.00000000
+                        NET( R1, R5)        1.00000000            0.00000000
+                        NET( R1, Z1)        1.00000000            0.00000000
+                        NET( R1, Z2)        0.00000000            0.00000000
+                        NET( R1, Z3)        0.00000000            0.00000000
+                        NET( R1, Z4)        0.00000000            0.00000000
+                        NET( R1, Z5)        0.00000000            0.00000000
+                        NET( R1, Z6)        0.00000000            0.00000000
+                       NET( R2, ETA)        0.00000000            0.00000000
+                        NET( R2, R1)        0.00000000            0.00000000
+                        NET( R2, R2)        0.00000000            0.00000000
+                        NET( R2, R3)        0.00000000            0.00000000
+                        NET( R2, R4)        0.00000000            0.00000000
+                        NET( R2, R5)        0.00000000            0.00000000
+                        NET( R2, Z1)        0.00000000            0.00000000
+                        NET( R2, Z2)        1.00000000            0.00000000
+                        NET( R2, Z3)        1.00000000            0.00000000
+                        NET( R2, Z4)        0.00000000            0.00000000
+                        NET( R2, Z5)        0.00000000            0.00000000
+                        NET( R2, Z6)        0.00000000            0.00000000
+                       NET( R3, ETA)        0.00000000            0.00000000
+                        NET( R3, R1)        0.00000000            0.00000000
+                        NET( R3, R2)        0.00000000            0.00000000
+                        NET( R3, R3)        0.00000000            0.00000000
+                        NET( R3, R4)        0.00000000            0.00000000
+                        NET( R3, R5)        0.00000000            0.00000000
+                        NET( R3, Z1)        0.00000000            0.00000000
+                        NET( R3, Z2)        0.00000000            0.00000000
+                        NET( R3, Z3)        0.00000000            0.00000000
+                        NET( R3, Z4)        1.00000000            0.00000000
+                        NET( R3, Z5)        0.00000000            0.00000000
+                        NET( R3, Z6)        0.00000000            0.00000000
+                       NET( R4, ETA)        0.00000000            0.00000000
+                        NET( R4, R1)        0.00000000            0.00000000
+                        NET( R4, R2)        0.00000000            0.00000000
+                        NET( R4, R3)        0.00000000            0.00000000
+                        NET( R4, R4)        0.00000000            0.00000000
+                        NET( R4, R5)        0.00000000            0.00000000
+                        NET( R4, Z1)        0.00000000            0.00000000
+                        NET( R4, Z2)        0.00000000            0.00000000
+                        NET( R4, Z3)        0.00000000            0.00000000
+                        NET( R4, Z4)        0.00000000            0.00000000
+                        NET( R4, Z5)        1.00000000            0.00000000
+                        NET( R4, Z6)        0.00000000            0.00000000
+                       NET( R5, ETA)        0.00000000            0.00000000
+                        NET( R5, R1)        0.00000000            0.00000000
+                        NET( R5, R2)        0.00000000            0.00000000
+                        NET( R5, R3)        0.00000000            0.00000000
+                        NET( R5, R4)        0.00000000            0.00000000
+                        NET( R5, R5)        0.00000000            0.00000000
+                        NET( R5, Z1)        0.00000000            0.00000000
+                        NET( R5, Z2)        0.00000000            0.00000000
+                        NET( R5, Z3)        0.00000000            0.00000000
+                        NET( R5, Z4)        0.00000000            0.00000000
+                        NET( R5, Z5)        0.00000000            0.00000000
+                        NET( R5, Z6)        1.00000000            0.00000000
+
+                                 Row      Slack or Surplus        Dual Price
+                                EQ01        54980.4291            1.00000000
+                                   2        0.00000000            1.00000000
+                                   3        0.00000000          -0.971198996
+                                   4        0.00000000            0.00000000
+                                   5        0.00000000           -1.00000000
+                                EQ15        0.00000000            4.41079450
+                           EQ13( Z1)        4464.72000            0.00000000
+                           EQ13( Z2)        857.430116            0.00000000
+                           EQ13( Z3)        802.328915            0.00000000
+                           EQ13( Z4)        377.333921            0.00000000
+                           EQ13( Z5)        1264.36004            0.00000000
+                           EQ13( Z6)        110.980887            0.00000000
+                           EQ14( Z1)        0.00000000            4.41079450
+                           EQ14( Z2)        0.00000000            0.00000000
+                           EQ14( Z3)        0.00000000            0.00000000
+                           EQ14( Z4)        0.00000000            0.00000000
+                           EQ14( Z5)        0.00000000            0.00000000
+                           EQ14( Z6)        0.00000000            0.00000000
+                        EQ01_2T( Z1)      -0.589320467E-06        0.00000000
+                        EQ01_2T( Z2)      -0.113176443E-06        97119.8996
+                        EQ01_2T( Z3)      -0.884034950E-06       -97119.8996
+                        EQ01_2T( Z4)        0.00000000            97119.8996
+                        EQ01_2T( Z5)      -0.166889135E-06        97119.8996
+                        EQ01_2T( Z6)      -0.146489164E-07        97119.8996
+                           EQ16( Z1)        0.00000000            0.00000000
+                           EQ16( Z2)        0.00000000           -97119.8996
+                           EQ16( Z3)        0.00000000           -97119.8996
+                           EQ16( Z4)        0.00000000           -97119.8996
+                           EQ16( Z5)        0.00000000           -97119.8996
+                           EQ16( Z6)        0.00000000           -97119.8996
+                  EQ06( D1, S1, ETA)        0.00000000            0.00000000
+                   EQ06( D1, S1, R1)        0.00000000            0.00000000
+                   EQ06( D1, S1, R2)        0.00000000            0.00000000
+                   EQ06( D1, S1, R3)        0.00000000            0.00000000
+                   EQ06( D1, S1, R4)        0.00000000            0.00000000
+                   EQ06( D1, S1, R5)        0.00000000            0.00000000
+                  EQ06( D1, S2, ETA)        0.00000000            0.00000000
+                   EQ06( D1, S2, R1)        0.00000000            0.00000000
+                   EQ06( D1, S2, R2)        0.00000000            0.00000000
+                   EQ06( D1, S2, R3)        0.00000000            0.00000000
+                   EQ06( D1, S2, R4)        0.00000000            0.00000000
+                   EQ06( D1, S2, R5)        0.00000000            0.00000000
+                  EQ06( D1, S3, ETA)        0.00000000            0.00000000
+                   EQ06( D1, S3, R1)        0.00000000            0.00000000
+                   EQ06( D1, S3, R2)        0.00000000            0.00000000
+                   EQ06( D1, S3, R3)        0.00000000            0.00000000
+                   EQ06( D1, S3, R4)        0.00000000            0.00000000
+                   EQ06( D1, S3, R5)        0.00000000            0.00000000
+                  EQ06( D2, S1, ETA)        0.00000000            0.00000000
+                   EQ06( D2, S1, R1)        0.00000000            0.00000000
+                   EQ06( D2, S1, R2)        0.00000000            0.00000000
+                   EQ06( D2, S1, R3)        0.00000000            0.00000000
+                   EQ06( D2, S1, R4)        0.00000000            0.00000000
+                   EQ06( D2, S1, R5)        0.00000000            0.00000000
+                  EQ06( D2, S2, ETA)        0.00000000            0.00000000
+                   EQ06( D2, S2, R1)        0.00000000            0.00000000
+                   EQ06( D2, S2, R2)        0.00000000            0.00000000
+                   EQ06( D2, S2, R3)        0.00000000            0.00000000
+                   EQ06( D2, S2, R4)        0.00000000            0.00000000
+                   EQ06( D2, S2, R5)        0.00000000            0.00000000
+                  EQ06( D2, S3, ETA)        0.00000000            0.00000000
+                   EQ06( D2, S3, R1)        0.00000000            0.00000000
+                   EQ06( D2, S3, R2)        0.00000000            0.00000000
+                   EQ06( D2, S3, R3)        0.00000000            0.00000000
+                   EQ06( D2, S3, R4)        0.00000000            0.00000000
+                   EQ06( D2, S3, R5)        0.00000000            0.00000000
+                  EQ06( D3, S1, ETA)        0.00000000            0.00000000
+                   EQ06( D3, S1, R1)        0.00000000            0.00000000
+                   EQ06( D3, S1, R2)        0.00000000            0.00000000
+                   EQ06( D3, S1, R3)        0.00000000            0.00000000
+                   EQ06( D3, S1, R4)        0.00000000            0.00000000
+                   EQ06( D3, S1, R5)        0.00000000            0.00000000
+                  EQ06( D3, S2, ETA)        0.00000000            0.00000000
+                   EQ06( D3, S2, R1)        0.00000000            0.00000000
+                   EQ06( D3, S2, R2)        0.00000000            0.00000000
+                   EQ06( D3, S2, R3)        0.00000000            0.00000000
+                   EQ06( D3, S2, R4)        0.00000000            0.00000000
+                   EQ06( D3, S2, R5)        0.00000000            0.00000000
+                  EQ06( D3, S3, ETA)        0.00000000            0.00000000
+                   EQ06( D3, S3, R1)        0.00000000            0.00000000
+                   EQ06( D3, S3, R2)        0.00000000            0.00000000
+                   EQ06( D3, S3, R3)        0.00000000            0.00000000
+                   EQ06( D3, S3, R4)        0.00000000            0.00000000
+                   EQ06( D3, S3, R5)        0.00000000            0.00000000
+                  EQ06( D4, S1, ETA)        0.00000000            0.00000000
+                   EQ06( D4, S1, R1)        0.00000000            0.00000000
+                   EQ06( D4, S1, R2)        0.00000000            0.00000000
+                   EQ06( D4, S1, R3)        0.00000000            0.00000000
+                   EQ06( D4, S1, R4)        0.00000000            0.00000000
+                   EQ06( D4, S1, R5)        0.00000000            0.00000000
+                  EQ06( D4, S2, ETA)        0.00000000            0.00000000
+                   EQ06( D4, S2, R1)        0.00000000            0.00000000
+                   EQ06( D4, S2, R2)        0.00000000            0.00000000
+                   EQ06( D4, S2, R3)        0.00000000            0.00000000
+                   EQ06( D4, S2, R4)        0.00000000            0.00000000
+                   EQ06( D4, S2, R5)        0.00000000            0.00000000
+                  EQ06( D4, S3, ETA)        0.00000000            0.00000000
+                   EQ06( D4, S3, R1)        0.00000000            0.00000000
+                   EQ06( D4, S3, R2)        0.00000000            0.00000000
+                   EQ06( D4, S3, R3)        0.00000000            0.00000000
+                   EQ06( D4, S3, R4)        0.00000000            0.00000000
+                   EQ06( D4, S3, R5)        0.00000000            0.00000000
+                          EQ04( ETA)        56.0574362            0.00000000
+                           EQ04( R1)        2.89910288            0.00000000
+                           EQ04( R2)        293.673740            0.00000000
+                           EQ04( R3)        350.390145            0.00000000
+                           EQ04( R4)        312.489584            0.00000000
+                           EQ04( R5)        355.569522            0.00000000
+                           EQ04( Z1)        0.00000000            423.436272
+                           EQ04( Z2)        331.369480            0.00000000
+                           EQ04( Z3)        333.670926            0.00000000
+                           EQ04( Z4)        351.431812            0.00000000
+                           EQ04( Z5)        314.364584            0.00000000
+                           EQ04( Z6)        356.069522            0.00000000
+                          EQ05( ETA)        311.142564            0.00000000
+                           EQ05( R1)        285.100897            0.00000000
+                           EQ05( R2)        73.5262601            0.00000000
+                           EQ05( R3)        16.8098550            0.00000000
+                           EQ05( R4)        54.7104163            0.00000000
+                           EQ05( R5)        1.63047781            0.00000000
+                           EQ05( Z1)        130.000000            0.00000000
+                           EQ05( Z2)        35.8305196            0.00000000
+                           EQ05( Z3)        33.5290738            0.00000000
+                           EQ05( Z4)        15.7681883            0.00000000
+                           EQ05( Z5)        52.8354163            0.00000000
+                           EQ05( Z6)        11.1304778            0.00000000
+                          EQ03( ETA)        0.00000000            0.00000000
+                           EQ03( R1)        0.00000000            0.00000000
+                           EQ03( R2)        0.00000000            0.00000000
+                           EQ03( R3)        0.00000000            0.00000000
+                           EQ03( R4)        0.00000000            0.00000000
+                           EQ03( R5)        0.00000000            0.00000000
+                           EQ03( Z1)        0.00000000            52.9295340
+                           EQ03( Z2)        0.00000000            0.00000000
+                           EQ03( Z3)        0.00000000            0.00000000
+                           EQ03( Z4)        0.00000000            0.00000000
+                           EQ03( Z5)        0.00000000            0.00000000
+                           EQ03( Z6)        0.00000000            0.00000000
+                  EQ02( D1, S1, ETA)        0.00000000            0.00000000
+                   EQ02( D1, S1, R1)        0.00000000            0.00000000
+                   EQ02( D1, S1, R2)        0.00000000            0.00000000
+                   EQ02( D1, S1, R3)        0.00000000            0.00000000
+                   EQ02( D1, S1, R4)        0.00000000            0.00000000
+                   EQ02( D1, S1, R5)        0.00000000            0.00000000
+                   EQ02( D1, S1, Z1)        0.00000000            4.41079450
+                   EQ02( D1, S1, Z2)        0.00000000            0.00000000
+                   EQ02( D1, S1, Z3)        0.00000000            0.00000000
+                   EQ02( D1, S1, Z4)        0.00000000            0.00000000
+                   EQ02( D1, S1, Z5)        0.00000000            0.00000000
+                   EQ02( D1, S1, Z6)        0.00000000            0.00000000
+                  EQ02( D1, S2, ETA)        0.00000000            0.00000000
+                   EQ02( D1, S2, R1)        0.00000000            0.00000000
+                   EQ02( D1, S2, R2)        0.00000000            0.00000000
+                   EQ02( D1, S2, R3)        0.00000000            0.00000000
+                   EQ02( D1, S2, R4)        0.00000000            0.00000000
+                   EQ02( D1, S2, R5)        0.00000000            0.00000000
+                   EQ02( D1, S2, Z1)        0.00000000            4.41079450
+                   EQ02( D1, S2, Z2)        0.00000000            0.00000000
+                   EQ02( D1, S2, Z3)        0.00000000            0.00000000
+                   EQ02( D1, S2, Z4)        0.00000000            0.00000000
+                   EQ02( D1, S2, Z5)        0.00000000            0.00000000
+                   EQ02( D1, S2, Z6)        0.00000000            0.00000000
+                  EQ02( D1, S3, ETA)        0.00000000            0.00000000
+                   EQ02( D1, S3, R1)        0.00000000            0.00000000
+                   EQ02( D1, S3, R2)        0.00000000            0.00000000
+                   EQ02( D1, S3, R3)        0.00000000            0.00000000
+                   EQ02( D1, S3, R4)        0.00000000            0.00000000
+                   EQ02( D1, S3, R5)        0.00000000            0.00000000
+                   EQ02( D1, S3, Z1)        0.00000000            4.41079450
+                   EQ02( D1, S3, Z2)        0.00000000            0.00000000
+                   EQ02( D1, S3, Z3)        0.00000000            0.00000000
+                   EQ02( D1, S3, Z4)        0.00000000            0.00000000
+                   EQ02( D1, S3, Z5)        0.00000000            0.00000000
+                   EQ02( D1, S3, Z6)        0.00000000            0.00000000
+                  EQ02( D2, S1, ETA)        0.00000000            0.00000000
+                   EQ02( D2, S1, R1)        0.00000000            0.00000000
+                   EQ02( D2, S1, R2)        0.00000000            0.00000000
+                   EQ02( D2, S1, R3)        0.00000000            0.00000000
+                   EQ02( D2, S1, R4)        0.00000000            0.00000000
+                   EQ02( D2, S1, R5)        0.00000000            0.00000000
+                   EQ02( D2, S1, Z1)        0.00000000            4.41079450
+                   EQ02( D2, S1, Z2)        0.00000000            0.00000000
+                   EQ02( D2, S1, Z3)        0.00000000            0.00000000
+                   EQ02( D2, S1, Z4)        0.00000000            0.00000000
+                   EQ02( D2, S1, Z5)        0.00000000            0.00000000
+                   EQ02( D2, S1, Z6)        0.00000000            0.00000000
+                  EQ02( D2, S2, ETA)        0.00000000            0.00000000
+                   EQ02( D2, S2, R1)        0.00000000            0.00000000
+                   EQ02( D2, S2, R2)        0.00000000            0.00000000
+                   EQ02( D2, S2, R3)        0.00000000            0.00000000
+                   EQ02( D2, S2, R4)        0.00000000            0.00000000
+                   EQ02( D2, S2, R5)        0.00000000            0.00000000
+                   EQ02( D2, S2, Z1)        0.00000000            4.41079450
+                   EQ02( D2, S2, Z2)        0.00000000            0.00000000
+                   EQ02( D2, S2, Z3)        0.00000000            0.00000000
+                   EQ02( D2, S2, Z4)        0.00000000            0.00000000
+                   EQ02( D2, S2, Z5)        0.00000000            0.00000000
+                   EQ02( D2, S2, Z6)        0.00000000            0.00000000
+                  EQ02( D2, S3, ETA)        0.00000000            0.00000000
+                   EQ02( D2, S3, R1)        0.00000000            0.00000000
+                   EQ02( D2, S3, R2)        0.00000000            0.00000000
+                   EQ02( D2, S3, R3)        0.00000000            0.00000000
+                   EQ02( D2, S3, R4)        0.00000000            0.00000000
+                   EQ02( D2, S3, R5)        0.00000000            0.00000000
+                   EQ02( D2, S3, Z1)        0.00000000            4.41079450
+                   EQ02( D2, S3, Z2)        0.00000000            0.00000000
+                   EQ02( D2, S3, Z3)        0.00000000            0.00000000
+                   EQ02( D2, S3, Z4)        0.00000000            0.00000000
+                   EQ02( D2, S3, Z5)        0.00000000            0.00000000
+                   EQ02( D2, S3, Z6)        0.00000000            0.00000000
+                  EQ02( D3, S1, ETA)        0.00000000            0.00000000
+                   EQ02( D3, S1, R1)        0.00000000            0.00000000
+                   EQ02( D3, S1, R2)        0.00000000            0.00000000
+                   EQ02( D3, S1, R3)        0.00000000            0.00000000
+                   EQ02( D3, S1, R4)        0.00000000            0.00000000
+                   EQ02( D3, S1, R5)        0.00000000            0.00000000
+                   EQ02( D3, S1, Z1)        0.00000000            4.41079450
+                   EQ02( D3, S1, Z2)        0.00000000            0.00000000
+                   EQ02( D3, S1, Z3)        0.00000000            0.00000000
+                   EQ02( D3, S1, Z4)        0.00000000            0.00000000
+                   EQ02( D3, S1, Z5)        0.00000000            0.00000000
+                   EQ02( D3, S1, Z6)        0.00000000            0.00000000
+                  EQ02( D3, S2, ETA)        0.00000000            0.00000000
+                   EQ02( D3, S2, R1)        0.00000000            0.00000000
+                   EQ02( D3, S2, R2)        0.00000000            0.00000000
+                   EQ02( D3, S2, R3)        0.00000000            0.00000000
+                   EQ02( D3, S2, R4)        0.00000000            0.00000000
+                   EQ02( D3, S2, R5)        0.00000000            0.00000000
+                   EQ02( D3, S2, Z1)        0.00000000            4.41079450
+                   EQ02( D3, S2, Z2)        0.00000000            0.00000000
+                   EQ02( D3, S2, Z3)        0.00000000            0.00000000
+                   EQ02( D3, S2, Z4)        0.00000000            0.00000000
+                   EQ02( D3, S2, Z5)        0.00000000            0.00000000
+                   EQ02( D3, S2, Z6)        0.00000000            0.00000000
+                  EQ02( D3, S3, ETA)        0.00000000            0.00000000
+                   EQ02( D3, S3, R1)        0.00000000            0.00000000
+                   EQ02( D3, S3, R2)        0.00000000            0.00000000
+                   EQ02( D3, S3, R3)        0.00000000            0.00000000
+                   EQ02( D3, S3, R4)        0.00000000            0.00000000
+                   EQ02( D3, S3, R5)        0.00000000            0.00000000
+                   EQ02( D3, S3, Z1)        0.00000000            4.41079450
+                   EQ02( D3, S3, Z2)        0.00000000            0.00000000
+                   EQ02( D3, S3, Z3)        0.00000000            0.00000000
+                   EQ02( D3, S3, Z4)        0.00000000            0.00000000
+                   EQ02( D3, S3, Z5)        0.00000000            0.00000000
+                   EQ02( D3, S3, Z6)        0.00000000            0.00000000
+                  EQ02( D4, S1, ETA)        0.00000000            0.00000000
+                   EQ02( D4, S1, R1)        0.00000000            0.00000000
+                   EQ02( D4, S1, R2)        0.00000000            0.00000000
+                   EQ02( D4, S1, R3)        0.00000000            0.00000000
+                   EQ02( D4, S1, R4)        0.00000000            0.00000000
+                   EQ02( D4, S1, R5)        0.00000000            0.00000000
+                   EQ02( D4, S1, Z1)        0.00000000            4.41079450
+                   EQ02( D4, S1, Z2)        0.00000000            0.00000000
+                   EQ02( D4, S1, Z3)        0.00000000            0.00000000
+                   EQ02( D4, S1, Z4)        0.00000000            0.00000000
+                   EQ02( D4, S1, Z5)        0.00000000            0.00000000
+                   EQ02( D4, S1, Z6)        0.00000000            0.00000000
+                  EQ02( D4, S2, ETA)        0.00000000            0.00000000
+                   EQ02( D4, S2, R1)        0.00000000            0.00000000
+                   EQ02( D4, S2, R2)        0.00000000            0.00000000
+                   EQ02( D4, S2, R3)        0.00000000            0.00000000
+                   EQ02( D4, S2, R4)        0.00000000            0.00000000
+                   EQ02( D4, S2, R5)        0.00000000            0.00000000
+                   EQ02( D4, S2, Z1)        0.00000000            4.41079450
+                   EQ02( D4, S2, Z2)        0.00000000            0.00000000
+                   EQ02( D4, S2, Z3)        0.00000000            0.00000000
+                   EQ02( D4, S2, Z4)        0.00000000            0.00000000
+                   EQ02( D4, S2, Z5)        0.00000000            0.00000000
+                   EQ02( D4, S2, Z6)        0.00000000            0.00000000
+                  EQ02( D4, S3, ETA)        0.00000000            0.00000000
+                   EQ02( D4, S3, R1)        0.00000000            0.00000000
+                   EQ02( D4, S3, R2)        0.00000000            0.00000000
+                   EQ02( D4, S3, R3)        0.00000000            0.00000000
+                   EQ02( D4, S3, R4)        0.00000000            0.00000000
+                   EQ02( D4, S3, R5)        0.00000000            0.00000000
+                   EQ02( D4, S3, Z1)        0.00000000            4.41079450
+                   EQ02( D4, S3, Z2)        0.00000000            0.00000000
+                   EQ02( D4, S3, Z3)        0.00000000            0.00000000
+                   EQ02( D4, S3, Z4)        0.00000000            0.00000000
+                   EQ02( D4, S3, Z5)        0.00000000            0.00000000
+                   EQ02( D4, S3, Z6)        0.00000000            0.00000000
+                  EQ10( D1, S1, ETA)        208.333333            0.00000000
+                   EQ10( D1, S1, R1)        80.4349260            0.00000000
+                   EQ10( D1, S1, R2)        33.3333333            0.00000000
+                   EQ10( D1, S1, R3)        8.33333333            0.00000000
+                   EQ10( D1, S1, R4)        15.0000000            0.00000000
+                   EQ10( D1, S1, R5)        0.00000000            0.00000000
+                   EQ10( D1, S1, Z1)        0.00000000            0.00000000
+                   EQ10( D1, S1, Z2)        0.00000000            0.00000000
+                   EQ10( D1, S1, Z3)        0.00000000            0.00000000
+                   EQ10( D1, S1, Z4)        0.00000000            0.00000000
+                   EQ10( D1, S1, Z5)        0.00000000            0.00000000
+                   EQ10( D1, S1, Z6)        0.00000000            0.00000000
+                  EQ10( D1, S2, ETA)        416.666667            0.00000000
+                   EQ10( D1, S2, R1)        67.8260296            0.00000000
+                   EQ10( D1, S2, R2)        66.6666667            0.00000000
+                   EQ10( D1, S2, R3)        16.6666667            0.00000000
+                   EQ10( D1, S2, R4)        30.0000000            0.00000000
+                   EQ10( D1, S2, R5)        4.00000000            0.00000000
+                   EQ10( D1, S2, Z1)        0.00000000            0.00000000
+                   EQ10( D1, S2, Z2)        0.00000000            0.00000000
+                   EQ10( D1, S2, Z3)        0.00000000            0.00000000
+                   EQ10( D1, S2, Z4)        0.00000000            0.00000000
+                   EQ10( D1, S2, Z5)        0.00000000            0.00000000
+                   EQ10( D1, S2, Z6)        0.00000000            0.00000000
+                  EQ10( D1, S3, ETA)        625.000000            0.00000000
+                   EQ10( D1, S3, R1)        148.260956            0.00000000
+                   EQ10( D1, S3, R2)        100.000000            0.00000000
+                   EQ10( D1, S3, R3)        25.0000000            0.00000000
+                   EQ10( D1, S3, R4)        45.0000000            0.00000000
+                   EQ10( D1, S3, R5)        4.00000000            0.00000000
+                   EQ10( D1, S3, Z1)        0.00000000            0.00000000
+                   EQ10( D1, S3, Z2)        0.00000000            0.00000000
+                   EQ10( D1, S3, Z3)        0.00000000            0.00000000
+                   EQ10( D1, S3, Z4)        0.00000000            0.00000000
+                   EQ10( D1, S3, Z5)        0.00000000            0.00000000
+                   EQ10( D1, S3, Z6)        0.00000000            0.00000000
+                  EQ10( D2, S1, ETA)        833.333333            0.00000000
+                   EQ10( D2, S1, R1)        135.652059            0.00000000
+                   EQ10( D2, S1, R2)        133.333333            0.00000000
+                   EQ10( D2, S1, R3)        33.3333333            0.00000000
+                   EQ10( D2, S1, R4)        60.0000000            0.00000000
+                   EQ10( D2, S1, R5)        8.00000000            0.00000000
+                   EQ10( D2, S1, Z1)        0.00000000            0.00000000
+                   EQ10( D2, S1, Z2)        0.00000000            0.00000000
+                   EQ10( D2, S1, Z3)        0.00000000            0.00000000
+                   EQ10( D2, S1, Z4)        0.00000000            0.00000000
+                   EQ10( D2, S1, Z5)        0.00000000            0.00000000
+                   EQ10( D2, S1, Z6)        0.00000000            0.00000000
+                  EQ10( D2, S2, ETA)        1041.66667            0.00000000
+                   EQ10( D2, S2, R1)        123.043163            0.00000000
+                   EQ10( D2, S2, R2)        166.666667            0.00000000
+                   EQ10( D2, S2, R3)        41.6666667            0.00000000
+                   EQ10( D2, S2, R4)        75.0000000            0.00000000
+                   EQ10( D2, S2, R5)        12.0000000            0.00000000
+                   EQ10( D2, S2, Z1)        0.00000000            0.00000000
+                   EQ10( D2, S2, Z2)        0.00000000            0.00000000
+                   EQ10( D2, S2, Z3)        0.00000000            0.00000000
+                   EQ10( D2, S2, Z4)        0.00000000            0.00000000
+                   EQ10( D2, S2, Z5)        0.00000000            0.00000000
+                   EQ10( D2, S2, Z6)        0.00000000            0.00000000
+                  EQ10( D2, S3, ETA)        1250.00000            0.00000000
+                   EQ10( D2, S3, R1)        203.478089            0.00000000
+                   EQ10( D2, S3, R2)        200.000000            0.00000000
+                   EQ10( D2, S3, R3)        50.0000000            0.00000000
+                   EQ10( D2, S3, R4)        90.0000000            0.00000000
+                   EQ10( D2, S3, R5)        12.0000000            0.00000000
+                   EQ10( D2, S3, Z1)        0.00000000            0.00000000
+                   EQ10( D2, S3, Z2)        0.00000000            0.00000000
+                   EQ10( D2, S3, Z3)        0.00000000            0.00000000
+                   EQ10( D2, S3, Z4)        0.00000000            0.00000000
+                   EQ10( D2, S3, Z5)        0.00000000            0.00000000
+                   EQ10( D2, S3, Z6)        0.00000000            0.00000000
+                  EQ10( D3, S1, ETA)        1458.33333            0.00000000
+                   EQ10( D3, S1, R1)        190.869192            0.00000000
+                   EQ10( D3, S1, R2)        233.333333            0.00000000
+                   EQ10( D3, S1, R3)        58.3333333            0.00000000
+                   EQ10( D3, S1, R4)        105.000000            0.00000000
+                   EQ10( D3, S1, R5)        16.0000000            0.00000000
+                   EQ10( D3, S1, Z1)        0.00000000            0.00000000
+                   EQ10( D3, S1, Z2)        0.00000000            0.00000000
+                   EQ10( D3, S1, Z3)        0.00000000            0.00000000
+                   EQ10( D3, S1, Z4)        0.00000000            0.00000000
+                   EQ10( D3, S1, Z5)        0.00000000            0.00000000
+                   EQ10( D3, S1, Z6)        45.9561775            0.00000000
+                  EQ10( D3, S2, ETA)        1666.66667            0.00000000
+                   EQ10( D3, S2, R1)        271.304118            0.00000000
+                   EQ10( D3, S2, R2)        266.666667            0.00000000
+                   EQ10( D3, S2, R3)        66.6666667            0.00000000
+                   EQ10( D3, S2, R4)        120.000000            0.00000000
+                   EQ10( D3, S2, R5)        16.0000000            0.00000000
+                   EQ10( D3, S2, Z1)        0.00000000            0.00000000
+                   EQ10( D3, S2, Z2)        0.00000000            0.00000000
+                   EQ10( D3, S2, Z3)        0.00000000            0.00000000
+                   EQ10( D3, S2, Z4)        0.00000000            0.00000000
+                   EQ10( D3, S2, Z5)        0.00000000            0.00000000
+                   EQ10( D3, S2, Z6)        45.9561775            0.00000000
+                  EQ10( D3, S3, ETA)        1875.00000            0.00000000
+                   EQ10( D3, S3, R1)        351.739044            0.00000000
+                   EQ10( D3, S3, R2)        300.000000            0.00000000
+                   EQ10( D3, S3, R3)        75.0000000            0.00000000
+                   EQ10( D3, S3, R4)        135.000000            0.00000000
+                   EQ10( D3, S3, R5)        16.0000000            0.00000000
+                   EQ10( D3, S3, Z1)        0.00000000            0.00000000
+                   EQ10( D3, S3, Z2)        183.067529            0.00000000
+                   EQ10( D3, S3, Z3)        171.302229            0.00000000
+                   EQ10( D3, S3, Z4)        80.5634802            0.00000000
+                   EQ10( D3, S3, Z5)        269.950009            0.00000000
+                   EQ10( D3, S3, Z6)        45.9561775            0.00000000
+                  EQ10( D4, S1, ETA)        2083.33333            0.00000000
+                   EQ10( D4, S1, R1)        339.130148            0.00000000
+                   EQ10( D4, S1, R2)        333.333333            0.00000000
+                   EQ10( D4, S1, R3)        83.3333333            0.00000000
+                   EQ10( D4, S1, R4)        150.000000            0.00000000
+                   EQ10( D4, S1, R5)        20.0000000            0.00000000
+                   EQ10( D4, S1, Z1)        0.00000000            0.00000000
+                   EQ10( D4, S1, Z2)        469.711686            0.00000000
+                   EQ10( D4, S1, Z3)        439.534819            0.00000000
+                   EQ10( D4, S1, Z4)        206.708987            0.00000000
+                   EQ10( D4, S1, Z5)        692.633339            0.00000000
+                   EQ10( D4, S1, Z6)        135.000000            0.00000000
+                  EQ10( D4, S2, ETA)        2291.66667            0.00000000
+                   EQ10( D4, S2, R1)        419.565074            0.00000000
+                   EQ10( D4, S2, R2)        366.666667            0.00000000
+                   EQ10( D4, S2, R3)        91.6666667            0.00000000
+                   EQ10( D4, S2, R4)        165.000000            0.00000000
+                   EQ10( D4, S2, R5)        20.0000000            0.00000000
+                   EQ10( D4, S2, Z1)        1040.00000            0.00000000
+                   EQ10( D4, S2, Z2)        756.355843            0.00000000
+                   EQ10( D4, S2, Z3)        707.767410            0.00000000
+                   EQ10( D4, S2, Z4)        332.854493            0.00000000
+                   EQ10( D4, S2, Z5)        1115.31667            0.00000000
+                   EQ10( D4, S2, Z6)        135.000000            0.00000000
+                  EQ10( D4, S3, ETA)        2500.00000            0.00000000
+                   EQ10( D4, S3, R1)        500.000000            0.00000000
+                   EQ10( D4, S3, R2)        400.000000            0.00000000
+                   EQ10( D4, S3, R3)        100.000000            0.00000000
+                   EQ10( D4, S3, R4)        180.000000            0.00000000
+                   EQ10( D4, S3, R5)        20.0000000            0.00000000
+                   EQ10( D4, S3, Z1)        0.00000000           -4.41074180
+                   EQ10( D4, S3, Z2)        1043.00000            0.00000000
+                   EQ10( D4, S3, Z3)        976.000000            0.00000000
+                   EQ10( D4, S3, Z4)        459.000000            0.00000000
+                   EQ10( D4, S3, Z5)        1538.00000            0.00000000
+                   EQ10( D4, S3, Z6)        135.000000            0.00000000
+             EQ11_EQ12( D1, S1, ETA)        2291.66667            0.00000000
+              EQ11_EQ12( D1, S1, R1)        419.565074            0.00000000
+              EQ11_EQ12( D1, S1, R2)        366.666667            0.00000000
+              EQ11_EQ12( D1, S1, R3)        91.6666667            0.00000000
+              EQ11_EQ12( D1, S1, R4)        165.000000            0.00000000
+              EQ11_EQ12( D1, S1, R5)        20.0000000            0.00000000
+              EQ11_EQ12( D1, S1, Z1)        5431.00000            0.00000000
+              EQ11_EQ12( D1, S1, Z2)        1043.00000            0.00000000
+              EQ11_EQ12( D1, S1, Z3)        976.000000            0.00000000
+              EQ11_EQ12( D1, S1, Z4)        459.000000            0.00000000
+              EQ11_EQ12( D1, S1, Z5)        1538.00000            0.00000000
+              EQ11_EQ12( D1, S1, Z6)        135.000000            0.00000000
+             EQ11_EQ12( D1, S2, ETA)        2083.33333            0.00000000
+              EQ11_EQ12( D1, S2, R1)        432.173970            0.00000000
+              EQ11_EQ12( D1, S2, R2)        333.333333            0.00000000
+              EQ11_EQ12( D1, S2, R3)        83.3333333            0.00000000
+              EQ11_EQ12( D1, S2, R4)        150.000000            0.00000000
+              EQ11_EQ12( D1, S2, R5)        16.0000000            0.00000000
+              EQ11_EQ12( D1, S2, Z1)        5431.00000            0.00000000
+              EQ11_EQ12( D1, S2, Z2)        1043.00000            0.00000000
+              EQ11_EQ12( D1, S2, Z3)        976.000000            0.00000000
+              EQ11_EQ12( D1, S2, Z4)        459.000000            0.00000000
+              EQ11_EQ12( D1, S2, Z5)        1538.00000            0.00000000
+              EQ11_EQ12( D1, S2, Z6)        135.000000            0.00000000
+             EQ11_EQ12( D1, S3, ETA)        1875.00000            0.00000000
+              EQ11_EQ12( D1, S3, R1)        351.739044            0.00000000
+              EQ11_EQ12( D1, S3, R2)        300.000000            0.00000000
+              EQ11_EQ12( D1, S3, R3)        75.0000000            0.00000000
+              EQ11_EQ12( D1, S3, R4)        135.000000            0.00000000
+              EQ11_EQ12( D1, S3, R5)        16.0000000            0.00000000
+              EQ11_EQ12( D1, S3, Z1)        5431.00000            0.00000000
+              EQ11_EQ12( D1, S3, Z2)        1043.00000            0.00000000
+              EQ11_EQ12( D1, S3, Z3)        976.000000            0.00000000
+              EQ11_EQ12( D1, S3, Z4)        459.000000            0.00000000
+              EQ11_EQ12( D1, S3, Z5)        1538.00000            0.00000000
+              EQ11_EQ12( D1, S3, Z6)        135.000000            0.00000000
+             EQ11_EQ12( D2, S1, ETA)        1666.66667            0.00000000
+              EQ11_EQ12( D2, S1, R1)        364.347941            0.00000000
+              EQ11_EQ12( D2, S1, R2)        266.666667            0.00000000
+              EQ11_EQ12( D2, S1, R3)        66.6666667            0.00000000
+              EQ11_EQ12( D2, S1, R4)        120.000000            0.00000000
+              EQ11_EQ12( D2, S1, R5)        12.0000000            0.00000000
+              EQ11_EQ12( D2, S1, Z1)        5431.00000            0.00000000
+              EQ11_EQ12( D2, S1, Z2)        1043.00000            0.00000000
+              EQ11_EQ12( D2, S1, Z3)        976.000000            0.00000000
+              EQ11_EQ12( D2, S1, Z4)        459.000000            0.00000000
+              EQ11_EQ12( D2, S1, Z5)        1538.00000            0.00000000
+              EQ11_EQ12( D2, S1, Z6)        135.000000            0.00000000
+             EQ11_EQ12( D2, S2, ETA)        1458.33333            0.00000000
+              EQ11_EQ12( D2, S2, R1)        376.956837            0.00000000
+              EQ11_EQ12( D2, S2, R2)        233.333333            0.00000000
+              EQ11_EQ12( D2, S2, R3)        58.3333333            0.00000000
+              EQ11_EQ12( D2, S2, R4)        105.000000            0.00000000
+              EQ11_EQ12( D2, S2, R5)        8.00000000            0.00000000
+              EQ11_EQ12( D2, S2, Z1)        5431.00000            0.00000000
+              EQ11_EQ12( D2, S2, Z2)        1043.00000            0.00000000
+              EQ11_EQ12( D2, S2, Z3)        976.000000            0.00000000
+              EQ11_EQ12( D2, S2, Z4)        459.000000            0.00000000
+              EQ11_EQ12( D2, S2, Z5)        1538.00000            0.00000000
+              EQ11_EQ12( D2, S2, Z6)        135.000000            0.00000000
+             EQ11_EQ12( D2, S3, ETA)        1250.00000            0.00000000
+              EQ11_EQ12( D2, S3, R1)        296.521911            0.00000000
+              EQ11_EQ12( D2, S3, R2)        200.000000            0.00000000
+              EQ11_EQ12( D2, S3, R3)        50.0000000            0.00000000
+              EQ11_EQ12( D2, S3, R4)        90.0000000            0.00000000
+              EQ11_EQ12( D2, S3, R5)        8.00000000            0.00000000
+              EQ11_EQ12( D2, S3, Z1)        5431.00000            0.00000000
+              EQ11_EQ12( D2, S3, Z2)        1043.00000            0.00000000
+              EQ11_EQ12( D2, S3, Z3)        976.000000            0.00000000
+              EQ11_EQ12( D2, S3, Z4)        459.000000            0.00000000
+              EQ11_EQ12( D2, S3, Z5)        1538.00000            0.00000000
+              EQ11_EQ12( D2, S3, Z6)        135.000000            0.00000000
+             EQ11_EQ12( D3, S1, ETA)        1041.66667            0.00000000
+              EQ11_EQ12( D3, S1, R1)        309.130808            0.00000000
+              EQ11_EQ12( D3, S1, R2)        166.666667            0.00000000
+              EQ11_EQ12( D3, S1, R3)        41.6666667            0.00000000
+              EQ11_EQ12( D3, S1, R4)        75.0000000            0.00000000
+              EQ11_EQ12( D3, S1, R5)        4.00000000            0.00000000
+              EQ11_EQ12( D3, S1, Z1)        5431.00000            0.00000000
+              EQ11_EQ12( D3, S1, Z2)        1043.00000            0.00000000
+              EQ11_EQ12( D3, S1, Z3)        976.000000            0.00000000
+              EQ11_EQ12( D3, S1, Z4)        459.000000            0.00000000
+              EQ11_EQ12( D3, S1, Z5)        1538.00000            0.00000000
+              EQ11_EQ12( D3, S1, Z6)        89.0438225            0.00000000
+             EQ11_EQ12( D3, S2, ETA)        833.333333            0.00000000
+              EQ11_EQ12( D3, S2, R1)        228.695882            0.00000000
+              EQ11_EQ12( D3, S2, R2)        133.333333            0.00000000
+              EQ11_EQ12( D3, S2, R3)        33.3333333            0.00000000
+              EQ11_EQ12( D3, S2, R4)        60.0000000            0.00000000
+              EQ11_EQ12( D3, S2, R5)        4.00000000            0.00000000
+              EQ11_EQ12( D3, S2, Z1)        5431.00000            0.00000000
+              EQ11_EQ12( D3, S2, Z2)        1043.00000            0.00000000
+              EQ11_EQ12( D3, S2, Z3)        976.000000            0.00000000
+              EQ11_EQ12( D3, S2, Z4)        459.000000            0.00000000
+              EQ11_EQ12( D3, S2, Z5)        1538.00000            0.00000000
+              EQ11_EQ12( D3, S2, Z6)        89.0438225            0.00000000
+             EQ11_EQ12( D3, S3, ETA)        625.000000            0.00000000
+              EQ11_EQ12( D3, S3, R1)        148.260956            0.00000000
+              EQ11_EQ12( D3, S3, R2)        100.000000            0.00000000
+              EQ11_EQ12( D3, S3, R3)        25.0000000            0.00000000
+              EQ11_EQ12( D3, S3, R4)        45.0000000            0.00000000
+              EQ11_EQ12( D3, S3, R5)        4.00000000            0.00000000
+              EQ11_EQ12( D3, S3, Z1)        5431.00000            0.00000000
+              EQ11_EQ12( D3, S3, Z2)        859.932471            0.00000000
+              EQ11_EQ12( D3, S3, Z3)        804.697771            0.00000000
+              EQ11_EQ12( D3, S3, Z4)        378.436520            0.00000000
+              EQ11_EQ12( D3, S3, Z5)        1268.04999            0.00000000
+              EQ11_EQ12( D3, S3, Z6)        89.0438225            0.00000000
+             EQ11_EQ12( D4, S1, ETA)        416.666667            0.00000000
+              EQ11_EQ12( D4, S1, R1)        160.869852            0.00000000
+              EQ11_EQ12( D4, S1, R2)        66.6666667            0.00000000
+              EQ11_EQ12( D4, S1, R3)        16.6666667            0.00000000
+              EQ11_EQ12( D4, S1, R4)        30.0000000            0.00000000
+              EQ11_EQ12( D4, S1, R5)        0.00000000            0.00000000
+              EQ11_EQ12( D4, S1, Z1)        5431.00000            0.00000000
+              EQ11_EQ12( D4, S1, Z2)        573.288314            0.00000000
+              EQ11_EQ12( D4, S1, Z3)        536.465181            0.00000000
+              EQ11_EQ12( D4, S1, Z4)        252.291013            0.00000000
+              EQ11_EQ12( D4, S1, Z5)        845.366661            0.00000000
+              EQ11_EQ12( D4, S1, Z6)        0.00000000            0.00000000
+             EQ11_EQ12( D4, S2, ETA)        208.333333            0.00000000
+              EQ11_EQ12( D4, S2, R1)        80.4349260            0.00000000
+              EQ11_EQ12( D4, S2, R2)        33.3333333            0.00000000
+              EQ11_EQ12( D4, S2, R3)        8.33333333            0.00000000
+              EQ11_EQ12( D4, S2, R4)        15.0000000            0.00000000
+              EQ11_EQ12( D4, S2, R5)        0.00000000            0.00000000
+              EQ11_EQ12( D4, S2, Z1)        4391.00000            0.00000000
+              EQ11_EQ12( D4, S2, Z2)        286.644157            0.00000000
+              EQ11_EQ12( D4, S2, Z3)        268.232590            0.00000000
+              EQ11_EQ12( D4, S2, Z4)        126.145507            0.00000000
+              EQ11_EQ12( D4, S2, Z5)        422.683330            0.00000000
+              EQ11_EQ12( D4, S2, Z6)        0.00000000            0.00000000
+             EQ11_EQ12( D4, S3, ETA)        0.00000000            0.00000000
+              EQ11_EQ12( D4, S3, R1)        0.00000000            0.00000000
+              EQ11_EQ12( D4, S3, R2)        0.00000000            0.00000000
+              EQ11_EQ12( D4, S3, R3)        0.00000000            0.00000000
+              EQ11_EQ12( D4, S3, R4)        0.00000000            0.00000000
+              EQ11_EQ12( D4, S3, R5)        0.00000000            0.00000000
+              EQ11_EQ12( D4, S3, Z1)        5431.00000            0.00000000
+              EQ11_EQ12( D4, S3, Z2)        0.00000000           0.526989409E-04
+              EQ11_EQ12( D4, S3, Z3)        0.00000000           0.526989409E-04
+              EQ11_EQ12( D4, S3, Z4)        0.00000000           0.526989409E-04
+              EQ11_EQ12( D4, S3, Z5)        0.00000000           0.526989409E-04
+              EQ11_EQ12( D4, S3, Z6)        0.00000000           0.526989409E-04
+               EQ07_09( D1, S1, ETA)        0.00000000            0.00000000
+                EQ07_09( D1, S1, R1)        0.00000000            0.00000000
+                EQ07_09( D1, S1, R2)        0.00000000            0.00000000
+                EQ07_09( D1, S1, R3)        0.00000000            0.00000000
+                EQ07_09( D1, S1, R4)        0.00000000            0.00000000
+                EQ07_09( D1, S1, R5)        0.00000000            0.00000000
+                EQ07_09( D1, S1, Z1)        0.00000000            4.41079450
+                EQ07_09( D1, S1, Z2)        0.00000000            0.00000000
+                EQ07_09( D1, S1, Z3)        0.00000000            0.00000000
+                EQ07_09( D1, S1, Z4)        0.00000000            0.00000000
+                EQ07_09( D1, S1, Z5)        0.00000000            0.00000000
+                EQ07_09( D1, S1, Z6)        0.00000000            0.00000000
+                  EQ07( D2, S1, ETA)        0.00000000            0.00000000
+                   EQ07( D2, S1, R1)        0.00000000            0.00000000
+                   EQ07( D2, S1, R2)        0.00000000            0.00000000
+                   EQ07( D2, S1, R3)        0.00000000            0.00000000
+                   EQ07( D2, S1, R4)        0.00000000            0.00000000
+                   EQ07( D2, S1, R5)        0.00000000            0.00000000
+                   EQ07( D2, S1, Z1)        0.00000000            4.41079450
+                   EQ07( D2, S1, Z2)        0.00000000            0.00000000
+                   EQ07( D2, S1, Z3)        0.00000000            0.00000000
+                   EQ07( D2, S1, Z4)        0.00000000            0.00000000
+                   EQ07( D2, S1, Z5)        0.00000000            0.00000000
+                   EQ07( D2, S1, Z6)        0.00000000            0.00000000
+                  EQ07( D3, S1, ETA)        0.00000000            0.00000000
+                   EQ07( D3, S1, R1)        0.00000000            0.00000000
+                   EQ07( D3, S1, R2)        0.00000000            0.00000000
+                   EQ07( D3, S1, R3)        0.00000000            0.00000000
+                   EQ07( D3, S1, R4)        0.00000000            0.00000000
+                   EQ07( D3, S1, R5)        0.00000000            0.00000000
+                   EQ07( D3, S1, Z1)        0.00000000            4.41079450
+                   EQ07( D3, S1, Z2)        0.00000000            0.00000000
+                   EQ07( D3, S1, Z3)        0.00000000            0.00000000
+                   EQ07( D3, S1, Z4)        0.00000000            0.00000000
+                   EQ07( D3, S1, Z5)        0.00000000            0.00000000
+                   EQ07( D3, S1, Z6)        0.00000000            0.00000000
+                  EQ07( D4, S1, ETA)        0.00000000            0.00000000
+                   EQ07( D4, S1, R1)        0.00000000            0.00000000
+                   EQ07( D4, S1, R2)        0.00000000            0.00000000
+                   EQ07( D4, S1, R3)        0.00000000            0.00000000
+                   EQ07( D4, S1, R4)        0.00000000            0.00000000
+                   EQ07( D4, S1, R5)        0.00000000            0.00000000
+                   EQ07( D4, S1, Z1)        0.00000000            4.41079450
+                   EQ07( D4, S1, Z2)        0.00000000            0.00000000
+                   EQ07( D4, S1, Z3)        0.00000000            0.00000000
+                   EQ07( D4, S1, Z4)        0.00000000            0.00000000
+                   EQ07( D4, S1, Z5)        0.00000000            0.00000000
+                   EQ07( D4, S1, Z6)        0.00000000            0.00000000
+                  EQ08( D1, S2, ETA)        0.00000000            0.00000000
+                   EQ08( D1, S2, R1)        0.00000000            0.00000000
+                   EQ08( D1, S2, R2)        0.00000000            0.00000000
+                   EQ08( D1, S2, R3)        0.00000000            0.00000000
+                   EQ08( D1, S2, R4)        0.00000000            0.00000000
+                   EQ08( D1, S2, R5)        0.00000000            0.00000000
+                   EQ08( D1, S2, Z1)        0.00000000            4.41079450
+                   EQ08( D1, S2, Z2)        0.00000000            0.00000000
+                   EQ08( D1, S2, Z3)        0.00000000            0.00000000
+                   EQ08( D1, S2, Z4)        0.00000000            0.00000000
+                   EQ08( D1, S2, Z5)        0.00000000            0.00000000
+                   EQ08( D1, S2, Z6)        0.00000000            0.00000000
+                  EQ08( D1, S3, ETA)        0.00000000            0.00000000
+                   EQ08( D1, S3, R1)        0.00000000            0.00000000
+                   EQ08( D1, S3, R2)        0.00000000            0.00000000
+                   EQ08( D1, S3, R3)        0.00000000            0.00000000
+                   EQ08( D1, S3, R4)        0.00000000            0.00000000
+                   EQ08( D1, S3, R5)        0.00000000            0.00000000
+                   EQ08( D1, S3, Z1)        0.00000000            4.41079450
+                   EQ08( D1, S3, Z2)        0.00000000            0.00000000
+                   EQ08( D1, S3, Z3)        0.00000000            0.00000000
+                   EQ08( D1, S3, Z4)        0.00000000            0.00000000
+                   EQ08( D1, S3, Z5)        0.00000000            0.00000000
+                   EQ08( D1, S3, Z6)        0.00000000            0.00000000
+                  EQ08( D2, S2, ETA)        0.00000000            0.00000000
+                   EQ08( D2, S2, R1)        0.00000000            0.00000000
+                   EQ08( D2, S2, R2)        0.00000000            0.00000000
+                   EQ08( D2, S2, R3)        0.00000000            0.00000000
+                   EQ08( D2, S2, R4)        0.00000000            0.00000000
+                   EQ08( D2, S2, R5)        0.00000000            0.00000000
+                   EQ08( D2, S2, Z1)        0.00000000            4.41079450
+                   EQ08( D2, S2, Z2)        0.00000000            0.00000000
+                   EQ08( D2, S2, Z3)        0.00000000            0.00000000
+                   EQ08( D2, S2, Z4)        0.00000000            0.00000000
+                   EQ08( D2, S2, Z5)        0.00000000            0.00000000
+                   EQ08( D2, S2, Z6)        0.00000000            0.00000000
+                  EQ08( D2, S3, ETA)        0.00000000            0.00000000
+                   EQ08( D2, S3, R1)        0.00000000            0.00000000
+                   EQ08( D2, S3, R2)        0.00000000            0.00000000
+                   EQ08( D2, S3, R3)        0.00000000            0.00000000
+                   EQ08( D2, S3, R4)        0.00000000            0.00000000
+                   EQ08( D2, S3, R5)        0.00000000            0.00000000
+                   EQ08( D2, S3, Z1)        0.00000000            4.41079450
+                   EQ08( D2, S3, Z2)        0.00000000            0.00000000
+                   EQ08( D2, S3, Z3)        0.00000000            0.00000000
+                   EQ08( D2, S3, Z4)        0.00000000            0.00000000
+                   EQ08( D2, S3, Z5)        0.00000000            0.00000000
+                   EQ08( D2, S3, Z6)        0.00000000            0.00000000
+                  EQ08( D3, S2, ETA)        0.00000000            0.00000000
+                   EQ08( D3, S2, R1)        0.00000000            0.00000000
+                   EQ08( D3, S2, R2)        0.00000000            0.00000000
+                   EQ08( D3, S2, R3)        0.00000000            0.00000000
+                   EQ08( D3, S2, R4)        0.00000000            0.00000000
+                   EQ08( D3, S2, R5)        0.00000000            0.00000000
+                   EQ08( D3, S2, Z1)        0.00000000            4.41079450
+                   EQ08( D3, S2, Z2)        0.00000000            0.00000000
+                   EQ08( D3, S2, Z3)        0.00000000            0.00000000
+                   EQ08( D3, S2, Z4)        0.00000000            0.00000000
+                   EQ08( D3, S2, Z5)        0.00000000            0.00000000
+                   EQ08( D3, S2, Z6)        0.00000000            0.00000000
+                  EQ08( D3, S3, ETA)        0.00000000            0.00000000
+                   EQ08( D3, S3, R1)        0.00000000            0.00000000
+                   EQ08( D3, S3, R2)        0.00000000            0.00000000
+                   EQ08( D3, S3, R3)        0.00000000            0.00000000
+                   EQ08( D3, S3, R4)        0.00000000            0.00000000
+                   EQ08( D3, S3, R5)        0.00000000            0.00000000
+                   EQ08( D3, S3, Z1)        0.00000000            4.41079450
+                   EQ08( D3, S3, Z2)        0.00000000            0.00000000
+                   EQ08( D3, S3, Z3)        0.00000000            0.00000000
+                   EQ08( D3, S3, Z4)        0.00000000            0.00000000
+                   EQ08( D3, S3, Z5)        0.00000000            0.00000000
+                   EQ08( D3, S3, Z6)        0.00000000            0.00000000
+                  EQ08( D4, S2, ETA)        0.00000000            0.00000000
+                   EQ08( D4, S2, R1)        0.00000000            0.00000000
+                   EQ08( D4, S2, R2)        0.00000000            0.00000000
+                   EQ08( D4, S2, R3)        0.00000000            0.00000000
+                   EQ08( D4, S2, R4)        0.00000000            0.00000000
+                   EQ08( D4, S2, R5)        0.00000000            0.00000000
+                   EQ08( D4, S2, Z1)        0.00000000            4.41079450
+                   EQ08( D4, S2, Z2)        0.00000000            0.00000000
+                   EQ08( D4, S2, Z3)        0.00000000            0.00000000
+                   EQ08( D4, S2, Z4)        0.00000000            0.00000000
+                   EQ08( D4, S2, Z5)        0.00000000            0.00000000
+                   EQ08( D4, S2, Z6)        0.00000000            0.00000000
+                  EQ08( D4, S3, ETA)        0.00000000            0.00000000
+                   EQ08( D4, S3, R1)        0.00000000            0.00000000
+                   EQ08( D4, S3, R2)        0.00000000            0.00000000
+                   EQ08( D4, S3, R3)        0.00000000            0.00000000
+                   EQ08( D4, S3, R4)        0.00000000            0.00000000
+                   EQ08( D4, S3, R5)        0.00000000            0.00000000
+                   EQ08( D4, S3, Z1)        0.00000000            4.41079450
+                   EQ08( D4, S3, Z2)        0.00000000            0.00000000
+                   EQ08( D4, S3, Z3)        0.00000000            0.00000000
+                   EQ08( D4, S3, Z4)        0.00000000            0.00000000
+                   EQ08( D4, S3, Z5)        0.00000000            0.00000000
+                   EQ08( D4, S3, Z6)        0.00000000            0.00000000
+                  EQ17( D1, S1, ETA)        0.00000000            0.00000000
+                   EQ17( D1, S1, R1)        0.00000000            0.00000000
+                   EQ17( D1, S1, R2)        0.00000000            0.00000000
+                   EQ17( D1, S1, R3)        0.00000000            0.00000000
+                   EQ17( D1, S1, R4)        0.00000000            0.00000000
+                   EQ17( D1, S1, R5)        0.00000000            0.00000000
+                   EQ17( D1, S1, Z1)        0.00000000            0.00000000
+                   EQ17( D1, S1, Z2)        0.00000000            0.00000000
+                   EQ17( D1, S1, Z3)        0.00000000            0.00000000
+                   EQ17( D1, S1, Z4)        0.00000000            0.00000000
+                   EQ17( D1, S1, Z5)        0.00000000            0.00000000
+                   EQ17( D1, S1, Z6)        0.00000000            0.00000000
+                  EQ17( D1, S2, ETA)        0.00000000            0.00000000
+                   EQ17( D1, S2, R1)        0.00000000            0.00000000
+                   EQ17( D1, S2, R2)        0.00000000            0.00000000
+                   EQ17( D1, S2, R3)        0.00000000            0.00000000
+                   EQ17( D1, S2, R4)        0.00000000            0.00000000
+                   EQ17( D1, S2, R5)        0.00000000            0.00000000
+                   EQ17( D1, S2, Z1)        0.00000000            0.00000000
+                   EQ17( D1, S2, Z2)        0.00000000            0.00000000
+                   EQ17( D1, S2, Z3)        0.00000000            0.00000000
+                   EQ17( D1, S2, Z4)        0.00000000            0.00000000
+                   EQ17( D1, S2, Z5)        0.00000000            0.00000000
+                   EQ17( D1, S2, Z6)        0.00000000            0.00000000
+                  EQ17( D1, S3, ETA)        0.00000000            0.00000000
+                   EQ17( D1, S3, R1)        0.00000000            0.00000000
+                   EQ17( D1, S3, R2)        0.00000000            0.00000000
+                   EQ17( D1, S3, R3)        0.00000000            0.00000000
+                   EQ17( D1, S3, R4)        0.00000000            0.00000000
+                   EQ17( D1, S3, R5)        0.00000000            0.00000000
+                   EQ17( D1, S3, Z1)        0.00000000            0.00000000
+                   EQ17( D1, S3, Z2)        0.00000000            0.00000000
+                   EQ17( D1, S3, Z3)        0.00000000            0.00000000
+                   EQ17( D1, S3, Z4)        0.00000000            0.00000000
+                   EQ17( D1, S3, Z5)        0.00000000            0.00000000
+                   EQ17( D1, S3, Z6)        0.00000000            0.00000000
+                  EQ17( D2, S1, ETA)        0.00000000            0.00000000
+                   EQ17( D2, S1, R1)        0.00000000            0.00000000
+                   EQ17( D2, S1, R2)        0.00000000            0.00000000
+                   EQ17( D2, S1, R3)        0.00000000            0.00000000
+                   EQ17( D2, S1, R4)        0.00000000            0.00000000
+                   EQ17( D2, S1, R5)        0.00000000            0.00000000
+                   EQ17( D2, S1, Z1)        0.00000000            0.00000000
+                   EQ17( D2, S1, Z2)        0.00000000            0.00000000
+                   EQ17( D2, S1, Z3)        0.00000000            0.00000000
+                   EQ17( D2, S1, Z4)        0.00000000            0.00000000
+                   EQ17( D2, S1, Z5)        0.00000000            0.00000000
+                   EQ17( D2, S1, Z6)        0.00000000            0.00000000
+                  EQ17( D2, S2, ETA)        0.00000000            0.00000000
+                   EQ17( D2, S2, R1)        0.00000000            0.00000000
+                   EQ17( D2, S2, R2)        0.00000000            0.00000000
+                   EQ17( D2, S2, R3)        0.00000000            0.00000000
+                   EQ17( D2, S2, R4)        0.00000000            0.00000000
+                   EQ17( D2, S2, R5)        0.00000000            0.00000000
+                   EQ17( D2, S2, Z1)        0.00000000            0.00000000
+                   EQ17( D2, S2, Z2)        0.00000000            0.00000000
+                   EQ17( D2, S2, Z3)        0.00000000            0.00000000
+                   EQ17( D2, S2, Z4)        0.00000000            0.00000000
+                   EQ17( D2, S2, Z5)        0.00000000            0.00000000
+                   EQ17( D2, S2, Z6)        0.00000000            0.00000000
+                  EQ17( D2, S3, ETA)        0.00000000            0.00000000
+                   EQ17( D2, S3, R1)        0.00000000            0.00000000
+                   EQ17( D2, S3, R2)        0.00000000            0.00000000
+                   EQ17( D2, S3, R3)        0.00000000            0.00000000
+                   EQ17( D2, S3, R4)        0.00000000            0.00000000
+                   EQ17( D2, S3, R5)        0.00000000            0.00000000
+                   EQ17( D2, S3, Z1)        0.00000000            0.00000000
+                   EQ17( D2, S3, Z2)        0.00000000            0.00000000
+                   EQ17( D2, S3, Z3)        0.00000000            0.00000000
+                   EQ17( D2, S3, Z4)        0.00000000            0.00000000
+                   EQ17( D2, S3, Z5)        0.00000000            0.00000000
+                   EQ17( D2, S3, Z6)        0.00000000            0.00000000
+                  EQ17( D3, S1, ETA)        0.00000000            0.00000000
+                   EQ17( D3, S1, R1)        0.00000000            0.00000000
+                   EQ17( D3, S1, R2)        0.00000000            0.00000000
+                   EQ17( D3, S1, R3)        0.00000000            0.00000000
+                   EQ17( D3, S1, R4)        0.00000000            0.00000000
+                   EQ17( D3, S1, R5)        0.00000000            0.00000000
+                   EQ17( D3, S1, Z1)        0.00000000            0.00000000
+                   EQ17( D3, S1, Z2)        0.00000000            0.00000000
+                   EQ17( D3, S1, Z3)        0.00000000            0.00000000
+                   EQ17( D3, S1, Z4)        0.00000000            0.00000000
+                   EQ17( D3, S1, Z5)        0.00000000            0.00000000
+                   EQ17( D3, S1, Z6)        0.00000000            0.00000000
+                  EQ17( D3, S2, ETA)        0.00000000            0.00000000
+                   EQ17( D3, S2, R1)        0.00000000            0.00000000
+                   EQ17( D3, S2, R2)        0.00000000            0.00000000
+                   EQ17( D3, S2, R3)        0.00000000            0.00000000
+                   EQ17( D3, S2, R4)        0.00000000            0.00000000
+                   EQ17( D3, S2, R5)        0.00000000            0.00000000
+                   EQ17( D3, S2, Z1)        0.00000000            0.00000000
+                   EQ17( D3, S2, Z2)        0.00000000            0.00000000
+                   EQ17( D3, S2, Z3)        0.00000000            0.00000000
+                   EQ17( D3, S2, Z4)        0.00000000            0.00000000
+                   EQ17( D3, S2, Z5)        0.00000000            0.00000000
+                   EQ17( D3, S2, Z6)        0.00000000            0.00000000
+                  EQ17( D3, S3, ETA)        0.00000000            0.00000000
+                   EQ17( D3, S3, R1)        0.00000000            0.00000000
+                   EQ17( D3, S3, R2)        0.00000000            0.00000000
+                   EQ17( D3, S3, R3)        0.00000000            0.00000000
+                   EQ17( D3, S3, R4)        0.00000000            0.00000000
+                   EQ17( D3, S3, R5)        0.00000000            0.00000000
+                   EQ17( D3, S3, Z1)        0.00000000            0.00000000
+                   EQ17( D3, S3, Z2)        0.00000000            0.00000000
+                   EQ17( D3, S3, Z3)        0.00000000            0.00000000
+                   EQ17( D3, S3, Z4)        0.00000000            0.00000000
+                   EQ17( D3, S3, Z5)        0.00000000            0.00000000
+                   EQ17( D3, S3, Z6)        0.00000000            0.00000000
+                  EQ17( D4, S1, ETA)        0.00000000            0.00000000
+                   EQ17( D4, S1, R1)        0.00000000            0.00000000
+                   EQ17( D4, S1, R2)        0.00000000            0.00000000
+                   EQ17( D4, S1, R3)        0.00000000            0.00000000
+                   EQ17( D4, S1, R4)        0.00000000            0.00000000
+                   EQ17( D4, S1, R5)        0.00000000            0.00000000
+                   EQ17( D4, S1, Z1)        0.00000000            0.00000000
+                   EQ17( D4, S1, Z2)        0.00000000            0.00000000
+                   EQ17( D4, S1, Z3)        0.00000000            0.00000000
+                   EQ17( D4, S1, Z4)        0.00000000            0.00000000
+                   EQ17( D4, S1, Z5)        0.00000000            0.00000000
+                   EQ17( D4, S1, Z6)        0.00000000            0.00000000
+                  EQ17( D4, S2, ETA)        0.00000000            0.00000000
+                   EQ17( D4, S2, R1)        0.00000000            0.00000000
+                   EQ17( D4, S2, R2)        0.00000000            0.00000000
+                   EQ17( D4, S2, R3)        0.00000000            0.00000000
+                   EQ17( D4, S2, R4)        0.00000000            0.00000000
+                   EQ17( D4, S2, R5)        0.00000000            0.00000000
+                   EQ17( D4, S2, Z1)        0.00000000            0.00000000
+                   EQ17( D4, S2, Z2)        0.00000000            0.00000000
+                   EQ17( D4, S2, Z3)        0.00000000            0.00000000
+                   EQ17( D4, S2, Z4)        0.00000000            0.00000000
+                   EQ17( D4, S2, Z5)        0.00000000            0.00000000
+                   EQ17( D4, S2, Z6)        0.00000000            0.00000000
+                  EQ17( D4, S3, ETA)        0.00000000            0.00000000
+                   EQ17( D4, S3, R1)        0.00000000            0.00000000
+                   EQ17( D4, S3, R2)        0.00000000            0.00000000
+                   EQ17( D4, S3, R3)        0.00000000            0.00000000
+                   EQ17( D4, S3, R4)        0.00000000            0.00000000
+                   EQ17( D4, S3, R5)        0.00000000            0.00000000
+                   EQ17( D4, S3, Z1)        0.00000000          -0.526989409E-04
+                   EQ17( D4, S3, Z2)        0.00000000          -0.526989409E-04
+                   EQ17( D4, S3, Z3)        0.00000000          -0.526989409E-04
+                   EQ17( D4, S3, Z4)        0.00000000          -0.526989409E-04
+                   EQ17( D4, S3, Z5)        0.00000000          -0.526989409E-04
+                   EQ17( D4, S3, Z6)        0.00000000          -0.526989409E-04
+                                EQ18        0.00000000          -0.526989409E-04
+               EQ18_2T( D4, S3, ETA)        0.00000000          -0.526989409E-04
+                EQ18_2T( D4, S3, R1)        0.00000000          -0.526989409E-04
+                EQ18_2T( D4, S3, R2)        0.00000000          -0.526989409E-04
+                EQ18_2T( D4, S3, R3)        0.00000000          -0.526989409E-04
+                EQ18_2T( D4, S3, R4)        0.00000000          -0.526989409E-04
+                EQ18_2T( D4, S3, R5)        0.00000000          -0.526989409E-04
+                EQ18_2T( D4, S3, Z1)        0.00000000          -0.526989409E-04
+                EQ18_2T( D4, S3, Z2)        0.00000000          -0.526989409E-04
+                EQ18_2T( D4, S3, Z3)        0.00000000          -0.526989409E-04
+                EQ18_2T( D4, S3, Z4)        0.00000000          -0.526989409E-04
+                EQ18_2T( D4, S3, Z5)        0.00000000          -0.526989409E-04
+                EQ18_2T( D4, S3, Z6)        0.00000000          -0.526989409E-04
+
