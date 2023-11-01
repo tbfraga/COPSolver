@@ -12,10 +12,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version:
+// version: COPSolver: library for the classification problem
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/10/30
+// last modification: 2023/11/01
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -43,7 +43,7 @@ namespace classp
         {
             if(it == 0)
             {
-                cout << endl << "error: cannot reduce level 1/9 !" << endl;
+                cout << endl << "error: cannot reduce level " << scale[0] << " !" << endl;
                 getchar();
             }
             else
@@ -57,9 +57,9 @@ namespace classp
 
         level  operator++ (int)  // postfix ++
         {
-            if(it == 8)
+            if(it == scale.size()-1)
             {
-                cout << endl << "error: cannot encrease level 9 !" << endl;
+                cout << endl << "error: cannot encrease level " << scale[scale.size()-1] << " !" << endl;
                 getchar();
             }else
             {
@@ -70,9 +70,47 @@ namespace classp
             return *this;
         };
 
+        level& findIt()
+        {
+            const unsigned int scaleMaxIt = scale.size() - 1;
+
+            for(unsigned int s=0; s<scale.size(); s++)
+            {
+                if (scaleMaxIt == 0)
+                {
+                    it = 0;
+                } else if(value >= scale[scaleMaxIt])
+                {
+                    it = scaleMaxIt;
+                } else if(value <= scale[0])
+                {
+                    it = 0;
+                } else if(s > 0 && s < scaleMaxIt && value >= (scale[s] + scale[s-1])/2 && value <= (scale[s] + scale[s+1])/2)
+                {
+                    it = s;
+                    break;
+                } else if(s == 0 && s < scaleMaxIt && value <= (scale[0] + scale[1])/2)
+                {
+                    it = 0;
+                } else if(s > 0 && s == scaleMaxIt && value >= (scale[s] + scale[s-1])/2)
+                {
+                    it = scaleMaxIt;
+                }
+            }
+            return *this;
+        };
+
         level& operator=(double v)
         {
             value = v;
+            findIt();
+            return *this;
+        };
+
+        level& operator=(unsigned int i)
+        {
+            it = i;
+            value = scale[it];
             return *this;
         };
 
@@ -92,6 +130,7 @@ namespace classp
         friend istream & operator >> (istream &in,  level &w)
         {
             in >> w.value;
+            w.findIt();
             return in;
         };
     };
@@ -252,40 +291,8 @@ namespace classp
                 {
                     in >> m.matrix[i][j];
 
-                    for(unsigned int s=0; s<m.matrix[i][j].scale.size(); s++)
-                    {
-                        if (scaleMaxIt == 0)
-                        {
-                            m.matrix[i][j].it = 0;
-                            m.matrix[j][i].it = 0;
-                        } else if(m.matrix[i][j].value >= (m.matrix[i][j].scale[scaleMaxIt]))
-                        {
-                            m.matrix[i][j].it = scaleMaxIt;
-                        } else if(m.matrix[i][j].value <= m.matrix[i][j].scale[0])
-                        {
-                            m.matrix[i][j].it = 0;
-                        } else if(s > 0 && s < scaleMaxIt
-                            && m.matrix[i][j].value >= (m.matrix[i][j].scale[s] + m.matrix[i][j].scale[s-1])/2
-                            && m.matrix[i][j].value <= (m.matrix[i][j].scale[s] + m.matrix[i][j].scale[s+1])/2)
-                        {
-                            m.matrix[i][j].it = s;
-                            m.matrix[j][i].it = scaleMaxIt - s;
-                            break;
-                        } else if(s == 0 && s < scaleMaxIt
-                            && m.matrix[i][j].value <= (m.matrix[i][j].scale[0] + m.matrix[i][j].scale[1])/2)
-                        {
-                            m.matrix[i][j].it = 0;
-                            m.matrix[j][i].it = scaleMaxIt;
-                        } else if(s > 0 && s == scaleMaxIt
-                            && m.matrix[i][j].value >= (m.matrix[i][j].scale[s] + m.matrix[i][j].scale[s-1])/2)
-                        {
-                            m.matrix[i][j].it = scaleMaxIt;
-                            m.matrix[j][i].it = 0;
-                        }
-                    }
-
-                    m.matrix[i][j].value = m.matrix[i][j].scale[m.matrix[i][j].it];
-                    m.matrix[j][i].value = m.matrix[j][i].scale[m.matrix[j][i].it];
+                    m.matrix[j][i].value = 1/m.matrix[i][j].value;
+                    m.matrix[j][i].it = scaleMaxIt - m.matrix[i][j].it;
                 }
             }
             return in;
@@ -495,7 +502,7 @@ namespace classp
         {
             if(&in == &cin)
             {
-                cout << endl << "error: operator >> for struc problem is only defined for geting data from file !!!" << endl << endl;
+                cout << endl << "error: operator >> problem is only defined by geting data from file !!!" << endl << endl;
                 p.clear();
             }else
             {
@@ -715,19 +722,19 @@ namespace classp
             }
             out << endl;
 
-            out << endl << "multicriteria ordering: " << endl << endl;
-
-            for(unsigned int i=0; i<s.classf.size(); i++)
-            {
-                out << setprecision(4) << setw(4) << s.classf[i] << "\t";
-            }
-            out << endl;
-
             out << endl << "ABC multicriteria classification: " << endl << endl;
 
             for(unsigned int i=0; i<s.ABCClassf.size(); i++)
             {
                 out << setprecision(4) << setw(4) << s.ABCClassf[i] << "\t";
+            }
+            out << endl;
+
+            out << endl << "multicriteria ordering: " << endl << endl;
+
+            for(unsigned int i=0; i<s.classf.size(); i++)
+            {
+                out << setprecision(4) << setw(4) << s.classf[i] << "\t";
             }
             out << endl;
 
