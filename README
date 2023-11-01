@@ -1,8 +1,9 @@
 README
 
   COPSolver is a software to solve combinatorial optmization problems 
-  and other management problems. COPSOlver_1.0-1 only solves the 
-  multi-product batch processing time maximization problem. 
+  and other management problems. COPSOlver_2.0-1 solves:
+  multi-product p-batch processing time maximization problems;
+  and multicriteria classification problems.
   
   Find out how to install and use COPSolverCOPSolver by reading the 
   manual.html document. 
@@ -10,6 +11,14 @@ README
   Study the LICENSE file for distribution terms.
   
   Those documents and more can be found in the docs folder.
+  
+NOTE
+
+'COPSolver: library for solving classification problems' uses Eigen library.
+For this reason, COPSolver repository contains a copy of the Eigen library.
+Eigen is Free Software. Starting from the 3.1.1 version, it is licensed under the MPL2, which is a simple weak copyleft license.
+Common questions about the MPL2 are answered in the official MPL2 FAQ.
+For more details see https://eigen.tuxfamily.org/
 
 CONTACT
 
