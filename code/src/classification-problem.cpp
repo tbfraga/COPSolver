@@ -12,10 +12,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version: COPSolver: library for the classification problem
+// version: COPSolver: library for solving classification problems
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/10/30
+// last modification: 2023/11/01
 
 #include "../lib/classification-problem.h"
 

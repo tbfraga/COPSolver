@@ -33,10 +33,10 @@ repository: github.com/tbfraga/COPSolver
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version: 1.0-1_20230829
+// version: 2.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/10/30
+// last modification: 2023/11/01
 
 #include "lib/classification-problem.h"
 #include "lib/multiproduct-batch-processing-time-maximization-problem.h"
@@ -55,8 +55,6 @@ int main()
     time_t source = 0;
 
     file.open(site);
-    file.ignore(std::numeric_limits<std::streamsize>::max(),':');
-    file.ignore(std::numeric_limits<std::streamsize>::max(),';');
     file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
 
     file >> problem_class;
@@ -66,9 +64,8 @@ int main()
         cout << endl << "error: there is an error in the config.txt file - problem class is not configured correctly." << endl;
     }
 
-    if(problem_class == 1) // if classification problem
+    if(problem_class == 1) // if classification problems
     {
-        file.ignore(std::numeric_limits<std::streamsize>::max(),':');
         file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
         file >> solving_method;
 
@@ -85,7 +82,7 @@ int main()
 
         _problem.clear();
 
-    } else
+    } else if(problem_class == 2) // if combinatorial optimization problems
     {
         cop _problem;
 
