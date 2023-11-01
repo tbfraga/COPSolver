@@ -1,0 +1,38 @@
+--> Solution: 
+
+percentil data matrix: 
+
+14.58	  20	  20	   0	16.67	15.05	  25	
+14.58	  20	  20	   0	16.67	35.17	  25	
+14.58	  20	  20	   0	16.67	9.634	  25	
+14.58	  20	  20	   0	  25	16.31	12.5	
+41.67	  20	  20	 100	  25	23.83	12.5	
+
+Ordered matrix: 
+
+   4	   0	   0	   4	   3	   1	   0	
+   0	   1	   1	   0	   4	   4	   1	
+   1	   2	   2	   1	   0	   3	   2	
+   2	   3	   3	   2	   1	   0	   3	
+   3	   4	   4	   3	   2	   2	   4	
+
+ABC matrix: 
+
+   A	   C	   C	   C	   B	   B	   B	
+   A	   C	   C	   C	   B	   A	   B	
+   B	   C	   C	   C	   B	   C	   B	
+   C	   C	   C	   C	   A	   A	   C	
+   A	   C	   C	   A	   A	   A	   C	
+
+multicriteria weight: 
+
+18.74	19.35	18.58	17.68	25.65	
+
+ABC multicriteria classification: 
+
+   A	   A	   B	   C	   A	
+
+multicriteria ordering: 
+
+   4	   1	   0	   2	   3	
+
