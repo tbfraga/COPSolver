@@ -1,0 +1,21 @@
+// class, use:
+// 1 for classification problems;
+// 2 for combinatorial optimization problems.
+2
+// problem, use:
+// 1 for multi-product batch processing time maximization problem.
+1
+// problem definition method, use:
+// 1 for taking the problem from data.txt file;
+// 2 for using a predefined problem;
+// 3 for generating a random problem.
+3
+// predefined problem, use:
+// 1 for taking the MBPTM_02 problem;
+// 2 for taking the MBPTM_03 problem;
+// 3 for taking the MBPTM_10 problem.
+3
+// randon source:
+0
+// number of products:
+100
