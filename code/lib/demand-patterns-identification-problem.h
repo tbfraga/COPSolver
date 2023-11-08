@@ -39,7 +39,31 @@ namespace dpi
         string code;
         unsigned int quantity;
         double price;
-        tm *date;
+        struct tm date;
+
+        friend istream & operator >> (istream &in,  sale &s)
+        {
+            in >> s.code;
+            in >> s.quantity;
+            in >> s.price;
+            in >> s.date.tm_year;
+            in >> s.date.tm_mon;
+            in >> s.date.tm_mday;
+            return in;
+        };
+
+        friend ostream & operator << (ostream &out, const sale &s)
+        {
+            out << s.code << "\t";
+            out << s.quantity << "\t";
+            out << s.price << "\t";
+            out << s.date.tm_year << "\t";
+            out << s.date.tm_mon << "\t";
+            out << s.date.tm_mday << "\t";
+            return out;
+        };
+
+        //y2k.tm_hour = 0;   y2k.tm_min = 0; y2k.tm_sec = 0;
     };
 
     struct problem
@@ -83,6 +107,21 @@ namespace dpi
 
             categorization.push_back(p);
         }
+
+        friend istream & operator >> (istream &in,  problem &p)
+        {
+            sale s;
+
+            p.Boylan();
+
+            while(!in.eof())
+            {
+                in >> s;
+                p.data.push_back(s);
+            }
+
+            return in;
+        };
     };
 
     struct solution

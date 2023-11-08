@@ -19,7 +19,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 
 #include "../lib/classification-problem.h"
 
-namespace classp
+namespace clss
 {
     void clssp::clear()
     {

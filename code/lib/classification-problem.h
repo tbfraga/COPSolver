@@ -38,7 +38,7 @@ For more details see https://eigen.tuxfamily.org/
 using namespace Eigen;
 using namespace std;
 
-namespace classp
+namespace clss
 {
     struct level
     {

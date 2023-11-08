@@ -119,7 +119,7 @@ int main()
             return 1;
         }
 
-        classp::clssp _problem;
+        clss::clssp _problem;
 
         if(solving_method == 1)
         {
