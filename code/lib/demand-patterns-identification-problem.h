@@ -41,7 +41,7 @@ namespace dpi
             categorization.clear();
 
             p.name = normal;
-            p.description = normal_distribution;
+            p.description = lead_time_by_normal_distribution;
 
             categorization.push_back(p);
 
@@ -55,23 +55,21 @@ namespace dpi
 
             categorization.push_back(p);
 
-            p.name = intermittent;
-            p.description = infrequent_demand_occurrences;
+            p.name = erratic;
+            p.description = highly_variable_demand_size;
 
             categorization.push_back(p);
 
-            p.name = intermittent;
-            p.description = infrequent_demand_occurrences;
+            p.name = lumpy;
+            p.description = intermittent_and_erratic;
 
             categorization.push_back(p);
 
-            p.name = intermittent;
-            p.description = infrequent_demand_occurrences;
+            p.name = clumped;
+            p.description = intermittent_and_non_erratic;
 
             categorization.push_back(p);
         }
-
-
     };
 
     struct solution
