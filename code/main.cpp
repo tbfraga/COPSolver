@@ -36,7 +36,7 @@ repository: github.com/tbfraga/COPSolver
 // version: 2.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/11/01
+// last modification: 2023/11/07
 
 #include "lib/classification-problem.h"
 #include "lib/multiproduct-batch-processing-time-maximization-problem.h"
@@ -44,78 +44,43 @@ using namespace mbptm;
 
 int main()
 {
-    /**** multi-product batch processing time maximization problem ****/
+    cout << endl << "COPSolver is running now, please wait ..." << endl;
 
     string site = getenv("HOME");
     site += "/COPSolver/data/config.txt";
 
     fstream file;
 
-    unsigned int problem_class, problem_type, problem_definition_method, predefined_problem, products, solving_method;
+    unsigned int problem_class, // 1 if classification-problem; 2 combinatorial-optimization-problem
+                 problem_type, // 1 if multiproduct-batch-processing-time-maximization-problem
+                 problem_definition_method, // 1 if getting problem from file; 2 if getting a predefined problem; 3 if generating a pseudo random problem
+                 predefined_problem,
+                 products,
+                 solving_method;
+
     time_t source = 0;
 
     file.open(site);
-    file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
 
+    file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
     file >> problem_class;
 
     if(problem_class != 1 && problem_class != 2)
     {
         cout << endl << "error: there is an error in the config.txt file - problem class is not configured correctly." << endl;
+        getchar();
+        file.close();
+        return 1;
     }
 
-    if(problem_class == 1) // if classification problems
-    {
-        file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
-        file >> solving_method;
+    file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
+    file >> problem_type;
 
-        file.close();
-
-        if(solving_method != 1)
-        {
-            cout << endl << "error: there is an error in the config.txt file - solving method is not configured correctly." << endl;
-        }
-
-        classp::clssp _problem;
-
-        _problem.analyticHierarchyProcess();
-
-        _problem.clear();
-
-    } else if(problem_class == 2) // if combinatorial optimization problems
-    {
-        cop _problem;
-
-        file >> problem_type;
-
-        if(problem_type != 1)
-        {
-            cout << endl << "error: there is an error in the config.txt file - problem is not configured correctly." << endl;
-        }
-
-        file.ignore(std::numeric_limits<std::streamsize>::max(),':');
-        file.ignore(std::numeric_limits<std::streamsize>::max(),';');
-        file.ignore(std::numeric_limits<std::streamsize>::max(),';');
-        file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
-
+    file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
     file >> problem_definition_method;
 
-    if(problem_definition_method != 1 && problem_definition_method != 2 && problem_definition_method != 3)
-    {
-        cout << endl << "error: there is an error in the config.txt file - problem definition method is not configured correctly." << endl;
-    }
-
-    file.ignore(std::numeric_limits<std::streamsize>::max(),':');
-    file.ignore(std::numeric_limits<std::streamsize>::max(),';');
-    file.ignore(std::numeric_limits<std::streamsize>::max(),';');
     file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
-
     file >> predefined_problem;
-
-    if(predefined_problem != 1 && predefined_problem != 2 && predefined_problem != 3)
-    {
-        cout << endl << "error: there is an error in the config.txt file - predefined problem is not configured correctly." << endl;
-    }
 
     if(problem_definition_method == 3)
     {
@@ -125,36 +90,89 @@ int main()
         file >> products;
     }
 
+    file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
+    file >> solving_method;
+
     file.close();
 
-    if(problem_definition_method == 1)
+    if(problem_class == 1) // if classification problems
     {
-        _problem.get();
-    } else if(problem_definition_method == 2)
-    {
-        if(predefined_problem == 1)
+        if(problem_type != 1)
         {
-            _problem.MBPTM_02();
-        } else if(predefined_problem == 2)
-        {
-            _problem.MBPTM_03();
-        } else if(predefined_problem == 3)
-        {
-            _problem.MBPTM_10();
+            cout << endl << "error: there is an error in the config.txt file - problem is not configured correctly." << endl;
+            getchar();
+            return 1;
         }
-    } else if(problem_definition_method == 3)
+
+        if(problem_definition_method != 1)
+        {
+            cout << endl << "error: there is an error in the config.txt file - problem definition method is not configured correctly." << endl;
+            getchar();
+            return 1;
+        }
+
+        if(solving_method != 1)
+        {
+            cout << endl << "error: there is an error in the config.txt file - solving method is not configured correctly." << endl;
+            getchar();
+            return 1;
+        }
+
+        classp::clssp _problem;
+
+        if(solving_method == 1)
+        {
+            _problem.analyticHierarchyProcess();
+        }
+
+        _problem.clear();
+
+    } else if(problem_class == 2) // if combinatorial optimization problems
     {
-        srand((unsigned) source);
-        _problem.random(products);
-    }
+        cop _problem;
 
-    _problem.print();
-    _problem.generateLingoData();
-    _problem.start();
-    _problem.analyticalMethod(0);
+        if(problem_type != 1)
+        {
+            cout << endl << "error: there is an error in the config.txt file - problem is not configured correctly." << endl;
+        }
 
-    _problem.clear();
+        if(problem_definition_method != 1 && problem_definition_method != 2 && problem_definition_method != 3)
+        {
+            cout << endl << "error: there is an error in the config.txt file - problem definition method is not configured correctly." << endl;
+        }
 
+        if(problem_definition_method == 2 && predefined_problem != 1 && predefined_problem != 2 && predefined_problem != 3)
+        {
+            cout << endl << "error: there is an error in the config.txt file - predefined problem is not configured correctly." << endl;
+        }
+
+        if(problem_definition_method == 1) // if getting problem from file data.txt
+        {
+            _problem.get();
+        } else if(problem_definition_method == 2) // if getting a predefined problem
+        {
+            if(predefined_problem == 1)
+            {
+                _problem.MBPTM_02();
+            } else if(predefined_problem == 2)
+            {
+                _problem.MBPTM_03();
+            } else if(predefined_problem == 3)
+            {
+                _problem.MBPTM_10();
+            }
+        } else if(problem_definition_method == 3) // if generating a pseudo random problem
+        {
+            srand((unsigned) source);
+            _problem.random(products);
+        }
+
+        _problem.print();
+        _problem.generateLingoData();
+        _problem.start();
+        _problem.analyticalMethod(0);
+
+        _problem.clear();
     }
 
     cout << endl << "Thanks for using COPSolver !!!";

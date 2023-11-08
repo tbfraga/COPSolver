@@ -19,10 +19,11 @@ For more details see https://eigen.tuxfamily.org/
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version: COPSolver: library for solving classification problems
+// module: COPSolver: library for solving classification problems
+// version: v2.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/11/01
+// last modification: 2023/11/07
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -39,8 +40,8 @@ using namespace std;
 
 namespace classp
 {
-    struct level{
-
+    struct level
+    {
         vector<double> scale{0.111,0.143,0.200,0.333,1,3,5,7,9};
 
         double value;
@@ -111,6 +112,7 @@ namespace classp
         {
             value = v;
             findIt();
+            value = scale[it];
             return *this;
         };
 
@@ -124,7 +126,8 @@ namespace classp
         level& operator=(level v)
         {
             value = v.value;
-            it = v.it;
+            findIt();
+            value = scale[it];
             return *this;
         };
 
@@ -162,7 +165,7 @@ namespace classp
 
         friend ostream & operator << (ostream &out, const criteria &c)
         {
-            out << c.name;
+            out << c.name << "\t" << c.mode << "\t" << c.valueA << "\t" << c.valueB << "\t" << c.valueC;
             return out;
         };
     };
@@ -207,7 +210,6 @@ namespace classp
             {
                 matrix[s].clear();
             }
-
             matrix.clear();
 
             mainEigenvalue = 0;
@@ -241,7 +243,7 @@ namespace classp
 
         friend ostream & operator << (ostream &out, const pairwiseMatrix &m)
         {
-            out << "pairwise comparison matrix: " << endl << endl;
+            out << "pairwise comparisons matrix: " << endl << endl;
 
             for(unsigned int i=0; i<m.matrix.size(); i++)
             {
@@ -478,7 +480,8 @@ namespace classp
         vector<weight> weightVector; // criteria weight vector
         pairwiseMatrix pairwiseWeight; // matrix of pairwise comparisons of the criteria
         unsigned int NData; // number of data per criterion
-        vector<vector<double>> data; // data for each criterion - vector[_NCriteria, _NData]
+        vector<vector<double>> data; // data for each criterion - vector[_NData, _NCriteria]
+        vector<string> code; // product code - vector[_NData]
 
         problem& clear()
         {
@@ -539,10 +542,14 @@ namespace classp
                 in.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
                 p.data.resize(p.NData);
+                p.code.resize(p.NData,"0");
 
                 for(unsigned int i=0; i<p.data.size(); i++)
                 {
                     p.data[i].resize(p.NCriteria);
+
+                    in >> p.code[i];
+
                     for(unsigned int j=0; j<p.data[i].size(); j++)
                     {
                         in >> p.data[i][j];
@@ -574,6 +581,8 @@ namespace classp
 
             for(unsigned int i=0; i<p.data.size(); i++)
             {
+                out << p.code[i] << "\t";
+
                 for(unsigned int j=0; j<p.data[i].size(); j++)
                 {
                     out << setprecision(7) << setw(5) << p.data[i][j] << "\t";
@@ -606,7 +615,6 @@ namespace classp
     };
 
     struct solution{
-
         vector<vector<double>> perMatrix;
         vector<vector<unsigned int>> orderedMatrix;
         vector<vector<char>> ABCMatrix;
@@ -938,8 +946,14 @@ namespace classp
         public:
 
         void clear();
+
+        friend istream & operator >> (istream &in,  clssp &c)
+        {
+            in >> c._problem;
+            return in;
+        };
+
         bool get();
-        bool print();
 
         bool ABC();
         bool analyticHierarchyProcess();

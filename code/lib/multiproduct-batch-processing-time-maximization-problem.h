@@ -12,10 +12,13 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// version: 1.0-1_20230828
+// module: COPSolver: library for solving multi-product p-batch processing time maximization problems
+// version: v1.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
 // last modification: 2023/08/28
+
+// future improvements: use operators overloading for defined structures. (will be done according to the needs)
 
 #ifndef MULTIPRODUCT_BATCH_PROCESSING_TIME_MAXIMIZATION_PROBLEM_H_INCLUDED
 #define MULTIPRODUCT_BATCH_PROCESSING_TIME_MAXIMIZATION_PROBLEM_H_INCLUDED

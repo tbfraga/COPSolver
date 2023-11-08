@@ -15,7 +15,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: COPSolver: library for solving classification problems
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/11/01
+// last modification: 2023/11/08
 
 #include "../lib/classification-problem.h"
 
@@ -44,40 +44,6 @@ namespace classp
         return 0;
     };
 
-    bool clssp::print()
-    {
-        cout << "number of criteria: " << _problem.NCriteria << endl << endl;
-
-        cout << _problem.pairwiseWeight << endl << endl;
-
-        cout << "weight: " << endl << endl;
-
-        for(unsigned int s=0; s<_problem.weightVector.size(); s++)
-        {
-            cout << _problem.weightVector[s] << endl;
-        }
-
-        cout << endl;
-
-        cout << "number of data per criterion: " << _problem.NData << endl << endl;
-
-        cout << "data: " << endl << endl;
-
-        for(unsigned int i=0; i<_problem.data.size(); i++)
-        {
-            for(unsigned int j=0; j<_problem.data[i].size(); j++)
-            {
-                cout << setprecision(7) << setw(5) << _problem.data[i][j] << "\t";
-            }
-
-            cout << endl;
-        }
-
-        cout << endl;
-
-        return 0;
-    }
-
     bool clssp::ABC()
     {
         _solution.ABC(_problem);
@@ -93,7 +59,7 @@ namespace classp
         get();
 
         string site = getenv("HOME");
-        site += "/COPSolver/results/AHP_problem.txt";
+        site += "/COPSolver/results/AHP_problem_org.txt";
 
         fstream file;
 
@@ -104,6 +70,8 @@ namespace classp
         _problem.pairwiseWeight.consistencyRate();
 
         file << _problem;
+
+        file.close();
 
         if(_problem.pairwiseWeight.CR > 0.1)
         {
@@ -117,7 +85,12 @@ namespace classp
 
         _problem.weightNormalize();
 
-        file << endl << endl << "--> Adjusted data:\n\n";
+        site = getenv("HOME");
+        site += "/COPSolver/results/AHP_problem_adj.txt";
+
+        file.open(site, ios::out);
+
+        file << "--> Adjusted data:\n\n";
 
         file << _problem;
 

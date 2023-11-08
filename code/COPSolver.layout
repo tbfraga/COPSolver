@@ -2,6 +2,40 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="lib/classification-problem.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="26969" topLine="115" />
+		</Cursor>
+		<Folding>
+			<Collapse line="43" />
+			<Collapse line="148" />
+			<Collapse line="173" />
+			<Collapse line="207" />
+			<Collapse line="222" />
+			<Collapse line="227" />
+			<Collapse line="232" />
+			<Collapse line="244" />
+			<Collapse line="290" />
+			<Collapse line="310" />
+			<Collapse line="349" />
+			<Collapse line="363" />
+			<Collapse line="392" />
+			<Collapse line="421" />
+			<Collapse line="477" />
+			<Collapse line="626" />
+			<Collapse line="656" />
+			<Collapse line="661" />
+			<Collapse line="666" />
+			<Collapse line="696" />
+			<Collapse line="760" />
+			<Collapse line="788" />
+		</Folding>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4781" topLine="93" />
+		</Cursor>
+	</File>
 	<File name="src/multiproduct-batch-processing-time-maximization-problem.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="6852" topLine="20" />
@@ -21,52 +55,14 @@
 			<Collapse line="457" />
 		</Folding>
 	</File>
-	<File name="src/classification-problem.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1298" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="lib/classification-problem.h" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1673" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="41" />
-			<Collapse line="145" />
-			<Collapse line="170" />
-			<Collapse line="204" />
-			<Collapse line="220" />
-			<Collapse line="225" />
-			<Collapse line="230" />
-			<Collapse line="242" />
-			<Collapse line="288" />
-			<Collapse line="308" />
-			<Collapse line="347" />
-			<Collapse line="361" />
-			<Collapse line="390" />
-			<Collapse line="419" />
-			<Collapse line="508" />
-			<Collapse line="556" />
-			<Collapse line="590" />
-			<Collapse line="617" />
-			<Collapse line="647" />
-			<Collapse line="652" />
-			<Collapse line="657" />
-			<Collapse line="687" />
-			<Collapse line="751" />
-			<Collapse line="779" />
-			<Collapse line="864" />
-			<Collapse line="912" />
-		</Folding>
-	</File>
 	<File name="lib/multiproduct-batch-processing-time-maximization-problem.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3174" topLine="56" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/classification-problem.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2114" topLine="0" />
+			<Cursor1 position="1301" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
