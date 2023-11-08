@@ -39,6 +39,7 @@ repository: github.com/tbfraga/COPSolver
 // last modification: 2023/11/07
 
 #include "lib/classification-problem.h"
+#include "lib/demand-patterns-identification-problem.h"
 #include "lib/multiproduct-batch-processing-time-maximization-problem.h"
 using namespace mbptm;
 

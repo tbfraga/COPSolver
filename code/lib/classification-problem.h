@@ -28,7 +28,7 @@ For more details see https://eigen.tuxfamily.org/
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
 
-#include<vector>
+#include <vector>
 #include <string>
 #include <iterator>
 #include <iostream>

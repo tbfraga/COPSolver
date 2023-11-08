@@ -22,6 +22,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 #ifndef DEMAND-PATTERNS-IDENTIFICATION-PROBLEM_H_INCLUDED
 #define DEMAND-PATTERNS-IDENTIFICATION-PROBLEM_H_INCLUDED
 
+#include <ctime>
+#include <chrono>
+using namespace std;
+
 namespace dpi
 {
     struct pattern
@@ -30,9 +34,18 @@ namespace dpi
         string description;
     };
 
+    struct sale
+    {
+        string code;
+        unsigned int quantity;
+        double price;
+        tm *date;
+    };
+
     struct problem
     {
-        vector<pattern> categorization{};
+        vector<pattern> categorization;
+        vector<sale> data;
 
         problem& Boylan()
         {
@@ -40,33 +53,33 @@ namespace dpi
 
             categorization.clear();
 
-            p.name = normal;
-            p.description = lead_time_by_normal_distribution;
+            p.name = "normal";
+            p.description = "represented_by_normal_distribution";
 
             categorization.push_back(p);
 
-            p.name = intermittent;
-            p.description = infrequent_demand_occurrences;
+            p.name = "intermittent";
+            p.description = "infrequent_demand_occurrences";
 
             categorization.push_back(p);
 
-            p.name = slow_moving;
-            p.description = low_average_demand_per_period;
+            p.name = "slow_moving";
+            p.description = "low_average_demand_per_period";
 
             categorization.push_back(p);
 
-            p.name = erratic;
-            p.description = highly_variable_demand_size;
+            p.name = "erratic";
+            p.description = "highly_variable_demand_size";
 
             categorization.push_back(p);
 
-            p.name = lumpy;
-            p.description = intermittent_and_erratic;
+            p.name = "lumpy";
+            p.description = "intermittent_and_erratic";
 
             categorization.push_back(p);
 
-            p.name = clumped;
-            p.description = intermittent_and_non_erratic;
+            p.name = "clumped";
+            p.description = "intermittent_and_non_erratic";
 
             categorization.push_back(p);
         }
