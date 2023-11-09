@@ -32,6 +32,12 @@ namespace dpi
     {
         string name;
         string description;
+
+        friend ostream & operator << (ostream &out, const pattern &p)
+        {
+            cout << p.name << "\t" << p.description;
+            return out;
+        };
     };
 
     struct sale
@@ -49,6 +55,13 @@ namespace dpi
             in >> s.date.tm_year;
             in >> s.date.tm_mon;
             in >> s.date.tm_mday;
+
+            cout << endl << s.code << "\t" << s.quantity << endl;
+
+            s.date.tm_hour = 0;
+            s.date.tm_min = 0;
+            s.date.tm_sec = 0;
+
             return in;
         };
 
@@ -60,16 +73,23 @@ namespace dpi
             out << s.date.tm_year << "\t";
             out << s.date.tm_mon << "\t";
             out << s.date.tm_mday << "\t";
+
             return out;
         };
-
-        //y2k.tm_hour = 0;   y2k.tm_min = 0; y2k.tm_sec = 0;
     };
 
     struct problem
     {
         vector<pattern> categorization;
         vector<sale> data;
+
+        problem& clear()
+        {
+            categorization.clear();
+            data.clear();
+
+            return *this;
+        }
 
         problem& Boylan()
         {
@@ -106,6 +126,8 @@ namespace dpi
             p.description = "intermittent_and_non_erratic";
 
             categorization.push_back(p);
+
+            return *this;
         }
 
         friend istream & operator >> (istream &in,  problem &p)
@@ -122,6 +144,15 @@ namespace dpi
 
             return in;
         };
+
+        friend ostream & operator << (ostream &out, const problem &p)
+        {
+            for(unsigned int s=0; s<p.categorization.size(); s++)
+            {
+                cout << endl << p.categorization[s] << endl;
+            }
+            return out;
+        };
     };
 
     struct solution
@@ -137,12 +168,88 @@ namespace dpi
 
         public:
 
-        void clear();
+        void clear()
+        {
+            _problem.clear();
+        };
 
         friend istream & operator >> (istream &in,  dpip &dp)
         {
-            //in >> c._problem;
+            dp.clear();
+            in >> dp._problem;
             return in;
+        };
+
+        friend ostream & operator << (ostream &out, const dpip &dp)
+        {
+            out << dp._problem;
+            return out;
+        };
+
+        bool get()
+        {
+            string site = getenv("HOME");
+            site += "/COPSolver/data/data.txt";
+
+            fstream file;
+            file.open(site);
+
+            file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
+
+            file >> _problem;
+
+            file.close();
+
+            return 0;
+        };
+
+        bool getAlexia()
+        {
+            string site = getenv("HOME");
+            site += "/COPSolver/data/1017.pdf";
+
+            fstream file;
+            file.open(site);
+
+            file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
+
+            file >> _problem;
+
+            file.close();
+
+            return 0;
+        };
+
+        bool print()
+        {
+            string site = getenv("HOME");
+            site += "/COPSolver/results/classification.txt";
+
+            fstream file;
+
+            file.open(site, ios::out);
+
+
+
+            file.close();
+
+            return 0;
+        };
+
+        bool Williams()
+        {
+            get();
+
+            string site = getenv("HOME");
+            site += "/COPSolver/results/problem.txt";
+
+            fstream file;
+
+            file.open(site, ios::out);
+
+            file << _problem;
+
+            file.close();
         };
     };
 }

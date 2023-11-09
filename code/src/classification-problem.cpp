@@ -15,7 +15,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: COPSolver: library for solving classification problems
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/11/08
+// last modification: 2023/11/09
 
 #include "../lib/classification-problem.h"
 
@@ -103,7 +103,7 @@ namespace clss
 
         file.open(site, ios::out);
 
-        file << _solution << endl;
+        file << _solution;
 
         file.close();
 

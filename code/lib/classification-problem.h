@@ -23,7 +23,7 @@ For more details see https://eigen.tuxfamily.org/
 // version: v2.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/11/07
+// last modification: 2023/11/09
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -494,6 +494,7 @@ namespace clss
                 data[s].clear();
             }
             data.clear();
+            code.clear();
 
             return *this;
         };
@@ -585,13 +586,11 @@ namespace clss
 
                 for(unsigned int j=0; j<p.data[i].size(); j++)
                 {
-                    out << setprecision(7) << setw(5) << p.data[i][j] << "\t";
+                    out << setprecision(6) << setw(6) << p.data[i][j] << "\t";
                 }
 
                 out << endl;
             }
-
-            out << endl;
 
             return out;
         };
@@ -668,26 +667,26 @@ namespace clss
 
             for(unsigned int i=0; i<perMatrix.size(); i++)
             {
-                perMatrix[i].resize(p.NCriteria);
+                perMatrix[i].resize(p.NCriteria,0.0);
             }
 
             orderedMatrix.resize(p.NData);
 
             for(unsigned int i=0; i<orderedMatrix.size(); i++)
             {
-                orderedMatrix[i].resize(p.NCriteria);
+                orderedMatrix[i].resize(p.NCriteria,0);
             }
 
             ABCMatrix.resize(p.NData);
 
             for(unsigned int i=0; i<ABCMatrix.size(); i++)
             {
-                ABCMatrix[i].resize(p.NCriteria);
+                ABCMatrix[i].resize(p.NCriteria,'C');
             }
 
-            weight.resize(p.NData);
-            classf.resize(p.NData);
-            ABCClassf.resize(p.NData);
+            weight.resize(p.NData,0.0);
+            classf.resize(p.NData,0);
+            ABCClassf.resize(p.NData,'C');
 
             return *this;
         };
@@ -702,7 +701,7 @@ namespace clss
             {
                 for(unsigned int j=0; j<s.perMatrix[i].size(); j++)
                 {
-                    out << setprecision(4) << setw(4) << s.perMatrix[i][j] << "\t";
+                    out << setprecision(4) << fixed << setw(6) << s.perMatrix[i][j] << "\t";
                 }
                 out << endl;
             }
@@ -729,27 +728,28 @@ namespace clss
                 out << endl;
             }
 
-            out << endl << "multicriteria weight: " << endl << endl;
+            out << endl << endl << "multicriteria weight: " << endl;
 
             for(unsigned int i=0; i<s.weight.size(); i++)
             {
-                out << setprecision(4) << setw(4) << s.weight[i] << "\t";
+                if(remainder (i,26) == 0) out << endl;
+                out << setprecision(4) << fixed << setw(6) << s.weight[i] << "\t";
             }
-            out << endl;
 
-            out << endl << "ABC multicriteria classification: " << endl << endl;
+            out << endl << endl << "ABC multicriteria classification: " << endl;
 
             for(unsigned int i=0; i<s.ABCClassf.size(); i++)
             {
-                out << setprecision(4) << setw(4) << s.ABCClassf[i] << "\t";
+                if(remainder (i,26) == 0) out << endl;
+                out << setw(6) << s.ABCClassf[i] << "\t";
             }
-            out << endl;
 
-            out << endl << "multicriteria ordering: " << endl << endl;
+            out << endl << endl << "multicriteria ordering: " << endl;
 
             for(unsigned int i=0; i<s.classf.size(); i++)
             {
-                out << setprecision(4) << setw(4) << s.classf[i] << "\t";
+                if(remainder (i,26) == 0) out << endl;
+                out << setw(6) << s.classf[i] << "\t";
             }
             out << endl;
 
@@ -776,7 +776,7 @@ namespace clss
                         perMatrix[d][c] = 0;
                     }else
                     {
-                        perMatrix[d][c] = 100*(p.data[d][c]/sum);
+                        perMatrix[d][c] = p.data[d][c]/sum;
                     }
                 }
             }
@@ -852,7 +852,10 @@ namespace clss
                         if(d == 0 && sum >= p.weightVector[c].criterion.valueA)
                         {
                             ABCMatrix[product][c] = 'A';
-                        } if(sum <= p.weightVector[c].criterion.valueA)
+                        } else if(d == 1 && sum >= p.weightVector[c].criterion.valueB)
+                        {
+                            ABCMatrix[product][c] = 'B';
+                        } else if(sum <= p.weightVector[c].criterion.valueA)
                         {
                             ABCMatrix[product][c] = 'A';
                         } else if(sum <= p.weightVector[c].criterion.valueB)
@@ -901,11 +904,16 @@ namespace clss
             for(unsigned int s=0; s<classf.size(); s++)
             {
                 sum += weight[classf[s]];
-
-                if(sum <= 80)
+                if(s==0 && sum > 0.80)
                 {
                     ABCClassf[classf[s]] = 'A';
-                } else if(sum <= 95)
+                } else if(s==1 && sum > 0.95)
+                {
+                    ABCClassf[classf[s]] = 'B';
+                } if(sum <= 0.80)
+                {
+                    ABCClassf[classf[s]] = 'A';
+                } else if(sum <= 0.95)
                 {
                     ABCClassf[classf[s]] = 'B';
                 } else

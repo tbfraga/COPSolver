@@ -52,9 +52,11 @@ int main()
 
     fstream file;
 
-    unsigned int problem_class, // 1 if classification-problem; 2 combinatorial-optimization-problem
-                 problem_type, // 1 if multiproduct-batch-processing-time-maximization-problem
-                 problem_definition_method, // 1 if getting problem from file; 2 if getting a predefined problem; 3 if generating a pseudo random problem
+    unsigned int problem_class, // 1 if classification-problem; 2 if demand-patterns-identification-problem;
+                                // 3 if combinatorial-optimization-problem
+                 problem_type,  // 1 if multiproduct-batch-processing-time-maximization-problem
+                 problem_definition_method, // 1 if getting problem from file; 2 if getting a predefined problem;
+                                            // 3 if generating a pseudo random problem
                  predefined_problem,
                  products,
                  solving_method;
@@ -128,7 +130,39 @@ int main()
 
         _problem.clear();
 
-    } else if(problem_class == 2) // if combinatorial optimization problems
+    } else if(problem_class == 2) // if demand patterns identification problems
+    {
+        if(problem_type != 1)
+        {
+            cout << endl << "error: there is an error in the config.txt file - problem is not configured correctly." << endl;
+            getchar();
+            return 1;
+        }
+
+        if(problem_definition_method != 1)
+        {
+            cout << endl << "error: there is an error in the config.txt file - problem definition method is not configured correctly." << endl;
+            getchar();
+            return 1;
+        }
+
+        if(solving_method != 1)
+        {
+            cout << endl << "error: there is an error in the config.txt file - solving method is not configured correctly." << endl;
+            getchar();
+            return 1;
+        }
+
+        dpi::dpip _problem;
+
+        if(solving_method == 1)
+        {
+            _problem.Williams();
+        }
+
+        _problem.clear();
+
+    } else if(problem_class == 3) // if combinatorial optimization problems
     {
         cop _problem;
 
