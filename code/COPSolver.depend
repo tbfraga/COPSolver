@@ -55,10 +55,10 @@
 1699441155 source:/home/work/Documents/GitHub/COPSolver/code/src/multiproduct-batch-processing-time-maximization-problem.cpp
 	"../lib/multiproduct-batch-processing-time-maximization-problem.h"
 
-1699561626 source:/home/work/Documents/GitHub/COPSolver/code/src/classification-problem.cpp
+1699564305 source:/home/work/Documents/GitHub/COPSolver/code/src/classification-problem.cpp
 	"../lib/classification-problem.h"
 
-1699564152 /home/work/Documents/GitHub/COPSolver/code/lib/classification-problem.h
+1699564288 /home/work/Documents/GitHub/COPSolver/code/lib/classification-problem.h
 	<vector>
 	<string>
 	<iterator>
@@ -808,7 +808,13 @@
 
 1697634890 /home/work/Documents/GitHub/COPSolver/code/lib/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h
 
-1699462716 /home/work/Documents/GitHub/COPSolver/code/lib/demand-patterns-identification-problem.h
+1699629170 /home/work/Documents/GitHub/COPSolver/code/lib/demand-patterns-identification-problem.h
+	"formatted-files-reading.h"
+
+1699638545 /home/work/Documents/GitHub/COPSolver/code/lib/formatted-files-reading.h
+	<iostream>
+	<sstream>
+	<string>
 	<ctime>
 	<chrono>
 

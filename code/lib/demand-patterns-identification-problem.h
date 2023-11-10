@@ -22,9 +22,9 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 #ifndef DEMAND-PATTERNS-IDENTIFICATION-PROBLEM_H_INCLUDED
 #define DEMAND-PATTERNS-IDENTIFICATION-PROBLEM_H_INCLUDED
 
-#include <ctime>
-#include <chrono>
-using namespace std;
+
+
+#include "formatted-files-reading.h"
 
 namespace dpi
 {
@@ -128,7 +128,7 @@ namespace dpi
             categorization.push_back(p);
 
             return *this;
-        }
+        };
 
         friend istream & operator >> (istream &in,  problem &p)
         {
@@ -153,6 +153,14 @@ namespace dpi
             }
             return out;
         };
+
+
+        problem& alexia()
+        {
+
+            return *this;
+        };
+
     };
 
     struct solution
@@ -194,7 +202,7 @@ namespace dpi
             fstream file;
             file.open(site);
 
-            file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
+            file.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
             file >> _problem;
 
@@ -203,17 +211,24 @@ namespace dpi
             return 0;
         };
 
-        bool getAlexia()
+        bool alexia()
         {
+            ffr::input input_file;
+
+            ffr::output output_file;
+            output_file.alexia_data_address();
+
+            output_file.alexia_data(input_file);
+
             string site = getenv("HOME");
-            site += "/COPSolver/data/1017.pdf";
+            site += "/COPSolver/data/data.txt";
 
             fstream file;
             file.open(site);
 
             file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
 
-            file >> _problem;
+            //file >> _problem;
 
             file.close();
 
@@ -229,8 +244,6 @@ namespace dpi
 
             file.open(site, ios::out);
 
-
-
             file.close();
 
             return 0;
@@ -238,7 +251,9 @@ namespace dpi
 
         bool Williams()
         {
-            get();
+            //get();
+
+            alexia();
 
             string site = getenv("HOME");
             site += "/COPSolver/results/problem.txt";
@@ -247,7 +262,7 @@ namespace dpi
 
             file.open(site, ios::out);
 
-            file << _problem;
+            //file << _problem;
 
             file.close();
         };
