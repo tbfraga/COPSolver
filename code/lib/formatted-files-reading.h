@@ -61,6 +61,7 @@ namespace ffr
     {
         string file_address;
         vector<string> file_list;
+        vector<unsigned int> lead_time;
 
         input& clear()
         {
@@ -88,6 +89,7 @@ namespace ffr
         input& alexia_config()
         {
             string s;
+            unsigned int u;
 
             file_address = getenv("HOME");
             file_address += "/COPSolver/data/alexia/config.txt";
@@ -102,6 +104,9 @@ namespace ffr
             {
                 file >> s;
                 file_list.push_back(s);
+
+                file >> u;
+                lead_time.push_back(u);
             }
 
             file_list.erase(file_list.end());
@@ -121,6 +126,7 @@ namespace ffr
 
     struct output
     {
+        input _input;
         string file_address;
 
         output& alexia_data_address()
@@ -130,7 +136,7 @@ namespace ffr
             return *this;
         };
 
-        output& alexia_data(input i)
+        output& alexia_data()
         {
             string dateStr;
             fstream input_file;
@@ -138,7 +144,7 @@ namespace ffr
 
             sale reg;
 
-            i.alexia_config();
+            _input.alexia_config();
 
             alexia_data_address();
             cout << endl << file_address << endl;
@@ -148,17 +154,14 @@ namespace ffr
                 cerr << "File not created!";
             } else
             {
-                for(unsigned int s=0; s<i.file_list.size(); s++)
+                _input.alexia_data_address();
+
+                for(unsigned int s=0; s<_input.file_list.size(); s++)
                 {
-                    output_file.open(file_address + "data_" + i.file_list[s], ios::out);
-                    cout << endl << i.file_list[s] << endl;
+                    output_file.open(file_address + "data_" + _input.file_list[s], ios::out);
+                    cout << endl << _input.file_list[s] << endl;
 
-                    i.alexia_data_address();
-                    i.file_address += i.file_list[s];
-
-                    cout << endl << i.file_address << endl;
-
-                    input_file.open(i.file_address);
+                    input_file.open(_input.file_address + _input.file_list[s]);
 
                     if (!input_file)
                     {
@@ -210,20 +213,6 @@ namespace ffr
             }
 
             return *this;
-        };
-    };
-
-    class ffrp
-    {
-        protected:
-
-        public:
-
-        void clear();
-
-        friend istream & operator >> (istream &in,  ffrp &r)
-        {
-            return in;
         };
     };
 }

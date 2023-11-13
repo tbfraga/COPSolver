@@ -139,7 +139,7 @@ int main()
             return 1;
         }
 
-        if(problem_definition_method != 1)
+        if(problem_definition_method != 1 && problem_definition_method != 2)
         {
             cout << endl << "error: there is an error in the config.txt file - problem definition method is not configured correctly." << endl;
             getchar();
@@ -154,6 +154,11 @@ int main()
         }
 
         dpi::dpip _problem;
+
+        if(problem_definition_method == 2)
+        {
+            _problem.alexia();
+        }
 
         if(solving_method == 1)
         {
