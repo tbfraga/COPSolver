@@ -17,7 +17,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: v3.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/11/08
-// last modification: 2023/11/13
+// last modification: 2023/11/16
 
 #ifndef DEMAND-PATTERNS-IDENTIFICATION-PROBLEM_H_INCLUDED
 #define DEMAND-PATTERNS-IDENTIFICATION-PROBLEM_H_INCLUDED
@@ -80,7 +80,7 @@ time_t _mkgmtime(struct tm stm)
     return rt < 0 ? -1 : rt;
 }
 
-unsigned int _diffdays (struct tm tm1, struct tm tm2)
+/*unsigned int _diffdays (struct tm tm1, struct tm tm2)
 {
     unsigned int diff;
 
@@ -94,7 +94,7 @@ unsigned int _diffdays (struct tm tm1, struct tm tm2)
     diff = int(abs(s_diff / 86400));
 
     return diff;
-}
+}*/
 
 namespace dpi
 {
@@ -279,103 +279,138 @@ namespace dpi
 
     struct solution
     {
-        vector <vector<double>> dp_cnt;
-        vector <vector<double>> dp_sum;
-        vector <vector<double>> dp_aws;
+        vector <string> code;
+
+        vector <double> sum;
+        vector <double> aws;
+        vector <double> var;
+        vector <double> cv;
+
+        vector <double> smo;
+        vector <double> awo;
+
+        vector <double> lead_time;
+
+        vector<double> mean_lead_times_number;
+        vector<double> lumpiness;
 
         solution& resize(problem p)
         {
-            unsigned int n = p.file_list.size();
+            /*unsigned int n = p.file_list.size();
 
-            dp_cnt.resize(n);
-            dp_sum.resize(n);
-            dp_aws.resize(n);
+            dp_sum.resize(n,0);
+            dp_aws.resize(n,0);*/
 
             return *this;
         }
 
-        solution& average_week_sales (problem p)
+        solution& calculate_monthly_data (problem p)
         {
-            resize(p);
+            unsigned int idx;
+            int months;
+            string i_code;
 
-            unsigned int code_index = 0, week_index = 0, aux;
+            code.clear();
+            sum.clear();
+            aws.clear();
+            var.clear();
+            smo.clear();
+            awo.clear();
+            lead_time.clear();
 
             if (p.data.size() >= 1)
             {
-                dp_sum[0].push_back(p.data[0].quantity);
-                dp_cnt[0].push_back(1);
+                idx = 0;
+                i_code = p.data[0].code;
+                code.push_back(i_code);
+                sum.push_back(p.data[0].quantity);
+                smo.push_back(1);
 
-                week_index = 0;
+                lead_time.push_back(double(p.lead_time[idx])/30);
+
+                months = - 12*p.data[0].date.tm_year - p.data[0].date.tm_mon + 1;
             }
 
             for(unsigned int s=1; s<p.data.size(); s++)
             {
-                aux = floor(_diffdays(p.data[s].date, p.data[0].date)/7);
-
                 if(p.data[s].code == p.data[s-1].code)
                 {
-                    if(week_index == aux)
-                    {
-                        dp_sum[code_index][week_index] += p.data[s].quantity;
-                        dp_cnt[code_index][week_index] ++;
-                    }else
-                    {
-                        for(unsigned int i=week_index+1; i<aux; i++)
-                        {
-                            dp_sum[code_index].push_back(0);
-                            dp_cnt[code_index].push_back(0);
-                        }
-
-                        dp_sum[code_index].push_back(p.data[s].quantity);
-                        dp_cnt[code_index].push_back(1);
-
-                        week_index = aux;
-                    }
+                    sum[idx] += p.data[s].quantity;
+                    smo[idx] ++;
                 } else
                 {
-                    code_index ++;
+                    months += 12*p.data[s-1].date.tm_year + p.data[s-1].date.tm_mon;
+                    aws.push_back(sum[idx]/months);
+                    awo.push_back(smo[idx]/months);
 
-                    for(unsigned int i=0; i<aux; i++)
-                    {
-                        dp_sum[code_index].push_back(0);
-                        dp_cnt[code_index].push_back(0);
-                    }
+                    cout << endl << code[idx] << "\t" << sum[idx] << "\t" << aws[idx] << "\t" << months << endl;
+                    cout << endl << code[idx] << "\t" << smo[idx] << "\t" << awo[idx] << "\t" << setprecision(2) << fixed << setw(4) << lead_time[idx] << endl;
 
-                    dp_sum[code_index].push_back(p.data[s].quantity);
-                    dp_cnt[code_index].push_back(1);
+                    idx++;
+                    i_code = p.data[s].code;
+                    code.push_back(i_code);
+                    sum.push_back(p.data[s].quantity);
+                    smo.push_back(1);
 
-                    week_index = aux;
+                    months = - 12*p.data[s].date.tm_year - p.data[s].date.tm_mon + 1;
+
+                    lead_time.push_back(double(p.lead_time[idx])/30);
                 }
             }
 
-            for(unsigned int s=0; s<dp_sum.size(); s++)
+            months += 12*p.data.back().date.tm_year + p.data.back().date.tm_mon;
+
+            aws.push_back(sum[idx]/months);
+            awo.push_back(smo[idx]/months);
+
+            cout << endl << code[idx] << "\t" << sum[idx] << "\t" << aws[idx] << "\t" << months << endl;
+            cout << endl << code[idx] << "\t" << smo[idx] << "\t" << awo[idx] << "\t" << setprecision(2) << fixed << setw(4) << lead_time[idx] << endl;
+
+            if (p.data.size() >= 1)
             {
-                for(unsigned int i=0; i<dp_sum[s].size(); i++)
-                {
-                    if(dp_cnt[s][i] == 0)
-                    {
-                        dp_aws[s].push_back(0);
-                    } else
-                    {
-                        dp_aws[s].push_back(dp_sum[s][i] / dp_cnt[s][i]);
-                    }
+                idx = 0;
 
-                    cout << endl << dp_aws[s][i] << "\t" << dp_sum[s][i] << "\t" << dp_cnt[s][i] << endl;
-                    //getchar();
-                }
-                cout << endl;
+                var.push_back(pow((p.data[0].quantity - aws[0]),2.0));
             }
 
+             for(unsigned int s=1; s<p.data.size(); s++)
+            {
+                if(p.data[s].code == p.data[s-1].code)
+                {
+                    var[idx] += pow((p.data[s].quantity - aws[idx]),2.0);
+                } else
+                {
+                    var[idx] = var[idx]/smo[idx];
+                    cv.push_back(sqrt(var[idx])/aws[idx]);
+                    cout << endl << code[idx] << "\t" << var[idx] << "\t" << cv[idx] << endl;
+
+                    idx ++;
+                    var.push_back(pow((p.data[s].quantity - aws[idx]),2.0));
+                }
+            }
+
+            var[idx] = var[idx]/smo[idx];
+            cv.push_back(sqrt(var[idx])/aws[idx]);
+
+            cout << endl << code[idx] << "\t" << var[idx] << "\t" << cv[idx] << endl;
+
             return *this;
         };
 
-        solution& average_month_sales (problem p)
+        solution& williams(problem p)
         {
-            return *this;
-        };
+            calculate_monthly_data(p);
 
-        solution& Williams()
-        {
+            mean_lead_times_number.clear();
+            lumpiness.clear();
+
+            for(unsigned int s=0; s<lead_time.size(); s++)
+            {
+                mean_lead_times_number.push_back(1/(awo[s]*lead_time[s]));
+                lumpiness.push_back(mean_lead_times_number[s] * cv[s]) ;
+
+                cout << endl << mean_lead_times_number[s] << "\t"  << lumpiness[s] << endl;
+            }
 
             return *this;
         };
@@ -449,7 +484,7 @@ namespace dpi
         {
             _problem.Boylan();
 
-            _solution.average_week_sales(_problem);
+            _solution.williams(_problem);
 
             return 0;
         };
