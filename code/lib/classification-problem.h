@@ -23,7 +23,7 @@ For more details see https://eigen.tuxfamily.org/
 // version: v2.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/11/09
+// last modification: 2023/11/17
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -620,6 +620,7 @@ namespace clss
         vector<double> weight;
         vector<unsigned int> classf;
         vector<char> ABCClassf;
+        problem prob;
 
         solution& clear()
         {
@@ -663,6 +664,7 @@ namespace clss
 
         solution& resize(problem p)
         {
+            prob = p;
             perMatrix.resize(p.NData);
 
             for(unsigned int i=0; i<perMatrix.size(); i++)
@@ -693,7 +695,20 @@ namespace clss
 
         friend ostream & operator << (ostream &out, const solution &s)
         {
-            out << "--> Solution: " << endl << endl;
+            out << "// list for demand patter clss:" << endl << endl;
+
+            for(unsigned int i=0; i<s.prob.code.size(); i++)
+            {
+                out << s.prob.code[i] << "\t";
+                out << setprecision(2) << fixed << setw(5) << s.prob.data[i][0] << "\t";
+                out << setw(2) << s.ABCClassf[i] << "\t";
+                out << setw(4) << s.classf[i] << "\t";
+                out << setprecision(4) << fixed << setw(6) << s.weight[i] << "\t";
+                out << endl;
+
+            }
+
+            out << endl << "--> Solution: " << endl << endl;
 
             out << "percentil data matrix: " << endl << endl;
 
@@ -749,7 +764,7 @@ namespace clss
             for(unsigned int i=0; i<s.classf.size(); i++)
             {
                 if(remainder (i,26) == 0) out << endl;
-                out << setw(6) << s.classf[i] << "\t";
+                out << s.prob.code[s.classf[i]] << "\t";
             }
             out << endl;
 
@@ -874,35 +889,40 @@ namespace clss
 
         solution& classification()
         {
-            unsigned int it;
+            vector<unsigned int>::iterator it;
             double sum;
 
-            for(unsigned int s=0; s<weight.size(); s++) // data
+            classf.clear();
+            classf.push_back(0);
+
+            bool aux = 0;
+
+            for(unsigned int s=1; s<weight.size(); s++) // data
             {
-                it = s;
+                aux = 0;
 
                 for(unsigned int l=0; l<s; l++) // finding position
                 {
                     if(weight[classf[l]] < weight[s])
                     {
-                        it = l;
-                        for(unsigned int p=s-1; p>l; p--) // relocation
-                        {
-                            classf[p+1] = classf[p];
-                        }
-
-                        classf[l+1] = classf[l];
-
+                        it = classf.begin() + l;
+                        classf.insert(it, s);
+                        aux = 1;
                         break;
                     }
                 }
 
-                classf[it] = s;
+                if(aux == 0)
+                {
+                    classf.push_back(s);
+                }
             }
 
             sum = 0;
             for(unsigned int s=0; s<classf.size(); s++)
             {
+                ABCClassf[classf[s]] = 'D';
+
                 sum += weight[classf[s]];
                 if(s==0 && sum > 0.80)
                 {

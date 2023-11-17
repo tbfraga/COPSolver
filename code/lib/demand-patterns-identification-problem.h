@@ -17,7 +17,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: v3.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/11/08
-// last modification: 2023/11/16
+// last modification: 2023/11/17
 
 #ifndef DEMAND-PATTERNS-IDENTIFICATION-PROBLEM_H_INCLUDED
 #define DEMAND-PATTERNS-IDENTIFICATION-PROBLEM_H_INCLUDED
@@ -149,20 +149,259 @@ namespace dpi
     struct problem
     {
         vector<string> file_list;
-        vector<pattern> categorization;
         vector<sale> data;
         vector<unsigned int> lead_time;
+        vector<char> ABC_class;
+        vector<unsigned int> ABC_ord;
+        vector<double> ABC_weight;
 
         problem& clear()
         {
             file_list.clear();
-            categorization.clear();
             data.clear();
+            lead_time.clear();
+            ABC_class.clear();
+            ABC_ord.clear();
+            ABC_weight.clear();
 
             return *this;
         }
 
-        problem& Boylan()
+        /*friend istream & operator >> (istream &in,  problem &p)
+        {
+            sale s;
+
+            while(!in.eof())
+            {
+                in >> s;
+                p.data.push_back(s);
+            }
+
+            return in;
+        };*/
+
+
+        problem& alexia()
+        {
+            //ffr::input input_file;
+            ffr::output output_file;
+
+            output_file.alexia_data_address();
+            output_file.alexia_data();
+
+            file_list = output_file._input.code;
+            lead_time = output_file._input.lead_time;
+            ABC_class = output_file._input.ABC_class;
+
+            string file_address = getenv("HOME");
+            file_address += "/COPSolver/results/CLSS_problem";
+
+            fstream out_file, in_file;
+            out_file.open(file_address, ios::out);
+
+            file_address = getenv("HOME");
+            file_address += "/COPSolver/data/alexia/";
+
+            cout << endl << "formating alexia data, please wait" << endl;
+
+            sale reg;
+
+            data.clear();
+
+            cout << endl << file_list.size();
+
+            for(unsigned s=0; s<file_list.size(); s++)
+            {
+                cout << endl << file_list[s] << endl;
+                in_file.open(file_address + "data_" + file_list[s] + ".txt");
+
+                cout << endl << file_address + "data_" + file_list[s] + ".txt" << endl;
+
+                while(!in_file.eof())
+                {
+                    in_file >> reg;
+
+                    out_file << reg << endl;
+
+                    data.push_back(reg);
+                }
+
+                in_file.close();
+            }
+
+            out_file.close();
+
+            return *this;
+        };
+
+    };
+
+    struct solution
+    {
+        vector <string> code;
+
+        vector <double> sum; // total quantity sold in the period evaluated
+        vector <double> aws; // average quantities sold
+        vector <double> var; // variance of the quantities sold
+        vector <double> cv;  // coefficient of variation of the quantities sold
+
+        vector <double> smo; // total number of requests in the period evaluated
+        vector <double> awo; // average number of requests
+
+        vector <double> lt;  // lead_time
+        vector <char> cls;   // multi-criteria ABC classification
+
+        vector<double> mltn; // mean number of lead times between demands
+        vector<double> lump; // lumpiness
+
+        vector<pattern> categorization;
+
+        double cutoff_1;
+        double cutoff_2;
+        double cutoff_3;
+
+        vector<string> dp; // demand pattern;
+
+        friend ostream & operator << (ostream &out, const solution &sol)
+        {
+            out << "code" << setw(7) << "mltn" << "\t" << setw(7) << "lump" << "\t"  << setw(12) << "pattern" << "\t"  << setw(5) << "lt" << setw(3) << "\t" << "cls" << endl;
+
+            for(unsigned int s=0; s<sol.lt.size(); s++)
+            {
+                out << endl << sol.code[s] << setprecision(2) << fixed << setw(7) << sol.mltn[s] << "\t";
+                out << setprecision(2) << fixed << setw(7) << sol.lump[s] << "\t" << setw(12) << sol.dp[s] << "\t";
+                out << setprecision(2) << fixed << setw(5) << sol.lt[s] << "\t";
+                out << setw(3) << sol.cls[s] << endl;
+            }
+
+            return out;
+        };
+
+        solution& calculate_monthly_data (problem p)
+        {
+            unsigned int idx;
+            int months;
+            string i_code;
+
+            code.clear();
+            sum.clear();
+            aws.clear();
+            var.clear();
+            smo.clear();
+            awo.clear();
+            lt.clear();
+            cls.clear();
+
+            if (p.data.size() >= 1)
+            {
+                idx = 0;
+                i_code = p.data[0].code;
+                code.push_back(i_code);
+                sum.push_back(p.data[0].quantity);
+                smo.push_back(1);
+
+                lt.push_back(double(p.lead_time[idx])/30);
+                cls.push_back(p.ABC_class[idx]);
+
+                months = - 12*p.data[0].date.tm_year - p.data[0].date.tm_mon + 1;
+            }
+
+            for(unsigned int s=1; s<p.data.size(); s++)
+            {
+                if(p.data[s].code == p.data[s-1].code)
+                {
+                    sum[idx] += p.data[s].quantity;
+                    smo[idx] ++;
+                } else
+                {
+                    months += 12*p.data[s-1].date.tm_year + p.data[s-1].date.tm_mon;
+                    aws.push_back(sum[idx]/months);
+                    awo.push_back(smo[idx]/months);
+
+                    cout << endl << code[idx] << "\t" << sum[idx] << "\t" << aws[idx] << "\t" << months << endl;
+                    cout << endl << code[idx] << "\t" << smo[idx] << "\t" << awo[idx] << "\t" << setprecision(2) << fixed << setw(4) << lt[idx] << endl;
+
+                    idx++;
+                    i_code = p.data[s].code;
+                    code.push_back(i_code);
+                    sum.push_back(p.data[s].quantity);
+                    smo.push_back(1);
+
+                    months = - 12*p.data[s].date.tm_year - p.data[s].date.tm_mon + 1;
+
+                    lt.push_back(double(p.lead_time[idx])/30);
+                    cls.push_back(p.ABC_class[idx]);
+                }
+            }
+
+            months += 12*p.data.back().date.tm_year + p.data.back().date.tm_mon;
+
+            aws.push_back(sum[idx]/months);
+            awo.push_back(smo[idx]/months);
+
+            cout << endl << code[idx] << "\t" << sum[idx] << "\t" << aws[idx] << "\t" << months << endl;
+            cout << endl << code[idx] << "\t" << smo[idx] << "\t" << awo[idx] << "\t" << setprecision(2) << fixed << setw(4) << lt[idx] << endl;
+
+            if (p.data.size() >= 1)
+            {
+                idx = 0;
+
+                var.push_back(pow((p.data[0].quantity - aws[0]),2.0));
+            }
+
+             for(unsigned int s=1; s<p.data.size(); s++)
+            {
+                if(p.data[s].code == p.data[s-1].code)
+                {
+                    var[idx] += pow((p.data[s].quantity - aws[idx]),2.0);
+                } else
+                {
+                    var[idx] = var[idx]/smo[idx];
+                    cv.push_back(sqrt(var[idx])/aws[idx]);
+                    cout << endl << code[idx] << "\t" << var[idx] << "\t" << cv[idx] << endl;
+
+                    idx ++;
+                    var.push_back(pow((p.data[s].quantity - aws[idx]),2.0));
+                }
+            }
+
+            var[idx] = var[idx]/smo[idx];
+            cv.push_back(sqrt(var[idx])/aws[idx]);
+
+            cout << endl << code[idx] << "\t" << var[idx] << "\t" << cv[idx] << endl;
+
+            return *this;
+        };
+
+        solution& williams_categorization()
+        {
+            cutoff_1 = 0.7;
+            cutoff_2 = 2.8;
+            cutoff_3 = 0.5;
+
+            pattern p;
+
+            categorization.clear();
+
+            p.name = "smooth";
+            p.description = "continous_demand";
+
+            categorization.push_back(p);
+
+            p.name = "slow-moving";
+            p.description = "low_average_demand_per_period";
+
+            categorization.push_back(p);
+
+            p.name = "sporadic";
+            p.description = "no_more_than_1_DDL";
+
+            categorization.push_back(p);
+
+            return *this;
+        };
+
+        solution& boylan_categorization()
         {
             pattern p;
 
@@ -201,216 +440,41 @@ namespace dpi
             return *this;
         };
 
-        friend istream & operator >> (istream &in,  problem &p)
-        {
-            sale s;
-
-            p.Boylan();
-
-            while(!in.eof())
-            {
-                in >> s;
-                p.data.push_back(s);
-            }
-
-            return in;
-        };
-
-        friend ostream & operator << (ostream &out, const problem &p)
-        {
-            for(unsigned int s=0; s<p.categorization.size(); s++)
-            {
-                cout << endl << p.categorization[s] << endl;
-            }
-            return out;
-        };
-
-
-        problem& alexia()
-        {
-            ffr::input input_file;
-            ffr::output output_file;
-
-            output_file.alexia_data_address();
-            output_file.alexia_data();
-
-            file_list = output_file._input.file_list;
-            lead_time = output_file._input.lead_time;
-
-            string file_address = getenv("HOME");
-            file_address += "/COPSolver/results/CLSS_problem";
-
-            fstream out_file, in_file;
-            out_file.open(file_address, ios::out);
-
-            file_address = getenv("HOME");
-            file_address += "/COPSolver/data/alexia/";
-
-            sale reg;
-
-            data.clear();
-
-            cout << endl << file_list.size();
-
-            for(unsigned s=0; s<file_list.size(); s++)
-            {
-                in_file.open(file_address + "data_" + file_list[s]);
-
-                cout << endl << file_address + "data_" + file_list[s] << endl;
-
-                while(!in_file.eof())
-                {
-                    in_file >> reg;
-
-                    out_file << reg << endl;
-
-                    data.push_back(reg);
-                }
-
-                in_file.close();
-            }
-
-            out_file.close();
-
-            return *this;
-        };
-
-    };
-
-    struct solution
-    {
-        vector <string> code;
-
-        vector <double> sum;
-        vector <double> aws;
-        vector <double> var;
-        vector <double> cv;
-
-        vector <double> smo;
-        vector <double> awo;
-
-        vector <double> lead_time;
-
-        vector<double> mean_lead_times_number;
-        vector<double> lumpiness;
-
-        solution& resize(problem p)
-        {
-            /*unsigned int n = p.file_list.size();
-
-            dp_sum.resize(n,0);
-            dp_aws.resize(n,0);*/
-
-            return *this;
-        }
-
-        solution& calculate_monthly_data (problem p)
-        {
-            unsigned int idx;
-            int months;
-            string i_code;
-
-            code.clear();
-            sum.clear();
-            aws.clear();
-            var.clear();
-            smo.clear();
-            awo.clear();
-            lead_time.clear();
-
-            if (p.data.size() >= 1)
-            {
-                idx = 0;
-                i_code = p.data[0].code;
-                code.push_back(i_code);
-                sum.push_back(p.data[0].quantity);
-                smo.push_back(1);
-
-                lead_time.push_back(double(p.lead_time[idx])/30);
-
-                months = - 12*p.data[0].date.tm_year - p.data[0].date.tm_mon + 1;
-            }
-
-            for(unsigned int s=1; s<p.data.size(); s++)
-            {
-                if(p.data[s].code == p.data[s-1].code)
-                {
-                    sum[idx] += p.data[s].quantity;
-                    smo[idx] ++;
-                } else
-                {
-                    months += 12*p.data[s-1].date.tm_year + p.data[s-1].date.tm_mon;
-                    aws.push_back(sum[idx]/months);
-                    awo.push_back(smo[idx]/months);
-
-                    cout << endl << code[idx] << "\t" << sum[idx] << "\t" << aws[idx] << "\t" << months << endl;
-                    cout << endl << code[idx] << "\t" << smo[idx] << "\t" << awo[idx] << "\t" << setprecision(2) << fixed << setw(4) << lead_time[idx] << endl;
-
-                    idx++;
-                    i_code = p.data[s].code;
-                    code.push_back(i_code);
-                    sum.push_back(p.data[s].quantity);
-                    smo.push_back(1);
-
-                    months = - 12*p.data[s].date.tm_year - p.data[s].date.tm_mon + 1;
-
-                    lead_time.push_back(double(p.lead_time[idx])/30);
-                }
-            }
-
-            months += 12*p.data.back().date.tm_year + p.data.back().date.tm_mon;
-
-            aws.push_back(sum[idx]/months);
-            awo.push_back(smo[idx]/months);
-
-            cout << endl << code[idx] << "\t" << sum[idx] << "\t" << aws[idx] << "\t" << months << endl;
-            cout << endl << code[idx] << "\t" << smo[idx] << "\t" << awo[idx] << "\t" << setprecision(2) << fixed << setw(4) << lead_time[idx] << endl;
-
-            if (p.data.size() >= 1)
-            {
-                idx = 0;
-
-                var.push_back(pow((p.data[0].quantity - aws[0]),2.0));
-            }
-
-             for(unsigned int s=1; s<p.data.size(); s++)
-            {
-                if(p.data[s].code == p.data[s-1].code)
-                {
-                    var[idx] += pow((p.data[s].quantity - aws[idx]),2.0);
-                } else
-                {
-                    var[idx] = var[idx]/smo[idx];
-                    cv.push_back(sqrt(var[idx])/aws[idx]);
-                    cout << endl << code[idx] << "\t" << var[idx] << "\t" << cv[idx] << endl;
-
-                    idx ++;
-                    var.push_back(pow((p.data[s].quantity - aws[idx]),2.0));
-                }
-            }
-
-            var[idx] = var[idx]/smo[idx];
-            cv.push_back(sqrt(var[idx])/aws[idx]);
-
-            cout << endl << code[idx] << "\t" << var[idx] << "\t" << cv[idx] << endl;
-
-            return *this;
-        };
-
         solution& williams(problem p)
         {
+            williams_categorization();
+
             calculate_monthly_data(p);
 
-            mean_lead_times_number.clear();
-            lumpiness.clear();
+            mltn.clear();
+            lump.clear();
 
-            for(unsigned int s=0; s<lead_time.size(); s++)
+            dp.clear();
+
+            for(unsigned int s=0; s<lt.size(); s++)
             {
-                mean_lead_times_number.push_back(1/(awo[s]*lead_time[s]));
-                lumpiness.push_back(mean_lead_times_number[s] * cv[s]) ;
+                mltn.push_back(1/(awo[s]*lt[s]));
+                lump.push_back(mltn[s] * cv[s]) ;
 
-                cout << endl << mean_lead_times_number[s] << "\t"  << lumpiness[s] << endl;
+                if(mltn[s] <= cutoff_1)
+                {
+                    dp.push_back("smooth");
+                } else if (mltn[s] <= cutoff_2 && lump[s] >= cutoff_3)
+                {
+                    dp.push_back("smooth");
+                } else if (lump[s] <= cutoff_3)
+                {
+                    dp.push_back("slow-moving");
+                } else
+                {
+                    dp.push_back("sporadic");
+                }
+
+                cout << endl << setprecision(2) << fixed << setw(4) << mltn[s] << "\t";
+                cout << setprecision(2) << fixed << setw(4) << lump[s] << "\t"  << dp[s] << endl;
             }
+
+
 
             return *this;
         };
@@ -432,20 +496,20 @@ namespace dpi
         };
 
         friend istream & operator >> (istream &in,  dpip &dp)
-        {
+        {/*
             dp.clear();
-            in >> dp._problem;
+            in >> dp._problem;*/
             return in;
         };
 
         friend ostream & operator << (ostream &out, const dpip &dp)
         {
-            out << dp._problem;
+//            out << dp._problem;
             return out;
         };
 
         bool get()
-        {
+        {/*
             string site = getenv("HOME");
             site += "/COPSolver/data/data.txt";
 
@@ -456,7 +520,7 @@ namespace dpi
 
             file >> _problem;
 
-            file.close();
+            file.close();*/
 
             return 0;
         };
@@ -480,11 +544,20 @@ namespace dpi
             return 0;
         };
 
-        bool Williams()
+        bool williams()
         {
-            _problem.Boylan();
+            string site = getenv("HOME");
+            site += "/COPSolver/results/willians_solution.txt";
+
+            fstream file;
 
             _solution.williams(_problem);
+
+            file.open(site, ios::out);
+
+            file << _solution;
+
+            file.close();
 
             return 0;
         };

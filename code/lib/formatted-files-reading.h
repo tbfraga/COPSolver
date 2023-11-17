@@ -20,10 +20,10 @@ For more details see https://eigen.tuxfamily.org/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
 // module: COPSolver: library for reading formatted files
-// version: v3.0-1
+// version: v2.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/11/10
-// last modification: 2023/11/10
+// last modification: 2023/11/17
 
 #ifndef FORMATTED-FILES-READING_H_INCLUDED
 #define FORMATTED-FILES-READING_H_INCLUDED
@@ -60,13 +60,20 @@ namespace ffr
     struct input
     {
         string file_address;
-        vector<string> file_list;
+        vector<string> code;
         vector<unsigned int> lead_time;
+        vector<char> ABC_class;
+        vector<unsigned int> ABC_ord;
+        vector<double> ABC_weight;
 
         input& clear()
         {
             file_address = "none";
-            file_list.clear();
+            code.clear();
+            lead_time.clear();
+            ABC_class.clear();
+            ABC_ord.clear();
+
             return *this;
         };
 
@@ -76,11 +83,11 @@ namespace ffr
 
             in.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
-            i.file_list.clear();
+            i.code.clear();
             while(!in.eof())
             {
                 in >> s;
-                i.file_list.push_back(s);
+                i.code.push_back(s);
             }
 
             return in;
@@ -88,8 +95,11 @@ namespace ffr
 
         input& alexia_config()
         {
+            cout << endl << "reading alexia config data, please wait..." << endl;
             string s;
-            unsigned int u;
+            double u;
+            char c;
+            double w;
 
             file_address = getenv("HOME");
             file_address += "/COPSolver/data/alexia/config.txt";
@@ -99,17 +109,27 @@ namespace ffr
 
             file.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
-            file_list.clear();
+            code.clear();
+
             while(!file.eof())
             {
                 file >> s;
-                file_list.push_back(s);
+                code.push_back(s);
 
                 file >> u;
                 lead_time.push_back(u);
+
+                file >> c;
+                ABC_class.push_back(c);
+
+                file >> u;
+                ABC_ord.push_back(u);
+
+                file >> w;
+                ABC_weight.push_back(w);
             }
 
-            file_list.erase(file_list.end());
+            code.erase(code.end());
 
             file.close();
 
@@ -140,9 +160,15 @@ namespace ffr
         {
             string dateStr;
             fstream input_file;
+            fstream data_file;
+
             fstream output_file;
 
             sale reg;
+
+            file_address = getenv("HOME");
+
+            output_file.open(file_address + "/COPSolver/results/dp_clssf_problem.txt", ios::out);
 
             _input.alexia_config();
 
@@ -156,16 +182,22 @@ namespace ffr
             {
                 _input.alexia_data_address();
 
-                for(unsigned int s=0; s<_input.file_list.size(); s++)
+                for(unsigned int s=0; s<_input.code.size(); s++)
                 {
-                    output_file.open(file_address + "data_" + _input.file_list[s], ios::out);
-                    cout << endl << _input.file_list[s] << endl;
+                    cout << endl << _input.code[s] << endl;
 
-                    input_file.open(_input.file_address + _input.file_list[s]);
+                    input_file.open(_input.file_address + _input.code[s] + ".txt");
+                    data_file.open(_input.file_address + "/data_" + _input.code[s] + ".txt", ios::out);
 
                     if (!input_file)
                     {
                         cerr << "File do not exist!";
+                        _input.code.erase(_input.code.begin() + s);
+                        _input.lead_time.erase(_input.lead_time.begin() + s);
+                        _input.ABC_class.erase(_input.ABC_class.begin() + s);
+                        _input.ABC_ord.erase(_input.ABC_ord.begin() + s);
+                        _input.ABC_weight.erase(_input.ABC_weight.begin() + s);
+                        s--;
                     } else
                     {
                         while(!input_file.eof())
@@ -179,10 +211,11 @@ namespace ffr
 
                             if (ss.fail())
                             {
-                                cerr << "Parsing failed!" << endl;
-                                //getchar();
+                                cerr << endl << "Parsing failed in " << _input.code[s] << " !" << endl;
                             } else
                             {
+                                cout << endl << reg.date.tm_year << "\t" << _input.code[s];
+
                                 reg.date.tm_year += 1900;
                                 reg.date.tm_mon += 1;
 
@@ -201,16 +234,18 @@ namespace ffr
                                 input_file >> dateStr;
                                 input_file >> dateStr;
 
+                                data_file << reg << endl;
                                 output_file << reg << endl;
                             }
                         }
-
-                        output_file.close();
-
-                        input_file.close();
                     }
+
+                    data_file.close();
+                    input_file.close();
                 }
             }
+
+            output_file.close();
 
             return *this;
         };

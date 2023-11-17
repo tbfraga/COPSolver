@@ -36,7 +36,7 @@ repository: github.com/tbfraga/COPSolver
 // version: 2.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/11/07
+// last modification: 2023/11/17
 
 #include "lib/classification-problem.h"
 #include "lib/demand-patterns-identification-problem.h"
@@ -134,7 +134,7 @@ int main()
     {
         if(problem_type != 1)
         {
-            cout << endl << "error: there is an error in the config.txt file - problem is not configured correctly." << endl;
+            cout << endl << "error: there is an error in the config.txt file - problem type is not configured correctly." << endl;
             getchar();
             return 1;
         }
@@ -162,7 +162,7 @@ int main()
 
         if(solving_method == 1)
         {
-            _problem.Williams();
+            _problem.williams();
         }
 
         _problem.clear();
