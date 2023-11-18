@@ -33,7 +33,27 @@ For more details see https://eigen.tuxfamily.org/
 #include <string>
 #include <ctime>
 #include <chrono>
+#include <cstdlib>
 using namespace std;
+
+template<typename T>
+bool isValid(string num)
+{
+    T  value;
+    stringstream stream(num);
+    stream >> value;
+
+    // If the stream is already in the error state peak will not change it.
+    // Otherwise stream should be good and there should be no more data
+    // thus resulting in a peek returning an EOF
+    return (stream) &&
+           stream.peek() == char_traits<typename stringstream::char_type>::eof();
+}
+
+/*int main()
+{
+    isValid<double>("55");
+}*/
 
 namespace ffr
 {
@@ -164,6 +184,8 @@ namespace ffr
 
             fstream output_file;
 
+            bool aux;
+
             sale reg;
 
             file_address = getenv("HOME");
@@ -221,10 +243,32 @@ namespace ffr
 
                                 input_file >> reg.code;
 
-                                input_file.ignore(60,'U');
-                                input_file.ignore(60,'N');
+                                aux = 1;
 
-                                input_file >> reg.quantity;
+                                do
+                                {
+                                    input_file.ignore(60,'U');
+                                    input_file.ignore(60,'N');
+
+                                    input_file >> dateStr;
+
+                                    stringstream stream(dateStr);
+                                    stream >> reg.quantity;
+
+                                    if (stream.fail())
+                                    {
+                                        cout << endl << "fail" << endl;
+                                    } else
+                                    {
+                                        aux = 0;
+                                        break;
+                                    }
+
+                                    cout << endl << dateStr << "\t" << reg.quantity << endl;
+
+                                } while (aux);
+
+                                //reg.quantity = strtoul(dateStr.c_str(), NULL, 0);
 
                                 input_file.ignore(60,' ');
 
