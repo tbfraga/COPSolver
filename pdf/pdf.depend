@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1700313223 source:/home/work/Documents/GitHub/COPSolver/pdf/main.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+

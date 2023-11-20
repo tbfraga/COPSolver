@@ -223,3 +223,5 @@ int main()
 
 // Note: talvez o infinito não seja bem representado por um caminho continuo e fechado que circula em torno de si mesmo, tal como o número 8.
 // É possível que o infinito seja melhor representado pelo número 9. Ele termina em determinado ponto e depois recomeça em algum outro ponto de sua trajetória.
+
+// New idea: create a forecasting method based on data partition

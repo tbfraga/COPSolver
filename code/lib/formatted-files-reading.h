@@ -95,7 +95,7 @@ namespace ffr
             ABC_ord.clear();
 
             return *this;
-        };
+        }; //
 
         friend istream & operator >> (istream &in,  input &i)
         {

@@ -314,7 +314,8 @@ namespace dpi
                     smo[idx] ++;
                 } else
                 {
-                    months += 12*p.data[s-1].date.tm_year + p.data[s-1].date.tm_mon;
+                    //months += 12*p.data[s-1].date.tm_year + p.data[s-1].date.tm_mon; // final sale date for collected data
+                    months += 12*2022 + 8; // final date for collected data
                     aws.push_back(sum[idx]/months);
                     awo.push_back(smo[idx]/months);
 
@@ -454,7 +455,7 @@ namespace dpi
             for(unsigned int s=0; s<lt.size(); s++)
             {
                 mltn.push_back(1/(awo[s]*lt[s]));
-                lump.push_back(mltn[s] * cv[s]) ;
+                lump.push_back(mltn[s] * pow(cv[s],2)) ;
 
                 if(mltn[s] <= cutoff_1)
                 {
