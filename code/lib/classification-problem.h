@@ -23,7 +23,7 @@ For more details see https://eigen.tuxfamily.org/
 // version: v2.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/11/17
+// last modification: 2023/11/20
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -586,7 +586,7 @@ namespace clss
 
                 for(unsigned int j=0; j<p.data[i].size(); j++)
                 {
-                    out << setprecision(6) << setw(6) << p.data[i][j] << "\t";
+                    out << setprecision(2) << fixed << setw(10) << p.data[i][j] << "\t";
                 }
 
                 out << endl;
@@ -700,10 +700,10 @@ namespace clss
             for(unsigned int i=0; i<s.prob.code.size(); i++)
             {
                 out << s.prob.code[i] << "\t";
-                out << setprecision(2) << fixed << setw(5) << s.prob.data[i][0] << "\t";
+                out << setprecision(2) << fixed << setw(6) << s.prob.data[i][2] << "\t";
                 out << setw(2) << s.ABCClassf[i] << "\t";
                 out << setw(4) << s.classf[i] << "\t";
-                out << setprecision(4) << fixed << setw(6) << s.weight[i] << "\t";
+                out << setprecision(4) << fixed << setw(8) << s.weight[i] << "\t";
                 out << endl;
 
             }
