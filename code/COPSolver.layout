@@ -2,46 +2,6 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="src/classification-problem.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1301" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="24" />
-			<Collapse line="30" />
-			<Collapse line="47" />
-			<Collapse line="57" />
-		</Folding>
-	</File>
-	<File name="src/multiproduct-batch-processing-time-maximization-problem.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1260" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="25" />
-			<Collapse line="42" />
-			<Collapse line="97" />
-			<Collapse line="210" />
-			<Collapse line="279" />
-			<Collapse line="293" />
-			<Collapse line="310" />
-			<Collapse line="327" />
-			<Collapse line="344" />
-			<Collapse line="372" />
-			<Collapse line="387" />
-			<Collapse line="458" />
-		</Folding>
-	</File>
-	<File name="lib/demand-patterns-identification-problem.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1336" topLine="33" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8437" topLine="196" />
-		</Cursor>
-	</File>
 	<File name="lib/classification-problem.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="20085" topLine="0" />
@@ -79,14 +39,6 @@
 			<Collapse line="967" />
 		</Folding>
 	</File>
-	<File name="lib/formatted-files-reading.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9297" topLine="251" />
-		</Cursor>
-		<Folding>
-			<Collapse line="60" />
-		</Folding>
-	</File>
 	<File name="lib/multiproduct-batch-processing-time-maximization-problem.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1260" topLine="0" />
@@ -95,6 +47,54 @@
 			<Collapse line="39" />
 			<Collapse line="54" />
 			<Collapse line="69" />
+		</Folding>
+	</File>
+	<File name="lib/formatted-files-reading.h" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8207" topLine="222" />
+		</Cursor>
+		<Folding>
+			<Collapse line="60" />
+		</Folding>
+	</File>
+	<File name="lib/demand-patterns-identification-problem.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1336" topLine="33" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7842" topLine="174" />
+		</Cursor>
+	</File>
+	<File name="src/multiproduct-batch-processing-time-maximization-problem.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1260" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="25" />
+			<Collapse line="42" />
+			<Collapse line="97" />
+			<Collapse line="210" />
+			<Collapse line="279" />
+			<Collapse line="293" />
+			<Collapse line="310" />
+			<Collapse line="327" />
+			<Collapse line="344" />
+			<Collapse line="372" />
+			<Collapse line="387" />
+			<Collapse line="458" />
+		</Folding>
+	</File>
+	<File name="src/classification-problem.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1301" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="24" />
+			<Collapse line="30" />
+			<Collapse line="47" />
+			<Collapse line="57" />
 		</Folding>
 	</File>
 </CodeBlocks_layout_file>

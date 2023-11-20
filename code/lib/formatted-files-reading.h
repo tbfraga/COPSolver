@@ -247,8 +247,8 @@ namespace ffr
 
                                 do
                                 {
-                                    input_file.ignore(60,'U');
-                                    input_file.ignore(60,'N');
+                                    input_file.ignore(numeric_limits<std::streamsize>::max(),'U');
+                                    input_file.ignore(numeric_limits<std::streamsize>::max(),'N');
 
                                     input_file >> dateStr;
 
@@ -270,7 +270,7 @@ namespace ffr
 
                                 //reg.quantity = strtoul(dateStr.c_str(), NULL, 0);
 
-                                input_file.ignore(60,' ');
+                                input_file.ignore(numeric_limits<std::streamsize>::max(),' ');
 
                                 input_file >> reg.price;
 
