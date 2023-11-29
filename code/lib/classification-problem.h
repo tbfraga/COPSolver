@@ -23,16 +23,19 @@ For more details see https://eigen.tuxfamily.org/
 // version: v2.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/11/20
+// last modification: 2023/11/22
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
 
-#include <vector>
-#include <string>
-#include <iterator>
 #include <iostream>
 #include <fstream>
+#include <iomanip>
+#include <string>
+#include <sstream>
+
+#include <vector>
+#include <iterator>
 #include <bits/stdc++.h>
 #include "Eigen/Eigenvalues"
 using namespace Eigen;
@@ -313,9 +316,9 @@ namespace clss
 
             v.clear();
 
-            for(unsigned int i=0; i<matrix.size(); i++)
+            for(unsigned int j=0; j<matrix.size(); j++)
             {
-                for(unsigned int j=0; j<matrix[i].size(); j++)
+                for(unsigned int i=0; i<matrix[j].size(); i++)
                 {
                     v.push_back(matrix[i][j].value);
                 }
@@ -665,113 +668,77 @@ namespace clss
         solution& resize(problem p)
         {
             prob = p;
-            perMatrix.resize(p.NData);
+            perMatrix.resize(prob.NData);
 
             for(unsigned int i=0; i<perMatrix.size(); i++)
             {
-                perMatrix[i].resize(p.NCriteria,0.0);
+                perMatrix[i].resize(prob.NCriteria,0.0);
             }
 
-            orderedMatrix.resize(p.NData);
+            orderedMatrix.resize(prob.NData);
 
             for(unsigned int i=0; i<orderedMatrix.size(); i++)
             {
-                orderedMatrix[i].resize(p.NCriteria,0);
+                orderedMatrix[i].resize(prob.NCriteria,0);
             }
 
-            ABCMatrix.resize(p.NData);
+            ABCMatrix.resize(prob.NData);
 
             for(unsigned int i=0; i<ABCMatrix.size(); i++)
             {
-                ABCMatrix[i].resize(p.NCriteria,'C');
+                ABCMatrix[i].resize(prob.NCriteria,'C');
             }
 
-            weight.resize(p.NData,0.0);
-            classf.resize(p.NData,0);
-            ABCClassf.resize(p.NData,'C');
+            weight.resize(prob.NData,0.0);
+            classf.resize(prob.NData,0);
+            ABCClassf.resize(prob.NData,'C');
 
             return *this;
         };
 
         friend ostream & operator << (ostream &out, const solution &s)
         {
-            out << "// list for demand patter clss:" << endl << endl;
+            double sum = 0;
+
+            out << "--> ABC multi-criteria classification (with Saat's Analytic Hierarchy Process): " << endl << endl;
 
             for(unsigned int i=0; i<s.prob.code.size(); i++)
             {
+                sum += s.weight[i];
                 out << s.prob.code[i] << "\t";
                 out << setprecision(2) << fixed << setw(6) << s.prob.data[i][2] << "\t";
                 out << setw(2) << s.ABCClassf[i] << "\t";
+                out << setprecision(6) << fixed << setw(8) << s.weight[i] << "\t";
+                out << setprecision(2) << fixed << setw(6) << sum*100 << " %\t";
                 out << setw(4) << s.classf[i] << "\t";
-                out << setprecision(4) << fixed << setw(8) << s.weight[i] << "\t";
                 out << endl;
 
             }
 
-            out << endl << "--> Solution: " << endl << endl;
+            out << endl << "ABC matrix (by criterion): " << endl << endl << "\t   ";
 
-            out << "percentil data matrix: " << endl << endl;
-
-            for(unsigned int i=0; i<s.perMatrix.size(); i++)
+            for(unsigned int i=0; i<s.prob.weightVector.size(); i++)
             {
-                for(unsigned int j=0; j<s.perMatrix[i].size(); j++)
-                {
-                    out << setprecision(4) << fixed << setw(6) << s.perMatrix[i][j] << "\t";
-                }
-                out << endl;
+                out << setw(11) << s.prob.weightVector[i].criterion.name << ", " << setprecision(2) << fixed << setw(4) << s.prob.weightVector[i].value << "\t";
             }
 
-            out << endl << "Ordered matrix: " << endl << endl;
-
-            for(unsigned int i=0; i<s.orderedMatrix.size(); i++)
-            {
-                for(unsigned int j=0; j<s.orderedMatrix[i].size(); j++)
-                {
-                    out << setprecision(4) << setw(4) << s.orderedMatrix[i][j] << "\t";
-                }
-                out << endl;
-            }
-
-            out << endl << "ABC matrix: " << endl << endl;
+            out << endl << endl;
 
             for(unsigned int i=0; i<s.ABCMatrix.size(); i++)
             {
+                out << s.prob.code[i] << "\t";
+
                 for(unsigned int j=0; j<s.ABCMatrix[i].size(); j++)
                 {
-                    out << setprecision(4) << setw(4) << s.ABCMatrix[i][j] << "\t";
+                    out << setprecision(4) << setw(4) << s.ABCMatrix[i][j] << "\t" << setprecision(6) << fixed << setw(8) << s.perMatrix[i][j] << "\t";
                 }
                 out << endl;
             }
-
-            out << endl << endl << "multicriteria weight: " << endl;
-
-            for(unsigned int i=0; i<s.weight.size(); i++)
-            {
-                if(remainder (i,26) == 0) out << endl;
-                out << setprecision(4) << fixed << setw(6) << s.weight[i] << "\t";
-            }
-
-            out << endl << endl << "ABC multicriteria classification: " << endl;
-
-            for(unsigned int i=0; i<s.ABCClassf.size(); i++)
-            {
-                if(remainder (i,26) == 0) out << endl;
-                out << setw(6) << s.ABCClassf[i] << "\t";
-            }
-
-            out << endl << endl << "multicriteria ordering: " << endl;
-
-            for(unsigned int i=0; i<s.classf.size(); i++)
-            {
-                if(remainder (i,26) == 0) out << endl;
-                out << s.prob.code[s.classf[i]] << "\t";
-            }
-            out << endl;
 
             return out;
         };
 
-        solution& percentilMatrix(problem p)
+        solution& percentilMatrix()
         {
             double sum;
 
@@ -781,7 +748,7 @@ namespace clss
 
                 for(unsigned int d=0; d<perMatrix.size(); d++)
                 {
-                    sum += p.data[d][c];
+                    sum += prob.data[d][c];
                 }
 
                 for(unsigned int d=0; d<perMatrix.size(); d++)
@@ -791,7 +758,7 @@ namespace clss
                         perMatrix[d][c] = 0;
                     }else
                     {
-                        perMatrix[d][c] = p.data[d][c]/sum;
+                        perMatrix[d][c] = prob.data[d][c]/sum;
                     }
                 }
             }
@@ -805,7 +772,7 @@ namespace clss
             double sum;
 
             resize(p);
-            percentilMatrix(p);
+            percentilMatrix();
 
             // ordering
 
@@ -848,32 +815,32 @@ namespace clss
                 {
                     product = orderedMatrix[d][c];
 
-                    if(p.weightVector[c].criterion.mode == "value")
+                    if(prob.weightVector[c].criterion.mode == "value")
                     {
-                        if(p.data[product][c] == p.weightVector[c].criterion.valueA)
+                        if(prob.data[product][c] == prob.weightVector[c].criterion.valueA)
                         {
                             ABCMatrix[product][c] = 'A';
-                        } else if(p.data[product][c] == p.weightVector[c].criterion.valueB)
+                        } else if(prob.data[product][c] == prob.weightVector[c].criterion.valueB)
                         {
                             ABCMatrix[product][c] = 'B';
-                        } else if(p.data[product][c] == p.weightVector[c].criterion.valueC)
+                        } else if(prob.data[product][c] == prob.weightVector[c].criterion.valueC)
                         {
                             ABCMatrix[product][c] = 'C';
                         }
-                    } else if(p.weightVector[c].criterion.mode == "acmSum")
+                    } else if(prob.weightVector[c].criterion.mode == "acmSum")
                     {
                         sum += perMatrix[product][c];
 
-                        if(d == 0 && sum >= p.weightVector[c].criterion.valueA)
+                        if(d == 0 && sum >= prob.weightVector[c].criterion.valueA)
                         {
                             ABCMatrix[product][c] = 'A';
-                        } else if(d == 1 && sum >= p.weightVector[c].criterion.valueB)
+                        } else if(d == 1 && sum >= prob.weightVector[c].criterion.valueB)
                         {
                             ABCMatrix[product][c] = 'B';
-                        } else if(sum <= p.weightVector[c].criterion.valueA)
+                        } else if(sum <= prob.weightVector[c].criterion.valueA)
                         {
                             ABCMatrix[product][c] = 'A';
-                        } else if(sum <= p.weightVector[c].criterion.valueB)
+                        } else if(sum <= prob.weightVector[c].criterion.valueB)
                         {
                             ABCMatrix[product][c] = 'B';
                         } else
@@ -924,16 +891,16 @@ namespace clss
                 ABCClassf[classf[s]] = 'D';
 
                 sum += weight[classf[s]];
-                if(s==0 && sum > 0.80)
+                if(s==0 && sum > 0.50)
                 {
                     ABCClassf[classf[s]] = 'A';
-                } else if(s==1 && sum > 0.95)
+                } else if(s==1 && sum > 0.80)
                 {
                     ABCClassf[classf[s]] = 'B';
-                } if(sum <= 0.80)
+                } if(sum <= 0.50)
                 {
                     ABCClassf[classf[s]] = 'A';
-                } else if(sum <= 0.95)
+                } else if(sum <= 0.80)
                 {
                     ABCClassf[classf[s]] = 'B';
                 } else
@@ -945,6 +912,53 @@ namespace clss
             return *this;
         };
 
+
+        solution& order()
+        {
+            vector<string> aux_code;
+            vector<vector<double>> aux_data;
+            vector<char> aux_ABC;
+            vector<double> aux_weight;
+
+            aux_code.clear();
+
+            for(unsigned int s=0; s<aux_data.size(); s++)
+            {
+                aux_data[s].clear();
+            }
+            aux_data.clear();
+
+            aux_ABC.clear();
+
+            aux_weight.clear();
+
+            for(unsigned int s=0; s<classf.size(); s++)
+            {
+                aux_code.push_back(prob.code[classf[s]]);
+                aux_data.push_back(prob.data[classf[s]]);
+                aux_ABC.push_back(ABCClassf[classf[s]]);
+                aux_weight.push_back(weight[classf[s]]);
+
+                classf[s] = s;
+            }
+
+            prob.code = aux_code;
+            prob.data = aux_data;
+            ABCClassf = aux_ABC;
+            weight = aux_weight;
+
+            aux_code.clear();
+            for(unsigned int s=0; s<aux_data.size(); s++)
+            {
+                aux_data[s].clear();
+            }
+            aux_data.clear();
+            aux_ABC.clear();
+            aux_weight.clear();
+
+            return *this;
+        }
+
         solution& analyticHierarchyProcess(problem p)
         {
             ABC(p);
@@ -954,11 +968,13 @@ namespace clss
                 weight[i] = 0;
                 for(unsigned int j=0; j<perMatrix[i].size(); j++)
                 {
-                    weight[i] += perMatrix[i][j]*p.weightVector[j].value;
+                    weight[i] += perMatrix[i][j]*prob.weightVector[j].value;
                 }
             }
 
             classification();
+
+            order();
 
             return *this;
         };
@@ -985,6 +1001,76 @@ namespace clss
 
         bool ABC();
         bool analyticHierarchyProcess();
+
+        bool format_classification_data()
+        {
+            unsigned int NCriteria;
+
+            fstream data_file, formatted_data;
+
+            string dateStr, input_file, output_file;
+
+            string file_address = getenv("HOME");
+
+            input_file = file_address + "/COPSolver/data/data.txt";
+            output_file = file_address + "/COPSolver/data/data_formatted.txt";
+
+            data_file.open(input_file);
+            formatted_data.open(output_file, ios::out);
+
+            data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+            data_file >> NCriteria;
+
+            data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+            data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+            data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+            data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+            if (!data_file)
+            {
+                cerr << "File not openned!";
+                return 1;
+            } else
+            {
+                while(!data_file.eof())
+                {
+                    data_file >> dateStr;
+
+                    formatted_data << setw(6) << dateStr;
+
+                    data_file >> dateStr;
+                    formatted_data << setw(12) << dateStr << "\t";
+
+                    data_file >> dateStr;
+
+                    formatted_data << setw(6) << dateStr << "\t";
+
+                    data_file >> dateStr;
+
+                    formatted_data << setw(4) << dateStr << "\t";
+
+                    data_file >> dateStr;
+
+                    formatted_data << setw(6) << dateStr << "\t";
+
+                    data_file >> dateStr;
+
+                    formatted_data << setw(6) << dateStr << "\t";
+
+                    data_file >> dateStr;
+
+                    formatted_data << setw(7) << dateStr;
+
+                    formatted_data << endl;
+                }
+            }
+
+            data_file.close();
+            formatted_data.close();
+
+            return 0;
+        }
     };
 
 }

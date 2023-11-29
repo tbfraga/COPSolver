@@ -98,6 +98,9 @@ int main()
 
     file.close();
 
+    //clss::clssp data;
+    //data.format_classification_data();
+
     if(problem_class == 1) // if classification problems
     {
         if(problem_type != 1)

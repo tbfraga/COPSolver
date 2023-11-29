@@ -15,7 +15,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: COPSolver: library for solving classification problems
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/11/20
+// last modification: 2023/11/22
 
 #include "../lib/classification-problem.h"
 
@@ -46,6 +46,7 @@ namespace clss
 
     bool clssp::ABC()
     {
+        _solution.prob = _problem;
         _solution.ABC(_problem);
 
         cout << endl << "ABC classification: " << endl;

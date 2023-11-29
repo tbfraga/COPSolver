@@ -202,7 +202,7 @@ namespace dpi
             file_address = getenv("HOME");
             file_address += "/COPSolver/data/alexia/";
 
-            cout << endl << "formating alexia data, please wait" << endl;
+            cout << endl << "reading and formating alexia data, please wait" << endl;
 
             sale reg;
 
