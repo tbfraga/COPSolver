@@ -13,7 +13,6 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 'COPSolver: library for solving classification problems' uses Eigen library.
 For this reason, COPSolver repository contains a copy of the Eigen library.
 Eigen is Free Software. Starting from the 3.1.1 version, it is licensed under the MPL2, which is a simple weak copyleft license.
-Common questions about the MPL2 are answered in the official MPL2 FAQ.
 For more details see https://eigen.tuxfamily.org/
 
 ******************************************************************************************************************************************************************************/
@@ -23,7 +22,7 @@ For more details see https://eigen.tuxfamily.org/
 // version: v2.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/11/22
+// last modification: 2023/12/04
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -252,28 +251,28 @@ namespace clss
             {
                 for(unsigned int j=0; j<m.matrix[i].size(); j++)
                 {
-                    out << setprecision(3) << setw(5) << m.matrix[i][j] << "\t";
+                    out << setprecision(2) << fixed << setw(6) << m.matrix[i][j];
                 }
                 out << endl;
             }
 
-            out << "\npairwise comparison matrix it: " << endl << endl;
+            out << "\npairwise comparison matrix index: " << endl << endl;
 
             for(unsigned int i=0; i<m.matrix.size(); i++)
             {
                 for(unsigned int j=0; j<m.matrix[i].size(); j++)
                 {
-                    out << setprecision(3) << setw(5) << m.matrix[i][j].it << "\t";
+                    out << setw(6) << m.matrix[i][j].it;
                 }
                 out << endl;
             }
 
-            out << endl << "main eigenvalue: " << m.mainEigenvalue << endl;
+            out << endl << "main eigenvalue: " << setprecision(3) << fixed  << m.mainEigenvalue << endl;
 
             out << endl << "main eigenvector: ";
             for(unsigned int s=0; s<m.mainEigenvector.size(); s++)
             {
-                out << setprecision(3) << m.mainEigenvector[s] << "\t";
+                out << setprecision(3) << fixed << setw(7) << m.mainEigenvector[s];
             }
             out << endl;
 
@@ -516,7 +515,7 @@ namespace clss
         {
             if(&in == &cin)
             {
-                cout << endl << "error: operator >> problem is only defined by geting data from file !!!" << endl << endl;
+                cout << endl << "error: operator >> for struct problem is only defined by geting data from file !!!" << endl << endl;
                 p.clear();
             }else
             {
@@ -589,7 +588,7 @@ namespace clss
 
                 for(unsigned int j=0; j<p.data[i].size(); j++)
                 {
-                    out << setprecision(2) << fixed << setw(10) << p.data[i][j] << "\t";
+                    out << setprecision(2) << fixed << setw(10) << p.data[i][j];
                 }
 
                 out << endl;
@@ -617,12 +616,19 @@ namespace clss
     };
 
     struct solution{
+
+        // ABC
         vector<vector<double>> perMatrix;
         vector<vector<unsigned int>> orderedMatrix;
         vector<vector<char>> ABCMatrix;
+
+        // multicriteria
         vector<double> weight;
         vector<unsigned int> classf;
         vector<char> ABCClassf;
+        vector<string> code; // product code (ordered) - vector[_NData]
+        vector<vector<double>> data; // data for each criterion (ordered) - matrix[_NData, _NCriteria]
+
         problem prob;
 
         solution& clear()
@@ -700,37 +706,45 @@ namespace clss
         {
             double sum = 0;
 
-            out << "--> ABC multi-criteria classification (with Saat's Analytic Hierarchy Process): " << endl << endl;
+            out << "Number of data :" << endl << endl;
+
+            out << s.prob.NData << endl << endl;
+
+            out << "--> ABC multi-criteria classification (with Saat's Analytic Hierarchy Process)" << endl << endl;
+
+            out << setw(4) << "code" << setw(11) << "lead time" << setw(4) << "ABC" << setw(8) << "weight" << setw(10) << "sum" << setw(8) << "order :" << endl << endl;
 
             for(unsigned int i=0; i<s.prob.code.size(); i++)
             {
                 sum += s.weight[i];
-                out << s.prob.code[i] << "\t";
-                out << setprecision(2) << fixed << setw(6) << s.prob.data[i][2] << "\t";
-                out << setw(2) << s.ABCClassf[i] << "\t";
-                out << setprecision(6) << fixed << setw(8) << s.weight[i] << "\t";
-                out << setprecision(2) << fixed << setw(6) << sum*100 << " %\t";
-                out << setw(4) << s.classf[i] << "\t";
+                out << s.code[i];
+                out << setprecision(2) << fixed << setw(11) << s.data[i][2];
+                out << setw(4) << s.ABCClassf[i];
+                out << setprecision(2) << fixed << setw(6) << s.weight[i]*100 << " %";
+                out << setprecision(2) << fixed << setw(8) << sum*100 << " %";
+                out << setw(6) << s.classf[i];
                 out << endl;
 
             }
 
-            out << endl << "ABC matrix (by criterion): " << endl << endl << "\t   ";
+            out << endl << "--> ABC matrix (by criterion) " << endl << endl;
+
+            out << setw(4) << "code";
 
             for(unsigned int i=0; i<s.prob.weightVector.size(); i++)
             {
-                out << setw(11) << s.prob.weightVector[i].criterion.name << ", " << setprecision(2) << fixed << setw(4) << s.prob.weightVector[i].value << "\t";
+                out << setw(18) << s.prob.weightVector[i].criterion.name << ", " << setprecision(2) << fixed << setw(4) << s.prob.weightVector[i].value;
             }
 
-            out << endl << endl;
+            out << " :" << endl << endl;
 
             for(unsigned int i=0; i<s.ABCMatrix.size(); i++)
             {
-                out << s.prob.code[i] << "\t";
+                out << s.prob.code[i];
 
                 for(unsigned int j=0; j<s.ABCMatrix[i].size(); j++)
                 {
-                    out << setprecision(4) << setw(4) << s.ABCMatrix[i][j] << "\t" << setprecision(6) << fixed << setw(8) << s.perMatrix[i][j] << "\t";
+                    out << setw(10) << s.ABCMatrix[i][j] << setprecision(2) << fixed << setw(12) << s.perMatrix[i][j] * 100 << " %";
                 }
                 out << endl;
             }
@@ -859,6 +873,9 @@ namespace clss
             vector<unsigned int>::iterator it;
             double sum;
 
+            double ALim = 0.15,
+                   BLim = 0.25;
+
             classf.clear();
             classf.push_back(0);
 
@@ -891,16 +908,16 @@ namespace clss
                 ABCClassf[classf[s]] = 'D';
 
                 sum += weight[classf[s]];
-                if(s==0 && sum > 0.50)
+                if(s==0 && sum > ALim)
                 {
                     ABCClassf[classf[s]] = 'A';
-                } else if(s==1 && sum > 0.80)
+                } else if(s==1 && sum > BLim)
                 {
                     ABCClassf[classf[s]] = 'B';
-                } if(sum <= 0.50)
+                } if(sum <= ALim)
                 {
                     ABCClassf[classf[s]] = 'A';
-                } else if(sum <= 0.80)
+                } else if(sum <= BLim)
                 {
                     ABCClassf[classf[s]] = 'B';
                 } else
@@ -915,44 +932,35 @@ namespace clss
 
         solution& order()
         {
-            vector<string> aux_code;
-            vector<vector<double>> aux_data;
             vector<char> aux_ABC;
             vector<double> aux_weight;
 
-            aux_code.clear();
-
-            for(unsigned int s=0; s<aux_data.size(); s++)
-            {
-                aux_data[s].clear();
-            }
-            aux_data.clear();
-
             aux_ABC.clear();
-
             aux_weight.clear();
+
+            code.clear();
+            for(unsigned int s=0; s<data.size(); s++)
+            {
+                data[s].clear();
+            }
+            data.clear();
+
+            ABCClassf.clear();
+            weight.clear();
 
             for(unsigned int s=0; s<classf.size(); s++)
             {
-                aux_code.push_back(prob.code[classf[s]]);
-                aux_data.push_back(prob.data[classf[s]]);
+                code.push_back(prob.code[classf[s]]);
+                data.push_back(prob.data[classf[s]]);
                 aux_ABC.push_back(ABCClassf[classf[s]]);
                 aux_weight.push_back(weight[classf[s]]);
 
                 classf[s] = s;
             }
 
-            prob.code = aux_code;
-            prob.data = aux_data;
             ABCClassf = aux_ABC;
             weight = aux_weight;
 
-            aux_code.clear();
-            for(unsigned int s=0; s<aux_data.size(); s++)
-            {
-                aux_data[s].clear();
-            }
-            aux_data.clear();
             aux_ABC.clear();
             aux_weight.clear();
 
@@ -991,86 +999,12 @@ namespace clss
 
         void clear();
 
-        friend istream & operator >> (istream &in,  clssp &c)
-        {
-            in >> c._problem;
-            return in;
-        };
-
         bool get();
 
         bool ABC();
         bool analyticHierarchyProcess();
 
-        bool format_classification_data()
-        {
-            unsigned int NCriteria;
-
-            fstream data_file, formatted_data;
-
-            string dateStr, input_file, output_file;
-
-            string file_address = getenv("HOME");
-
-            input_file = file_address + "/COPSolver/data/data.txt";
-            output_file = file_address + "/COPSolver/data/data_formatted.txt";
-
-            data_file.open(input_file);
-            formatted_data.open(output_file, ios::out);
-
-            data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
-
-            data_file >> NCriteria;
-
-            data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
-            data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
-            data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
-            data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
-
-            if (!data_file)
-            {
-                cerr << "File not openned!";
-                return 1;
-            } else
-            {
-                while(!data_file.eof())
-                {
-                    data_file >> dateStr;
-
-                    formatted_data << setw(6) << dateStr;
-
-                    data_file >> dateStr;
-                    formatted_data << setw(12) << dateStr << "\t";
-
-                    data_file >> dateStr;
-
-                    formatted_data << setw(6) << dateStr << "\t";
-
-                    data_file >> dateStr;
-
-                    formatted_data << setw(4) << dateStr << "\t";
-
-                    data_file >> dateStr;
-
-                    formatted_data << setw(6) << dateStr << "\t";
-
-                    data_file >> dateStr;
-
-                    formatted_data << setw(6) << dateStr << "\t";
-
-                    data_file >> dateStr;
-
-                    formatted_data << setw(7) << dateStr;
-
-                    formatted_data << endl;
-                }
-            }
-
-            data_file.close();
-            formatted_data.close();
-
-            return 0;
-        }
+        bool format_classification_data();
     };
 
 }

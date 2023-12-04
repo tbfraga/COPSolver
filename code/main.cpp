@@ -99,7 +99,7 @@ int main()
     file.close();
 
     //clss::clssp data;
-    //data.format_classification_data();
+    //data.format_classification_data(); // formatar dados da alexia
 
     if(problem_class == 1) // if classification problems
     {

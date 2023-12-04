@@ -15,7 +15,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: COPSolver: library for solving classification problems
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/11/22
+// last modification: 2023/12/01
 
 #include "../lib/classification-problem.h"
 
@@ -25,6 +25,73 @@ namespace clss
     {
         _problem.clear();
         _solution.clear();
+    };
+
+    bool clssp::format_classification_data()
+    {
+        unsigned int NCriteria;
+
+        fstream data_file, formatted_data;
+
+        string dateStr, input_file, output_file;
+
+        string file_address = getenv("HOME");
+
+        input_file = file_address + "/COPSolver/data/data.txt";
+        output_file = file_address + "/COPSolver/data/data_formatted.txt";
+
+        data_file.open(input_file);
+        formatted_data.open(output_file, ios::out);
+
+        data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+        data_file >> NCriteria;
+
+        data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+        data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+        data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+        data_file.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+        if (!data_file)
+        {
+            cerr << "File not openned!";
+            return 1;
+        } else
+        {
+            while(!data_file.eof())
+            {
+                data_file >> dateStr;
+                formatted_data << setw(4) << dateStr << "\t";
+
+                data_file >> dateStr;
+                formatted_data << setw(6) << dateStr << "\t";
+
+                data_file >> dateStr;
+                formatted_data << setw(4) << dateStr << "\t";
+
+                data_file >> dateStr;
+                formatted_data << setw(4) << dateStr << "\t";
+
+                data_file >> dateStr;
+                formatted_data << setw(4) << dateStr << "\t";
+
+                data_file >> dateStr;
+                formatted_data << setw(4) << dateStr << "\t";
+
+                data_file >> dateStr;
+                formatted_data << setw(6) << dateStr;
+
+                data_file >> dateStr;
+                formatted_data << setw(6) << dateStr;
+
+                formatted_data << endl;
+            }
+        }
+
+        data_file.close();
+        formatted_data.close();
+
+        return 0;
     };
 
     bool clssp::get()
