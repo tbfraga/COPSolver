@@ -39,12 +39,11 @@
 <h4>Author: Tatiana Balbi Fraga</h4>
 <h4>e-mail: tbfraga@proton.me</h4>
 <h4>version: 2.0-1<h4>
-<h4>last modification: 2023, November, 01.</h4>
+<h4>last modification: 2023, December, 06.</h4>
 
 
 <h3>instalation guide for elementary OS</h3>
 <p>download COPSolver repository from https://github.com/tbfraga/COPSolver/releases</p>
-<p>or clone COPSolver repo using cmd $ git clone https://github.com/tbfraga/COPSolver.git</p>
 <p>go to download folder and unzip COPSolver_2.0-1.zip </p>
 <p>go to COPSolver_2.0-1 using terminal </p>
 <p>$ cd Downloads/COPSolver_2.0-1 </p>
@@ -69,22 +68,33 @@
 
 <h3>benchmarks</h3>
 
-<p>If you use standart installation, predefined benchmarks will be located at /COPSolver/data/benchmarks </p>
+<p>If you use standart installation, predefined benchmarks will be located at /COPSolver/data/benchmarks/ </p>
+
+<p> The cop folder contains benchmarks for the use of the cop class (combinatorial optimization problems) while the clssp folder contains benchmarks for use of the clssp class (multicriteria classification). </p>
+
+<p> To use a beckmark, just copy a config.txt.* and a data.txt.* files for the /COPSolver/data/ folder and then rename the files removing the text ".*" after .txt (leaving only config.txt and data.txt, respectively.) </p>
 
 <h3>outputs</h3>
 <p>COPSolver will generate the following outputs:</p>
 
 <h4>COPSolver: library for solving classification problems</h4>
 
-<p>AHP_problem.txt: a file containing the original problem and an adjusted version of the problem;</p>
+<p>AHP_problem_org.txt and AHP_problem_adj.txt: files containing the original problem and an adjusted version of the problem;</p>
 <p>AHP_solution.txt: a file containing the last solver solution (ABC and AHP classifications).</p>
+
+<p>AHP_problem_adj file contains the pairwise criteria comparisons matrix adjusted by Fraga's constructive method. </p> 
+<p>Such adjustment is made seeking to reduce the consistency rate of the matrix. </p>
+<p>This file also present the criteria weights, which are calculated by Saaty's Analytical Hierarchy Process. </p>
+
+<p>AHP_problem_org.txt, AHP_problem_adj.txt and AHP_solution.txt files will be located at /COPSolver/results folder.</p>
 
 <h4>COPSolver: library for solving the multi-product p-batch processing time maximization problem</h4>
 
 <p>output.txt: a file containing the last solver solution;</p>
 <p>problem.txt: a file containing the last problem definition;</p>
 <p>data.ldt: a LINGO data file with the last problem definition;</p>
-<p>output.txt, problem.txt and data.ldt files will be located at /results folder.</p>
+
+<p>output.txt, problem.txt and data.ldt files will be located at /COPSolver/results folder.</p>
 
 <h3>LINGO solver</h3>
 
