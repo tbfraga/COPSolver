@@ -32,8 +32,6 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="lib/classification-problem.h" />
-		<Unit filename="lib/demand-patterns-identification-problem.h" />
-		<Unit filename="lib/formatted-files-reading.h" />
 		<Unit filename="lib/multiproduct-batch-processing-time-maximization-problem.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/classification-problem.cpp" />

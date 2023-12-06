@@ -49,7 +49,7 @@
 <p>go to COPSolver_2.0-1 using terminal </p>
 <p>$ cd Downloads/COPSolver_2.0-1 </p>
 <p>configure system, install .deb file and run copsolver</p>
-<p>$ ./run </p>
+<p>$ ./run.sh </p>
 
 <p>Ready !!! You can now access COPSolver from the elementary OS Applications menu :)</p>
 <p>If you want you can also run COPSolver using terminal</p>
@@ -61,11 +61,15 @@
 <p>After adjusting these two files, you just need to run the solver.</p>
 
 <h3>using data.txt for defining a benchmark</h3>
-<p>If you use standart installation, data.txt will be located at /data/data.txt. </p>
+<p>If you use standart installation, data.txt and config.txt files will be located at /COPSolver/data/ </p>
 <p>You can change data.txt file as specified below: </p>
 <p>Each group of lines contains commented lines - with specifications about the input data (starting with "//") - followed by a data line - containing the input data.</p>
 <p>Note that the commented lines shows the type of data and the amount of data that must be informed in the data line.</p>
 <p>For example, UNSIGNED INT (N) means that a single positive integer value must be entered in the data line, while UNSIGNED INT (D_1,...,D_N) means that N positive integer values must be entered in the data line.</p>
+
+<h3>benchmarks</h3>
+
+<p>If you use standart installation, predefined benchmarks will be located at /COPSolver/data/benchmarks </p>
 
 <h3>outputs</h3>
 <p>COPSolver will generate the following outputs:</p>

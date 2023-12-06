@@ -1,0 +1,15 @@
+// class, use:
+// 1 for classification problem.
+1
+// problem, use:
+// 1 for pairwise comparisons weight matrix + multi-criteria data.
+1
+// problem definition method, use:
+// 1 for taking the problem from data file.
+1
+// predefined problem, use:
+// 0 for none.
+0
+// solving method, use:
+// 1 for ABC + Saat's Analytic Hierarchy Process.
+1

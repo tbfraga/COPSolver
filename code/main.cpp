@@ -33,13 +33,16 @@ repository: github.com/tbfraga/COPSolver
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
+
+// module: COPSolver: library for solving classification problems (problem_class == 1)
+// module: COPSolver: library for solving multi-product p-batch processing time maximization problems (problem_class == 3)
 // version: 2.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/11/17
+// last modification: 2023/12/06
 
 #include "lib/classification-problem.h"
-#include "lib/demand-patterns-identification-problem.h"
+//#include "lib/demand-patterns-identification-problem.h"
 #include "lib/multiproduct-batch-processing-time-maximization-problem.h"
 using namespace mbptm;
 
@@ -53,7 +56,7 @@ int main()
     fstream file;
 
     unsigned int problem_class, // 1 if classification-problem; 2 if demand-patterns-identification-problem;
-                                // 3 if combinatorial-optimization-problem
+                                // 3 if combinatorial-optimization-problem.
                  problem_type,  // 1 if multiproduct-batch-processing-time-maximization-problem
                  problem_definition_method, // 1 if getting problem from file; 2 if getting a predefined problem;
                                             // 3 if generating a pseudo random problem
@@ -68,7 +71,7 @@ int main()
     file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
     file >> problem_class;
 
-    if(problem_class != 1 && problem_class != 2)
+    if(problem_class != 1 && problem_class != 3)
     {
         cout << endl << "error: there is an error in the config.txt file - problem class is not configured correctly." << endl;
         getchar();
@@ -134,7 +137,7 @@ int main()
         _problem.clear();
 
     } else if(problem_class == 2) // if demand patterns identification problems
-    {
+    {/*
         if(problem_type != 1)
         {
             cout << endl << "error: there is an error in the config.txt file - problem type is not configured correctly." << endl;
@@ -168,7 +171,7 @@ int main()
             _problem.williams();
         }
 
-        _problem.clear();
+        _problem.clear();*/
 
     } else if(problem_class == 3) // if combinatorial optimization problems
     {
