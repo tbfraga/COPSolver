@@ -176,6 +176,15 @@ namespace clss
 
         file.close();
 
+        site = getenv("HOME");
+        site += "/COPSolver/results/p_list.txt";
+
+        file.open(site, ios::out);
+
+        createList(file, _solution);
+
+        file.close();
+
         return 0;
     };
 }

@@ -22,7 +22,7 @@ For more details see https://eigen.tuxfamily.org/
 // version: v2.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/12/04
+// last modification: 2023/12/06
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -484,6 +484,8 @@ namespace clss
         unsigned int NData; // number of data per criterion
         vector<vector<double>> data; // data for each criterion - vector[_NData, _NCriteria]
         vector<string> code; // product code - vector[_NData]
+        unsigned int leadTimeIndex = 0;
+        bool leadTimeVar = 0;
 
         problem& clear()
         {
@@ -515,7 +517,7 @@ namespace clss
         {
             if(&in == &cin)
             {
-                cout << endl << "error: operator >> for struct problem is only defined by geting data from file !!!" << endl << endl;
+                cout << endl << "error: operator >> for struct problem is only defined for geting data from file !!!" << endl << endl;
                 p.clear();
             }else
             {
@@ -531,6 +533,14 @@ namespace clss
                 {
                     in >> p.weightVector[s];
                 }
+
+                in.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+                in >> p.leadTimeIndex;
+
+                in.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+                in >> p.leadTimeVar;
 
                 in.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
@@ -718,7 +728,7 @@ namespace clss
             {
                 sum += s.weight[i];
                 out << s.code[i];
-                out << setprecision(2) << fixed << setw(11) << s.data[i][2];
+                out << setprecision(2) << fixed << setw(11) << s.data[i][s.prob.leadTimeIndex];
                 out << setw(4) << s.ABCClassf[i];
                 out << setprecision(2) << fixed << setw(6) << s.weight[i]*100 << " %";
                 out << setprecision(2) << fixed << setw(8) << sum*100 << " %";
@@ -985,6 +995,27 @@ namespace clss
             order();
 
             return *this;
+        };
+
+        friend ostream& createList(ostream &out, const solution &s)
+        {
+            out << "Number of data :" << endl << endl;
+
+            out << s.prob.NData << endl << endl;
+
+            out << "// list for demand patter clss (code | lead time | ABC clssf | ABC ord | weigh):" << endl << endl;
+
+            for(unsigned int i=0; i<s.prob.code.size(); i++)
+            {
+                out << s.code[i];
+                out << setprecision(2) << fixed << setw(11) << s.data[i][s.prob.leadTimeIndex];
+                out << setw(4) << s.ABCClassf[i];
+                 out << setw(6) << s.classf[i];
+                out << setprecision(4) << fixed << setw(8) << s.weight[i];
+                out << endl;
+            }
+
+            return out;
         };
     };
 
