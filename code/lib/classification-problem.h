@@ -167,7 +167,8 @@ namespace clss
 
         friend ostream & operator << (ostream &out, const criteria &c)
         {
-            out << c.name << "\t" << c.mode << "\t" << c.valueA << "\t" << c.valueB << "\t" << c.valueC;
+            out << setw(18) << c.name << setw(10) << c.mode << setprecision(2) << fixed << setw(8) << c.valueA;
+            out << setprecision(2) << fixed << setw(8) << c.valueB << setprecision(2) << fixed << setw(8) << c.valueC;
             return out;
         };
     };
@@ -186,7 +187,7 @@ namespace clss
         friend ostream & operator << (ostream &out, const weight &w)
         {
             out << setprecision(3) << setw(6) << w.value;
-            out << "\t" << w.criterion << endl;
+            out << "\t" << w.criterion;
             return out;
         };
 
@@ -599,11 +600,11 @@ namespace clss
 
             for(unsigned int i=0; i<p.data.size(); i++)
             {
-                out << p.code[i] << "\t";
+                out << p.code[i];
 
                 for(unsigned int j=0; j<p.data[i].size(); j++)
                 {
-                    out << setprecision(2) << fixed << setw(10) << p.data[i][j];
+                    out << setprecision(2) << fixed << setw(14) << p.data[i][j];
                 }
 
                 out << endl;
@@ -720,29 +721,28 @@ namespace clss
         friend ostream & operator << (ostream &out, const solution &s)
         {
             double sum = 0;
+            unsigned int index;
 
             out << "Number of data :" << endl << endl;
 
             out << s.prob.NData << endl << endl;
 
-            out << "--> ABC multi-criteria classification (with Saat's Analytic Hierarchy Process)" << endl << endl;
+            out << "--> ABC multi-criteria classification (with Saat's Analytic Hierarchy Process)";
 
-            out << setw(4) << "code" << setw(11) << "lead time" << setw(4) << "ABC" << setw(8) << "weight" << setw(10) << "sum" << setw(8) << "order :" << endl << endl;
+            out << endl << endl << "(code | ABC | weight | sum | org order) :" << endl << endl;
 
             for(unsigned int i=0; i<s.prob.code.size(); i++)
             {
                 sum += s.weight[i];
                 out << s.code[i];
-                out << setprecision(2) << fixed << setw(11) << s.data[i][s.prob.leadTimeIndex];
                 out << setw(4) << s.ABCClassf[i];
-                out << setprecision(2) << fixed << setw(6) << s.weight[i]*100 << " %";
+                out << setprecision(2) << fixed << setw(8) << s.weight[i]*100 << " %";
                 out << setprecision(2) << fixed << setw(8) << sum*100 << " %";
-                out << setw(6) << s.classf[i];
+                out << setw(8) << s.classf[i];
                 out << endl;
-
             }
 
-            out << endl << "--> ABC matrix (by criterion) " << endl << endl;
+            out << endl << "--> ABC matrix (by criterion)" << endl << endl;
 
             out << setw(4) << "code";
 
@@ -755,11 +755,13 @@ namespace clss
 
             for(unsigned int i=0; i<s.ABCMatrix.size(); i++)
             {
-                out << s.prob.code[i];
+                index = s.classf[i];
 
-                for(unsigned int j=0; j<s.ABCMatrix[i].size(); j++)
+                out << s.prob.code[index];
+
+                for(unsigned int j=0; j<s.ABCMatrix[index].size(); j++)
                 {
-                    out << setw(10) << s.ABCMatrix[i][j] << setprecision(2) << fixed << setw(12) << s.perMatrix[i][j] * 100 << " %";
+                    out << setw(10) << s.ABCMatrix[index][j] << setprecision(2) << fixed << setw(12) << s.perMatrix[index][j] * 100 << " %";
                 }
                 out << endl;
             }
@@ -988,7 +990,7 @@ namespace clss
                 aux_ABC.push_back(ABCClassf[classf[s]]);
                 aux_weight.push_back(weight[classf[s]]);
 
-                classf[s] = s;
+                //classf[s] = s;
             }
 
             ABCClassf = aux_ABC;
@@ -1026,14 +1028,13 @@ namespace clss
 
             out << s.prob.NData << endl << endl;
 
-            out << "// list for demand patter clss (code | lead time | ABC clssf | ABC ord | weigh):" << endl << endl;
+            out << "// list for demand patter clss (code | lead time | ABC clssf | weigh):" << endl << endl;
 
             for(unsigned int i=0; i<s.prob.code.size(); i++)
             {
                 out << s.code[i];
                 out << setprecision(2) << fixed << setw(11) << s.data[i][s.prob.leadTimeIndex];
                 out << setw(4) << s.ABCClassf[i];
-                 out << setw(6) << s.classf[i];
                 out << setprecision(4) << fixed << setw(8) << s.weight[i];
                 out << endl;
             }
