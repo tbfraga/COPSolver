@@ -2,7 +2,7 @@
 
 7
 
-// weight, DOUBLE (W_1,...,W_NC) / name of the criterion STRING (C_1,...,C_j,...,C_NC), / criterion (mode STRING, valueA UNSIGNED INT, valueB UNSIGNED INT, valueC UNSIGNED INT): 
+// weight, DOUBLE (W_1,...,W_NC) / criterion MATRIX (NC x 5) (name STRING, mode STRING, valueA UNSIGNED INT, valueB UNSIGNED INT, valueC UNSIGNED INT):
 
 0       lead-times  acmSum  0.8 0.95 1.0
 0 substitutability  value     3    2   1
@@ -12,6 +12,18 @@
 0     cost-overall  acmSum  0.8 0.95 1.0
 0     obsolescence  value     3    2   1
 
+// lead time index:
+
+0
+
+// lead time variance:
+
+0
+
+// ABC multicriteria criterion (name STRING, mode STRING, valueA UNSIGNED INT, valueB UNSIGNED INT, valueC UNSIGNED INT):
+
+multicriteria acmSum  0.35  0.7  1.0
+
 // pairwise comparison weight FLOAT (M_1_1,...,M_i_j,...,M_NC_NC):
 
 0.2000 0.1428 0.2000 7.0000 0.1111  5.0000
@@ -20,14 +32,6 @@
                      9.0000 0.3333  9.0000
                             0.1111  1.0000
                                     9.0000
-
-// lead time index:
-
-0
-
-// lead time variance:
-
-0
 
 // number of data per criterion, UNSIGNED INT (ND):
 
