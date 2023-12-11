@@ -1,4 +1,4 @@
 #!/bin/sh
 ./config
-sudo dpkg -i COPSolver_2.0-2.deb
+sudo dpkg -i COPSolver_2.0-3.deb
 copsolver
