@@ -11,14 +11,6 @@
 0.0 substitutability  value    42.16 34.88 1.00
 0.0    repairability  value   429.29  7.44 1.00
 
-// pairwise comparison weight FLOAT (M_1_1,...,M_i_j,...,M_NC_NC):
-
-3.0000	7.0000	7.0000	5.0000	5.0000
-        3.0000	0.2000	0.2000	0.2000
-                5.0000	7.0000	7.0000
-                        0.3333	3.0000
-                                3.0000
-
 // lead time index:
 
 2
@@ -26,6 +18,18 @@
 // lead time variance:
 
 1
+
+// ABC multicriteria criterion (name STRING, mode STRING, valueA UNSIGNED INT, valueB UNSIGNED INT, valueC UNSIGNED INT):
+
+multicriteria acmSum  0.15  0.25  1.0
+
+// pairwise comparison weight FLOAT (M_1_1,...,M_i_j,...,M_NC_NC):
+
+3.0000	7.0000	7.0000	5.0000	5.0000
+        3.0000	0.2000	0.2000	0.2000
+                5.0000	7.0000	7.0000
+                        0.3333	3.0000
+                                3.0000
 
 // number of data per criterion, UNSIGNED INT (ND):
 
