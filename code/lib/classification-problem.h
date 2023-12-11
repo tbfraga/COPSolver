@@ -19,10 +19,10 @@ For more details see https://eigen.tuxfamily.org/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
 // module: COPSolver: library for solving classification problems
-// version: v2.0-1
+// version: v2.0-3
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/12/06
+// last modification: 2023/12/11
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -484,8 +484,9 @@ namespace clss
         unsigned int NData; // number of data per criterion
         vector<vector<double>> data; // data for each criterion - vector[_NData, _NCriteria]
         vector<string> code; // product code - vector[_NData]
-        unsigned int leadTimeIndex = 0;
-        bool leadTimeVar = 0;
+        unsigned int leadTimeIndex;
+        bool leadTimeVar;
+        criteria multicriteria; // multicriteria parameters
 
         problem& clear()
         {
@@ -541,6 +542,10 @@ namespace clss
                 in.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
                 in >> p.leadTimeVar;
+
+                in.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+                in >> p.multicriteria;
 
                 in.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
@@ -883,8 +888,8 @@ namespace clss
             vector<unsigned int>::iterator it;
             double sum;
 
-            double ALim = 0.15,
-                   BLim = 0.25;
+            double ALim = prob.multicriteria.valueA,
+                   BLim = prob.multicriteria.valueB;
 
             classf.clear();
             classf.push_back(0);
@@ -917,22 +922,40 @@ namespace clss
             {
                 ABCClassf[classf[s]] = 'D';
 
-                sum += weight[classf[s]];
-                if(s==0 && sum > ALim)
+                if(prob.multicriteria.mode == "percent")
                 {
-                    ABCClassf[classf[s]] = 'A';
-                } else if(s==1 && sum > BLim)
+                    if(s < ALim*prob.NData)
+                    {
+                        ABCClassf[classf[s]] = 'A';
+                    } else if(s < BLim*prob.NData)
+                    {
+                        ABCClassf[classf[s]] = 'B';
+                    } else
+                    {
+                        ABCClassf[classf[s]] = 'C';
+                    }
+                } else if (prob.multicriteria.mode == "acmSum")
                 {
-                    ABCClassf[classf[s]] = 'B';
-                } if(sum <= ALim)
-                {
-                    ABCClassf[classf[s]] = 'A';
-                } else if(sum <= BLim)
-                {
-                    ABCClassf[classf[s]] = 'B';
+                    sum += weight[classf[s]];
+                    if(s==0 && sum > ALim)
+                    {
+                        ABCClassf[classf[s]] = 'A';
+                    } else if(s==1 && sum > BLim)
+                    {
+                        ABCClassf[classf[s]] = 'B';
+                    } if(sum <= ALim)
+                    {
+                        ABCClassf[classf[s]] = 'A';
+                    } else if(sum <= BLim)
+                    {
+                        ABCClassf[classf[s]] = 'B';
+                    } else
+                    {
+                        ABCClassf[classf[s]] = 'C';
+                    }
                 } else
                 {
-                    ABCClassf[classf[s]] = 'C';
+                    cout << endl << "error on data.txt file: multicriteria mode " << prob.multicriteria.mode << " not found !!!" << endl;
                 }
             }
 

@@ -1,5 +1,5 @@
 // class, use:
-// 1 for classification problem.
+// 1 for multicriteria classification problem.
 1
 // problem, use:
 // 1 for pairwise comparisons weight matrix + multi-criteria data.
