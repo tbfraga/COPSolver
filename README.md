@@ -7,7 +7,7 @@ Combinatorial Optimization Problems Solver
 The COPSolver software was (and is being) developed with the purpose of solving various combinatorial optimization and other decision problems as efficiently as possible.
 
 COPSolver_1.0-1 applies Fraga's time partition method to solve the multi-product p-batch processing time maximization problem.
-COPSolver_2.0-2 also applies Saaty's Analytical Hierarch Process method for multicriteria ABC classification.
+COPSolver_2.0-3 also applies Saaty's Analytical Hierarch Process method for multicriteria ABC classification.
 
 Important: Copies and distributions of the files made available in this directory must comply with the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0).
 
@@ -19,10 +19,10 @@ The license adopted may be modified if needed (but only by me).
 
 Please, if you use the information presented here for other publications or references, cite using Fraga, T. B. 2023. Software COPSolver. Available at https://github.com/tbfraga/COPSolver/releases, accessed on <today's date>.
 
-To learn how to download, install and use COPSolver, see https://tbfraga.github.io/COPSolver/documentation/manual.html
+To learn how to download, install and use COPSolver, see https://tbfraga.github.io/COPSolver/documentation/manual.html.
 
 NOTE: 'COPSolver: library for solving classification problems' uses Eigen library.
 For this reason, COPSolver repository contains a copy of the Eigen library.
 Eigen is Free Software. Starting from the 3.1.1 version, it is licensed under the MPL2, which is a simple weak copyleft license.
 Common questions about the MPL2 are answered in the official MPL2 FAQ.
-For more details see https://eigen.tuxfamily.org/
+For more details see https://eigen.tuxfamily.org/.
