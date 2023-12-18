@@ -18,11 +18,11 @@ For more details see https://eigen.tuxfamily.org/
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// module: COPSolver: library for solving classification problems
-// version: v2.0-3
+// module: COPSolver: library for solving multicriteria classification problems
+// version: vclss_mcc.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/12/11
+// last modification: 2023/12/18
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -36,11 +36,11 @@ For more details see https://eigen.tuxfamily.org/
 #include <vector>
 #include <iterator>
 #include <bits/stdc++.h>
-#include "Eigen/Eigenvalues"
+#include "../Eigen/Eigenvalues"
 using namespace Eigen;
 using namespace std;
 
-namespace clss
+namespace mcc
 {
     struct level
     {
@@ -133,17 +133,17 @@ namespace clss
             return *this;
         };
 
-        friend ostream & operator << (ostream &out, const level &w)
-        {
-            out << w.value;
-            return out;
-        };
-
         friend istream & operator >> (istream &in,  level &w)
         {
             in >> w.value;
             w.findIt();
             return in;
+        };
+
+        friend ostream & operator << (ostream &out, const level &w)
+        {
+            out << w.value;
+            return out;
         };
     };
 
@@ -154,6 +154,27 @@ namespace clss
         double valueA;
         double valueB;
         double valueC;
+
+        criteria& clear()
+        {
+            name = "";
+            mode = "";
+            valueA = 0;
+            valueB = 0;
+            valueC = 0;
+
+            return *this;
+        }
+
+        criteria()
+        {
+            clear();
+        };
+
+        ~criteria()
+        {
+            clear();
+        };
 
         friend istream & operator >> (istream &in,  criteria &c)
         {
@@ -178,17 +199,28 @@ namespace clss
         double value;
         criteria criterion;
 
+        weight& clear()
+        {
+            value = 0;
+            criterion.clear();
+
+            return *this;
+        };
+
+        weight()
+        {
+            clear();
+        };
+
+        ~weight()
+        {
+            clear();
+        };
+
         weight& operator=(double v)
         {
             value = v;
             return *this;
-        };
-
-        friend ostream & operator << (ostream &out, const weight &w)
-        {
-            out << setprecision(3) << setw(6) << w.value;
-            out << "\t" << w.criterion;
-            return out;
         };
 
         friend istream & operator >> (istream &in,  weight &w)
@@ -196,6 +228,13 @@ namespace clss
             in >> w.value;
             in >> w.criterion;
             return in;
+        };
+
+        friend ostream & operator << (ostream &out, const weight &w)
+        {
+            out << setprecision(3) << setw(6) << w.value;
+            out << "\t" << w.criterion;
+            return out;
         };
     };
 
@@ -502,6 +541,10 @@ namespace clss
             data.clear();
             code.clear();
 
+            leadTimeIndex = 0;
+            leadTimeVar = 0;
+            multicriteria.clear();
+
             return *this;
         };
 
@@ -653,26 +696,30 @@ namespace clss
             {
                 perMatrix[s].clear();
             }
-
             perMatrix.clear();
 
             for(unsigned int s=0; s<orderedMatrix.size(); s++)
             {
                orderedMatrix[s].clear();
             }
-
             orderedMatrix.clear();
 
             for(unsigned int s=0; s<ABCMatrix.size(); s++)
             {
                 ABCMatrix[s].clear();
             }
-
             ABCMatrix.clear();
 
             weight.clear();
             classf.clear();
             ABCClassf.clear();
+            code.clear();
+
+            for(unsigned int s=0; s<data.size(); s++)
+            {
+                data[s].clear();
+            }
+            data.clear();
 
             return *this;
         };
@@ -963,7 +1010,6 @@ namespace clss
 
             return *this;
         };
-
 
         solution& order()
         {

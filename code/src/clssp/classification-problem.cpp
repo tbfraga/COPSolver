@@ -12,15 +12,15 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// module: COPSolver: library for solving classification problems
-// version: v2.0-3
+// module: COPSolver: library for solving multicriteria classification problems
+// version: vclss_mcc.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/12/11
+// last modification: 2023/12/18
 
-#include "../lib/classification-problem.h"
+#include "../../lib/clssp/classification-problem.h"
 
-namespace clss
+namespace mcc
 {
     void clssp::clear()
     {
