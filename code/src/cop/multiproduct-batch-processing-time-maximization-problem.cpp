@@ -24,10 +24,7 @@ namespace mbptm
 {
     void cop::clear()
     {
-        _problem._productionRate.clear();
-        _problem._demand.clear();
-        _problem._maximumInventory.clear();
-        _problem._maximumOutletInventory.clear();
+        _problem.clear();
 
         _solution._production.clear();
         _solution._deliver.clear();
@@ -41,8 +38,6 @@ namespace mbptm
 
     bool cop::print()
     {
-        cout << endl << "head: printing problem..." << endl;
-
         string site = getenv("HOME");
         site += "/COPSolver/results/problem.txt";
 
@@ -50,44 +45,16 @@ namespace mbptm
 
         file.open(site);
 
-        file << "Multi-product batch processing time maximization problem " << endl;
-
-        file << endl << "products: " << _problem._NProducts << endl;
-
-        file << endl << "production rate:" << endl << endl;
-
-        for(unsigned int p=0; p<_problem._productionRate.size(); p++)
+        if (!file)
         {
-            file << setw(3) << _problem._productionRate[p] << "\t ";
-        }
-        file << endl;
-
-        file << endl << "demand:" << endl << endl;
-
-        for(unsigned int p=0; p<_problem._demand.size(); p++)
+                cerr << "Cannot open output file " << site << " !" << endl;
+                return 1;
+        } else
         {
-            file << setw(4) <<  _problem._demand[p] << "\t ";
+            file << _problem;
         }
 
-        file << endl << endl << "total outlets maximum inventory: " << _problem._totalMaximumOutletInventory << endl;
 
-        file << endl << "outlets maximum inventory:" << endl << endl;
-
-        for(unsigned int p=0; p<_problem._maximumOutletInventory.size(); p++)
-        {
-            file << setw(4) << _problem._maximumOutletInventory[p] << "\t ";
-        }
-
-        file << endl << endl << "total fatctory maximum inventory: " << _problem._totalMaximumInventory << endl;
-
-        file << endl << "fatctory maximum inventory:" << endl << endl;
-
-        for(unsigned int p=0; p<_problem._maximumInventory.size(); p++)
-        {
-            file << setw(4) << _problem._maximumInventory[p] << "\t ";
-        }
-
-        file << endl << endl << "maximum batch processing time: " << _problem._maxBatchProcessingTime << endl;
 
         file.close();
 
@@ -96,7 +63,7 @@ namespace mbptm
 
     bool cop::generateLingoData()
     {
-        cout << endl << "head: generating LINGO data..." << endl;
+        cout << endl << "generating LINGO data ..." << endl;
 
         string site = getenv("HOME");
         site += "/COPSolver/LINGOSolver/MBPTM/data.ldt";
@@ -105,104 +72,15 @@ namespace mbptm
 
         file.open(site);
 
-        file << "! products;" << endl << endl;
-
-        for(unsigned int p=0; p<_problem._productionRate.size(); p++)
+        if (!file)
         {
-            file << "P" << p+1;
-            if((p+1) == _problem._productionRate.size())
-            {
-                file << " ~" << endl;
-            } else if((p+1) >= 20 && (p+1)%20 == 0)
-            {
-                file << endl;
-            }else
-            {
-                file << " ";
-            }
-        }
-
-        file << endl << "! production rate;" << endl << endl;
-
-        for(unsigned int p=0; p<_problem._productionRate.size(); p++)
+                cerr << "Cannot open output file " << site << " !" << endl;
+                return 1;
+        } else
         {
-            file << _problem._productionRate[p];
-            if((p+1) == _problem._productionRate.size())
-            {
-                file << " ~" << endl;
-            } else if((p+1) >= 20 && (p+1)%20 == 0)
-            {
-                file << endl;
-            } else
-            {
-                file << " ";
-            }
+            LINGO_data(file, _problem) ;
+            file.close();
         }
-
-        file << endl << "! demand;" << endl << endl;
-
-        for(unsigned int p=0; p<_problem._demand.size(); p++)
-        {
-            file << _problem._demand[p];
-            if((p+1) == _problem._demand.size())
-            {
-                file << " ~" << endl;
-            } else if((p+1) >= 20 && (p+1)%20 == 0)
-            {
-                file << endl;
-            } else
-            {
-                file << " ";
-            }
-        }
-
-        file << endl << "! total outlets free inventory;" << endl << endl;
-
-        file << _problem._totalMaximumOutletInventory << " ~" << endl;
-
-        file << endl << "! outlets free inventory;" << endl << endl;
-
-        for(unsigned int p=0; p<_problem._maximumOutletInventory.size(); p++)
-        {
-            file << _problem._maximumOutletInventory[p];
-            if((p+1) == _problem._maximumOutletInventory.size())
-            {
-                file << " ~" << endl;
-            } else if((p+1) >= 20 && (p+1)%20 == 0)
-            {
-                file << endl;
-            }else
-            {
-                file << " ";
-            }
-        }
-
-        file << endl << "! total factory free inventory;" << endl << endl;
-
-        file << _problem._totalMaximumInventory << " ~" << endl;
-
-        file << endl << "! factory free inventory;" << endl << endl;
-
-        for(unsigned int p=0; p<_problem._maximumInventory.size(); p++)
-        {
-            file << _problem._maximumInventory[p];
-            if((p+1) == _problem._maximumInventory.size())
-            {
-                file << " ~" << endl;
-            } else if((p+1) >= 20 && (p+1)%20 == 0)
-            {
-                file << endl;
-            }else
-            {
-                file << " ";
-            }
-        }
-
-        file << endl << "! processing time limite;" << endl << endl;
-
-        file << _problem._maxBatchProcessingTime << " ~";
-
-        file.close();
 
         return 0;
     };
@@ -218,59 +96,15 @@ namespace mbptm
 
         file.open(site);
 
-        file.ignore(100,';');
-
-        file >> _problem._NProducts;
-
-        _problem._productionRate.resize(_problem._NProducts,0);
-
-        file.ignore(100,';');
-
-        for(unsigned int p=0; p<_problem._NProducts; p++)
+        if (!file)
         {
-            file >> _problem._productionRate[p];
-        }
-
-        _problem._demand.resize(_problem._NProducts,0);
-
-        file.ignore(100,';');
-
-        for(unsigned int p=0; p<_problem._NProducts; p++)
+                cerr << "Cannot open file " << site << " !" << endl;
+                return 1;
+        } else
         {
-            file >> _problem._demand[p];
+            file >> _problem;
+            file.close();
         }
-
-        file.ignore(100,';');
-
-        file >> _problem._totalMaximumOutletInventory;
-
-        file.ignore(100,';');
-
-       _problem._maximumOutletInventory.resize(_problem._NProducts,0);
-
-        for(unsigned int p=0; p<_problem._NProducts; p++)
-        {
-            file >> _problem._maximumOutletInventory[p];
-        }
-
-        file.ignore(100,';');
-
-        file >> _problem._totalMaximumInventory;
-
-        _problem._maximumInventory.resize(_problem._NProducts,0);
-
-        file.ignore(100,';');
-
-        for(unsigned int p=0; p<_problem._NProducts; p++)
-        {
-            file >> _problem._maximumInventory[p];
-        }
-
-        file.ignore(100,';');
-
-        file >> _problem._maxBatchProcessingTime;
-
-        file.close();
 
         return 0;
     };
@@ -280,14 +114,14 @@ namespace mbptm
     {
         clear();
 
-        _problem._NProducts = NProducts;
-        _problem._productionRate = productionRate;
-        _problem._demand = demand;
-        _problem._maximumInventory = maximumInventory;
-        _problem._totalMaximumInventory = totalMaximumInventory;
-        _problem._maximumOutletInventory = maximumOutletInventory;
-        _problem._totalMaximumOutletInventory = totalMaximumOutletInventory;
-        _problem._maxBatchProcessingTime = maxBatchProcessingTime;
+        _problem.NProducts = NProducts;
+        _problem.productionRate = productionRate;
+        _problem.demand = demand;
+        _problem.maximumInventory = maximumInventory;
+        _problem.totalMaximumInventory = totalMaximumInventory;
+        _problem.maximumOutletInventory = maximumOutletInventory;
+        _problem.totalMaximumOutletInventory = totalMaximumOutletInventory;
+        _problem.maxBatchProcessingTime = maxBatchProcessingTime;
     };
 
     void cop::MBPTM_02()
@@ -297,14 +131,14 @@ namespace mbptm
         **************************************************************************************************************************/
         clear();
 
-        _problem._NProducts = 2;
-        _problem._productionRate = {60,40};
-        _problem._demand = {1000,500};
-        _problem._maximumOutletInventory = {600,600};
-        _problem._totalMaximumOutletInventory = 1000;
-        _problem._maximumInventory = {3000,2000};
-        _problem._totalMaximumInventory = 3000;
-        _problem._maxBatchProcessingTime = 100;
+        _problem.NProducts = 2;
+        _problem.productionRate = {60,40};
+        _problem.demand = {1000,500};
+        _problem.maximumOutletInventory = {600,600};
+        _problem.totalMaximumOutletInventory = 1000;
+        _problem.maximumInventory = {3000,2000};
+        _problem.totalMaximumInventory = 3000;
+        _problem.maxBatchProcessingTime = 100;
     };
 
     void cop::MBPTM_03()
@@ -314,14 +148,14 @@ namespace mbptm
         **************************************************************************************************************************/
         clear();
 
-        _problem._NProducts = 3;
-        _problem._productionRate = {60,40,50};
-        _problem._demand = {1000,500,800};
-        _problem._maximumOutletInventory = {600,600,600};
-        _problem._totalMaximumOutletInventory = 1500;
-        _problem._maximumInventory = {3000,2000,1000};
-        _problem._totalMaximumInventory = 3500;
-        _problem._maxBatchProcessingTime = 100;
+        _problem.NProducts = 3;
+        _problem.productionRate = {60,40,50};
+        _problem.demand = {1000,500,800};
+        _problem.maximumOutletInventory = {600,600,600};
+        _problem.totalMaximumOutletInventory = 1500;
+        _problem.maximumInventory = {3000,2000,1000};
+        _problem.totalMaximumInventory = 3500;
+        _problem.maxBatchProcessingTime = 100;
     };
 
     void cop::MBPTM_10()
@@ -331,62 +165,62 @@ namespace mbptm
         **************************************************************************************************************************/
         clear();
 
-        _problem._NProducts = 10;
-        _problem._productionRate = {60,40,50,40,30,50,60,10,20,40};
-        _problem._demand = {1000,500,800,500,400,500,2000,300,500,1000};
-        _problem._maximumOutletInventory = {600,600,600,1500,300,200,500,800,0,200};
-        _problem._totalMaximumOutletInventory = 3000;
-        _problem._maximumInventory = {3000,2000,1000,800,3000,1000,400,300,200,0};
-        _problem._totalMaximumInventory = 5000;
-        _problem._maxBatchProcessingTime = 100;
+        _problem.NProducts = 10;
+        _problem.productionRate = {60,40,50,40,30,50,60,10,20,40};
+        _problem.demand = {1000,500,800,500,400,500,2000,300,500,1000};
+        _problem.maximumOutletInventory = {600,600,600,1500,300,200,500,800,0,200};
+        _problem.totalMaximumOutletInventory = 3000;
+        _problem.maximumInventory = {3000,2000,1000,800,3000,1000,400,300,200,0};
+        _problem.totalMaximumInventory = 5000;
+        _problem.maxBatchProcessingTime = 100;
     };
 
     void cop::random(unsigned int problemSize)
     {
         clear();
 
-        _problem._NProducts = problemSize;
+        _problem.NProducts = problemSize;
 
-        _problem._productionRate.resize(_problem._NProducts,0);
-        _problem._demand.resize(_problem._NProducts,0);
-        _problem._maximumInventory.resize(_problem._NProducts,0);
-        _problem._maximumOutletInventory.resize(_problem._NProducts,0);
+        _problem.productionRate.resize(_problem.NProducts,0);
+        _problem.demand.resize(_problem.NProducts,0);
+        _problem.maximumInventory.resize(_problem.NProducts,0);
+        _problem.maximumOutletInventory.resize(_problem.NProducts,0);
 
         unsigned int seed1 = rand()%3000 + 500;
         unsigned int seed2 = rand()%5000 + 1000;
 
-        _problem._totalMaximumOutletInventory = (_problem._NProducts/2)*seed1;
-        _problem._totalMaximumInventory = (_problem._NProducts/2)*seed2;
+        _problem.totalMaximumOutletInventory = (_problem.NProducts/2)*seed1;
+        _problem.totalMaximumInventory = (_problem.NProducts/2)*seed2;
 
-        for(unsigned int p=0; p<_problem._NProducts; p++)
+        for(unsigned int p=0; p<_problem.NProducts; p++)
         {
-            _problem._productionRate[p] = rand()%30 + 10;
-            _problem._demand[p] = rand()%3000 + 800;
-            _problem._maximumOutletInventory[p] = rand()%(seed1-500) + 500;
-            _problem._maximumInventory[p] = rand()%(seed2 - 1000) + 1000;
+            _problem.productionRate[p] = rand()%30 + 10;
+            _problem.demand[p] = rand()%3000 + 800;
+            _problem.maximumOutletInventory[p] = rand()%(seed1-500) + 500;
+            _problem.maximumInventory[p] = rand()%(seed2 - 1000) + 1000;
         }
 
-        _problem._maxBatchProcessingTime = 100;
+        _problem.maxBatchProcessingTime = 100;
     };
 
     void cop::start()
     {
-        _solution._production.resize(_problem._NProducts,0);
-        _solution._deliver.resize(_problem._NProducts,0);
-        _solution._deliverToOutlets.resize(_problem._NProducts,0);
-        _solution._stock.resize(_problem._NProducts,0);
+        _solution._production.resize(_problem.NProducts,0);
+        _solution._deliver.resize(_problem.NProducts,0);
+        _solution._deliverToOutlets.resize(_problem.NProducts,0);
+        _solution._stock.resize(_problem.NProducts,0);
 
-        _solution._unmetDemand.resize(_problem._NProducts,0);
-        _solution._freeOutletsInventory.resize(_problem._NProducts,0);
-        _solution._freeFactoryInventory.resize(_problem._NProducts,0);
+        _solution._unmetDemand.resize(_problem.NProducts,0);
+        _solution._freeOutletsInventory.resize(_problem.NProducts,0);
+        _solution._freeFactoryInventory.resize(_problem.NProducts,0);
 
-        _solution._totalFreeOutletsInventory = _problem._totalMaximumOutletInventory;
-        _solution._totalFreeFactoryInventory = _problem._totalMaximumInventory;
+        _solution._totalFreeOutletsInventory = _problem.totalMaximumOutletInventory;
+        _solution._totalFreeFactoryInventory = _problem.totalMaximumInventory;
     };
 
     unsigned int cop::analyticalMethod()
     {
-        cout << endl << "head: applying Fraga's exact method for solving MBPTM problem..." << endl;
+        cout << endl << "applying Fraga's exact method for solving MBPTM problem, please wait ..." << endl;
 
         string site = getenv("HOME");
         site += "/COPSolver/results/output.txt";
@@ -400,40 +234,40 @@ namespace mbptm
 
         unsigned int aux, sum, T1, T2;
 
-        T1 = floor(_problem._demand[0]/_problem._productionRate[0]);
+        T1 = floor(_problem.demand[0]/_problem.productionRate[0]);
 
-        for(unsigned int p=1; p<_problem._NProducts; p++)
+        for(unsigned int p=1; p<_problem.NProducts; p++)
         {
-            aux = floor(_problem._demand[p]/_problem._productionRate[p]);
+            aux = floor(_problem.demand[p]/_problem.productionRate[p]);
             if(aux < T1) T1 = aux;
         }
 
         vector<unsigned int> S;
-        S.resize(_problem._NProducts,0);
+        S.resize(_problem.NProducts,0);
 
-        for(unsigned int p=0; p<_problem._NProducts; p++)
+        for(unsigned int p=0; p<_problem.NProducts; p++)
         {
-            S[p] = _problem._demand[p] - T1*_problem._productionRate[p];
+            S[p] = _problem.demand[p] - T1*_problem.productionRate[p];
         }
 
-        T2 = floor((_problem._maximumInventory[0] + _problem._maximumOutletInventory[0] + S[0])/_problem._productionRate[0]);
+        T2 = floor((_problem.maximumInventory[0] + _problem.maximumOutletInventory[0] + S[0])/_problem.productionRate[0]);
 
-        for(unsigned int p=1; p<_problem._NProducts; p++)
+        for(unsigned int p=1; p<_problem.NProducts; p++)
         {
-            aux = floor((_problem._maximumInventory[p] + _problem._maximumOutletInventory[p] + S[p])/_problem._productionRate[p]);
+            aux = floor((_problem.maximumInventory[p] + _problem.maximumOutletInventory[p] + S[p])/_problem.productionRate[p]);
             if(aux < T2) T2 = aux;
         }
 
         aux = 0;
         sum = 0;
 
-        for(unsigned int p=0; p<_problem._NProducts; p++)
+        for(unsigned int p=0; p<_problem.NProducts; p++)
         {
             aux += S[p];
-            sum += _problem._productionRate[p];
+            sum += _problem.productionRate[p];
         }
 
-        aux += _problem._totalMaximumInventory + _problem._totalMaximumOutletInventory;
+        aux += _problem.totalMaximumInventory + _problem.totalMaximumOutletInventory;
 
         aux = floor(aux/sum);
 
@@ -441,12 +275,12 @@ namespace mbptm
 
         _solution._processingTime = T1 + T2;
 
-        if(_solution._processingTime > _problem._maxBatchProcessingTime) _solution._processingTime = _problem._maxBatchProcessingTime;
+        if(_solution._processingTime > _problem.maxBatchProcessingTime) _solution._processingTime = _problem.maxBatchProcessingTime;
 
-        file << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
+        file << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem.maxBatchProcessingTime << endl;
         file << endl << "batch processing time: " << _solution._processingTime << endl;
 
-        cout << endl << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
+        cout << endl << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem.maxBatchProcessingTime << endl;
         cout << endl << "batch processing time: " << _solution._processingTime << endl << endl;
 
         S.clear();
@@ -457,7 +291,7 @@ namespace mbptm
 
     solution cop::analyticalMethod(unsigned int T1)
     {
-        cout << endl << "info: applying Fraga's exact method for solving MBPTM problem..." << endl;
+        cout << endl << "applying Fraga's exact method for solving MBPTM problem ..." << endl;
 
         string site = getenv("HOME");
         site += "/COPSolver/results/output.txt";
@@ -481,40 +315,40 @@ namespace mbptm
 
         unsigned int aux, sum, T2;
 
-        if (T1 > floor(_problem._demand[0]/_problem._productionRate[0]))
+        if (T1 > floor(_problem.demand[0]/_problem.productionRate[0]))
         {
-            T1 = floor(_problem._demand[0]/_problem._productionRate[0]);
+            T1 = floor(_problem.demand[0]/_problem.productionRate[0]);
 
-            for(unsigned int p=1; p<_problem._NProducts; p++)
+            for(unsigned int p=1; p<_problem.NProducts; p++)
             {
-                aux = floor(_problem._demand[p]/_problem._productionRate[p]);
+                aux = floor(_problem.demand[p]/_problem.productionRate[p]);
                 if(aux < T1) T1 = aux;
             }
         }
 
-        for(unsigned int p=0; p<_problem._NProducts; p++)
+        for(unsigned int p=0; p<_problem.NProducts; p++)
         {
-            _solution._unmetDemand[p] = _problem._demand[p] - T1*_problem._productionRate[p];
+            _solution._unmetDemand[p] = _problem.demand[p] - T1*_problem.productionRate[p];
         }
 
-        T2 = floor((_problem._maximumInventory[0] + _problem._maximumOutletInventory[0] + _solution._unmetDemand[0])/_problem._productionRate[0]);
+        T2 = floor((_problem.maximumInventory[0] + _problem.maximumOutletInventory[0] + _solution._unmetDemand[0])/_problem.productionRate[0]);
 
-        for(unsigned int p=1; p<_problem._NProducts; p++)
+        for(unsigned int p=1; p<_problem.NProducts; p++)
         {
-            aux = floor((_problem._maximumInventory[p] + _problem._maximumOutletInventory[p] + _solution._unmetDemand[p])/_problem._productionRate[p]);
+            aux = floor((_problem.maximumInventory[p] + _problem.maximumOutletInventory[p] + _solution._unmetDemand[p])/_problem.productionRate[p]);
             if(aux < T2) T2 = aux;
         }
 
         aux = 0;
         sum = 0;
 
-        for(unsigned int p=0; p<_problem._NProducts; p++)
+        for(unsigned int p=0; p<_problem.NProducts; p++)
         {
             aux += _solution._unmetDemand[p];
-            sum += _problem._productionRate[p];
+            sum += _problem.productionRate[p];
         }
 
-        aux += _problem._totalMaximumInventory + _problem._totalMaximumOutletInventory;
+        aux += _problem.totalMaximumInventory + _problem.totalMaximumOutletInventory;
 
         aux = floor(aux/sum);
 
@@ -522,12 +356,12 @@ namespace mbptm
 
         _solution._processingTime = T1 + T2;
 
-        if(_solution._processingTime > _problem._maxBatchProcessingTime) _solution._processingTime = _problem._maxBatchProcessingTime;
+        if(_solution._processingTime > _problem.maxBatchProcessingTime) _solution._processingTime = _problem.maxBatchProcessingTime;
 
-        file << endl << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
+        file << endl << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem.maxBatchProcessingTime << endl;
         file << endl << "batch processing time: " << _solution._processingTime << endl;
 
-        cout << endl << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem._maxBatchProcessingTime << endl;
+        cout << endl << "T': " << T1 << "\t T'': " << T2 << "\t max batch processing time: " << _problem.maxBatchProcessingTime << endl;
         cout << endl << "batch processing time: " << _solution._processingTime << endl;
 
 
@@ -537,20 +371,20 @@ namespace mbptm
 
         file << endl << "Production:" << endl << endl;
 
-        for(unsigned int p=0; p<_problem._NProducts; p++)
+        for(unsigned int p=0; p<_problem.NProducts; p++)
         {
-            _solution._production[p] = _problem._productionRate[p] * _solution._processingTime;
+            _solution._production[p] = _problem.productionRate[p] * _solution._processingTime;
 
             file << "P" << p << " = " << _solution._production[p] << endl;
         }
 
         file << endl << "Delivered:" << endl << endl;
 
-        for(unsigned int p=0; p<_problem._NProducts; p++)
+        for(unsigned int p=0; p<_problem.NProducts; p++)
         {
-            if(_problem._demand[p] < _solution._production[p])
+            if(_problem.demand[p] < _solution._production[p])
             {
-                _solution._deliver[p] = _problem._demand[p];
+                _solution._deliver[p] = _problem.demand[p];
             } else
             {
                 _solution._deliver[p] = _solution._production[p];
@@ -564,17 +398,17 @@ namespace mbptm
 
         file << endl << "Delivered to outlets:" << endl << endl;
 
-        for(unsigned int p=0; p<_problem._NProducts; p++)
+        for(unsigned int p=0; p<_problem.NProducts; p++)
         {
-            if(_problem._maximumOutletInventory[p] < _solution._production[p])
+            if(_problem.maximumOutletInventory[p] < _solution._production[p])
             {
-                _solution._deliverToOutlets[p] = _problem._maximumOutletInventory[p];
+                _solution._deliverToOutlets[p] = _problem.maximumOutletInventory[p];
             } else
             {
                 _solution._deliverToOutlets[p] = _solution._production[p];
             }
 
-            _problem._maximumOutletInventory[p] -=  _solution._deliverToOutlets[p];
+            _problem.maximumOutletInventory[p] -=  _solution._deliverToOutlets[p];
 
             _solution._totalFreeOutletsInventory -= _solution._deliverToOutlets[p];
 
@@ -587,11 +421,11 @@ namespace mbptm
 
         file << endl << "Stocked at factory:" << endl << endl;
 
-        for(unsigned int p=0; p<_problem._NProducts; p++)
+        for(unsigned int p=0; p<_problem.NProducts; p++)
         {
             _solution._stock[p] = _solution._production[p];
 
-            _problem._maximumInventory[p] -= _solution._stock[p];
+            _problem.maximumInventory[p] -= _solution._stock[p];
 
             _solution._totalFreeFactoryInventory -= _solution._stock[p];
 
@@ -606,14 +440,14 @@ namespace mbptm
         {
             unsigned int minimum;
 
-            for(unsigned int p=0; p<_problem._NProducts; p++)
+            for(unsigned int p=0; p<_problem.NProducts; p++)
             {
 
                 if(_solution._totalFreeOutletsInventory < 0)
                 {
                     pos = - _solution._totalFreeOutletsInventory;
 
-                    minimum = min(min(_solution._deliverToOutlets[p],_problem._maximumInventory[p]), pos);
+                    minimum = min(min(_solution._deliverToOutlets[p],_problem.maximumInventory[p]), pos);
 
                     _solution._deliverToOutlets[p] -= minimum;
                     _solution._stock[p] += minimum;
@@ -626,7 +460,7 @@ namespace mbptm
                 } else if(_solution._totalFreeFactoryInventory < 0)
                 {
                     pos = - _solution._totalFreeFactoryInventory;
-                    minimum = min(min(_solution._stock[p], _problem._maximumOutletInventory[p]), pos);
+                    minimum = min(min(_solution._stock[p], _problem.maximumOutletInventory[p]), pos);
 
                     _solution._stock[p] -= minimum;
                     _solution._deliverToOutlets[p] += minimum;
@@ -643,11 +477,11 @@ namespace mbptm
             file << endl << "Leftover inventory in factory: " << _solution._totalFreeFactoryInventory << endl << endl;
         }
 
-        for(unsigned int p=0; p<_problem._NProducts; p++)
+        for(unsigned int p=0; p<_problem.NProducts; p++)
         {
-            _solution._unmetDemand[p] = _problem._demand[p] - _solution._deliver[p];
-            _solution._freeOutletsInventory[p] = _problem._maximumOutletInventory[p] - _solution._deliverToOutlets[p];
-            _solution._freeFactoryInventory[p] = _problem._maximumInventory[p] - _solution._stock[p];
+            _solution._unmetDemand[p] = _problem.demand[p] - _solution._deliver[p];
+            _solution._freeOutletsInventory[p] = _problem.maximumOutletInventory[p] - _solution._deliverToOutlets[p];
+            _solution._freeFactoryInventory[p] = _problem.maximumInventory[p] - _solution._stock[p];
         }
 
         timespec_get(&finish_time, TIME_UTC);
