@@ -4,7 +4,7 @@ Combinatorial Optimization Problems Solver
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
 
-The COPSolver software was (and is being) by Prof. Dr. Tatiana Balbi Fraga developed with the purpose of solving various combinatorial optimization and other decision problems as efficiently as possible.
+The COPSolver software was (and is being) developed by Prof. Dr. Tatiana Balbi Fraga with the purpose of solving various combinatorial optimization and other decision problems as efficiently as possible.
 
 COPSolver: library for solving multicriteria classification problems applies Saaty's Analytical Hierarch Process method for multicriteria ABC classification.
 
