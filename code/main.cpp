@@ -108,8 +108,8 @@ int main()
 
     file.close();
 
-    mcc::clssp data;
-    data.format_classification_data(); // formatar dados da alexia
+    //mcc::clssp data;
+    //data.format_classification_data(); // formatar dados da alexia
 
     if(problem_class == 1) // if classification problems
     {
@@ -194,7 +194,7 @@ int main()
             cout << endl << "error: there is an error in the config.txt file - problem definition method is not configured correctly." << endl;
         }
 
-        if(problem_definition_method == 2 && predefined_problem != 1 && predefined_problem != 2 && predefined_problem != 3)
+        if(problem_definition_method == 2 && predefined_problem != 0 && predefined_problem != 1 && predefined_problem != 2 && predefined_problem != 3)
         {
             cout << endl << "error: there is an error in the config.txt file - predefined problem is not configured correctly." << endl;
         }
@@ -213,7 +213,12 @@ int main()
             } else if(predefined_problem == 3)
             {
                 _problem.MBPTM_10();
+            } else
+            {
+                 cerr << endl << "Unknow predefined problem, taking problem from data.txt file !" << endl;
+                 _problem.get();
             }
+
         } else if(problem_definition_method == 3) // if generating a pseudo random problem
         {
             srand((unsigned) source);
