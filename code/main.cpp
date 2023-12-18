@@ -30,6 +30,12 @@ If you use this solver for work or science, please don't forget to correctly cit
 
 repository: github.com/tbfraga/COPSolver
 
+// new modulation version system: vc_s.x-y
+// c = module = class (clss, dpc, co)
+// s = library = subclass (mc, mbptm)
+// x = numbering
+// y = small changes
+
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
@@ -40,11 +46,11 @@ repository: github.com/tbfraga/COPSolver
 // version: 3.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/12/06
+// last modification: 2023/12/18
 
-#include "lib/classification-problem.h"
-#include "lib/demand-patterns-identification-problem.h"
-#include "lib/multiproduct-batch-processing-time-maximization-problem.h"
+#include "lib/clssp/classification-problem.h"
+#include "lib/dpcp/demand-patterns-identification-problem.h"
+#include "lib/cop/multiproduct-batch-processing-time-maximization-problem.h"
 using namespace mbptm;
 
 int main()
@@ -102,8 +108,8 @@ int main()
 
     file.close();
 
-    //clss::clssp data;
-    //data.format_classification_data(); // formatar dados da alexia
+    mcc::clssp data;
+    data.format_classification_data(); // formatar dados da alexia
 
     if(problem_class == 1) // if classification problems
     {
@@ -128,7 +134,7 @@ int main()
             return 1;
         }
 
-        clss::clssp _problem;
+        mcc::clssp _problem;
 
         if(solving_method == 1)
         {
@@ -160,7 +166,7 @@ int main()
             return 1;
         }
 
-        dpi::dpip _problem;
+        dpc::dpcp _problem;
 
         if(problem_definition_method == 2)
         {
