@@ -6,8 +6,13 @@ Combinatorial Optimization Problems Solver
 
 The COPSolver software was (and is being) developed with the purpose of solving various combinatorial optimization and other decision problems as efficiently as possible.
 
-COPSolver_1.0-1 applies Fraga's time partition method to solve the multi-product p-batch processing time maximization problem.
-COPSolver_2.0-3 also applies Saaty's Analytical Hierarch Process method for multicriteria ABC classification.
+COPSolver: library for solving multicriteria classification problems applies Saaty's Analytical Hierarch Process method for multicriteria ABC classification.
+
+most recent working version: vclss_mcc.0-1
+
+COPSolver: library for solving multi-product p-batch processing time maximization problems applies Fraga's time partition method to solve the multi-product p-batch processing time maximization problem.
+
+most recent working version: vco_mbptm.0-1
 
 Important: Copies and distributions of the files made available in this directory must comply with the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0).
 
