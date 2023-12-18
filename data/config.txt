@@ -1,3 +1,5 @@
+// benchmark - multicriteria classification problem - configuration file
+
 // class, use:
 // 1 for multicriteria classification problem.
 1
