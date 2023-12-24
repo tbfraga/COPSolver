@@ -16,9 +16,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: vco_mbptm.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/12/18
+// last modification: 2023/12/21
 
-// future improvements: use operators overloading for defined structures. (will be done according to the needs)
+// future improvements: use operators overloading for defined structures (will be done according to the needs).
+// COPSolver: livrary for demand parttern classification problems is in the testing phase
 
 #ifndef MULTIPRODUCT_BATCH_PROCESSING_TIME_MAXIMIZATION_PROBLEM_H_INCLUDED
 #define MULTIPRODUCT_BATCH_PROCESSING_TIME_MAXIMIZATION_PROBLEM_H_INCLUDED
@@ -60,6 +61,16 @@ namespace mbptm
 
             return *this;
         };
+
+        problem()
+        {
+            clear();
+        }
+
+        ~problem()
+        {
+            clear();
+        }
 
         friend istream & operator >> (istream &in,  problem &p)
         {
@@ -273,17 +284,265 @@ namespace mbptm
     };
 
     struct solution{
-        unsigned int _processingTime; // batch processing time (min)
-        vector<unsigned int> _production = {}; // production for each product
-        vector<unsigned int> _deliver = {}; // production delivered
-        vector<unsigned int> _deliverToOutlets = {}; // production delivered to outlets
-        vector<unsigned int> _stock = {}; // production stocked at the factory
+        unsigned int processingTime; // batch processing time (min)
+        vector<unsigned int> production = {}; // production for each product
+        vector<unsigned int> deliver = {}; // production delivered
+        vector<unsigned int> deliverToOutlets = {}; // production delivered to outlets
+        vector<unsigned int> stock = {}; // production stocked at the factory
 
-        vector<unsigned int> _unmetDemand = {};
-        vector<unsigned int> _freeOutletsInventory = {};
-        vector<unsigned int> _freeFactoryInventory = {};
-        int _totalFreeOutletsInventory;
-        int _totalFreeFactoryInventory;
+        vector<unsigned int> unmetDemand = {};
+        vector<unsigned int> freeOutletsInventory = {};
+        vector<unsigned int> freeFactoryInventory = {};
+        int totalFreeOutletsInventory;
+        int totalFreeFactoryInventory;
+
+        solution& clear()
+        {
+            processingTime = 0;
+            production.clear();
+            deliver.clear();
+            deliverToOutlets.clear();
+            stock.clear();
+
+            unmetDemand.clear();
+            freeOutletsInventory.clear();
+            freeFactoryInventory.clear();
+
+            totalFreeOutletsInventory = 0;
+            totalFreeFactoryInventory = 0;
+
+            return *this;
+        };
+
+        solution()
+        {
+            clear();
+        }
+
+        ~solution()
+        {
+            clear();
+        }
+
+        solution& start(problem p)
+        {
+            production.resize(p.NProducts,0);
+            deliver.resize(p.NProducts,0);
+            deliverToOutlets.resize(p.NProducts,0);
+            stock.resize(p.NProducts,0);
+
+            unmetDemand.resize(p.NProducts,0);
+            freeOutletsInventory.resize(p.NProducts,0);
+            freeFactoryInventory.resize(p.NProducts,0);
+
+            totalFreeOutletsInventory = p.totalMaximumOutletInventory;
+            totalFreeFactoryInventory = p.totalMaximumInventory;
+
+            return *this;
+        };
+
+        solution& analyticalMethod(problem p)
+        {
+            cout << endl << "applying Fraga's exact method for solving MBPTM problem ..." << endl;
+
+            string site = getenv("HOME");
+            site += "/COPSolver/results/output.txt";
+
+            ofstream file;
+
+            file.open(site);
+
+            file << "Analytical solution:" << endl;
+
+            struct timespec begin_time, finish_time, diff_time;
+            char buff[100];
+
+            timespec_get(&begin_time, TIME_UTC);
+            strftime(buff, sizeof buff, "%D %T", gmtime(&begin_time.tv_sec));
+
+            cout << endl << "starting time (s): " << buff << "." << begin_time.tv_nsec <<  " UTC" << endl;
+            file << endl << "starting time (s): " << buff << "." << begin_time.tv_nsec <<  " UTC" << endl;
+
+            // ***** calculating optimal batch processing time ***** //
+
+            unsigned int aux, sum;
+
+            for(unsigned int i=0; i<p.NProducts; i++)
+            {
+                unmetDemand[i] = p.demand[i];
+            }
+
+            processingTime = floor((p.maximumInventory[0] + p.maximumOutletInventory[0] + unmetDemand[0])/p.productionRate[0]);
+
+            for(unsigned int i=1; i<p.NProducts; i++)
+            {
+                aux = floor((p.maximumInventory[i] + p.maximumOutletInventory[i] + unmetDemand[i])/p.productionRate[i]);
+                if(aux < processingTime) processingTime = aux;
+            }
+
+            aux = 0;
+            sum = 0;
+
+            for(unsigned int i=0; i<p.NProducts; i++)
+            {
+                aux += unmetDemand[i];
+                sum += p.productionRate[i];
+            }
+
+            aux += p.totalMaximumInventory + p.totalMaximumOutletInventory;
+
+            aux = floor(aux/sum);
+
+            if(aux < processingTime) processingTime = aux;
+
+            //processingTime = /*T1 + */T2;
+
+            if(processingTime > p.maxBatchProcessingTime) processingTime = p.maxBatchProcessingTime;
+
+            file << endl << "Proessing time: " << processingTime << "\t max batch processing time: " << p.maxBatchProcessingTime << endl;
+            file << endl << "batch processing time: " << processingTime << endl;
+
+            cout << endl << "Proessing time: " << processingTime << "\t max batch processing time: " << p.maxBatchProcessingTime << endl;
+            cout << endl << "batch processing time: " << processingTime << endl;
+
+
+            // ***** calculating and distributing production ***** //
+
+            unsigned int pos;
+
+            file << endl << "Production:" << endl << endl;
+
+            for(unsigned int i=0; i<p.NProducts; i++)
+            {
+                production[i] = p.productionRate[i] * processingTime;
+
+                file << "P" << i << " = " << production[i] << endl;
+            }
+
+            file << endl << "Delivered:" << endl << endl;
+
+            for(unsigned int i=0; i<p.NProducts; i++)
+            {
+                if(p.demand[i] < production[i])
+                {
+                    deliver[i] = p.demand[i];
+                } else
+                {
+                    deliver[i] = production[i];
+                }
+
+                file << "D" << i << " = " << deliver[i] << endl;
+
+                production[i] -= deliver[i];
+            }
+
+
+            file << endl << "Delivered to outlets:" << endl << endl;
+
+            for(unsigned int i=0; i<p.NProducts; i++)
+            {
+                if(p.maximumOutletInventory[i] < production[i])
+                {
+                    deliverToOutlets[i] = p.maximumOutletInventory[i];
+                } else
+                {
+                    deliverToOutlets[i] = production[i];
+                }
+
+                p.maximumOutletInventory[i] -=  deliverToOutlets[i];
+
+                totalFreeOutletsInventory -= deliverToOutlets[i];
+
+                file << "O" << i << " = " << deliverToOutlets[i] << endl;
+
+                production[i] -= deliverToOutlets[i];
+            }
+
+            file << endl << "Leftover inventory in outlets: " << totalFreeOutletsInventory << endl;
+
+            file << endl << "Stocked at factory:" << endl << endl;
+
+            for(unsigned int i=0; i<p.NProducts; i++)
+            {
+                stock[i] = production[i];
+
+                p.maximumInventory[i] -= stock[i];
+
+                totalFreeFactoryInventory -= stock[i];
+
+                file << "I" << i << " = " << stock[i] << endl;
+            }
+
+            file << endl << "Leftover inventory in factory: " << totalFreeFactoryInventory << endl << endl;
+
+            file << endl << "Adjusting production distribution:" << endl << endl;
+
+            if(totalFreeOutletsInventory < 0 || totalFreeFactoryInventory < 0)
+            {
+                unsigned int minimum;
+
+                for(unsigned int i=0; i<p.NProducts; i++)
+                {
+
+                    if(totalFreeOutletsInventory < 0)
+                    {
+                        pos = - totalFreeOutletsInventory;
+
+                        minimum = min(min(deliverToOutlets[i], p.maximumInventory[i]), pos);
+
+                        deliverToOutlets[i] -= minimum;
+                        stock[i] += minimum;
+
+                        totalFreeOutletsInventory += minimum;
+
+                        file << "O" << i << " = " << deliverToOutlets[i] << endl;
+                        file << "I" << i << " = " << stock[i] << endl;
+
+                    } else if(totalFreeFactoryInventory < 0)
+                    {
+                        pos = - totalFreeFactoryInventory;
+                        minimum = min(min(stock[i], p.maximumOutletInventory[i]), pos);
+
+                        stock[i] -= minimum;
+                        deliverToOutlets[i] += minimum;
+
+                        totalFreeFactoryInventory += minimum;
+
+                        file << "O" << i << " = " << deliverToOutlets[i] << endl;
+                        file << "I" << i << " = " << stock[i] << endl;
+                    }
+
+                    if(totalFreeOutletsInventory >= 0 and totalFreeFactoryInventory >= 0) break;
+                }
+
+                file << endl << "Leftover inventory in outlets: " << totalFreeOutletsInventory << endl;
+                file << endl << "Leftover inventory in factory: " << totalFreeFactoryInventory << endl << endl;
+            }
+
+            for(unsigned int i=0; i<p.NProducts; i++)
+            {
+                unmetDemand[i] = p.demand[i] - deliver[i];
+                freeOutletsInventory[i] = p.maximumOutletInventory[i] - deliverToOutlets[i];
+                freeFactoryInventory[i] = p.maximumInventory[i] - stock[i];
+            }
+
+            timespec_get(&finish_time, TIME_UTC);
+            strftime(buff, sizeof buff, "%D %T", gmtime(&finish_time.tv_sec));
+
+            cout << endl << "finishing time (s): " << buff << "." << finish_time.tv_nsec <<  " UTC" << endl;
+            file << endl << "finishing time (s): " << buff << "." << finish_time.tv_nsec <<  " UTC" << endl;
+
+            diff_time.tv_sec = finish_time.tv_sec - begin_time.tv_sec;
+            diff_time.tv_nsec = finish_time.tv_nsec - begin_time.tv_nsec;
+
+            cout << endl << "Analytical solution execution time (s): " << double(diff_time.tv_sec) + double(diff_time.tv_nsec)/1000000000 << endl;
+            file << endl << "execution time (s): " << double(diff_time.tv_sec) + double(diff_time.tv_nsec)/1000000000 << endl;
+
+            file.close();
+
+            return *this;
+        };
+
     };
 
     class cop
@@ -314,8 +573,7 @@ namespace mbptm
         // solving
 
         void start(); // this function initializes solution variables
-        unsigned int analyticalMethod(); // this function solves the reported problem through the analytical method proposed by T. B. Fraga (2023)
-        solution analyticalMethod(unsigned int T1); // this function solves the reported problem through the analytical method proposed by T. B. Fraga (2023)
+        solution analyticalMethod(); // this function solves the reported problem through the analytical method proposed by T. B. Fraga (2023)
     };
 }
 

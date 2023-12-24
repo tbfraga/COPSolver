@@ -31,13 +31,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="lib/classification-problem.h" />
-		<Unit filename="lib/demand-patterns-identification-problem.h" />
-		<Unit filename="lib/formatted-files-reading.h" />
-		<Unit filename="lib/multiproduct-batch-processing-time-maximization-problem.h" />
+		<Unit filename="lib/clssp/classification-problem.h" />
+		<Unit filename="lib/cop/multiproduct-batch-processing-time-maximization-problem.h" />
+		<Unit filename="lib/dpcp/demand-patterns-identification-problem.h" />
+		<Unit filename="lib/ffrc/formatted-files-reading.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/classification-problem.cpp" />
-		<Unit filename="src/multiproduct-batch-processing-time-maximization-problem.cpp" />
+		<Unit filename="src/clssp/classification-problem.cpp" />
+		<Unit filename="src/cop/multiproduct-batch-processing-time-maximization-problem.cpp" />
+		<Unit filename="src/ffrc/formatted-files-reading.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

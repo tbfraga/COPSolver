@@ -36,9 +36,10 @@ For more details see https://eigen.tuxfamily.org/
 #include <vector>
 #include <iterator>
 #include <bits/stdc++.h>
+using namespace std;
+
 #include "../Eigen/Eigenvalues"
 using namespace Eigen;
-using namespace std;
 
 namespace mcc
 {

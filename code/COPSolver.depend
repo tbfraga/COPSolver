@@ -36,7 +36,8 @@
 1693314314 source:/home/work/Documents/GitHub/project-combinatorial-optimization-problems/COPSolver_1.0-1/C++ lib/code/src/multiproduct-batch-processing-time-maximization-problem.cpp
 	"../lib/multiproduct-batch-processing-time-maximization-problem.h"
 
-1702906848 source:/home/work/Documents/GitHub/COPSolver/code/main.cpp
+1703326342 source:/home/work/Documents/GitHub/COPSolver/code/main.cpp
+	"lib/ffrc/formatted-files-reading.h"
 	"lib/clssp/classification-problem.h"
 	"lib/dpcp/demand-patterns-identification-problem.h"
 	"lib/cop/multiproduct-batch-processing-time-maximization-problem.h"
@@ -821,7 +822,7 @@
 	<chrono>
 	<cstdlib>
 
-1702896882 /home/work/Documents/GitHub/COPSolver/code/lib/clssp/classification-problem.h
+1702920976 /home/work/Documents/GitHub/COPSolver/code/lib/clssp/classification-problem.h
 	<iostream>
 	<fstream>
 	<iomanip>
@@ -832,10 +833,10 @@
 	<bits/stdc++.h>
 	"../Eigen/Eigenvalues"
 
-1702896707 /home/work/Documents/GitHub/COPSolver/code/lib/dpcp/demand-patterns-identification-problem.h
-	"../formatted-files-reading.h"
+1702920634 /home/work/Documents/GitHub/COPSolver/code/lib/dpcp/demand-patterns-identification-problem.h
+	"../ffrc/formatted-files-reading.h"
 
-1702906443 /home/work/Documents/GitHub/COPSolver/code/lib/cop/multiproduct-batch-processing-time-maximization-problem.h
+1703174872 /home/work/Documents/GitHub/COPSolver/code/lib/cop/multiproduct-batch-processing-time-maximization-problem.h
 	<math.h>
 	<unistd.h>
 	<bits/stdc++.h>
@@ -849,6 +850,20 @@
 1702898444 source:/home/work/Documents/GitHub/COPSolver/code/src/clssp/classification-problem.cpp
 	"../../lib/clssp/classification-problem.h"
 
-1702906389 source:/home/work/Documents/GitHub/COPSolver/code/src/cop/multiproduct-batch-processing-time-maximization-problem.cpp
+1703174937 source:/home/work/Documents/GitHub/COPSolver/code/src/cop/multiproduct-batch-processing-time-maximization-problem.cpp
 	"../../lib/cop/multiproduct-batch-processing-time-maximization-problem.h"
+
+1703430748 /home/work/Documents/GitHub/COPSolver/code/lib/ffrc/formatted-files-reading.h
+	<iostream>
+	<fstream>
+	<string>
+	<sstream>
+	<iomanip>
+	<ctime>
+	<chrono>
+	<cstdlib>
+	<vector>
+
+1703430795 source:/home/work/Documents/GitHub/COPSolver/code/src/ffrc/formatted-files-reading.cpp
+	"../../lib/ffrc/formatted-files-reading.h"
 

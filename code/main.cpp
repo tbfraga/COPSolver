@@ -46,12 +46,13 @@ repository: github.com/tbfraga/COPSolver
 // version: 3.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/12/18
+// last modification: 2023/12/22
 
+#include "lib/ffrc/formatted-files-reading.h"
 #include "lib/clssp/classification-problem.h"
 #include "lib/dpcp/demand-patterns-identification-problem.h"
 #include "lib/cop/multiproduct-batch-processing-time-maximization-problem.h"
-using namespace mbptm;
+//using namespace mbptm;
 
 int main()
 {
@@ -62,7 +63,7 @@ int main()
 
     fstream file;
 
-    unsigned int problem_class, // 1 if classification-problem; 2 if demand-patterns-identification-problem;
+    unsigned int problem_class, // 0 if data formatting; 1 if classification-problem; 2 if demand-patterns-identification-problem;
                                 // 3 if combinatorial-optimization-problem.
                  problem_type,  // 1 if multiproduct-batch-processing-time-maximization-problem
                  problem_definition_method, // 1 if getting problem from file; 2 if getting a predefined problem;
@@ -78,7 +79,7 @@ int main()
     file.ignore(std::numeric_limits<std::streamsize>::max(),'.');
     file >> problem_class;
 
-    if(problem_class != 1 && problem_class != 2 && problem_class != 3)
+    if(problem_class != 0 && problem_class != 1 && problem_class != 2 && problem_class != 3)
     {
         cout << endl << "error: there is an error in the config.txt file - problem class is not configured correctly." << endl;
         getchar();
@@ -108,10 +109,11 @@ int main()
 
     file.close();
 
-    //mcc::clssp data;
-    //data.format_classification_data(); // formatar dados da alexia
-
-    if(problem_class == 1) // if classification problems
+    if(problem_class == 0) // if data formatting
+    {
+        ffr::ffrc data;
+        data.alexia(); // formatar dados da alexia
+    } else if(problem_class == 1) // if classification problems
     {
         if(problem_type != 1)
         {
@@ -182,7 +184,7 @@ int main()
 
     } else if(problem_class == 3) // if combinatorial optimization problems
     {
-        cop _problem;
+        mbptm::cop _problem;
 
         if(problem_type != 1)
         {
@@ -228,7 +230,7 @@ int main()
         _problem.print();
         _problem.generateLingoData();
         _problem.start();
-        _problem.analyticalMethod(0);
+        _problem.analyticalMethod();
 
         _problem.clear();
     }
