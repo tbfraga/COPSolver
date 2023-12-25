@@ -17,7 +17,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: vffr_ffr.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/11/10
-// last modification: 2023/12/24
+// last modification: 2023/12/25
 
 #ifndef FORMATTED-FILES-READING_H_INCLUDED
 #define FORMATTED-FILES-READING_H_INCLUDED
@@ -45,11 +45,11 @@ namespace ffr
         friend ostream & operator << (ostream &out, const sale &s)
         {
             out << s.code << "\t";
-            out << setw(3) << s.quantity << "\t";
-            out << setw(10) << setprecision(2) << fixed << s.price << "\t";
-            out << setw(4) << s.date.tm_year << "\t";
-            out << setw(2) << s.date.tm_mon << "\t";
-            out << setw(2) << s.date.tm_mday << "\t";
+            out << setw(8) << setprecision(2) << fixed << s.quantity;
+            out << setw(14) << setprecision(2) << fixed << s.price;
+            out << setw(6) << s.date.tm_year;
+            out << setw(4) << s.date.tm_mon;
+            out << setw(4) << s.date.tm_mday;
 
             return out;
         };
@@ -165,6 +165,8 @@ namespace ffr
             {
                 _input.alexia_data_address();
 
+                output_file << "code STRING, quantity DOUBLE, value DOUBLE, year UNISGNED INT, month UNISIGNED INT, day UNSIGNED INT:" << endl << endl;
+
                 for(unsigned int s=0; s<_input.code.size(); s++)
                 {
                     input_file.open(_input.file_address + _input.code[s] + ".txt");
@@ -200,25 +202,62 @@ namespace ffr
                                 aux = 0;
 
 
-                            input_file >> reg.code;
+                                input_file >> reg.code;
 
-                            aux = 1;
+                                aux = 1;
 
-                            unsigned int index=0;
-                            do
-                            {
-                                input_file.ignore(numeric_limits<std::streamsize>::max(),'U');
-                                input_file.ignore(numeric_limits<std::streamsize>::max(),'N');
+                                unsigned int index=0;
+                                do
+                                {
+                                    input_file.ignore(numeric_limits<std::streamsize>::max(),'U');
+                                    input_file.ignore(numeric_limits<std::streamsize>::max(),'N');
+
+                                    input_file >> dateStr;
+
+                                    index=0;
+                                    for( char c : dateStr )
+                                    {
+                                        if(c=='.' && index < dateStr.size()-4)
+                                        {
+                                            dateStr.erase(dateStr.begin() + index);
+                                        } else if(c==',' && index >= dateStr.size()-4)
+                                        {
+                                            dateStr[index] = '.';
+                                        }
+
+                                        index++;
+                                    }
+
+                                    stringstream stream(dateStr);
+                                    stream >> reg.quantity;
+
+                                    if (stream.fail())
+                                    {
+                                        //cerr << dateStr << " quantity format do not match" << endl;
+                                        //sometimes it will fail
+                                        /*if (_input.code[s] != "2091" && _input.code[s] != "2092" && _input.code[s] != "1823" && _input.code[s] != "2350"
+                                        && _input.code[s] != "2031" && _input.code[s] != "2032" && _input.code[s] != "2095"
+                                        && _input.code[s] != "2096" && _input.code[s] != "1873" && _input.code[s] != "2392"
+                                        && _input.code[s] != "1292" && _input.code[s] != "1701" && _input.code[s] != "2164"
+                                        && _input.code[s] != "1893" && _input.code[s] != "1767" && _input.code[s] != "2156"
+                                        && _input.code[s] != "1291" && _input.code[s] != "2145" && _input.code[s] != "1859"
+                                        && _input.code[s] != "2163" && _input.code[s] != "2165" && _input.code[s] != "1518") getchar();*/
+                                    } else
+                                    {
+                                        aux = 0;
+                                        break;
+                                    }
+
+                                } while (aux);
+
+                                input_file.ignore(numeric_limits<std::streamsize>::max(),' ');
 
                                 input_file >> dateStr;
 
                                 index=0;
                                 for( char c : dateStr )
                                 {
-                                    if( c=='"')
-                                    {
-                                        dateStr.erase(dateStr.begin() + index);
-                                    } else if(c=='.' && index < dateStr.size()-4)
+                                    if(c=='.' && index < dateStr.size()-4)
                                     {
                                         dateStr.erase(dateStr.begin() + index);
                                     } else if(c==',' && index >= dateStr.size()-4)
@@ -229,59 +268,13 @@ namespace ffr
                                     index++;
                                 }
 
-
                                 stringstream stream(dateStr);
-                                stream >> reg.quantity;
+                                stream >> reg.price;
 
-                                if (stream.fail())
-                                {
-                                    //cerr << dateStr << " quantity format do not match" << endl;
-                                    //sometimes it will fail
-                                    /*if (_input.code[s] != "2091" && _input.code[s] != "2092" && _input.code[s] != "1823" && _input.code[s] != "2350"
-                                    && _input.code[s] != "2031" && _input.code[s] != "2032" && _input.code[s] != "2095"
-                                    && _input.code[s] != "2096" && _input.code[s] != "1873" && _input.code[s] != "2392"
-                                    && _input.code[s] != "1292" && _input.code[s] != "1701" && _input.code[s] != "2164"
-                                    && _input.code[s] != "1893" && _input.code[s] != "1767" && _input.code[s] != "2156"
-                                    && _input.code[s] != "1291" && _input.code[s] != "2145" && _input.code[s] != "1859"
-                                    && _input.code[s] != "2163" && _input.code[s] != "2165" && _input.code[s] != "1518") getchar();*/
-                                } else
-                                {
-                                    aux = 0;
-                                    break;
-                                }
-
-                            } while (aux);
-
-                            input_file.ignore(numeric_limits<std::streamsize>::max(),' ');
-
-                            input_file >> dateStr;
-
-                            index=0;
-
-                            for( char c : dateStr )
-                            {
-                                if( c=='"')
-                                {
-                                    dateStr.erase(dateStr.begin() + index);
-                                } else if(c=='.' && index < dateStr.size()-4)
-                                {
-                                    dateStr.erase(dateStr.begin() + index);
-                                } else if(c==',' && index >= dateStr.size()-4)
-                                {
-                                    dateStr[index] = '.';
-                                }
-
-                                index++;
+                                input_file >> dateStr;
+                                input_file >> dateStr;
+                                output_file << reg << endl;
                             }
-
-                            stringstream stream(dateStr);
-                            stream >> reg.price;
-
-                            input_file >> dateStr;
-                            input_file >> dateStr;
-                            output_file << reg << endl;
-                        }
-
                         }
                     }
 
