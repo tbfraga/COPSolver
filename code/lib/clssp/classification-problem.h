@@ -18,11 +18,11 @@ For more details see https://eigen.tuxfamily.org/
 ******************************************************************************************************************************************************************************/
 
 // COPSolver (Combinatorial Optimization Problems Solver)
-// module: COPSolver: library for solving multicriteria classification problems
+// module: COPSolver: library for solving the multicriteria classification problem
 // version: vclss_mcc.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/12/18
+// last modification: 2023/12/31
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -463,11 +463,11 @@ namespace mcc
 
         pairwiseMatrix& forceConsistency()
         {
-            unsigned int g, s;
+            unsigned int g, s, aux;
 
             consistencyRate();
 
-            if(CR > tol){
+            if(CR > tol){ // topLeftCorner();
             for(unsigned int sz=3; sz<matrix.size(); sz++)
             {
                 for(unsigned int j=0; j<matrix.size()-2; j++)
@@ -497,6 +497,51 @@ namespace mcc
                             }else if(matrix[sz][g].value > matrix[sz][s].value)
                             {
                                 encrease(sz,g,s);
+
+                                if(CR <= tol)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if(CR <= tol)break;
+                }
+                if(CR <= tol)break;
+            }}
+
+            if(CR > tol){ // bottomLeftCorner();
+            for(unsigned int sz=matrix.size()-2; sz>0; sz--)
+            {
+                aux = sz - 1;
+                for(unsigned int j=0; j<matrix.size()-2; j++)
+                {
+                    for(unsigned int k=j+1; k<matrix.size()-1; k++)
+                    {
+                        g = 0;
+                        s = 0;
+
+                        if(matrix[aux][j].value*matrix[j][k].value > matrix[aux][k].value)
+                        {
+                            g = j;
+                            s = k;
+                        }else if(matrix[aux][j].value*matrix[j][k].value < matrix[aux][k].value)
+                        {
+                            g = k;
+                            s = j;
+                        }
+
+                        if(g > 0 || s > 0)
+                        {
+                            reduce(aux,g,s);
+
+                            if(CR <= tol)
+                            {
+                                break;
+                            }else if(matrix[aux][g].value > matrix[aux][s].value)
+                            {
+                                encrease(aux,g,s);
 
                                 if(CR <= tol)
                                 {

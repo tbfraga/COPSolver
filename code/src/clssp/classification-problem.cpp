@@ -125,7 +125,7 @@ namespace mcc
 
     bool clssp::analyticHierarchyProcess()
     {
-        cout << endl << "Applying AHP for multicriteria classification, please wait ..." << endl;
+        cout << endl << "applying AHP for multicriteria classification ..." << endl;
         get();
 
         string site = getenv("HOME");
