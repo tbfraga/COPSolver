@@ -1,44 +1,46 @@
---> Data:
+// COPSolver benchmark - multicriteria classification - solution (problem - adjusted matrix) - alexia's data file
+
+--> Adjusted data:
 
 number of criteria: 7
 
 pairwise comparisons matrix: 
 
-  1.00  0.20  0.14  0.20  7.00  0.11  5.00
-  5.00  1.00  0.33  0.33  5.00  0.14  7.00
-  7.00  3.00  1.00  0.33  5.00  0.14  3.00
-  5.00  3.00  3.00  1.00  9.00  0.33  9.00
-  0.14  0.20  0.20  0.11  1.00  0.11  1.00
-  9.00  7.00  7.00  3.00  9.00  1.00  9.00
+  1.00  0.20  0.14  0.33  7.00  0.20  5.00
+  5.00  1.00  0.33  1.00  5.00  0.33  7.00
+  7.00  3.00  1.00  1.00  7.00  1.00  3.00
+  3.00  1.00  1.00  1.00  7.00  1.00  9.00
+  0.14  0.20  0.14  0.14  1.00  0.11  1.00
+  5.00  3.00  1.00  1.00  9.00  1.00  9.00
   0.20  0.14  0.33  0.11  1.00  0.11  1.00
 
 pairwise comparison matrix index: 
 
-     4     2     1     2     7     0     6
-     6     4     3     3     6     1     7
-     7     5     4     3     6     1     5
-     6     5     5     4     8     3     8
-     1     2     2     0     4     0     4
-     8     7     7     5     8     4     8
+     4     2     1     3     7     2     6
+     6     4     3     4     6     3     7
+     7     5     4     4     7     4     5
+     5     4     4     4     7     4     8
+     1     2     1     1     4     0     4
+     6     5     4     4     8     4     8
      2     1     3     0     4     0     4
 
-main eigenvalue: 8.194
+main eigenvalue: 7.760
 
-main eigenvector:   0.104  0.191  0.263  0.406  0.040  0.846  0.044
+main eigenvector:   0.165  0.349  0.561  0.436  0.054  0.582  0.065
 
-consistency rate: 0.151
+consistency rate: 0.096
 
-Sorry, your matrix of pairwise comparation is inconsistent !!! 
+Congratulations, your matrix of pairwise comparation is consistent !!! 
 
 weight: 
 
- 0.000	        lead-times    acmSum    0.80    0.95    1.00
- 0.000	  substitutability     value    3.00    2.00    1.00
- 0.000	     repairability     value    3.00    2.00    1.00
- 0.000	       criticality     value    1.00    9.00    0.00
- 0.000	       commonality     value    3.00    2.00    1.00
- 0.000	      cost-overall    acmSum    0.80    0.95    1.00
- 0.000	      obsolescence     value    3.00    2.00    1.00
+ 0.074	        lead-times    acmSum    0.80    0.95    1.00
+ 0.158	  substitutability     value    3.00    2.00    1.00
+ 0.254	     repairability     value    3.00    2.00    1.00
+ 0.197	       criticality     value    1.00    9.00    0.00
+ 0.024	       commonality     value    3.00    2.00    1.00
+ 0.263	      cost-overall    acmSum    0.80    0.95    1.00
+ 0.029	      obsolescence     value    3.00    2.00    1.00
 
 number of data per criterion: 254
 

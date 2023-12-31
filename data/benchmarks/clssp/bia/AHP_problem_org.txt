@@ -1,3 +1,5 @@
+// COPSolver benchmark - multicriteria classification - solution (problem - original matrix) - bia's data file
+
 --> Data:
 
 number of criteria: 6

@@ -4,7 +4,7 @@
 // 1 for multicriteria classification problem.
 1
 // problem, use:
-// 1 for pairwise comparisons weight matrix + multi-criteria data.
+// 1 for pairwise comparisons weight matrix + multicriteria data.
 1
 // problem definition method, use:
 // 1 for taking the problem from data file.
