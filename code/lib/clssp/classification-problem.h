@@ -734,6 +734,10 @@ namespace mcc
         vector<string> code; // product code (ordered) - vector[_NData]
         vector<vector<double>> data; // data for each criterion (ordered) - matrix[_NData, _NCriteria]
 
+        unsigned int countA;
+        unsigned int countB;
+        unsigned int countC;
+
         problem prob;
 
         solution& clear()
@@ -816,6 +820,12 @@ namespace mcc
             double sum = 0;
             unsigned int index;
 
+            sum = s.countA + s.countB + s.countC;
+
+            out << "Statistic :" << endl << endl;
+
+            out << "A: " << 100*s.countA/sum << "%; B: " << 100*s.countB/sum << "%; C: " << 100*s.countC/sum << "%;" << endl << endl;
+
             out << "Number of data :" << endl << endl;
 
             out << s.prob.NData << endl << endl;
@@ -823,6 +833,8 @@ namespace mcc
             out << "--> ABC multi-criteria classification (with Saat's Analytic Hierarchy Process)";
 
             out << endl << endl << "(code | ABC | weight | sum | org order) :" << endl << endl;
+
+            sum = 0;
 
             for(unsigned int i=0; i<s.prob.code.size(); i++)
             {
@@ -986,6 +998,10 @@ namespace mcc
             double ALim = prob.multicriteria.valueA,
                    BLim = prob.multicriteria.valueB;
 
+            countA = 0;
+            countB = 0;
+            countC = 0;
+
             classf.clear();
             classf.push_back(0);
 
@@ -1022,12 +1038,15 @@ namespace mcc
                     if(s < ALim*prob.NData)
                     {
                         ABCClassf[classf[s]] = 'A';
+                        countA++;
                     } else if(s < BLim*prob.NData)
                     {
                         ABCClassf[classf[s]] = 'B';
+                        countB++;
                     } else
                     {
                         ABCClassf[classf[s]] = 'C';
+                        countC++;
                     }
                 } else if (prob.multicriteria.mode == "acmSum")
                 {
@@ -1035,18 +1054,23 @@ namespace mcc
                     if(s==0 && sum > ALim)
                     {
                         ABCClassf[classf[s]] = 'A';
+                        countA++;
                     } else if(s==1 && sum > BLim)
                     {
                         ABCClassf[classf[s]] = 'B';
+                        countB++;
                     } if(sum <= ALim)
                     {
                         ABCClassf[classf[s]] = 'A';
+                        countA++;
                     } else if(sum <= BLim)
                     {
                         ABCClassf[classf[s]] = 'B';
+                        countB++;
                     } else
                     {
                         ABCClassf[classf[s]] = 'C';
+                        countC++;
                     }
                 } else
                 {
