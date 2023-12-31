@@ -1,26 +1,17 @@
-// benchmark - multi-product p-batch processing time maximization problem - configuration file
+// benchmark - multicriteria classification problem - configuration file
 
 // class, use:
-// 3 for combinatorial optimization problem.
-3
+// 1 for multicriteria classification problem.
+1
 // problem, use:
-// 1 for multi-product p-batch processing time maximization problem.
+// 1 for pairwise comparisons weight matrix + multicriteria data.
 1
 // problem definition method, use:
-// 1 for taking the problem from data file;
-// 2 for using a predefined problem;
-// 3 for generating a random problem.
+// 1 for taking the problem from data file.
 1
 // predefined problem, use:
-// 0 for none
-// 1 for taking the MBPTM_02 problem;
-// 2 for taking the MBPTM_03 problem;
-// 3 for taking the MBPTM_10 problem.
-0
-// randon source (only if problem definition method == 3):
-0
-// number of products (only if problem definition method == 3):
+// 0 for none.
 0
 // solving method, use:
-// 1 for Fraga's Analytical Method.
+// 1 for ABC + Saat's Analytic Hierarchy Process.
 1
