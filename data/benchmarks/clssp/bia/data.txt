@@ -23,7 +23,7 @@
 
 // ABC multicriteria criterion (name STRING, mode STRING, valueA UNSIGNED INT, valueB UNSIGNED INT, valueC UNSIGNED INT):
 
-multicriteria acmSum  0.30  0.70  1.0
+multicriteria acmSum  0.35  0.70  1.0
 
 // pairwise comparison weight FLOAT (M_1_1,...,M_i_j,...,M_NC_NC):
 
