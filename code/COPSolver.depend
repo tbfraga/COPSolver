@@ -36,10 +36,10 @@
 1693314314 source:/home/work/Documents/GitHub/project-combinatorial-optimization-problems/COPSolver_1.0-1/C++ lib/code/src/multiproduct-batch-processing-time-maximization-problem.cpp
 	"../lib/multiproduct-batch-processing-time-maximization-problem.h"
 
-1703326342 source:/home/work/Documents/GitHub/COPSolver/code/main.cpp
+1703584700 source:/home/work/Documents/GitHub/COPSolver/code/main.cpp
 	"lib/ffrc/formatted-files-reading.h"
 	"lib/clssp/classification-problem.h"
-	"lib/dpcp/demand-patterns-identification-problem.h"
+	"lib/dpcp/demand-patterns-classification-problem.h"
 	"lib/cop/multiproduct-batch-processing-time-maximization-problem.h"
 
 1699441086 /home/work/Documents/GitHub/COPSolver/code/lib/multiproduct-batch-processing-time-maximization-problem.h
@@ -822,7 +822,7 @@
 	<chrono>
 	<cstdlib>
 
-1702920976 /home/work/Documents/GitHub/COPSolver/code/lib/clssp/classification-problem.h
+1704011869 /home/work/Documents/GitHub/COPSolver/code/lib/clssp/classification-problem.h
 	<iostream>
 	<fstream>
 	<iomanip>
@@ -833,8 +833,17 @@
 	<bits/stdc++.h>
 	"../Eigen/Eigenvalues"
 
-1702920634 /home/work/Documents/GitHub/COPSolver/code/lib/dpcp/demand-patterns-identification-problem.h
-	"../ffrc/formatted-files-reading.h"
+1703512421 /home/work/Documents/GitHub/COPSolver/code/lib/dpcp/demand-patterns-identification-problem.h
+	<math.h>
+	<iostream>
+	<fstream>
+	<string>
+	<sstream>
+	<iomanip>
+	<ctime>
+	<chrono>
+	<cstdlib>
+	<vector>
 
 1703174872 /home/work/Documents/GitHub/COPSolver/code/lib/cop/multiproduct-batch-processing-time-maximization-problem.h
 	<math.h>
@@ -847,13 +856,13 @@
 	<iomanip>
 	<vector>
 
-1703432955 source:/home/work/Documents/GitHub/COPSolver/code/src/clssp/classification-problem.cpp
+1704011937 source:/home/work/Documents/GitHub/COPSolver/code/src/clssp/classification-problem.cpp
 	"../../lib/clssp/classification-problem.h"
 
 1703174937 source:/home/work/Documents/GitHub/COPSolver/code/src/cop/multiproduct-batch-processing-time-maximization-problem.cpp
 	"../../lib/cop/multiproduct-batch-processing-time-maximization-problem.h"
 
-1703498401 /home/work/Documents/GitHub/COPSolver/code/lib/ffrc/formatted-files-reading.h
+1703849915 /home/work/Documents/GitHub/COPSolver/code/lib/ffrc/formatted-files-reading.h
 	<iostream>
 	<fstream>
 	<string>
@@ -866,4 +875,19 @@
 
 1703430795 source:/home/work/Documents/GitHub/COPSolver/code/src/ffrc/formatted-files-reading.cpp
 	"../../lib/ffrc/formatted-files-reading.h"
+
+1703849158 source:/home/work/Documents/GitHub/COPSolver/code/src/dpcp/demand-patterns-classification-problem.cpp
+	"../../lib/dpcp/demand-patterns-classification-problem.h"
+
+1703851347 /home/work/Documents/GitHub/COPSolver/code/lib/dpcp/demand-patterns-classification-problem.h
+	<math.h>
+	<iostream>
+	<fstream>
+	<string>
+	<sstream>
+	<iomanip>
+	<ctime>
+	<chrono>
+	<cstdlib>
+	<vector>
 

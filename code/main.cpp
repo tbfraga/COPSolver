@@ -50,9 +50,9 @@ repository: github.com/tbfraga/COPSolver
 
 #include "lib/ffrc/formatted-files-reading.h"
 #include "lib/clssp/classification-problem.h"
-#include "lib/dpcp/demand-patterns-identification-problem.h"
+#include "lib/dpcp/demand-patterns-classification-problem.h"
 #include "lib/cop/multiproduct-batch-processing-time-maximization-problem.h"
-//using namespace mbptm;
+using namespace mbptm;
 
 int main()
 {
@@ -154,7 +154,7 @@ int main()
             return 1;
         }
 
-        if(problem_definition_method != 1 && problem_definition_method != 2)
+        if(problem_definition_method != 1)
         {
             cout << endl << "error: there is an error in the config.txt file - problem definition method is not configured correctly." << endl;
             getchar();
@@ -169,11 +169,6 @@ int main()
         }
 
         dpc::dpcp _problem;
-
-        if(problem_definition_method == 2)
-        {
-            _problem.alexia();
-        }
 
         if(solving_method == 1)
         {
