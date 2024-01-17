@@ -4,9 +4,11 @@ Combinatorial Optimization Problems Solver
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
 
-**************************** call for new contributions ****************************
+**************************** *************************** ****************************
 
-Do you work with decision / optimization problems and enjoy programming in C++ ??? Do you want to contribute by offering a free and open source tool for various companies ?
+******************************************************** call for new contributions ********************************************************
+
+Do you work with decision / optimization problems and enjoy programming in C++ ??? Do you want to contribute by offering a free and open source tool for countless companies ?
 
 If the answer is yes, you are the right person to help me on this ambitious mission: to develop COPSolver so that it can solve a wide range of decision / optimization problems.
 
