@@ -6,7 +6,7 @@ Combinatorial Optimization Problems Solver
 
 **************************** *************************** ****************************
 
-******************************************************** call for new contributions ********************************************************
+*************************************************** call for new contributions ***************************************************
 
 Do you work with decision / optimization problems and enjoy programming in C++ ??? Do you want to contribute by offering a free and open source tool for countless companies ?
 
