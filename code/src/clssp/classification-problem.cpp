@@ -16,7 +16,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: vclss_mcc.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/12/24
+// last modification: 2023/02/28
 
 #include "../../lib/clssp/classification-problem.h"
 
@@ -123,7 +123,7 @@ namespace mcc
         return 0;
     };
 
-    bool clssp::analyticHierarchyProcess()
+    bool clssp::analyticHierarchyProcess(bool reord)
     {
         cout << endl << "applying AHP for multicriteria classification ..." << endl;
         get();
@@ -139,9 +139,35 @@ namespace mcc
 
         _problem.pairwiseWeight.consistencyRate();
 
+        for(unsigned int s=0; s<_problem.pairwiseWeight.mainEigenvector.size(); s++)
+        {
+            _problem.weightVector[s] = _problem.pairwiseWeight.mainEigenvector[s];
+        }
+
+        _problem.weightNormalize();
+
         file << _problem;
 
         file.close();
+
+        if (reord == 1)
+        {
+            _problem.reorder();
+
+
+            site = getenv("HOME");
+            site += "/COPSolver/results/AHP_problem_reord.txt";
+
+            file.open(site, ios::out);
+
+            file << "--> Data reordered:\n\n";
+
+            _problem.pairwiseWeight.consistencyRate();
+
+            file << _problem;
+
+            file.close();
+        }
 
         if(_problem.pairwiseWeight.CR > 0.1)
         {

@@ -17,7 +17,7 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 // version: vffr_ffr.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/12/24
+// last modification: 2023/02/28
 
 #include "../../lib/ffrc/formatted-files-reading.h"
 
@@ -27,6 +27,14 @@ namespace ffr
     {
         cout << endl << "creating alexia sales data file ... " << endl << endl;
         out.alexia_data();
+
+        return 0;
+    };
+
+    bool ffrc::alexia_rewrite()
+    {
+        cout << endl << "rewriting alexia data ... " << endl << endl;
+        out.alexia_rewrite();
 
         return 0;
     };

@@ -22,7 +22,7 @@ For more details see https://eigen.tuxfamily.org/
 // version: vclss_mcc.0-1
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/12/31
+// last modification: 2023/02/28
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -43,6 +43,7 @@ using namespace Eigen;
 
 namespace mcc
 {
+
     struct level
     {
         vector<double> scale{0.111,0.143,0.200,0.333,1,3,5,7,9};
@@ -189,8 +190,8 @@ namespace mcc
 
         friend ostream & operator << (ostream &out, const criteria &c)
         {
-            out << setw(18) << c.name << setw(10) << c.mode << setprecision(2) << fixed << setw(8) << c.valueA;
-            out << setprecision(2) << fixed << setw(8) << c.valueB << setprecision(2) << fixed << setw(8) << c.valueC;
+            out << setw(18) << c.name << setw(10) << c.mode << setprecision(2) << fixed << setw(12) << c.valueA;
+            out << setprecision(2) << fixed << setw(12) << c.valueB << setprecision(2) << fixed << setw(12) << c.valueC;
             return out;
         };
     };
@@ -233,7 +234,7 @@ namespace mcc
 
         friend ostream & operator << (ostream &out, const weight &w)
         {
-            out << setprecision(3) << setw(6) << w.value;
+            out << fixed << setprecision(2) << setw(6) << w.value;
             out << "\t" << w.criterion;
             return out;
         };
@@ -704,7 +705,7 @@ namespace mcc
 
         problem& weightNormalize()
         {
-            double sum = 0;
+            double sum = 0;//
 
             for(unsigned s=0; s<weightVector.size(); s++)
             {
@@ -714,6 +715,60 @@ namespace mcc
             for(unsigned s=0; s<weightVector.size(); s++)
             {
                 weightVector[s].value = weightVector[s].value/sum;
+            }
+
+            return *this;
+        };
+
+        problem& reorder()
+        {
+            level aux;
+            double auxD;
+
+            unsigned int bigestIndex;
+
+            for(unsigned int i=0; i<weightVector.size()-1; i++)
+            {
+                bigestIndex = i;
+
+                for(unsigned int j=i+1; j<weightVector.size(); j++)
+                {
+                    if(weightVector[bigestIndex].value < weightVector[j].value)
+                    {
+                        bigestIndex = j;
+                    }
+                }
+
+                if(bigestIndex > i)
+                {
+                    if(leadTimeIndex == i)
+                    {
+                        leadTimeIndex++;
+                    } else if(leadTimeIndex == bigestIndex)
+                    {
+                         leadTimeIndex = i;
+                    }
+
+                    weightVector.insert(weightVector.begin() + i, weightVector[bigestIndex]);
+                    weightVector.erase(weightVector.begin() + bigestIndex+1);
+
+                    pairwiseWeight.matrix.insert(pairwiseWeight.matrix.begin() + i, pairwiseWeight.matrix[bigestIndex]);
+                    pairwiseWeight.matrix.erase(pairwiseWeight.matrix.begin() + bigestIndex+1);
+
+                    for(unsigned int k=0; k<pairwiseWeight.matrix.size(); k++)
+                    {
+                        aux = pairwiseWeight.matrix[k][bigestIndex];
+                        pairwiseWeight.matrix[k].erase(pairwiseWeight.matrix[k].begin() + bigestIndex);
+                        pairwiseWeight.matrix[k].insert(pairwiseWeight.matrix[k].begin() + i, aux);
+                    }
+
+                    for(unsigned int k=0; k<data.size(); k++)
+                    {
+                        auxD = data[k][bigestIndex];
+                        data[k].erase(data[k].begin() + bigestIndex);
+                        data[k].insert(data[k].begin() + i, auxD);
+                    }
+                }
             }
 
             return *this;
@@ -1157,11 +1212,14 @@ namespace mcc
 
             return out;
         };
+
     };
 
     class clssp
     {
         protected:
+
+        bool r = 1;
 
         problem _problem;
         solution _solution;
@@ -1173,7 +1231,7 @@ namespace mcc
         bool get();
 
         bool ABC();
-        bool analyticHierarchyProcess();
+        bool analyticHierarchyProcess(bool reord);
 
         bool format_classification_data();
     };

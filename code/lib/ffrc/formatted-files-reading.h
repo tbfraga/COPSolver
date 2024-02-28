@@ -287,6 +287,278 @@ namespace ffr
             return *this;
 
         };
+
+        output& alexia_rewrite()
+        {
+            string dateStr;
+
+            fstream data_file;
+            fstream output_file;
+            char nu[200];
+            char code[4];
+            double value;
+
+            file_address = getenv("HOME");
+            file_address += "/COPSolver/data/benchmarks/clssp/alexia/";
+
+            data_file.open(file_address + "dataToMod.txt");
+            output_file.open(file_address + "data.txt", ios::out);
+
+            if (!data_file)
+            {
+                cerr << "File " << file_address + "data.txt" << " not oppened !" << endl;
+                getchar();
+            } else if (!output_file)
+            {
+                cerr << "File " << file_address + "dataToMod.txt" << " not created !" << endl;
+                getchar();
+            } else
+            {
+                data_file.getline(nu, 200);
+                output_file << nu;
+
+                for(unsigned int i=0; i<42; i++)
+                {
+                    data_file.getline(nu, 200);
+
+                    output_file << endl << nu;
+                }
+
+                for(unsigned int i=0; i<254; i++)
+                {
+                    data_file >> code;
+                    output_file << endl << code;
+
+                    // lead time
+                    data_file >> value;
+                    output_file << fixed << setprecision(2) << setw(7) << value;
+
+                    // substitutability
+                    data_file >> value;
+                    output_file << setprecision(2) << setw(7) << value - 1;
+
+                    // repairability
+                    data_file >> value;
+
+                    if (value == 3)
+                    {
+                        output_file << setprecision(2) << setw(10) << 68380.00;
+                    } else if (value == 2)
+                    {
+                        output_file << setprecision(2) << setw(10) << 21520.00;
+                    } else if (value == 1)
+                    {
+                        output_file << fixed << setprecision(2) << setw(10) << 0.00;
+                    }
+
+                    // criticality
+                    data_file >> value;
+
+                    if (value == 3)
+                    {
+                        output_file << setprecision(2) << setw(12) << 242000.00;
+                    } else if (value == 2)
+                    {
+                        output_file << setprecision(2) << setw(12) << 61640.00;
+                    } else if (value == 0)
+                    {
+                        output_file << fixed << setprecision(2) << setw(12) << 0.00;
+                    }
+
+                    // commonality
+                    data_file >> value;
+
+                    if (value == 3)
+                    {
+                        output_file << setprecision(2) << setw(10) << 5300.00;
+                    } else if (value == 2)
+                    {
+                        output_file << setprecision(2) << setw(10) << 1200.00;
+                    } else if (value == 1)
+                    {
+                        output_file << setprecision(2) << setw(10) << 0.00;
+                    }
+
+                    // billing
+                    data_file >> value;
+                    output_file << setprecision(2) << setw(12) << value;
+
+                    // obsolescence
+                    data_file >> value;
+
+                    if (value == 2)
+                    {
+                        output_file << setprecision(2) << setw(7) << 1.00;
+                    } else if (value == 1)
+                    {
+                        output_file << setprecision(2) << setw(7) << 0.00;
+                    }
+                }
+
+
+
+                /*while(!file.eof())
+                {
+                    file >> s;
+                code.push_back(s);
+
+                file >> u;
+                lead_time.push_back(u);
+
+                file >> c;
+                ABC_class.push_back(c);
+
+                file >> w;
+                ABC_weight.push_back(w);
+            }*/
+            }
+
+
+            /*
+
+            bool aux;
+
+            sale reg;
+
+            file_address = getenv("HOME");
+
+            output_file.open(file_address + "/COPSolver/results/sales_data.txt.alexia", ios::out);
+
+            _input.alexia_config();
+
+            alexia_data_address();
+
+            if (!output_file)
+            {
+                cerr << "File " << file_address + "/COPSolver/results/sales_data.txt.alexia" << " not created !" << endl;
+                getchar();
+            } else
+            {
+                _input.alexia_data_address();
+
+                output_file << "code STRING, quantity DOUBLE, value DOUBLE, year UNISGNED INT, month UNISIGNED INT, day UNSIGNED INT:" << endl << endl;
+
+                for(unsigned int s=0; s<_input.code.size(); s++)
+                {
+                    input_file.open(_input.file_address + _input.code[s] + ".txt");
+
+                    if (!input_file)
+                    {
+                        cerr << "File " << _input.file_address + _input.code[s] + ".txt" << " do not exist !" << endl;
+                        //getchar();
+                        _input.code.erase(_input.code.begin() + s);
+                        _input.lead_time.erase(_input.lead_time.begin() + s);
+                        _input.ABC_class.erase(_input.ABC_class.begin() + s);
+                        _input.ABC_weight.erase(_input.ABC_weight.begin() + s);
+                        s--;
+                    } else
+                    {
+                        while(!input_file.eof())
+                        {
+                            input_file >> dateStr;
+                            input_file >> dateStr;
+
+                            istringstream ss(dateStr);
+
+                            ss >> get_time(&reg.date, "%d/%m/%Y");
+
+                            if (ss.fail())
+                            {
+                                //cerr << endl << "!! Parsing failed in " << _input.code[s] << " ! " << dateStr << endl;
+                                //it will fail after reading last sale register of each input file
+                            } else
+                            {
+                                reg.date.tm_year += 1900;
+                                reg.date.tm_mon += 1;
+                                aux = 0;
+
+
+                                input_file >> reg.code;
+
+                                aux = 1;
+
+                                unsigned int index=0;
+                                do
+                                {
+                                    input_file.ignore(numeric_limits<std::streamsize>::max(),'U');
+                                    input_file.ignore(numeric_limits<std::streamsize>::max(),'N');
+
+                                    input_file >> dateStr;
+
+                                    index=0;
+                                    for( char c : dateStr )
+                                    {
+                                        if(c=='.' && index < dateStr.size()-4)
+                                        {
+                                            dateStr.erase(dateStr.begin() + index);
+                                        } else if(c==',' && index >= dateStr.size()-4)
+                                        {
+                                            dateStr[index] = '.';
+                                        }
+
+                                        index++;
+                                    }
+
+                                    stringstream stream(dateStr);
+                                    stream >> reg.quantity;
+
+                                    if (stream.fail())
+                                    {
+                                        //cerr << dateStr << " quantity format do not match" << endl;
+                                        //sometimes it will fail
+                                        /*if (_input.code[s] != "2091" && _input.code[s] != "2092" && _input.code[s] != "1823" && _input.code[s] != "2350"
+                                        && _input.code[s] != "2031" && _input.code[s] != "2032" && _input.code[s] != "2095"
+                                        && _input.code[s] != "2096" && _input.code[s] != "1873" && _input.code[s] != "2392"
+                                        && _input.code[s] != "1292" && _input.code[s] != "1701" && _input.code[s] != "2164"
+                                        && _input.code[s] != "1893" && _input.code[s] != "1767" && _input.code[s] != "2156"
+                                        && _input.code[s] != "1291" && _input.code[s] != "2145" && _input.code[s] != "1859"
+                                        && _input.code[s] != "2163" && _input.code[s] != "2165" && _input.code[s] != "1518") getchar();*/
+                                    /*} else
+                                    {
+                                        aux = 0;
+                                        break;
+                                    }
+
+                                } while (aux);
+
+                                input_file.ignore(numeric_limits<std::streamsize>::max(),' ');
+
+                                input_file >> dateStr;
+
+                                index=0;
+                                for( char c : dateStr )
+                                {
+                                    if(c=='.' && index < dateStr.size()-4)
+                                    {
+                                        dateStr.erase(dateStr.begin() + index);
+                                    } else if(c==',' && index >= dateStr.size()-4)
+                                    {
+                                        dateStr[index] = '.';
+                                    }
+
+                                    index++;
+                                }
+
+                                stringstream stream(dateStr);
+                                stream >> reg.price;
+
+                                input_file >> dateStr;
+                                input_file >> dateStr;
+                                output_file << reg << endl;
+                            }
+                        }
+                    }
+
+                    input_file.close();
+                }
+            }*/
+
+            data_file.close();
+            output_file.close();
+
+            return *this;
+
+        };
     };
 
     class ffrc
@@ -298,6 +570,7 @@ namespace ffr
         public:
 
         bool alexia();
+        bool alexia_rewrite();
     };
 }
 

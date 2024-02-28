@@ -109,10 +109,14 @@ int main()
 
     file.close();
 
+    //problem_class = 0;
+
     if(problem_class == 0) // if data formatting
     {
         ffr::ffrc data;
-        data.alexia(); // formatar dados da alexia
+        data.alexia_rewrite();
+        //
+        //data.alexia(); // formatar dados da alexia
     } else if(problem_class == 1) // if classification problems
     {
         if(problem_type != 1)
@@ -140,7 +144,7 @@ int main()
 
         if(solving_method == 1)
         {
-            _problem.analyticHierarchyProcess();
+            _problem.analyticHierarchyProcess(1);
         }
 
         _problem.clear();
