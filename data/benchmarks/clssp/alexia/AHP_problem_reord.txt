@@ -1,4 +1,4 @@
---> Adjusted data:
+--> Data reordered:
 
 number of criteria: 6
 
