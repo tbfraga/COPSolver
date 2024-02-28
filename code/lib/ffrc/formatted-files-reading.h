@@ -297,6 +297,7 @@ namespace ffr
             char nu[200];
             char code[4];
             double value;
+            unsigned int NCriteria;
 
             file_address = getenv("HOME");
             file_address += "/COPSolver/data/benchmarks/clssp/alexia/";
@@ -317,7 +318,30 @@ namespace ffr
                 data_file.getline(nu, 200);
                 output_file << nu;
 
-                for(unsigned int i=0; i<42; i++)
+                for(unsigned int i=0; i<3; i++)
+                {
+                    data_file.getline(nu, 200);
+
+                    output_file << endl << nu;
+                }
+
+                data_file >> NCriteria;
+                NCriteria--;
+                output_file << endl << NCriteria;
+
+                data_file.getline(nu, 200);
+                output_file << nu;
+
+                for(unsigned int i=0; i<4; i++)
+                {
+                    data_file.getline(nu, 200);
+
+                    output_file << endl << nu;
+                }
+
+                data_file.getline(nu, 200);
+
+                for(unsigned int i=0; i<36; i++)
                 {
                     data_file.getline(nu, 200);
 
@@ -335,7 +359,6 @@ namespace ffr
 
                     // substitutability
                     data_file >> value;
-                    output_file << setprecision(2) << setw(7) << value - 1;
 
                     // repairability
                     data_file >> value;

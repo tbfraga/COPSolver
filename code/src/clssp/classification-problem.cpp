@@ -192,7 +192,7 @@ namespace mcc
 
         file.close();
 
-        _solution.analyticHierarchyProcess(_problem);
+        _solution.newAnalyticHierarchyProcess(_problem);
 
         site = getenv("HOME");
         site += "/COPSolver/results/AHP_solution.txt";

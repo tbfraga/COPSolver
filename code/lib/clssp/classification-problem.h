@@ -571,6 +571,7 @@ namespace mcc
         unsigned int NData; // number of data per criterion
         vector<vector<double>> data; // data for each criterion - vector[_NData, _NCriteria]
         vector<string> code; // product code - vector[_NData]
+        unsigned int billingIndex;
         unsigned int leadTimeIndex;
         bool leadTimeVar;
         criteria multicriteria; // multicriteria parameters
@@ -625,6 +626,10 @@ namespace mcc
                 {
                     in >> p.weightVector[s];
                 }
+
+                in.ignore(std::numeric_limits<std::streamsize>::max(),':');
+
+                in >> p.billingIndex;
 
                 in.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
@@ -683,6 +688,10 @@ namespace mcc
             }
 
             out << endl;
+
+            out << "billing index: " << p.billingIndex << endl << endl;
+
+            out << "lead time index: " << p.leadTimeIndex << endl << endl;
 
             out << "number of data per criterion: " << p.NData << endl << endl;
 
@@ -747,6 +756,14 @@ namespace mcc
                     } else if(leadTimeIndex == bigestIndex)
                     {
                          leadTimeIndex = i;
+                    }
+
+                    if(billingIndex == i)
+                    {
+                        billingIndex++;
+                    } else if(billingIndex == bigestIndex)
+                    {
+                         billingIndex = i;
                     }
 
                     weightVector.insert(weightVector.begin() + i, weightVector[bigestIndex]);
@@ -957,6 +974,46 @@ namespace mcc
             return *this;
         };
 
+        solution& newPercentilMatrix()
+        {
+            double sum;
+
+            for(unsigned int d=0; d<prob.data.size(); d++)
+            {
+                    prob.data[d][prob.billingIndex] = prob.data[d][prob.billingIndex] / (31 - prob.data[d][prob.leadTimeIndex]);
+                    prob.data[d].erase(prob.data[d].begin() + prob.leadTimeIndex);
+            }
+
+            for(unsigned int d=0; d<perMatrix.size(); d++)
+            {
+                perMatrix[d].clear();
+                perMatrix[d].resize(prob.data[0].size());
+            }
+
+            for(unsigned int c=0; c<prob.data[0].size(); c++)
+            {
+                sum = 0;
+
+                for(unsigned int d=0; d<prob.data.size(); d++)
+                {
+                    sum += prob.data[d][c];
+                }
+
+                for(unsigned int d=0; d<prob.data.size(); d++)
+                {
+                    if(sum == 0)
+                    {
+                        perMatrix[d][c] = 0;
+                    }else
+                    {
+                        perMatrix[d][c] = prob.data[d][c]/sum;
+                    }
+                }
+            }
+
+            return *this;
+        };
+
         solution& ABC(problem p)
         {
             unsigned int it, product;
@@ -1006,7 +1063,115 @@ namespace mcc
                 {
                     product = orderedMatrix[d][c];
 
-                    if(prob.weightVector[c].criterion.mode == "value")
+                    if(prob.weightVector[c].criterion.mode == "binary")
+                    {
+                        if(prob.data[product][c] == 1.00)
+                        {
+                            ABCMatrix[product][c] = 'A';
+                        } else if(prob.data[product][c] == 0.00)
+                        {
+                            ABCMatrix[product][c] = 'C';
+                        }
+                    } else if(prob.weightVector[c].criterion.mode == "value")
+                    {
+                        if(prob.data[product][c] == prob.weightVector[c].criterion.valueA)
+                        {
+                            ABCMatrix[product][c] = 'A';
+                        } else if(prob.data[product][c] == prob.weightVector[c].criterion.valueB)
+                        {
+                            ABCMatrix[product][c] = 'B';
+                        } else if(prob.data[product][c] == prob.weightVector[c].criterion.valueC)
+                        {
+                            ABCMatrix[product][c] = 'C';
+                        }
+                    } else if(prob.weightVector[c].criterion.mode == "acmSum")
+                    {
+                        sum += perMatrix[product][c];
+
+                        if(d == 0 && sum >= prob.weightVector[c].criterion.valueA)
+                        {
+                            ABCMatrix[product][c] = 'A';
+                        } else if(d == 1 && sum >= prob.weightVector[c].criterion.valueB)
+                        {
+                            ABCMatrix[product][c] = 'B';
+                        } else if(sum <= prob.weightVector[c].criterion.valueA)
+                        {
+                            ABCMatrix[product][c] = 'A';
+                        } else if(sum <= prob.weightVector[c].criterion.valueB)
+                        {
+                            ABCMatrix[product][c] = 'B';
+                        } else
+                        {
+                            ABCMatrix[product][c] = 'C';
+                        }
+                    }
+                }
+            }
+
+            return *this;
+        };
+
+        solution& newABC(problem p)
+        {
+            unsigned int it, product;
+            double sum;
+
+            p.NCriteria--;
+
+            resize(p);
+            newPercentilMatrix();
+
+            // ordering
+
+            for(unsigned int c=0; c<orderedMatrix[0].size(); c++) // criterion
+            {
+                for(unsigned int d=0; d<orderedMatrix.size(); d++) // data
+                {
+                    it = d;
+
+                    for(unsigned int l=0; l<d; l++) // finding position
+                    {
+                        product = orderedMatrix[l][c];
+
+                        if(perMatrix[d][c] > perMatrix[product][c])
+                        {
+                            it = l;
+
+                            for(unsigned int i=d-1; i>l; i--) // relocation
+                            {
+                                orderedMatrix[i+1][c] = orderedMatrix[i][c];
+                            }
+
+                            orderedMatrix[l+1][c] = orderedMatrix[l][c];
+
+                            break;
+                        }
+                    }
+
+                    orderedMatrix[it][c] = d;
+                }
+            }
+
+            // ABC classification
+
+            for(unsigned int c=0; c<orderedMatrix[0].size(); c++) // criterion
+            {
+                sum = 0;
+
+                for(unsigned int d=0; d<orderedMatrix.size(); d++) // data
+                {
+                    product = orderedMatrix[d][c];
+
+                    if(prob.weightVector[c].criterion.mode == "binary")
+                    {
+                        if(prob.data[product][c] == 1.00)
+                        {
+                            ABCMatrix[product][c] = 'A';
+                        } else if(prob.data[product][c] == 0.00)
+                        {
+                            ABCMatrix[product][c] = 'C';
+                        }
+                    } else if(prob.weightVector[c].criterion.mode == "value")
                     {
                         if(prob.data[product][c] == prob.weightVector[c].criterion.valueA)
                         {
@@ -1176,6 +1341,30 @@ namespace mcc
         solution& analyticHierarchyProcess(problem p)
         {
             ABC(p);
+
+            for(unsigned int i=0; i<perMatrix.size(); i++)
+            {
+                weight[i] = 0;
+                for(unsigned int j=0; j<perMatrix[i].size(); j++)
+                {
+                    weight[i] += perMatrix[i][j]*prob.weightVector[j].value;
+                }
+            }
+
+            classification();
+
+            order();
+
+            return *this;
+        };
+
+        solution& newAnalyticHierarchyProcess(problem p)
+        {
+            newABC(p);
+
+            prob.weightVector[prob.billingIndex].criterion.name = "lead-time-billing";
+            prob.weightVector[prob.billingIndex].value += prob.weightVector[prob.leadTimeIndex].value;
+            prob.weightVector.erase(prob.weightVector.begin() + prob.leadTimeIndex);
 
             for(unsigned int i=0; i<perMatrix.size(); i++)
             {
