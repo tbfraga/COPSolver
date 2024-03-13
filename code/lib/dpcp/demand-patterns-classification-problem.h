@@ -215,13 +215,12 @@ namespace dpc
 
             in.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
-
             while(!in.eof())
             {
                 in >> sl;
                 if(!in.eof())
                 {
-                    p.data.push_back(sl);
+                    if(!in.eof()) p.data.push_back(sl);
                 }
             }
 

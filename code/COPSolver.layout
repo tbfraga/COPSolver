@@ -2,6 +2,24 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="lib/ffrc/formatted-files-reading.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5307" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="38" />
+			<Collapse line="45" />
+		</Folding>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5903" topLine="120" />
+		</Cursor>
+		<Folding>
+			<Collapse line="152" />
+			<Collapse line="184" />
+		</Folding>
+	</File>
 	<File name="src/dpcp/demand-patterns-classification-problem.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2274" topLine="0" />
@@ -12,15 +30,56 @@
 			<Collapse line="54" />
 		</Folding>
 	</File>
-	<File name="src/clssp/classification-problem.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="lib/clssp/classification-problem.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4583" topLine="0" />
+			<Cursor1 position="903" topLine="0" />
 		</Cursor>
 		<Folding>
-			<Collapse line="25" />
-			<Collapse line="31" />
-			<Collapse line="98" />
-			<Collapse line="115" />
+			<Collapse line="47" />
+			<Collapse line="152" />
+			<Collapse line="199" />
+			<Collapse line="242" />
+			<Collapse line="251" />
+			<Collapse line="266" />
+			<Collapse line="271" />
+			<Collapse line="276" />
+			<Collapse line="288" />
+			<Collapse line="334" />
+			<Collapse line="354" />
+			<Collapse line="393" />
+			<Collapse line="407" />
+			<Collapse line="436" />
+			<Collapse line="465" />
+			<Collapse line="566" />
+			<Collapse line="583" />
+			<Collapse line="600" />
+			<Collapse line="609" />
+			<Collapse line="614" />
+			<Collapse line="619" />
+			<Collapse line="702" />
+			<Collapse line="725" />
+			<Collapse line="740" />
+			<Collapse line="757" />
+			<Collapse line="819" />
+			<Collapse line="865" />
+			<Collapse line="884" />
+			<Collapse line="915" />
+			<Collapse line="977" />
+			<Collapse line="981" />
+			<Collapse line="1005" />
+			<Collapse line="1057" />
+			<Collapse line="1127" />
+			<Collapse line="1154" />
+			<Collapse line="1172" />
+			<Collapse line="1226" />
+			<Collapse line="1253" />
+			<Collapse line="1318" />
+			<Collapse line="1344" />
+			<Collapse line="1384" />
+			<Collapse line="1404" />
+			<Collapse line="1424" />
+			<Collapse line="1444" />
+			<Collapse line="1470" />
 		</Folding>
 	</File>
 	<File name="src/cop/multiproduct-batch-processing-time-maximization-problem.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -41,73 +100,17 @@
 			<Collapse line="203" />
 		</Folding>
 	</File>
-	<File name="src/ffrc/formatted-files-reading.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src/clssp/classification-problem.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1327" topLine="10" />
-		</Cursor>
-	</File>
-	<File name="lib/clssp/classification-problem.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="19933" topLine="309" />
+			<Cursor1 position="1340" topLine="0" />
 		</Cursor>
 		<Folding>
-			<Collapse line="251" />
-			<Collapse line="266" />
-			<Collapse line="271" />
-			<Collapse line="276" />
-			<Collapse line="288" />
-			<Collapse line="334" />
-			<Collapse line="354" />
-			<Collapse line="393" />
-			<Collapse line="407" />
-			<Collapse line="436" />
-			<Collapse line="465" />
-			<Collapse line="578" />
-			<Collapse line="598" />
-			<Collapse line="603" />
-			<Collapse line="608" />
-			<Collapse line="840" />
-			<Collapse line="845" />
-			<Collapse line="876" />
-			<Collapse line="935" />
-			<Collapse line="963" />
-			<Collapse line="1051" />
-			<Collapse line="1142" />
-			<Collapse line="1179" />
-			<Collapse line="1199" />
-			<Collapse line="1221" />
+			<Collapse line="25" />
+			<Collapse line="31" />
+			<Collapse line="98" />
+			<Collapse line="115" />
+			<Collapse line="126" />
 		</Folding>
-	</File>
-	<File name="lib/dpcp/demand-patterns-classification-problem.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1245" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="96" />
-			<Collapse line="112" />
-			<Collapse line="119" />
-			<Collapse line="138" />
-			<Collapse line="151" />
-			<Collapse line="161" />
-			<Collapse line="175" />
-			<Collapse line="180" />
-			<Collapse line="185" />
-			<Collapse line="231" />
-			<Collapse line="257" />
-			<Collapse line="283" />
-			<Collapse line="288" />
-			<Collapse line="293" />
-			<Collapse line="325" />
-			<Collapse line="414" />
-			<Collapse line="442" />
-			<Collapse line="481" />
-			<Collapse line="612" />
-		</Folding>
-	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4812" topLine="99" />
-		</Cursor>
 	</File>
 	<File name="lib/cop/multiproduct-batch-processing-time-maximization-problem.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
@@ -130,14 +133,30 @@
 			<Collapse line="548" />
 		</Folding>
 	</File>
-	<File name="lib/ffrc/formatted-files-reading.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="lib/dpcp/demand-patterns-classification-problem.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="11997" topLine="250" />
+			<Cursor1 position="12603" topLine="207" />
 		</Cursor>
 		<Folding>
-			<Collapse line="38" />
-			<Collapse line="45" />
-			<Collapse line="66" />
+			<Collapse line="96" />
+			<Collapse line="119" />
+			<Collapse line="138" />
+			<Collapse line="161" />
+			<Collapse line="175" />
+			<Collapse line="180" />
+			<Collapse line="185" />
+			<Collapse line="257" />
+			<Collapse line="283" />
+			<Collapse line="288" />
+			<Collapse line="293" />
+			<Collapse line="414" />
+			<Collapse line="442" />
+			<Collapse line="612" />
 		</Folding>
+	</File>
+	<File name="src/ffrc/formatted-files-reading.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1327" topLine="10" />
+		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

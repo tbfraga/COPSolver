@@ -43,10 +43,10 @@ repository: github.com/tbfraga/COPSolver
 // module: COPSolver: library for solving classification problems (problem_class == 1)
 // module: COPSolver: library for solving demand pattern classification problems (problem_class == 2)
 // module: COPSolver: library for solving multi-product p-batch processing time maximization problems (problem_class == 3)
-// version: 3.0-1
+// version: 3.0-2
 // developed by Tatiana Balbi Fraga
 // start date: 2023/04/26
-// last modification: 2023/12/22
+// last modification: 2024/02/29
 
 #include "lib/ffrc/formatted-files-reading.h"
 #include "lib/clssp/classification-problem.h"
@@ -234,7 +234,7 @@ int main()
         _problem.clear();
     }
 
-    cout << endl << "Thanks for using COPSolver !!!";
+    cout << endl << "Thanks for using COPSolver !!!" << endl;
     cout << endl << "Press enter for closing this window." << endl << endl;
 
     return 0;

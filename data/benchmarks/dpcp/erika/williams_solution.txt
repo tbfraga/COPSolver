@@ -1,0 +1,26 @@
+// benchmark - demand pattern classification - solution by williams's method - erika's data file
+
+// statistic: 
+
+        smooth:	 18.75 %; A:  20.00 %; B:  16.67 %; C:   -nan %
+   slow-moving:	  6.25 %; A:  10.00 %; B:   0.00 %; C:   -nan %
+      sporadic:	 75.00 %; A:  70.00 %; B:  83.33 %; C:   -nan %
+
+// code	   mltn      lump         pattern      lt cls:
+
+876	 230.00  10222.22        sporadic    0.03   A
+877	  22.86     66.94        sporadic    0.10   A
+100	 100.00   8100.00        sporadic    0.10   A
+176	 -70.00  -4480.00          smooth    0.10   A
+179	  30.00      0.00     slow-moving    0.03   A
+77	 150.00  29400.00        sporadic    0.10   A
+376	  26.67     79.32        sporadic    0.10   A
+377	  57.27     61.36        sporadic    0.03   A
+378	 160.00   5998.89        sporadic    0.03   A
+379	 -60.00   -540.00          smooth    0.03   A
+976	 345.00  38036.25        sporadic    0.03   B
+277	  26.25      3.37        sporadic    0.03   B
+278	 138.00   1788.48        sporadic    0.03   B
+676	 330.00  33000.00        sporadic    0.03   B
+779	-120.00  -3000.00          smooth    0.03   B
+576	 200.00   7533.33        sporadic    0.03   B

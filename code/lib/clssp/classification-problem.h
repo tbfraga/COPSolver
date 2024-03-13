@@ -8,7 +8,7 @@ Obs: You can alter this file only for personal purpose. You cannot distribute al
 
 The full license can be found in the LICENSE.md document available in this directory, or through the website: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.
 
-This project with its files can be consulted at https://github.com/tbfraga/COPSolver.
+This project with its files can be consulted at https://tbfraga.github.io/COPSolver/.
 
 'COPSolver: library for solving classification problems' uses Eigen library.
 For this reason, COPSolver repository contains a copy of the Eigen library.
@@ -17,12 +17,12 @@ For more details see https://eigen.tuxfamily.org/
 
 ******************************************************************************************************************************************************************************/
 
-// COPSolver (Combinatorial Optimization Problems Solver)
+// COPSolver (Combinatorial Optimization and Other Decision Problems Solver)
 // module: COPSolver: library for solving the multicriteria classification problem
-// version: vclss_mcc.0-1
+// version: vclss_mcc.0-2
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/02/28
+// last modification: 2024/03/13
 
 #ifndef CLASSIFICATION_PROBLEM_H_INCLUDED
 #define CLASSIFICATION_PROBLEM_H_INCLUDED
@@ -565,16 +565,20 @@ namespace mcc
     };
 
     struct problem{
-        unsigned int NCriteria; // number of criteria
-        vector<weight> weightVector; // criteria weight vector
-        pairwiseMatrix pairwiseWeight; // matrix of pairwise comparisons of the criteria
-        unsigned int NData; // number of data per criterion
-        vector<vector<double>> data; // data for each criterion - vector[_NData, _NCriteria]
-        vector<string> code; // product code - vector[_NData]
+        string origin;
+        unsigned int NCriteria;             // number of criteria
+        vector<weight> weightVector;        // criteria weight vector
+        pairwiseMatrix pairwiseWeight;      // matrix of pairwise comparisons of the criteria
+        unsigned int NData;                 // number of data per criterion
+        vector<vector<double>> data;        // data for each criterion - vector[_NData, _NCriteria]
+        vector<string> code;                // product code - vector[_NData]
         unsigned int billingIndex;
         unsigned int leadTimeIndex;
+        double maxLeadTime;                 // maximum lead time
         bool leadTimeVar;
-        criteria multicriteria; // multicriteria parameters
+        criteria multicriteria;             // multicriteria parameters
+
+        vector<vector<double>> b_lt; // billing + lead time - vector[_NData, 2]
 
         problem& clear()
         {
@@ -592,6 +596,12 @@ namespace mcc
             leadTimeIndex = 0;
             leadTimeVar = 0;
             multicriteria.clear();
+
+            for(unsigned int s=0; s<b_lt.size(); s++)
+            {
+                b_lt[s].clear();
+            }
+            b_lt.clear();
 
             return *this;
         };
@@ -614,6 +624,11 @@ namespace mcc
                 p.clear();
             }else
             {
+                in.ignore(std::numeric_limits<std::streamsize>::max(),'-');
+                in.ignore(std::numeric_limits<std::streamsize>::max(),'-');
+
+                in >> p.origin;
+
                 in.ignore(std::numeric_limits<std::streamsize>::max(),':');
 
                 in >> p.NCriteria;
@@ -658,6 +673,8 @@ namespace mcc
                 p.data.resize(p.NData);
                 p.code.resize(p.NData,"0");
 
+                p.maxLeadTime = 0;
+
                 for(unsigned int i=0; i<p.data.size(); i++)
                 {
                     p.data[i].resize(p.NCriteria);
@@ -667,6 +684,14 @@ namespace mcc
                     for(unsigned int j=0; j<p.data[i].size(); j++)
                     {
                         in >> p.data[i][j];
+
+                        if(j == p.leadTimeIndex)
+                        {
+                            if(p.data[i][j] > p.maxLeadTime)
+                            {
+                                p.maxLeadTime = p.data[i][j];
+                            }
+                        }
                     }
                 }
             }
@@ -894,6 +919,9 @@ namespace mcc
 
             sum = s.countA + s.countB + s.countC;
 
+            out << "COPSolver benchmark - multicriteria classification - Fraga's ABC + AHP solution - ";
+            out << s.prob.origin << " data file" << endl << endl;
+
             out << "Statistic :" << endl << endl;
 
             out << "A: " << 100*s.countA/sum << "%; B: " << 100*s.countB/sum << "%; C: " << 100*s.countC/sum << "%;" << endl << endl;
@@ -902,7 +930,7 @@ namespace mcc
 
             out << s.prob.NData << endl << endl;
 
-            out << "--> ABC multi-criteria classification (with Saat's Analytic Hierarchy Process)";
+            out << "--> Fraga's ABC Multicriteria Classification With Analytic Hierarchy Process";
 
             out << endl << endl << "(code | ABC | weight | sum | org order) :" << endl << endl;
 
@@ -934,7 +962,7 @@ namespace mcc
             {
                 index = s.classf[i];
 
-                out << s.prob.code[index];
+                out << s.prob.code[i];
 
                 for(unsigned int j=0; j<s.ABCMatrix[index].size(); j++)
                 {
@@ -978,11 +1006,23 @@ namespace mcc
         {
             double sum;
 
+            prob.b_lt.resize(prob.data.size());
+
+            for(unsigned int d=0; d<prob.b_lt.size(); d++)
+            {
+                prob.b_lt[d].push_back(prob.data[d][prob.billingIndex]);
+                prob.b_lt[d].push_back(prob.data[d][prob.leadTimeIndex]);
+            }
+
             for(unsigned int d=0; d<prob.data.size(); d++)
             {
-                    prob.data[d][prob.billingIndex] = prob.data[d][prob.billingIndex] / (31 - prob.data[d][prob.leadTimeIndex]);
-                    prob.data[d].erase(prob.data[d].begin() + prob.leadTimeIndex);
+                prob.data[d][prob.billingIndex] = prob.data[d][prob.billingIndex] / (prob.maxLeadTime - prob.data[d][prob.leadTimeIndex] + 1);
+                prob.data[d].erase(prob.data[d].begin() + prob.leadTimeIndex);
             }
+
+            prob.weightVector[prob.billingIndex].criterion.name = "lead-time-billing";
+            prob.weightVector[prob.billingIndex].value += prob.weightVector[prob.leadTimeIndex].value;
+            prob.weightVector.erase(prob.weightVector.begin() + prob.leadTimeIndex);
 
             for(unsigned int d=0; d<perMatrix.size(); d++)
             {
@@ -1164,7 +1204,7 @@ namespace mcc
 
                     if(prob.weightVector[c].criterion.mode == "binary")
                     {
-                        if(prob.data[product][c] == 1.00)
+                        if(prob.data[product][c] > 0)
                         {
                             ABCMatrix[product][c] = 'A';
                         } else if(prob.data[product][c] == 0.00)
@@ -1332,6 +1372,9 @@ namespace mcc
             ABCClassf = aux_ABC;
             weight = aux_weight;
 
+            prob.code = code;
+            prob.data = data;
+
             aux_ABC.clear();
             aux_weight.clear();
 
@@ -1362,10 +1405,6 @@ namespace mcc
         {
             newABC(p);
 
-            prob.weightVector[prob.billingIndex].criterion.name = "lead-time-billing";
-            prob.weightVector[prob.billingIndex].value += prob.weightVector[prob.leadTimeIndex].value;
-            prob.weightVector.erase(prob.weightVector.begin() + prob.leadTimeIndex);
-
             for(unsigned int i=0; i<perMatrix.size(); i++)
             {
                 weight[i] = 0;
@@ -1394,6 +1433,30 @@ namespace mcc
             {
                 out << s.code[i];
                 out << setprecision(2) << fixed << setw(11) << s.data[i][s.prob.leadTimeIndex];
+                out << setw(4) << s.ABCClassf[i];
+                out << setprecision(4) << fixed << setw(8) << s.weight[i];
+                out << endl;
+            }
+
+            return out;
+        };
+
+        friend ostream& newCreateList(ostream &out, const solution &s)
+        {
+            unsigned int index;
+
+            out << "Number of data :" << endl << endl;
+
+            out << s.prob.NData << endl << endl;
+
+            out << "// list for demand patter clss (code | lead time | ABC clssf | weigh):" << endl << endl;
+
+            for(unsigned int i=0; i<s.prob.code.size(); i++)
+            {
+                index = s.classf[i];
+
+                out << s.prob.code[i];
+                out << setprecision(2) << fixed << setw(11) << s.prob.b_lt[index][1];
                 out << setw(4) << s.ABCClassf[i];
                 out << setprecision(4) << fixed << setw(8) << s.weight[i];
                 out << endl;

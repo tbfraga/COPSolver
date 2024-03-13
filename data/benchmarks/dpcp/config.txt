@@ -1,0 +1,17 @@
+// benchmark - demand pattern classification problem - config file
+
+// class, use:
+// 2 for demand patterns identification problem.
+2
+// problem, use:
+// 1 for code data + sales data.
+1
+// problem definition method, use:
+// 1 for taking the problem from data file.
+1
+// predefined problem, use:
+// 0 for none.
+0
+// solving method, use:
+// 1 for Williams's method.
+1

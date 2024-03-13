@@ -13,10 +13,10 @@ This project with its files can be consulted at https://github.com/tbfraga/COPSo
 
 // COPSolver (Combinatorial Optimization Problems Solver)
 // module: COPSolver: library for solving multicriteria classification problems
-// version: vclss_mcc.0-1
+// version: vclss_mcc.0-2
 // developed by Tatiana Balbi Fraga
 // start date: 2023/10/18
-// last modification: 2023/02/28
+// last modification: 2024/03/06
 
 #include "../../lib/clssp/classification-problem.h"
 
@@ -125,7 +125,7 @@ namespace mcc
 
     bool clssp::analyticHierarchyProcess(bool reord)
     {
-        cout << endl << "applying AHP for multicriteria classification ..." << endl;
+        cout << endl << "applying Fraga's ABC Multicriteria Classification With Analytic Hierarchy Process ..." << endl;
         get();
 
         string site = getenv("HOME");
@@ -134,6 +134,9 @@ namespace mcc
         fstream file;
 
         file.open(site, ios::out);
+
+        file << "// COPSolver benchmark - multicriteria classification - solution (original problem - original matrix) - ";
+        file << _problem.origin << " data file\n\n";
 
         file << "--> Data:\n\n";
 
@@ -154,13 +157,15 @@ namespace mcc
         {
             _problem.reorder();
 
-
             site = getenv("HOME");
             site += "/COPSolver/results/AHP_problem_reord.txt";
 
             file.open(site, ios::out);
 
-            file << "--> Data reordered:\n\n";
+            file << "// COPSolver benchmark - multicriteria classification - solution (problem reordered - original matrix) - ";
+            file << _problem.origin << " data file\n\n";
+
+            file << "--> Data computationally reordered:\n\n";
 
             _problem.pairwiseWeight.consistencyRate();
 
@@ -186,7 +191,17 @@ namespace mcc
 
         file.open(site, ios::out);
 
-        file << "--> Adjusted data:\n\n";
+        if (reord == 0)
+        {
+            file << "// COPSolver benchmark - multicriteria classification - solution (original problem - adjusted matrix) - ";
+            file << _problem.origin << " data file\n\n";
+        } else if (reord == 1)
+        {
+            file << "// COPSolver benchmark - multicriteria classification - solution (problem reordered - adjusted matrix) - ";
+            file << _problem.origin << " data file\n\n";
+        }
+
+        file << "--> Data computationally adjusted for forcing consistency:\n\n";
 
         file << _problem;
 
@@ -208,7 +223,10 @@ namespace mcc
 
         file.open(site, ios::out);
 
-        createList(file, _solution);
+        file << "// COPSolver benchmark - multicriteria classification - solution (code list + data) - ";
+        file << _problem.origin << " data file\n\n";
+
+        newCreateList(file, _solution);
 
         file.close();
 
