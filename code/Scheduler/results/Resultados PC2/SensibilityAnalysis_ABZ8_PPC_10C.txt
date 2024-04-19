@@ -1,0 +1,44 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Maximun number of iterations without upgrade
+
+ Problem: ABZ8
+
+ Method : Single Parallel Particle Collision
+
+ With the following fixed parameters:
+
+	 Population size: 12
+	 Perturbation method: M1
+	 Exploitation method: Taboo Search
+
+ 	 With the following fixed parameters:
+
+	 	Neighborhood generation method: 0
+	 	Tenure: 8
+	 	Maximum number of iterations without upgrade: 100
+
+	 Maximum number of iterations: 10
+
+ Results:
+
+
+        100        713          320170        164
+        100        710          332824        172
+        100        707          304026        156
+        100        711          296060        152
+        100        713          310582        159
+       1000        689         2036595       1031
+       1000        683         2183506       1105
+       1000        687         2116671       1070
+       1000        687         2026437       1026
+       1000        690         1889161        957
+      10000        672        12693064       6396
+      10000        674        12591536       6339
+      10000        674        13209931       6663
+      10000        679        11998512       6053
+      10000        674        12982182       6546
+     100000        674        89392018      45365
+     100000        672        96196327      48683
+     100000        678        94530714      47942
+     100000        673        92230113      46670
+     100000        676        92308775      46777

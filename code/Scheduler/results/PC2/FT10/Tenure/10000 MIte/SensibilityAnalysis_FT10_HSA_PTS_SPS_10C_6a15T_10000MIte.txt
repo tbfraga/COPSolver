@@ -1,0 +1,75 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Tenure
+
+ Problem: FT10
+
+ Method : Hybrid Successive Application (10 cycles)
+
+ with Parallel Taboo Search with the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 10000
+
+ and Similar Particle Swarm with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: 0
+	 Mutation method: 0
+	 Mutation percentage: 20
+	 Maximum number of iterations: 1
+
+ Results:
+
+
+          6        930         7134616       1514
+          6        930         7059489       1501
+          6        930         7285864       1534
+          6        930         6820756       1474
+          6        934         7128811       1516
+          7        930         7801066       1654
+          7        930         7852653       1656
+          7        930         7765125       1636
+          7        934         7601812       1617
+          7        930         7831678       1664
+          8        930         8273334       1759
+          8        930         8490570       1802
+          8        935         8749713       1857
+          8        930         8633197       1834
+          8        930         8959891       1903
+          9        930         8842913       1872
+          9        930         9108461       1928
+          9        930         8768483       1859
+          9        930         8766411       1854
+          9        930         8077135       1710
+         10        930         8899738       1883
+         10        930         8941805       1895
+         10        930         8639943       1831
+         10        935         8428601       1786
+         10        930         9028551       1916
+         11        930         9373459       1987
+         11        930         9362256       1987
+         11        930         9310044       1974
+         11        930         9248454       1958
+         11        930         9008419       1906
+         12        930         9132865       1938
+         12        934         9282812       1970
+         12        930         8974023       1902
+         12        930         8773062       1861
+         12        930         8840939       1875
+         13        930         9258395       1967
+         13        930         8969121       1907
+         13        930         8853301       1883
+         13        930         8861735       1882
+         13        930         9467043       2010
+         14        934         9092212       1935
+         14        935         9223698       1965
+         14        935         9513086       2026
+         14        935         9163506       1949
+         14        934         8661222       1843
+         15        937         9048991       1931
+         15        930         9045743       1930
+         15        930         8734554       1862
+         15        937         9380261       2002
+         15        930         8549690       1826

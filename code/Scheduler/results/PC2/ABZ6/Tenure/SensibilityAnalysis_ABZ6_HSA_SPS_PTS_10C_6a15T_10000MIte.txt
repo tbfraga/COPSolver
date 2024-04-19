@@ -1,0 +1,81 @@
+
+ Sensibility Analysis parameter: Taboo Search - Second method - Tenure
+
+ Problem: ABZ6
+
+ Method : Hybrid Successive Application (10 cycles)
+
+
+ First operator: Similar Particle Swarm
+
+ with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: C1 with 1 floating point
+	 Mutation method: M1
+	 Mutation percentage: 20
+	 Number of iterations: 1
+
+
+ Second operator: Parallel Taboo Search
+
+ With the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: N5
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 10000
+
+
+ Results:
+
+          6        945         6348174       1291
+          6        943         5905719       1213
+          6        945         6311308       1282
+          6        943         6277256       1276
+          6        945         6310418       1281
+          7        945         6807893       1372
+          7        945         6627060       1341
+          7        945         6656754       1344
+          7        945         6649966       1342
+          7        943         6716819       1358
+          8        945         7110253       1447
+          8        945         7201946       1457
+          8        945         6903273       1403
+          8        943         7088793       1442
+          8        947         6781477       1379
+          9        943         7133722       1461
+          9        943         7144682       1461
+          9        945         6988423       1426
+          9        945         6950782       1418
+          9        943         6936977       1425
+         10        945         6900598       1411
+         10        945         6801993       1391
+         10        945         7120417       1457
+         10        945         7155938       1468
+         10        945         7214884       1475
+         11        943         7577891       1552
+         11        943         8063178       1653
+         11        945         8457837       1734
+         11        945         7606440       1560
+         11        943         7668593       1571
+         12        943         7107489       1469
+         12        943         7469693       1542
+         12        943         7080503       1464
+         12        943         7043687       1456
+         12        945         7557777       1561
+         13        943         7396028       1533
+         13        943         7750298       1605
+         13        943         7344545       1523
+         13        943         7530768       1559
+         13        943         7656175       1585
+         14        943         7521336       1566
+         14        945         7427231       1548
+         14        943         7488558       1558
+         14        943         7689171       1601
+         14        943         7562484       1574
+         15        943         8110814       1698
+         15        943         8060272       1688
+         15        943         8237753       1723
+         15        943         8295582       1738
+         15        943         7837453       1640

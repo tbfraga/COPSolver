@@ -1,0 +1,503 @@
+# depslib dependency file v1.0
+1262027435 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\main.cpp
+	<windows.h>
+	<Windowsx.h>
+	"lib\Scdl_Structure.h"
+
+1283910750 Structure.h"
+
+1256315533 c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\resource.h
+	<windows.h>
+
+1283906183 >
+
+1256315816 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\scheduler.rc
+	"Resource.h"
+
+1283911061 h"
+
+1262025292 c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\scdl_structure.h
+	<windows.h>
+	<math.h>
+	<float.h>
+	"Resource.h"
+	<vector>
+
+1267563868 
+
+1261171926 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\problemdef.cpp
+	"Scdl_Structure.h"
+
+1264972990 cture.h"
+
+1262025292 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\scdl_structure.cpp
+	"Scdl_Structure.h"
+
+1262025537 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\methoddef.cpp
+	"Scdl_Structure.h"
+
+1260477903 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\taboosearch.cpp
+	"Scdl_Structure.h"
+	<Float.h>
+
+1261171982 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\constructiveheuristic.cpp
+	"Scdl_Structure.h"
+	<float.h>
+
+1261493965 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\gantt.cpp
+	<math.h>
+	"Scdl_Structure.h"
+
+1261485479 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\criticalpath_operators.cpp
+	"Scdl_Structure.h"
+
+1262024989 c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\resource.h
+	<windows.h>
+
+1262025082 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\scheduler.rc
+	"Resource.h"
+
+1257018544 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\crossover_operators.cpp
+	"Scdl_Structure.h"
+
+1260477957 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\similarparticleswarm.cpp
+	"Scdl_Structure.h"
+
+1257018784 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\mutation_operators.cpp
+	"Scdl_Structure.h"
+
+1257774981 source:c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\constructiveheuristic.cpp
+	"Scdl_Structure.h"
+	<float.h>
+
+1258039567 c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\scdl_structure.h
+	<windows.h>
+	<float.h>
+	"Resource.h"
+	<vector>
+
+1258114118 c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\resource.h
+	<windows.h>
+
+1257604827 source:c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\criticalpath_operators.cpp
+	<Scdl_Structure.h>
+
+1257604827 cture.h>
+
+1257018544 source:c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\crossover_operators.cpp
+	"Scdl_Structure.h"
+
+1257892883 source:c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\gantt.cpp
+	<math.h>
+	"Scdl_Structure.h"
+
+1258028712 source:c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\methoddef.cpp
+	"Scdl_Structure.h"
+
+1257018784 source:c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\mutation_operators.cpp
+	"Scdl_Structure.h"
+
+1257442396 source:c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\problemdef.cpp
+	"Scdl_Structure.h"
+
+1258031988 source:c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\scdl_structure.cpp
+	"Scdl_Structure.h"
+
+1258114358 source:c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\scheduler.rc
+	"Resource.h"
+
+1257852039 source:c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\similarparticleswarm.cpp
+	"Scdl_Structure.h"
+
+1258031988 source:c:\users\tatiana\documents\c++\projects\scheduler v1.4\lib\taboosearch.cpp
+	"Scdl_Structure.h"
+	<Float.h>
+
+1257774981 source:c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\constructiveheuristic.cpp
+	"Scdl_Structure.h"
+	<float.h>
+
+1258136850 c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\scdl_structure.h
+	<windows.h>
+	<float.h>
+	"Resource.h"
+	<vector>
+
+1258128627 c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\resource.h
+	<windows.h>
+
+1258123516 source:c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\criticalpath_operators.cpp
+	"Scdl_Structure.h"
+
+1257018544 source:c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\crossover_operators.cpp
+	"Scdl_Structure.h"
+
+1257892883 source:c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\gantt.cpp
+	<math.h>
+	"Scdl_Structure.h"
+
+1258137447 source:c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\methoddef.cpp
+	"Scdl_Structure.h"
+
+1257018784 source:c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\mutation_operators.cpp
+	"Scdl_Structure.h"
+
+1257442396 source:c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\problemdef.cpp
+	"Scdl_Structure.h"
+
+1258136850 source:c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\scdl_structure.cpp
+	"Scdl_Structure.h"
+
+1258132698 source:c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\scheduler.rc
+	"Resource.h"
+
+1258137056 source:c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\similarparticleswarm.cpp
+	"Scdl_Structure.h"
+
+1258135788 source:c:\users\tatiana\documents\c++\projects\scheduler v 1.5\lib\taboosearch.cpp
+	"Scdl_Structure.h"
+	<Float.h>
+
+1258137056 source:c:\users\tatiana\documents\c++\projects\scheduler v 1.5\main.cpp
+	<windows.h>
+	<Windowsx.h>
+	"lib\Scdl_Structure.h"
+
+1259075666 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\constructiveheuristic.cpp
+	"Scdl_Structure.h"
+	<float.h>
+
+1259073270 c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\scdl_structure.h
+	<windows.h>
+	<float.h>
+	"Resource.h"
+	<vector>
+
+1258128627 c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\resource.h
+	<windows.h>
+
+1258123516 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\criticalpath_operators.cpp
+	"Scdl_Structure.h"
+
+1257018544 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\crossover_operators.cpp
+	"Scdl_Structure.h"
+
+1259075708 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\gantt.cpp
+	<math.h>
+	"Scdl_Structure.h"
+
+1259079201 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\methoddef.cpp
+	"Scdl_Structure.h"
+
+1257018784 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\mutation_operators.cpp
+	"Scdl_Structure.h"
+
+1259075708 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\problemdef.cpp
+	"Scdl_Structure.h"
+
+1258136850 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\scdl_structure.cpp
+	"Scdl_Structure.h"
+
+1258132698 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\scheduler.rc
+	"Resource.h"
+
+1258137056 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\similarparticleswarm.cpp
+	"Scdl_Structure.h"
+
+1258135788 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\taboosearch.cpp
+	"Scdl_Structure.h"
+	<Float.h>
+
+1258137056 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\main.cpp
+	<windows.h>
+	<Windowsx.h>
+	"lib\Scdl_Structure.h"
+
+1259081453 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler v 1.5\lib\hybrid_models.cpp
+	"Scdl_Structure.h"
+
+1261588646 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\hybrid_models.cpp
+	"Scdl_Structure.h"
+
+1259682739 source:c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\particle_collision.cpp
+	"Scdl_Structure.h"
+
+1259581427 c:\users\tatiana\documents\c++\projects\codeblocks\scheduler\lib\scdl_structure.cpp
+	"Scdl_Structure.h"
+
+1261171982 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\constructiveheuristic.cpp
+	"Scdl_Structure.h"
+	<float.h>
+
+1267636900 c:\users\tatiana\documents\c++\projects\scheduler\lib\scdl_structure.h
+	<windows.h>
+	<math.h>
+	<float.h>
+	"Resource.h"
+	<vector>
+
+1283906183 c:\users\tatiana\documents\c++\projects\scheduler\lib\resource.h
+	<windows.h>
+
+1261485479 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\criticalpath_operators.cpp
+	"Scdl_Structure.h"
+
+1257018544 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\crossover_operators.cpp
+	"Scdl_Structure.h"
+
+1261493965 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\gantt.cpp
+	<math.h>
+	"Scdl_Structure.h"
+
+1267722166 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\hybrid_models.cpp
+	"Scdl_Structure.h"
+
+1276710094 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\methoddef.cpp
+	"Scdl_Structure.h"
+
+1257018784 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\mutation_operators.cpp
+	"Scdl_Structure.h"
+
+1267582128 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\particle_collision.cpp
+	"Scdl_Structure.h"
+
+1262371326 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\problemdef.cpp
+	"Scdl_Structure.h"
+
+1267573641 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\scdl_structure.cpp
+	"Scdl_Structure.h"
+
+1283911061 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\scheduler.rc
+	"Resource.h"
+
+1264972990 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\similarparticleswarm.cpp
+	"Scdl_Structure.h"
+
+1267563868 source:c:\users\tatiana\documents\c++\projects\scheduler\lib\taboosearch.cpp
+	"Scdl_Structure.h"
+	<Float.h>
+
+1283910750 source:c:\users\tatiana\documents\c++\projects\scheduler\main.cpp
+	<windows.h>
+	<Windowsx.h>
+	"lib\Scdl_Structure.h"
+
+1261171982 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\constructiveheuristic.cpp
+	"Scdl_Structure.h"
+	<float.h>
+
+1267636900 c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\scdl_structure.h
+	<windows.h>
+	<math.h>
+	<float.h>
+	"Resource.h"
+	<vector>
+
+1283906183 c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\resource.h
+	<windows.h>
+
+1261485479 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\criticalpath_operators.cpp
+	"Scdl_Structure.h"
+
+1257018544 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\crossover_operators.cpp
+	"Scdl_Structure.h"
+
+1261493965 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\gantt.cpp
+	<math.h>
+	"Scdl_Structure.h"
+
+1267722166 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\hybrid_models.cpp
+	"Scdl_Structure.h"
+
+1276710094 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\methoddef.cpp
+	"Scdl_Structure.h"
+
+1257018784 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\mutation_operators.cpp
+	"Scdl_Structure.h"
+
+1267582128 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\particle_collision.cpp
+	"Scdl_Structure.h"
+
+1262371326 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\problemdef.cpp
+	"Scdl_Structure.h"
+
+1267573641 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\scdl_structure.cpp
+	"Scdl_Structure.h"
+
+1283911061 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\scheduler.rc
+	"Resource.h"
+
+1264972990 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\similarparticleswarm.cpp
+	"Scdl_Structure.h"
+
+1267563868 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\lib\taboosearch.cpp
+	"Scdl_Structure.h"
+	<Float.h>
+
+1283910750 source:c:\users\tatiana\documents\_tati\c++\projects\scheduler\main.cpp
+	<windows.h>
+	<Windowsx.h>
+	"lib\Scdl_Structure.h"
+
+1261161184 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/ConstructiveHeuristic.cpp
+	"Scdl_Structure.h"
+	<float.h>
+
+1267626102 /home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/Scdl_Structure.h
+	<windows.h>
+	<math.h>
+	<float.h>
+	"Resource.h"
+	<vector>
+
+1283895384 /home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/Resource.h
+	<windows.h>
+
+1261474680 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/CriticalPath_Operators.cpp
+	"Scdl_Structure.h"
+
+1257007744 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/Crossover_Operators.cpp
+	"Scdl_Structure.h"
+
+1261483166 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/Gantt.cpp
+	<math.h>
+	"Scdl_Structure.h"
+
+1267711368 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/Hybrid_Models.cpp
+	"Scdl_Structure.h"
+
+1276699296 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/MethodDef.cpp
+	"Scdl_Structure.h"
+
+1257007984 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/Mutation_Operators.cpp
+	"Scdl_Structure.h"
+
+1267571330 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/Particle_Collision.cpp
+	"Scdl_Structure.h"
+
+1267562842 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/Scdl_Structure.cpp
+	"Scdl_Structure.h"
+
+1283900262 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/Scheduler.rc
+	"Resource.h"
+
+1264962192 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/SimilarParticleSwarm.cpp
+	"Scdl_Structure.h"
+
+1267553070 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/lib/TabooSearch.cpp
+	"Scdl_Structure.h"
+	<Float.h>
+
+1283899952 source:/home/admin/Documents/docs/TudoTudo3/organizar2/Trabalho/SVN/Scheduler/main.cpp
+	<windows.h>
+	<Windowsx.h>
+	"lib\Scdl_Structure.h"
+
+1283899952 source:/home/admin/Documents/Scheduler/main.cpp
+	<windows.h>
+	<Windowsx.h>
+	"lib\Scdl_Structure.h"
+
+1261161184 source:/home/admin/Documents/Scheduler/lib/ConstructiveHeuristic.cpp
+	"Scdl_Structure.h"
+	<float.h>
+
+1267626102 /home/admin/Documents/Scheduler/lib/Scdl_Structure.h
+	<windows.h>
+	<math.h>
+	<float.h>
+	"Resource.h"
+	<vector>
+
+1283895384 /home/admin/Documents/Scheduler/lib/Resource.h
+	<windows.h>
+
+1261474680 source:/home/admin/Documents/Scheduler/lib/CriticalPath_Operators.cpp
+	"Scdl_Structure.h"
+
+1257007744 source:/home/admin/Documents/Scheduler/lib/Crossover_Operators.cpp
+	"Scdl_Structure.h"
+
+1261483166 source:/home/admin/Documents/Scheduler/lib/Gantt.cpp
+	<math.h>
+	"Scdl_Structure.h"
+
+1267711368 source:/home/admin/Documents/Scheduler/lib/Hybrid_Models.cpp
+	"Scdl_Structure.h"
+
+1276699296 source:/home/admin/Documents/Scheduler/lib/MethodDef.cpp
+	"Scdl_Structure.h"
+
+1257007984 source:/home/admin/Documents/Scheduler/lib/Mutation_Operators.cpp
+	"Scdl_Structure.h"
+
+1267571330 source:/home/admin/Documents/Scheduler/lib/Particle_Collision.cpp
+	"Scdl_Structure.h"
+
+1267562842 source:/home/admin/Documents/Scheduler/lib/Scdl_Structure.cpp
+	"Scdl_Structure.h"
+
+1283900262 source:/home/admin/Documents/Scheduler/lib/Scheduler.rc
+	"Resource.h"
+
+1264962192 source:/home/admin/Documents/Scheduler/lib/SimilarParticleSwarm.cpp
+	"Scdl_Structure.h"
+
+1267553070 source:/home/admin/Documents/Scheduler/lib/TabooSearch.cpp
+	"Scdl_Structure.h"
+	<Float.h>
+
+1261161184 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/ConstructiveHeuristic.cpp
+	"Scdl_Structure.h"
+	<float.h>
+
+1267626102 /home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/Scdl_Structure.h
+	<windows.h>
+	<math.h>
+	<float.h>
+	"Resource.h"
+	<vector>
+
+1283895384 /home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/Resource.h
+	<windows.h>
+
+1261474680 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/CriticalPath_Operators.cpp
+	"Scdl_Structure.h"
+
+1257007744 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/Crossover_Operators.cpp
+	"Scdl_Structure.h"
+
+1261483166 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/Gantt.cpp
+	<math.h>
+	"Scdl_Structure.h"
+
+1267711368 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/Hybrid_Models.cpp
+	"Scdl_Structure.h"
+
+1276699296 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/MethodDef.cpp
+	"Scdl_Structure.h"
+
+1257007984 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/Mutation_Operators.cpp
+	"Scdl_Structure.h"
+
+1267571330 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/Particle_Collision.cpp
+	"Scdl_Structure.h"
+
+1267562842 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/Scdl_Structure.cpp
+	"Scdl_Structure.h"
+
+1283900262 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/Scheduler.rc
+	"Resource.h"
+
+1264962192 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/SimilarParticleSwarm.cpp
+	"Scdl_Structure.h"
+
+1267553070 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/lib/TabooSearch.cpp
+	"Scdl_Structure.h"
+	<Float.h>
+
+1283899952 source:/home/work/Documents/GitHub/COPSolver/code/Scheduler/main.cpp
+	<windows.h>
+	<Windowsx.h>
+	"lib\Scdl_Structure.h"
+

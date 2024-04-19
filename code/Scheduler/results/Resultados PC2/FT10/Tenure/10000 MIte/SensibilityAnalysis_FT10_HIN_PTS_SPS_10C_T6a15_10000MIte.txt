@@ -1,0 +1,75 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Tenure
+
+ Problem: FT10
+
+ Method : Hybrid Improved Neighborhood (10 cycles)
+
+ with Parallel Taboo Search with the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 10000
+
+ and Similar Particle Swarm with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: 0
+	 Mutation method: 0
+	 Mutation percentage: 20
+	 Maximum number of iterations: 1
+
+ Results:
+
+
+          6        937         7106782       1518
+          6        935         6817226       1476
+          6        937         6829445       1475
+          6        935         7490158       1584
+          6        945         6633180       1461
+          7        934         7542778       1617
+          7        934         7281822       1574
+          7        940         7265884       1562
+          7        930         7447764       1596
+          7        930         7514072       1611
+          8        930         8175530       1747
+          8        934         7905123       1697
+          8        934         7928804       1691
+          8        930         8016407       1715
+          8        930         7703469       1645
+          9        930         7899382       1681
+          9        934         8260333       1756
+          9        930         8182443       1742
+          9        934         8228124       1749
+          9        934         8488801       1803
+         10        935         8080598       1724
+         10        935         8793110       1879
+         10        935         7973271       1701
+         10        930         8592640       1837
+         10        930         8414205       1795
+         11        930         8662114       1847
+         11        935         8530027       1820
+         11        930         8986657       1916
+         11        935         8885255       1896
+         11        930         8481714       1808
+         12        930         8480397       1811
+         12        935         8706516       1860
+         12        938         8460398       1806
+         12        930         8719481       1860
+         12        936         8648872       1847
+         13        930         8347885       1784
+         13        930         8569581       1833
+         13        930         8273705       1770
+         13        934         8582575       1836
+         13        930         8876770       1898
+         14        934         8278627       1775
+         14        934         8422421       1802
+         14        930         8565769       1833
+         14        935         9338389       2001
+         14        934         8932295       1915
+         15        934         8482477       1820
+         15        935         8819824       1892
+         15        940         8772285       1881
+         15        940         8444151       1810
+         15        940         8378607       1799

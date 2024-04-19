@@ -1,0 +1,75 @@
+
+ Sensibility Analysis parameter: Taboo Search - Second method - Tenure
+
+ Problem: FT10
+
+ Method : Hybrid Improved Neighborhood (10 cycles)
+
+ with Similar Particle Swarm with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: 0
+	 Mutation method: 0
+	 Mutation percentage: 20
+	 Maximum number of iterations: 1
+
+ and Parallel Taboo Search with the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 10000
+
+ Results:
+
+
+          6        937         7365564       1564
+          6        930         6989306       1494
+          6        938         6833400       1485
+          6        939         7438838       1582
+          6        934         7134775       1547
+          7        934         7388367       1587
+          7        930         7941791       1696
+          7        930         7732580       1660
+          7        930         7936702       1688
+          7        934         7766353       1657
+          8        934         8370929       1786
+          8        930         8842629       1888
+          8        934         8548164       1823
+          8        930         8715209       1861
+          8        930         8476801       1819
+          9        930         8462109       1803
+          9        934         9098836       1941
+          9        930         9199023       1955
+          9        930         9167338       1951
+          9        930         8407918       1793
+         10        930         8884915       1895
+         10        930         8888109       1901
+         10        930         9649209       2059
+         10        930         9023013       1927
+         10        934         9558314       2038
+         11        934         9336228       1992
+         11        935         9511290       2026
+         11        934         9649352       2055
+         11        934         9228635       1968
+         11        935         9437254       2012
+         12        935         9694506       2068
+         12        930         9346168       1997
+         12        930         9113053       1945
+         12        930         9715976       2076
+         12        934         9589819       2046
+         13        930         9124419       1952
+         13        934         9327753       1996
+         13        938         9460475       2024
+         13        930         9549987       2044
+         13        930         9337634       2002
+         14        935         9734707       2090
+         14        930         9377953       2010
+         14        930         9772643       2094
+         14        930         9006814       1929
+         14        930         9891590       2121
+         15        934        10419813       2235
+         15        930         9345625       2009
+         15        934         9950065       2136
+         15        930         9515064       2045
+         15        934         9119335       1960

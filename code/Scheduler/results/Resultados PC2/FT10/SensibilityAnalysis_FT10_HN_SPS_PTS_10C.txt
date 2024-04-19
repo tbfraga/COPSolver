@@ -1,0 +1,45 @@
+
+ Sensibility Analysis parameter: Taboo Search - Second method - Maximun number of iterations without upgrade
+
+ Problem: FT10
+
+ Method : Hybrid Neighborhood (10 cycles)
+
+ with Similar Particle Swarm with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: 0
+	 Mutation method: 0
+	 Mutation percentage: 20
+	 Maximum number of iterations: 1
+
+ and Parallel Taboo Search with the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 100
+
+ Results:
+
+
+        100        958          116030         25
+        100        951          107662         23
+        100        940          107034         23
+        100        972          116540         25
+        100        946          126083         27
+       1000        945          955677        202
+       1000        940          950843        202
+       1000        945         1001965        214
+       1000        945          976672        208
+       1000        944          977084        208
+      10000        930         8536718       1805
+      10000        930         8290998       1762
+      10000        930         8303504       1761
+      10000        930         8423540       1784
+      10000        934         8392125       1776
+     100000        937        72204555      15283
+     100000        934        70415193      14991
+     100000        934        69649071      14747
+     100000        930        71060043      15078
+     100000        934        70636564      14939

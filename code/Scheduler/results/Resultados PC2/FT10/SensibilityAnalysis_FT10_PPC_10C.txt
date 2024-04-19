@@ -1,0 +1,44 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Maximun number of iterations without upgrade
+
+ Problem: FT10
+
+ Method : Single Parallel Particle Collision
+
+ With the following fixed parameters:
+
+	 Population size: 12
+	 Perturbation method: M1
+	 Exploitation method: Taboo Search
+
+	 With the following fixed parameters:
+
+		 Neighborhood generation method: 0
+		 Tenure: 8
+		 Maximum number of iterations without upgrade: 100
+
+	 Maximum number of iterations: 10
+
+ Results:
+
+
+        100        951          118026         24
+        100        936          133704         29
+        100        951          128126         27
+        100        960          125689         26
+        100        951          138085         30
+       1000        935          955394        200
+       1000        930         1018058        214
+       1000        940         1044383        219
+       1000        940          951240        201
+       1000        943          977195        204
+      10000        930         6610340       1385
+      10000        930         7628604       1598
+      10000        930         7099355       1490
+      10000        935         8368839       1747
+      10000        930         7009625       1470
+     100000        930        51036217      10664
+     100000        930        55549601      11615
+     100000        930        55386317      11556
+     100000        930        59120496      12394
+     100000        934        57735339      12045

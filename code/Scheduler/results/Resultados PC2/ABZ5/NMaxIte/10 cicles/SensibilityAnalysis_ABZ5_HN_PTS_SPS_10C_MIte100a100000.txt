@@ -1,0 +1,45 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Maximun number of iterations without upgrade
+
+ Problem: ABZ5
+
+ Method : Hybrid Neighborhood (10 cycles)
+
+ with Parallel Taboo Search with the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 100
+
+ and Similar Particle Swarm with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: 0
+	 Mutation method: 0
+	 Mutation percentage: 20
+	 Maximum number of iterations: 1
+
+ Results:
+
+
+        100       1242           89155         19
+        100       1242           94827         19
+        100       1242           89737         19
+        100       1242           91049         19
+        100       1242           86764         17
+       1000       1238          735396        152
+       1000       1239          745587        154
+       1000       1239          713535        148
+       1000       1238          780644        160
+       1000       1238          717144        147
+      10000       1236         6912764       1448
+      10000       1238         6792853       1430
+      10000       1238         6909796       1442
+      10000       1238         6734397       1421
+      10000       1238         6956770       1450
+     100000       1238        62301427      13385
+     100000       1238        62558386      13446
+     100000       1238        61780974      12844
+     100000       1236        62081028      13135
+     100000       1238        61400978      12937

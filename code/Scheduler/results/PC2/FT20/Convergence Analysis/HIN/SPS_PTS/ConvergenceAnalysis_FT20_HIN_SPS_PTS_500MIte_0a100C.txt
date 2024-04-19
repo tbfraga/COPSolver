@@ -1,0 +1,164 @@
+
+ Sensibility Analysis parameter: Hybrid Models - Number of cycles
+
+ Problem: FT20
+
+ Method : Hybrid Improved Neighborhood (10 cycles)
+
+
+ First operator: Similar Particle Swarm
+
+ with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: C1 with 1 floating point
+	 Mutation method: M1
+	 Mutation percentage: 20
+	 Number of iterations: 1
+
+
+ Second operator: Parallel Taboo Search
+
+ With the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: N5
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 500
+
+
+ Results:
+
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1178
+    2	      1173
+    3	      1173
+    4	      1173
+    5	      1173
+    6	      1173
+    7	      1173
+    8	      1173
+    9	      1173
+   10	      1173
+   11	      1173
+   12	      1173
+   13	      1173
+   14	      1173
+   15	      1173
+   16	      1173
+   17	      1173
+   18	      1173
+   19	      1173
+   20	      1173
+   21	      1173
+   22	      1173
+   23	      1173
+   24	      1173
+   25	      1173
+   26	      1173
+   27	      1173
+   28	      1173
+   29	      1173
+   30	      1173
+   31	      1173
+   32	      1173
+   33	      1173
+   34	      1173
+   35	      1173
+   36	      1165
+
+ Final results:
+
+        100       1165         1158381        246
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1165
+
+ Final results:
+
+        100       1165           79182         17
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1178
+    2	      1173
+    3	      1165
+
+ Final results:
+
+        100       1165          151604         32
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1173
+    2	      1165
+
+ Final results:
+
+        100       1165          136134         30
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1180
+    2	      1178
+    3	      1178
+    4	      1178
+    5	      1178
+    6	      1178
+    7	      1178
+    8	      1178
+    9	      1178
+   10	      1178
+   11	      1178
+   12	      1178
+   13	      1178
+   14	      1178
+   15	      1178
+   16	      1178
+   17	      1178
+   18	      1178
+   19	      1178
+   20	      1178
+   21	      1178
+   22	      1178
+   23	      1178
+   24	      1178
+   25	      1178
+   26	      1178
+   27	      1178
+   28	      1178
+   29	      1178
+   30	      1178
+   31	      1178
+   32	      1178
+   33	      1178
+   34	      1178
+   35	      1174
+   36	      1174
+   37	      1174
+   38	      1174
+   39	      1174
+   40	      1174
+   41	      1174
+   42	      1174
+   43	      1174
+   44	      1174
+   45	      1174
+   46	      1174
+   47	      1174
+   48	      1174
+   49	      1174
+   50	      1169
+   51	      1165
+
+ Final results:
+
+        100       1165          858802        199

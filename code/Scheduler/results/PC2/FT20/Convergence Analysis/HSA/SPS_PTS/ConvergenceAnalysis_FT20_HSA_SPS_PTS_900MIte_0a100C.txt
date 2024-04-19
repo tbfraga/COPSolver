@@ -1,0 +1,82 @@
+
+ Sensibility Analysis parameter: Hybrid Models - Number of cycles
+
+ Problem: FT20
+
+ Method : Hybrid Successive Application (10 cycles)
+
+
+ First operator: Similar Particle Swarm
+
+ with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: C1 with 1 floating point
+	 Mutation method: M1
+	 Mutation percentage: 20
+	 Number of iterations: 1
+
+
+ Second operator: Parallel Taboo Search
+
+ With the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: N5
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 900
+
+
+ Results:
+
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1165
+
+ Final results:
+
+        100       1165          121833         26
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1173
+    2	      1171
+    3	      1165
+
+ Final results:
+
+        100       1165          254011         53
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1174
+    2	      1172
+    3	      1165
+
+ Final results:
+
+        100       1165          225127         48
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1173
+    2	      1173
+    3	      1165
+
+ Final results:
+
+        100       1165          252808         54
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1165
+
+ Final results:
+
+        100       1165          131753         28

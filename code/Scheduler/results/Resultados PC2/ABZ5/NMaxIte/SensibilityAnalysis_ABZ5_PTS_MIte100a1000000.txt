@@ -1,0 +1,91 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Maximun number of iterations without upgrade
+
+ Problem: ABZ5
+
+ Method : Single Parallel Taboo Search
+
+ With the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 100
+
+ Results:
+
+
+        100       1242           20856          4
+
+          1       1305
+          2       1270
+          3       1286
+          4       1253
+          5       1284
+          6       1293
+          7       1242
+          8       1261
+          9       1286
+         10       1293
+         11       1261
+         12       1269
+
+       1000       1239          118263         24
+
+          1       1248
+          2       1265
+          3       1249
+          4       1239
+          5       1249
+          6       1239
+          7       1242
+          8       1248
+          9       1249
+         10       1239
+         11       1255
+         12       1251
+
+      10000       1239          773890        161
+
+          1       1248
+          2       1239
+          3       1242
+          4       1239
+          5       1242
+          6       1239
+          7       1242
+          8       1242
+          9       1242
+         10       1239
+         11       1250
+         12       1242
+
+     100000       1239         6287593       1332
+
+          1       1239
+          2       1239
+          3       1242
+          4       1239
+          5       1242
+          6       1239
+          7       1242
+          8       1242
+          9       1242
+         10       1239
+         11       1250
+         12       1242
+
+    1000000       1239        60760918      12901
+
+          1       1239
+          2       1239
+          3       1242
+          4       1239
+          5       1242
+          6       1239
+          7       1242
+          8       1242
+          9       1242
+         10       1239
+         11       1250
+         12       1242

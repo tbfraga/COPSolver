@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Scheduler" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\Scheduler" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin\Release\Scheduler" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Linker>
+			<Add library="gdi32" />
+			<Add library="user32" />
+			<Add library="kernel32" />
+		</Linker>
+		<Unit filename="lib\ConstructiveHeuristic.cpp" />
+		<Unit filename="lib\CriticalPath_Operators.cpp" />
+		<Unit filename="lib\Crossover_Operators.cpp" />
+		<Unit filename="lib\Gantt.cpp" />
+		<Unit filename="lib\Hybrid_Models.cpp" />
+		<Unit filename="lib\MethodDef.cpp" />
+		<Unit filename="lib\Mutation_Operators.cpp" />
+		<Unit filename="lib\Particle_Collision.cpp" />
+		<Unit filename="lib\ProblemDef.cpp" />
+		<Unit filename="lib\Resource.h" />
+		<Unit filename="lib\Scdl_Structure.cpp" />
+		<Unit filename="lib\Scdl_Structure.h" />
+		<Unit filename="lib\Scheduler.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="lib\SimilarParticleSwarm.cpp" />
+		<Unit filename="lib\TabooSearch.cpp" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

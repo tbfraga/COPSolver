@@ -1,0 +1,91 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Maximun number of iterations without upgrade
+
+ Problem: ABZ7
+
+ Method : Single Parallel Taboo Search
+
+ With the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 100
+
+ Results:
+
+
+        100        722           58332         29
+
+          1        797
+          2        731
+          3        765
+          4        781
+          5        735
+          6        770
+          7        752
+          8        724
+          9        729
+         10        756
+         11        722
+         12        734
+
+       1000        690          369944        188
+
+          1        709
+          2        695
+          3        693
+          4        697
+          5        692
+          6        690
+          7        693
+          8        694
+          9        707
+         10        697
+         11        713
+         12        702
+
+      10000        664         2336910       1180
+
+          1        673
+          2        673
+          3        683
+          4        672
+          5        664
+          6        678
+          7        681
+          8        681
+          9        680
+         10        679
+         11        693
+         12        674
+
+     100000        664        11433157       5826
+
+          1        673
+          2        673
+          3        680
+          4        672
+          5        664
+          6        673
+          7        681
+          8        681
+          9        671
+         10        678
+         11        673
+         12        672
+
+    1000000        664        83340148      42812
+
+          1        673
+          2        673
+          3        680
+          4        672
+          5        664
+          6        673
+          7        681
+          8        681
+          9        671
+         10        678
+         11        673
+         12        672

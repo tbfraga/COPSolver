@@ -1,0 +1,566 @@
+#include "Resource.h"
+
+IDI_SCDL ICON "Scdl.ico"
+
+IDI_CLOSE_GRAPH ICON "Close_0001.ico"
+
+IDR_SCDL_MENU MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        POPUP "&Start new"
+        BEGIN
+            MENUITEM "&Problem definer", ID_FILE_PROBLEM_DEFINER
+            MENUITEM "&Benchmark scheduler", ID_FILE_BENCHMARK_SCHEDULER
+        END
+
+        MENUITEM "&Close application", ID_FILE_CLOSE
+
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit", ID_FILE_EXIT
+    END
+
+    POPUP "&Change Parameter Value"
+    BEGIN
+        MENUITEM "Population Size", ID_FILE_CPV_POPSIZE
+        MENUITEM "Number of cycles", ID_FILE_CPV_NCYCLES
+    END
+
+
+    POPUP "&Generate"
+        BEGIN
+            MENUITEM "&Gantt graph",  ID_FILE_CREATE_GANTT
+            MENUITEM SEPARATOR
+            MENUITEM "N&5 Neighborhood",  ID_FILE_CREATE_N5
+        END
+
+    POPUP "&Print"
+    BEGIN
+        MENUITEM "&Time slot",  ID_FILE_PRINT_TIME_SLOT
+    END
+
+    POPUP "&Sensibility Analysis"
+        BEGIN
+            POPUP "&Hybrid Models"
+                BEGIN
+                    MENUITEM "Number of cycles",  ID_FILE_SA_CYCLES_NUMBER
+                END
+            MENUITEM SEPARATOR
+            POPUP "&Taboo Search"
+                BEGIN
+                    POPUP "&First method"
+                        BEGIN
+                            MENUITEM "&Tenure",  ID_FILE_SA_TSFM_TENURE
+                            MENUITEM "Max number of iterations without upgrade",  ID_FILE_SA_TSFM_MAXITE
+                        END
+                    POPUP "&Second method"
+                        BEGIN
+                            MENUITEM "&Tenure",  ID_FILE_SA_TSSM_TENURE
+                            MENUITEM "&Max number of iterations without upgrade",  ID_FILE_SA_TSSM_MAXITE
+                        END
+                END
+
+            POPUP "Particle &Collision"
+                BEGIN
+                    POPUP "&First method"
+                        BEGIN
+                            MENUITEM "Number of iterations",  ID_FILE_SA_PCFM_MAXITE
+                        END
+                END
+
+            POPUP "Particle &Swarm"
+                BEGIN
+                    POPUP "&First method"
+                        BEGIN
+                            MENUITEM "&Mutation percent",  ID_FILE_SA_SPSFM_MPERC
+                        END
+                    POPUP "&Second method"
+                        BEGIN
+                            MENUITEM "&Mutation percent",  ID_FILE_SA_SPSSM_MPERC
+                        END
+                END
+        END
+
+END
+
+IDD_PROBLEM_DEFINER DIALOGEX DISCARDABLE 0, 0, 629, 354
+STYLE WS_BORDER | WS_CHILDWINDOW | WS_VISIBLE
+FONT 10, "MS Sans Serif"
+BEGIN
+
+END
+
+
+IDD_SENSIBILITY_ANALYSIS DIALOGEX DISCARDABLE 250, 70, 150, 200
+STYLE WS_OVERLAPPEDWINDOW | WS_SYSMENU
+FONT 12, "MS Sans Serif bold"
+CAPTION "Sensibility Analysis Information"
+BEGIN
+
+    RTEXT "Initial value:", IDC_STATIC, 5, 10, 60, 10
+    EDITTEXT IDET_INITIAL_VALUE, 70, 9, 50, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Final value:", IDC_STATIC, 5, 25, 60, 10
+    EDITTEXT IDET_FINAL_VALUE, 70, 24, 50, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Increase value:", IDC_STATIC, 5, 40, 60, 10
+    EDITTEXT IDET_INCREASE_VALUE, 70, 39, 50, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Repetitions:", IDC_STATIC, 5, 55, 60, 10
+    EDITTEXT IDET_REPETITIONS_NUMBER, 70, 54, 50, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    AUTORADIOBUTTON "Sum", IDC_SUM, 5, 75, 25, 10,
+                    BS_AUTORADIOBUTTON | WS_GROUP
+    AUTORADIOBUTTON "Multiplication", IDC_MULTIPLICATION, 40, 75, 54, 10,
+                    BS_AUTORADIOBUTTON
+    AUTORADIOBUTTON "Exponent", IDC_EXPONENT, 104, 75, 40, 10,
+                    BS_AUTORADIOBUTTON
+
+    AUTORADIOBUTTON "Print all final sol.", IDC_PRINT_ALL, 5, 90, 65, 10,
+                    BS_AUTORADIOBUTTON | WS_GROUP
+    AUTORADIOBUTTON "Print best solut.", IDC_PRINT_BEST, 80, 90, 65, 10,
+                    BS_AUTORADIOBUTTON
+
+    GROUPBOX        "Convergence Analysis",  IDC_STATIC, 5, 105, 140, 30
+
+    AUTORADIOBUTTON "None", IDC_NO_CONVERGENCE_ANALYSIS, 10, 117, 30, 10,
+                    BS_AUTORADIOBUTTON | WS_GROUP
+    AUTORADIOBUTTON "By cycle", IDC_BY_CYCLE, 45, 117, 40, 10,
+                    BS_AUTORADIOBUTTON
+    AUTORADIOBUTTON "By iteration", IDC_BY_ITERATION, 92, 117, 50, 10,
+                    BS_AUTORADIOBUTTON
+
+    GROUPBOX        "Extra Stop Criterion",  IDC_STATIC, 5, 140, 140, 30
+
+    AUTORADIOBUTTON "None", IDC_NO_EXTRA_STOP_CRITERION, 10, 152, 30, 10,
+                    BS_AUTORADIOBUTTON | WS_GROUP
+    AUTORADIOBUTTON "Best makespan found", IDC_BEST_MAKESPAN_FOUND, 45, 152, 80, 10,
+                    BS_AUTORADIOBUTTON
+
+    DEFPUSHBUTTON   "Ok", IDC_SENSITIVITY_ANALYSIS, 25, 175, 40, 14
+    DEFPUSHBUTTON   "Cancel", IDCANCEL, 85, 175, 40, 14
+
+END
+
+IDD_SET_POPULATION_SIZE DIALOGEX DISCARDABLE 250, 100, 150, 50
+STYLE WS_OVERLAPPEDWINDOW | WS_SYSMENU
+FONT 12, "MS Sans Serif bold"
+CAPTION "Set Population Size"
+BEGIN
+
+    RTEXT "Population size:", IDC_STATIC, 5, 10, 60, 10
+    EDITTEXT IDET_POPULATION_SIZE, 70, 9, 50, 12, WS_TABSTOP | ES_NUMBER
+
+    DEFPUSHBUTTON   "OK", IDCANCEL, 55, 30, 40, 14, WS_TABSTOP
+
+END
+
+IDD_SET_CYCLES_NUMBER DIALOGEX DISCARDABLE 250, 100, 150, 50
+STYLE WS_OVERLAPPEDWINDOW | WS_SYSMENU
+FONT 12, "MS Sans Serif bold"
+CAPTION "Set Cycles Number"
+BEGIN
+
+    RTEXT "Cycles Number:", IDC_STATIC, 5, 10, 60, 10
+    EDITTEXT IDET_CYCLES_NUMBER, 70, 9, 50, 12, WS_TABSTOP | ES_NUMBER
+
+    DEFPUSHBUTTON   "OK", IDCANCEL, 55, 30, 40, 14, WS_TABSTOP
+
+END
+
+IDD_SCDL_BOX DIALOGEX DISCARDABLE 0, 0, 629, 354
+STYLE WS_BORDER | WS_CHILDWINDOW | WS_VISIBLE
+FONT 10, "MS Sans Serif"
+BEGIN
+
+    GROUPBOX        "Scheduler",  IDC_STATIC, 5, 5, 265, 343
+    GROUPBOX        "Benchmark Definition",  IDC_STATIC, 10, 15, 256, 32
+
+    COMBOBOX IDCB_BCMK_KIND, 15, 27, 100, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+    COMBOBOX IDCB_BCMK_CLASS, 115, 27, 73, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+    COMBOBOX IDCB_BCMK, 188, 27, 73, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    GROUPBOX        "Solving Method Definition",  IDC_STATIC, 10, 50, 256, 60
+
+    AUTORADIOBUTTON "Optimale", IDC_OPTIMALE, 138, 59, 36, 10,
+                    BS_AUTORADIOBUTTON | WS_GROUP
+    AUTORADIOBUTTON "Analitical", IDC_ANALITICAL, 187, 59, 30, 10,
+                    BS_AUTORADIOBUTTON | WS_DISABLED
+    AUTORADIOBUTTON "Visual", IDC_VISUAL, 232, 59, 30, 10,
+                    BS_AUTORADIOBUTTON | WS_DISABLED
+
+    COMBOBOX IDCB_METHOD_MODE, 15, 72, 82, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+    COMBOBOX IDCB_HYBRID_MODEL, 97, 72, 123, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+    EDITTEXT IDET_CYCLES_NUMBER, 220, 72, 40, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    COMBOBOX IDCB_METHOD_01, 15, 90, 82, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+    COMBOBOX IDCB_METHOD_02, 97, 90, 82, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+    COMBOBOX IDCB_METHOD_03, 179, 90, 82, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    GROUPBOX "Problem especifications",  IDC_STATIC, 275, 178, 140, 85
+
+    RTEXT "Problem name:", IDC_STATIC, 280, 192, 66, 10
+    CTEXT "", IDSC_PROBLEM_NAME, 350, 192, 58, 10, SS_SUNKEN
+
+    RTEXT "Problem kind:", IDC_STATIC, 280, 204, 66, 10
+    CTEXT "", IDSC_PROBLEM_KIND, 350, 204, 58, 10, SS_SUNKEN
+
+    RTEXT "Number of jobs:", IDC_STATIC, 280, 216, 66, 10
+    CTEXT "", IDSC_JOB_NUMBER, 350, 216, 58, 10, SS_SUNKEN
+
+    RTEXT "Number of machines:", IDC_STATIC, 280, 228, 66, 10
+    CTEXT "", IDSC_MCN_NUMBER, 350, 228, 58, 10, SS_SUNKEN
+
+    RTEXT "Best makespan know:", IDC_STATIC, 280, 240, 66, 10
+    CTEXT "", IDSC_BEST_MKP_KNOW, 350, 240, 58, 10, SS_SUNKEN
+
+    GROUPBOX "Final results",  IDC_STATIC, 275, 263, 140, 85
+
+    RTEXT "Previous makespan:", IDC_STATIC, 280, 280, 66, 10
+    CTEXT "", IDSC_PREVIOUS_MAKESPAN, 350, 280, 58, 10, SS_SUNKEN
+
+    RTEXT "Makespan:", IDC_STATIC, 280, 292, 66, 10
+    CTEXT "", IDSC_MAKESPAN, 350, 292, 58, 10, SS_SUNKEN
+
+    RTEXT "Solutions evaluated:", IDC_STATIC, 280, 304, 66, 10
+    CTEXT "", IDSC_SOLUTIONS_EVAL, 350, 304, 58, 10, SS_SUNKEN
+
+    RTEXT "Computing time (sec):", IDC_STATIC, 280, 316, 66, 10
+    CTEXT "", IDSC_COPUTING_TIME, 350, 316, 58, 10, SS_SUNKEN
+
+    GROUPBOX "Method especifications",  IDC_STATIC, 420, 178, 140, 170
+
+    CTEXT "", IDSC_METHOD, 425, 189, 130, 10, SS_SUNKEN
+    CTEXT "", IDSC_INITIAL_SOLUTION, 425, 201, 130, 10, SS_SUNKEN
+
+    GROUPBOX "First method parameters",  IDGB_METHOD_1, 425, 212, 130, 44
+
+    GROUPBOX "Second method parameters",  IDGB_METHOD_2, 425, 256, 130, 44
+
+    GROUPBOX "Third method parameters",  IDGB_METHOD_3, 425, 300, 130, 44
+
+    DEFPUSHBUTTON   "Scheduling", IDC_SCHEDULER, 565, 200, 60, 14
+    DEFPUSHBUTTON   "Show all graphs", IDC_SHOW_NGH_GANTT, 565, 250, 60, 14
+    DEFPUSHBUTTON   "Close", IDCANCEL, 565, 300, 60, 14
+END
+
+IDD_TABOO_SEARCH_1 DIALOGEX DISCARDABLE 10, 117, 254, 60
+STYLE WS_CHILDWINDOW | WS_BORDER
+FONT 10, "MS Sans Serif"
+BEGIN
+
+    CTEXT "------  Taboo Search parameters  ------", IDC_STATIC, 0, 2, 254, 10
+
+    COMBOBOX IDCB_TS_INITIAL_SOLUTION, 5, 15, 140, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Critical path:", IDC_STATIC, 151, 15, 60, 10
+    COMBOBOX IDCB_TS01_CRITICAL_PATH, 215, 14, 33, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Neighborhood generation method:", IDC_STATIC, 5, 30, 103, 10
+    COMBOBOX IDCB_TS01_NGH_METHOD, 112, 29, 33, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Tenure:", IDC_STATIC, 151, 30, 60, 10
+    EDITTEXT IDET_TS01_TENURE, 215, 29, 33, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Maximun number of iterations:", IDC_STATIC, 5, 45, 103, 10
+    EDITTEXT IDET_TS01_MAXITE, 112, 44, 33, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    DEFPUSHBUTTON "Show", IDC_SHOW_GANTT, 215, 45, 33, 12
+
+END
+
+IDD_TABOO_SEARCH_2 DIALOGEX DISCARDABLE 6, 187, 263, 77
+STYLE WS_CHILDWINDOW
+FONT 10, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Taboo Search parameters  ---  Second method",  IDC_STATIC, 5, 5, 255, 72
+END
+
+IDD_TABOO_SEARCH_3 DIALOGEX DISCARDABLE 6, 264, 263, 77
+STYLE WS_CHILDWINDOW
+FONT 10, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Taboo Search parameters  ---  Third method",  IDC_STATIC, 5, 5, 255, 72
+END
+
+// Particle Collision
+
+IDD_PARTICLE_COLLISION_01 DIALOGEX DISCARDABLE 10, 117, 254, 74
+STYLE WS_CHILDWINDOW | WS_BORDER
+FONT 10, "MS Sans Serif"
+BEGIN
+
+    CTEXT "------  Particle Collision parameters  ------", IDC_STATIC, 0, 2, 254, 10
+
+    COMBOBOX IDCB_INITIAL_SOLUTION, 5, 15, 243, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Perturbation Method:", IDC_STATIC, 5, 30,90, 10
+    COMBOBOX IDCB_PC01_PERTURBATION_METHOD, 100, 29, 148, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Exploitation Method:", IDC_STATIC, 5, 45, 90, 10
+    COMBOBOX IDCB_PC01_EXPLOITATION_METHOD, 100, 44, 148, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Maximun number of iterations:", IDC_STATIC, 5, 60, 90, 10
+    EDITTEXT IDET_PC01_MAXITE, 100, 59, 33, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Solution index:", IDC_STATIC, 148, 60, 62, 10
+    COMBOBOX IDCB_SOLUTION_INDEX, 215, 59, 33, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+END
+
+IDD_TABOO_SEARCH_PC DIALOGEX DISCARDABLE 10, 200, 254, 64
+STYLE WS_CHILDWINDOW | WS_BORDER
+FONT 10, "MS Sans Serif"
+BEGIN
+
+    CTEXT "------  Taboo Search parameters  ------", IDC_STATIC, 0, 2, 254, 10
+
+    RTEXT "Neighborhood generation method:", IDC_STATIC, 5, 15, 103, 10
+    COMBOBOX IDCB_TS01_NGH_METHOD, 112, 14, 33, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Maximun number of iterations:", IDC_STATIC, 5, 30, 103, 10
+    EDITTEXT IDET_TS01_MAXITE, 112, 29, 33, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Critical path:", IDC_STATIC, 151, 15, 60, 10
+    COMBOBOX IDCB_TS01_CRITICAL_PATH, 215, 14, 33, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Tenure:", IDC_STATIC, 151, 30, 60, 10
+    EDITTEXT IDET_TS01_TENURE, 215, 29, 33, 12,
+             WS_TABSTOP | ES_NUMBER
+
+END
+
+// Parallel Taboo Search Dialog Boxex
+
+IDD_PARALLEL_TABOO_SEARCH_01 DIALOGEX DISCARDABLE 10, 117, 254, 74
+STYLE WS_CHILDWINDOW | WS_BORDER
+FONT 10, "MS Sans Serif"
+BEGIN
+
+    CTEXT "------  Parallel Taboo Search parameters  ------", IDC_STATIC, 0, 2, 254, 10
+
+    COMBOBOX IDCB_PTS_INITIAL_SOLUTION, 5, 15, 140, 60, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Neighborhood generation method:", IDC_STATIC, 5, 30, 103, 10
+    COMBOBOX IDCB_PTS01_NGH_METHOD, 112, 29, 33, 60, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Maximun number of iterations:", IDC_STATIC, 5, 45, 103, 10
+    EDITTEXT IDET_PTS01_MAXITE, 112, 44, 33, 12, WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Population Size:", IDC_STATIC, 151, 15, 60, 10
+    EDITTEXT IDET_PTS01_POPULATION_SIZE, 215, 14, 33, 12, WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Critical path:", IDC_STATIC, 151, 30, 60, 10
+    COMBOBOX IDCB_PTS01_CRITICAL_PATH, 215, 29, 33, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Tenure:", IDC_STATIC, 151, 45, 60, 10
+    EDITTEXT IDET_PTS01_TENURE, 215, 44, 33, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Solution index:", IDC_STATIC, 151, 59, 60, 10
+    COMBOBOX IDCB_SOLUTION_INDEX, 215, 58, 33, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+END
+
+IDD_PARALLEL_TABOO_SEARCH_02 DIALOGEX DISCARDABLE 10, 200, 254, 64
+STYLE WS_CHILDWINDOW | WS_BORDER
+FONT 10, "MS Sans Serif"
+BEGIN
+
+    CTEXT "------  Parallel Taboo Search parameters - 2° method ------", IDC_STATIC, 0, 2, 254, 10
+
+    RTEXT "Neighborhood generation method:", IDC_STATIC, 5, 15, 103, 10
+    COMBOBOX IDCB_PTS02_NGH_METHOD, 112, 14, 33, 60, WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Maximun number of iterations:", IDC_STATIC, 5, 30, 103, 10
+    EDITTEXT IDET_PTS02_MAXITE, 112, 29, 33, 12, WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Population Size:", IDC_STATIC, 151, 15, 60, 10
+    EDITTEXT IDET_PTS02_POPULATION_SIZE, 215, 14, 33, 12, WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Critical path:", IDC_STATIC, 151, 30, 60, 10
+    COMBOBOX IDCB_PTS02_CRITICAL_PATH, 215, 29, 33, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Tenure:", IDC_STATIC, 151, 45, 60, 10
+    EDITTEXT IDET_PTS02_TENURE, 215, 44, 33, 12,
+             WS_TABSTOP | ES_NUMBER
+
+END
+
+IDD_PARALLEL_TABOO_SEARCH_03 DIALOGEX DISCARDABLE 10, 273, 254, 64
+STYLE WS_CHILDWINDOW | WS_BORDER
+FONT 10, "MS Sans Serif"
+BEGIN
+
+    CTEXT "------  Parallel Taboo Search parameters - 3° method ------", IDC_STATIC, 0, 2, 254, 10
+
+    RTEXT "Neighborhood generation method:", IDC_STATIC, 5, 15, 103, 10
+    COMBOBOX IDCB_PTS03_NGH_METHOD, 112, 14, 33, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Maximun number of iterations:", IDC_STATIC, 5, 30, 103, 10
+    EDITTEXT IDET_PTS03_MAXITE, 112, 29, 33, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Population Size:", IDC_STATIC, 151, 15, 60, 10
+    EDITTEXT IDET_PTS03_POPULATION_SIZE, 215, 14, 33, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Critical path:", IDC_STATIC, 151, 30, 60, 10
+    COMBOBOX IDCB_PTS03_CRITICAL_PATH, 215, 29, 33, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Tenure:", IDC_STATIC, 151, 45, 60, 10
+    EDITTEXT IDET_PTS03_TENURE, 215, 44, 33, 12,
+             WS_TABSTOP | ES_NUMBER
+
+END
+
+
+// Particle Swarm Dialog Box
+
+IDD_PARTICLE_SWARM_01 DIALOGEX DISCARDABLE 10, 117, 254, 74
+STYLE WS_CHILDWINDOW | WS_BORDER
+FONT 10, "MS Sans Serif"
+BEGIN
+
+    CTEXT "------  Similar Particle Swarm parameters  ------", IDC_STATIC, 0, 2, 254, 10
+
+    COMBOBOX IDCB_PS_INITIAL_SOLUTION, 5, 15, 144, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Crossover method:", IDC_STATIC, 151, 15, 58, 10
+    COMBOBOX IDCB_PS01_CROSSOVER_METHOD, 213, 14, 35, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Population size:", IDC_STATIC, 5, 30, 105, 10
+    EDITTEXT IDET_PS01_POPULATION_SIZE, 114, 29, 35, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Mutation method:", IDC_STATIC, 151, 30, 58, 10
+    COMBOBOX IDCB_PS01_MUTATION_METHOD, 213, 29, 35, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Mutation percent:", IDC_STATIC, 151, 45, 58, 10
+    EDITTEXT IDET_PS01_MUTATION_PERCENT, 213, 44, 35, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Maximun number of iterations:", IDC_STATIC, 5, 45, 105, 10
+    EDITTEXT IDET_PS01_MAXITE, 114, 44, 35, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Solution index:", IDC_STATIC, 151, 60, 58, 10
+    COMBOBOX IDCB_SOLUTION_INDEX, 213, 59, 35, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+END
+
+IDD_PARTICLE_SWARM_02 DIALOGEX DISCARDABLE 10, 200, 254, 64
+STYLE WS_CHILDWINDOW | WS_BORDER
+FONT 10, "MS Sans Serif"
+BEGIN
+
+    CTEXT "------  Similar Particle Swarm parameters - 2° method  ------", IDC_STATIC, 0, 2, 254, 10
+
+    RTEXT "Population size:", IDC_STATIC, 5, 15, 105, 10
+    EDITTEXT IDET_PS02_POPULATION_SIZE, 114, 14, 35, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Maximun number of iterations:", IDC_STATIC, 5, 30, 105, 10
+    EDITTEXT IDET_PS02_MAXITE, 114, 29, 35, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Crossover method:", IDC_STATIC, 151, 15, 58, 10
+    COMBOBOX IDCB_PS02_CROSSOVER_METHOD, 213, 14, 35, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Mutation method:", IDC_STATIC, 151, 30, 58, 10
+    COMBOBOX IDCB_PS02_MUTATION_METHOD, 213, 29, 35, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Mutation percent:", IDC_STATIC, 151, 45, 58, 10
+    EDITTEXT IDET_PS02_MUTATION_PERCENT, 213, 44, 35, 12,
+             WS_TABSTOP | ES_NUMBER
+
+END
+
+IDD_PARTICLE_SWARM_03 DIALOGEX DISCARDABLE 10, 273, 254, 64
+STYLE WS_CHILDWINDOW | WS_BORDER
+FONT 10, "MS Sans Serif"
+BEGIN
+
+    CTEXT "------  Similar Particle Swarm parameters - 3° method  ------", IDC_STATIC, 0, 2, 254, 10
+
+    RTEXT "Population size:", IDC_STATIC, 5, 15, 105, 10
+    EDITTEXT IDET_PS03_POPULATION_SIZE, 114, 14, 35, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Maximun number of iterations:", IDC_STATIC, 5, 30, 105, 10
+    EDITTEXT IDET_PS03_MAXITE, 114, 29, 35, 12,
+             WS_TABSTOP | ES_NUMBER
+
+    RTEXT "Crossover method:", IDC_STATIC, 151, 15, 58, 10
+    COMBOBOX IDCB_PS03_CROSSOVER_METHOD, 213, 14, 35, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Mutation method:", IDC_STATIC, 151, 30, 58, 10
+    COMBOBOX IDCB_PS03_MUTATION_METHOD, 213, 29, 35, 60,
+             WS_TABSTOP | WS_VSCROLL | CBS_DROPDOWN
+
+    RTEXT "Mutation percent:", IDC_STATIC, 151, 45, 58, 10
+    EDITTEXT IDET_PS03_MUTATION_PERCENT, 213, 44, 35, 12,
+             WS_TABSTOP | ES_NUMBER
+
+END
+
+IDD_SOLUTION_GANTT DIALOGEX DISCARDABLE 275, 9, 281, 152
+STYLE WS_OVERLAPPED | WS_CHILD | WS_CLIPCHILDREN | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU
+FONT 10, "MS Sans Serif"
+CAPTION "Solution Gantt Graph"
+BEGIN
+END
+
+IDD_SOLUTION_GANTT_VECTOR DIALOGEX DISCARDABLE 0, 0, 640, 357
+STYLE WS_OVERLAPPEDWINDOW | WS_SYSMENU
+FONT 10, "MS Sans Serif"
+CAPTION "Neighborhood Gantt Graphs"
+MENU IDR_SCDL_MENU
+BEGIN
+END
+
+IDD_WAIT_MESSAGE DIALOGEX DISCARDABLE 250, 100, 150, 50
+STYLE WS_VISIBLE | WS_CAPTION |WS_BORDER | WS_DLGFRAME
+FONT 12, "MS Sans Serif bold"
+CAPTION "Processing Information"
+BEGIN
+    LTEXT "Wait for the method processing !!!", IDC_STATIC, 20, 20, 120, 10
+END

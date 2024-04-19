@@ -1,0 +1,54 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Tenure
+
+ Problem: FT10
+
+ Method : Hybrid Improved Neighborhood (100 cycles)
+
+ with Parallel Taboo Search with the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 10000
+
+ and Similar Particle Swarm with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: 0
+	 Mutation method: 0
+	 Mutation percentage: 20
+	 Maximum number of iterations: 1
+
+ Results:
+
+
+          6        930        68845765      14394
+          6        930        68556746      14419
+          6        930        67357373      14243
+          6        930        68386381      14439
+          6        930        67735283      14217
+          7        930        71380898      14969
+          7        930        72898171      15200
+          7        930        72516253      15142
+          7        930        74846959      15565
+          7        930        74137588      15429
+          8        930        75014781      15696
+          8        930        74565549      15652
+          8        930        75072141      15709
+          8        930        75055488      15721
+          8        930        73404332      15404
+          9        930        77155776      16141
+          9        930        76999603      16153
+          9        930        76997321      16119
+          9        930        76991459      16101
+          9        930        76526731      16012
+         10        930        79321734      16639
+         10        930        77758347      16272
+         10        930        77486205      16226
+         10        930        76859298      16101
+         10        930        78940944      16550
+         11        930        77686179      16286
+         11        930        78193636      16405
+         11        930        77002487      16169
+         11        930        80108128      16816

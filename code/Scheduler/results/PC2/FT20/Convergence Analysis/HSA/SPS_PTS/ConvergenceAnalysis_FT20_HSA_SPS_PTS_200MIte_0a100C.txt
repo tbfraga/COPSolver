@@ -1,0 +1,118 @@
+
+ Sensibility Analysis parameter: Hybrid Models - Number of cycles
+
+ Problem: FT20
+
+ Method : Hybrid Successive Application (10 cycles)
+
+
+ First operator: Similar Particle Swarm
+
+ with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: C1 with 1 floating point
+	 Mutation method: M1
+	 Mutation percentage: 20
+	 Number of iterations: 1
+
+
+ Second operator: Parallel Taboo Search
+
+ With the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: N5
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 200
+
+
+ Results:
+
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1180
+    2	      1180
+    3	      1178
+    4	      1177
+    5	      1165
+
+ Final results:
+
+        100       1165           92365         20
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1203
+    2	      1175
+    3	      1175
+    4	      1175
+    5	      1174
+    6	      1173
+    7	      1173
+    8	      1173
+    9	      1171
+   10	      1167
+   11	      1165
+
+ Final results:
+
+        100       1165          215822         45
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1178
+    2	      1178
+    3	      1175
+    4	      1173
+    5	      1168
+    6	      1173
+    7	      1173
+    8	      1173
+    9	      1173
+   10	      1173
+   11	      1173
+   12	      1173
+   13	      1173
+   14	      1173
+   15	      1173
+   16	      1173
+   17	      1173
+   18	      1173
+   19	      1165
+
+ Final results:
+
+        100       1165          272785         58
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1178
+    2	      1175
+    3	      1165
+
+ Final results:
+
+        100       1165           73855         16
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1178
+    2	      1175
+    3	      1168
+    4	      1168
+    5	      1173
+    6	      1173
+    7	      1173
+    8	      1173
+    9	      1165
+
+ Final results:
+
+        100       1165          165462         35

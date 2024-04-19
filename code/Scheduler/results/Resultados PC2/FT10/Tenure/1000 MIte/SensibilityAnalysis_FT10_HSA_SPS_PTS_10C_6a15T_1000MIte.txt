@@ -1,0 +1,75 @@
+
+ Sensibility Analysis parameter: Taboo Search - Second method - Tenure
+
+ Problem: FT10
+
+ Method : Hybrid Successive Application (10 cycles)
+
+ with Similar Particle Swarm with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: 0
+	 Mutation method: 0
+	 Mutation percentage: 20
+	 Maximum number of iterations: 1
+
+ and Parallel Taboo Search with the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 1000
+
+ Results:
+
+
+          6        940          854215        182
+          6        935          833478        177
+          6        945          887368        189
+          6        930          865852        186
+          6        934          897287        191
+          7        937          934109        199
+          7        930          891204        189
+          7        934          919253        196
+          7        930         1011891        215
+          7        930          994597        211
+          8        936          982276        208
+          8        930         1004981        214
+          8        930          982567        210
+          8        943         1024090        217
+          8        930          963730        205
+          9        934          981657        208
+          9        945         1005727        213
+          9        940          994665        213
+          9        930          941295        200
+          9        940         1048783        223
+         10        934          962927        204
+         10        930          990789        212
+         10        935         1035187        219
+         10        934         1042441        222
+         10        940         1013257        216
+         11        937          934590        198
+         11        941          983344        209
+         11        937          978046        209
+         11        930          986847        210
+         11        938         1008392        215
+         12        934          948586        201
+         12        930          971073        207
+         12        940          982613        209
+         12        937          956833        204
+         12        937          953202        203
+         13        935         1008548        215
+         13        934         1007163        214
+         13        937          938476        201
+         13        946          981443        209
+         13        934          978139        208
+         14        945         1005450        215
+         14        935          968855        207
+         14        934          994704        213
+         14        946          982547        211
+         14        945          953843        204
+         15        930          973118        208
+         15        935          923757        198
+         15        935          966655        206
+         15        938          988372        211
+         15        930          931083        199

@@ -1,0 +1,91 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Maximun number of iterations without upgrade
+
+ Problem: FT6
+
+ Method : Single Parallel Taboo Search
+
+ With the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 100
+
+ Results:
+
+
+        100         55            6593          1
+
+          1         55
+          2         55
+          3         55
+          4         55
+          5         55
+          6         55
+          7         55
+          8         55
+          9         55
+         10         55
+         11         55
+         12         55
+
+       1000         55           41673          4
+
+          1         55
+          2         55
+          3         55
+          4         55
+          5         55
+          6         55
+          7         55
+          8         55
+          9         55
+         10         55
+         11         55
+         12         55
+
+      10000         55          390601         39
+
+          1         55
+          2         55
+          3         55
+          4         55
+          5         55
+          6         55
+          7         55
+          8         55
+          9         55
+         10         55
+         11         55
+         12         55
+
+     100000         55         3879836        381
+
+          1         55
+          2         55
+          3         55
+          4         55
+          5         55
+          6         55
+          7         55
+          8         55
+          9         55
+         10         55
+         11         55
+         12         55
+
+    1000000         55        38772145       3806
+
+          1         55
+          2         55
+          3         55
+          4         55
+          5         55
+          6         55
+          7         55
+          8         55
+          9         55
+         10         55
+         11         55
+         12         55

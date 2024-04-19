@@ -1,0 +1,91 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Maximun number of iterations without upgrade
+
+ Problem: FT20
+
+ Method : Single Parallel Taboo Search
+
+ With the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 100
+
+ Results:
+
+
+        100       1182           20634          5
+
+          1       1224
+          2       1307
+          3       1290
+          4       1248
+          5       1233
+          6       1296
+          7       1319
+          8       1346
+          9       1293
+         10       1280
+         11       1351
+         12       1182
+
+       1000       1165          130275         28
+
+          1       1177
+          2       1182
+          3       1197
+          4       1180
+          5       1196
+          6       1165
+          7       1175
+          8       1189
+          9       1193
+         10       1177
+         11       1220
+         12       1178
+
+      10000       1165          446831        101
+
+          1       1177
+          2       1175
+          3       1197
+          4       1178
+          5       1196
+          6       1165
+          7       1175
+          8       1189
+          9       1193
+         10       1177
+         11       1219
+         12       1178
+
+     100000       1165         3471672        802
+
+          1       1177
+          2       1175
+          3       1197
+          4       1178
+          5       1196
+          6       1165
+          7       1175
+          8       1189
+          9       1193
+         10       1177
+         11       1219
+         12       1178
+
+    1000000       1165        33720178       7824
+
+          1       1177
+          2       1175
+          3       1197
+          4       1178
+          5       1196
+          6       1165
+          7       1175
+          8       1189
+          9       1193
+         10       1177
+         11       1219
+         12       1178

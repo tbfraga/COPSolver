@@ -1,0 +1,175 @@
+
+ Sensibility Analysis parameter: Hybrid Models - Number of cycles
+
+ Problem: FT20
+
+ Method : Hybrid Neighborhood (10 cycles)
+
+
+ First operator: Similar Particle Swarm
+
+ with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: C1 with 1 floating point
+	 Mutation method: M1
+	 Mutation percentage: 20
+	 Number of iterations: 1
+
+
+ Second operator: Parallel Taboo Search
+
+ With the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: N5
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 200
+
+
+ Results:
+
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1178
+    2	      1178
+    3	      1178
+    4	      1178
+    5	      1178
+    6	      1178
+    7	      1178
+    8	      1175
+    9	      1175
+   10	      1175
+   11	      1175
+   12	      1175
+   13	      1175
+   14	      1175
+   15	      1173
+   16	      1166
+   17	      1166
+   18	      1165
+
+ Final results:
+
+        100       1165          258948         55
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1178
+    2	      1178
+    3	      1178
+    4	      1178
+    5	      1178
+    6	      1166
+    7	      1166
+    8	      1165
+
+ Final results:
+
+        100       1165          153452         33
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1178
+    2	      1178
+    3	      1178
+    4	      1178
+    5	      1178
+    6	      1177
+    7	      1177
+    8	      1165
+
+ Final results:
+
+        100       1165          145966         30
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1178
+    2	      1178
+    3	      1173
+    4	      1173
+    5	      1173
+    6	      1173
+    7	      1173
+    8	      1173
+    9	      1173
+   10	      1173
+   11	      1173
+   12	      1173
+   13	      1173
+   14	      1173
+   15	      1173
+   16	      1173
+   17	      1173
+   18	      1173
+   19	      1173
+   20	      1173
+   21	      1173
+   22	      1173
+   23	      1173
+   24	      1173
+   25	      1173
+   26	      1173
+   27	      1173
+   28	      1173
+   29	      1173
+   30	      1173
+   31	      1173
+   32	      1173
+   33	      1173
+   34	      1173
+   35	      1173
+   36	      1173
+   37	      1173
+   38	      1173
+   39	      1173
+   40	      1173
+   41	      1173
+   42	      1173
+   43	      1173
+   44	      1173
+   45	      1173
+   46	      1173
+   47	      1173
+   48	      1173
+   49	      1173
+   50	      1173
+   51	      1173
+   52	      1173
+   53	      1173
+   54	      1173
+   55	      1173
+   56	      1173
+   57	      1173
+   58	      1173
+   59	      1173
+   60	      1173
+   61	      1173
+   62	      1173
+   63	      1170
+   64	      1170
+   65	      1165
+
+ Final results:
+
+        100       1165          689832        153
+
+ Convergence Analysis:
+
+    0	      2000
+    1	      1178
+    2	      1178
+    3	      1178
+    4	      1178
+    5	      1165
+
+ Final results:
+
+        100       1165          124766         27

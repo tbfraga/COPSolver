@@ -1,0 +1,54 @@
+
+ Sensibility Analysis parameter: Taboo Search - Second method - Tenure
+
+ Problem: FT10
+
+ Method : Hybrid Neighborhood (100 cycles)
+
+ with Similar Particle Swarm with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: 0
+	 Mutation method: 0
+	 Mutation percentage: 20
+	 Maximum number of iterations: 1
+
+ and Parallel Taboo Search with the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 10000
+
+ Results:
+
+
+          6        930        70299449      14601
+          6        930        70157178      14680
+          6        930        66336559      14045
+          6        930        67294028      14270
+          6        930        70646568      14786
+          7        930        72933941      15248
+          7        930        74539203      15533
+          7        930        73366920      15345
+          7        930        72625964      15230
+          7        930        71961198      15099
+          8        930        74436008      15533
+          8        930        73888752      15493
+          8        930        73753039      15495
+          8        930        75066290      15741
+          8        930        75075384      15748
+          9        930        76332355      16035
+          9        930        77902686      16360
+          9        930        74733124      15665
+          9        930        75829166      15873
+          9        930        75078012      15752
+         10        930        79232414      16607
+         10        930        79353550      16633
+         10        930        79818800      16744
+         10        930        79706177      16738
+         10        930        77704152      16334
+         11        930        77801392      16335
+         11        930        79393917      16668
+         11        930        77754387      16331
+         11        930        78408023      16503

@@ -1,0 +1,75 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Tenure
+
+ Problem: FT10
+
+ Method : Hybrid Improved Neighborhood (10 cycles)
+
+ with Parallel Taboo Search with the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 1000
+
+ and Similar Particle Swarm with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: 0
+	 Mutation method: 0
+	 Mutation percentage: 20
+	 Maximum number of iterations: 1
+
+ Results:
+
+
+          6        934          826423        176
+          6        930          827295        174
+          6        940          835468        175
+          6        940          883284        186
+          6        945          859583        182
+          7        937          902897        189
+          7        940          888532        186
+          7        940          876463        185
+          7        930          905605        191
+          7        937          904212        191
+          8        937          913901        193
+          8        930          885483        186
+          8        930          927191        197
+          8        942          900220        189
+          8        934          899084        189
+          9        945          891639        188
+          9        934          905605        191
+          9        945          854502        180
+          9        945          915317        192
+          9        945          875486        184
+         10        939          924847        195
+         10        930          910206        192
+         10        940          872203        184
+         10        940          937145        198
+         10        940          895951        189
+         11        937          972191        205
+         11        945          935623        197
+         11        943          940480        199
+         11        945          901276        189
+         11        945          931334        196
+         12        943          915611        194
+         12        945          902500        190
+         12        935          902707        191
+         12        945          948176        200
+         12        938          892012        189
+         13        934         1000215        210
+         13        946          967307        204
+         13        938          914767        193
+         13        937          940869        198
+         13        937          966605        203
+         14        944          878394        186
+         14        948          892090        189
+         14        942          890655        188
+         14        944          929478        198
+         14        940          885339        187
+         15        934          922274        195
+         15        948          961788        204
+         15        935          897019        189
+         15        941          913167        193
+         15        951          874357        185

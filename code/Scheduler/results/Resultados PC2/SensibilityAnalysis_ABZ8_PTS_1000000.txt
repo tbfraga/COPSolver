@@ -1,0 +1,91 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Maximun number of iterations without upgrade
+
+ Problem: ABZ8
+
+ Method : Single Parallel Taboo Search
+
+ With the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 100
+
+ Results:
+
+
+        100        720           49229         26
+
+          1        746
+          2        742
+          3        798
+          4        779
+          5        751
+          6        720
+          7        820
+          8        780
+          9        809
+         10        759
+         11        755
+         12        771
+
+       1000        693          383297        198
+
+          1        712
+          2        694
+          3        719
+          4        693
+          5        704
+          6        710
+          7        777
+          8        732
+          9        711
+         10        712
+         11        721
+         12        715
+
+      10000        676         2466778       1258
+
+          1        696
+          2        694
+          3        693
+          4        685
+          5        693
+          6        676
+          7        703
+          8        692
+          9        681
+         10        689
+         11        693
+         12        688
+
+     100000        675        14104400       7211
+
+          1        696
+          2        685
+          3        693
+          4        685
+          5        680
+          6        675
+          7        703
+          8        683
+          9        681
+         10        687
+         11        693
+         12        681
+
+    1000000        675        94655547      48669
+
+          1        693
+          2        685
+          3        693
+          4        685
+          5        680
+          6        675
+          7        703
+          8        683
+          9        681
+         10        687
+         11        693
+         12        681

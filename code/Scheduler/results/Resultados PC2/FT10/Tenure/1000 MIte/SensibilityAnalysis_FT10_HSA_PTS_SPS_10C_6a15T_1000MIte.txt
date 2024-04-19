@@ -1,0 +1,75 @@
+
+ Sensibility Analysis parameter: Taboo Search - First method - Tenure
+
+ Problem: FT10
+
+ Method : Hybrid Successive Application (10 cycles)
+
+ with Parallel Taboo Search with the following fixed parameters:
+
+	 Population size: 12
+	 Neighborhood generation method: 0
+	 Tenure: 8
+	 Maximum number of iterations without upgrade: 1000
+
+ and Similar Particle Swarm with the following fixed parameters:
+
+	 Population size: 12
+	 Crossover method: 0
+	 Mutation method: 0
+	 Mutation percentage: 20
+	 Maximum number of iterations: 1
+
+ Results:
+
+
+          6        930          907445        193
+          6        937          901539        191
+          6        930          878321        186
+          6        935          880897        187
+          6        934          894075        190
+          7        934          936021        199
+          7        930          923627        195
+          7        935          899533        190
+          7        937          900723        191
+          7        934          955682        203
+          8        930         1020962        217
+          8        930          992560        210
+          8        930         1029824        218
+          8        938         1006946        213
+          8        930          962761        204
+          9        934          945529        201
+          9        930          958027        203
+          9        937          971235        206
+          9        940         1035577        219
+          9        930          976790        207
+         10        934          944883        201
+         10        935          968338        206
+         10        934          949743        202
+         10        937          933091        198
+         10        940         1023652        217
+         11        935         1000738        212
+         11        939         1040041        220
+         11        935         1022607        217
+         11        935         1052887        223
+         11        945         1011692        215
+         12        935          965241        205
+         12        934          955848        204
+         12        936          979307        208
+         12        939          941543        201
+         12        935          964059        205
+         13        935          994497        211
+         13        935          954944        203
+         13        930          990827        211
+         13        945          994084        212
+         13        935         1031463        219
+         14        936          965573        206
+         14        941          971631        208
+         14        944          914514        196
+         14        944          916910        195
+         14        934          991011        211
+         15        936          965213        206
+         15        934          954958        204
+         15        940         1033402        219
+         15        938          965730        207
+         15        948          968133        206
